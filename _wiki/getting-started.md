@@ -310,7 +310,7 @@ should follow the instructions to [set up a project](https://circleci.com/docs/e
 and then in the project settings be sure to enable building forked build requests,
 and to cancel redundant builds. The preview will be built on CircleCI, and saved
 to static files for you to browse. The only change you will need is to edit
-the static files location to be the name of your respository, which is at te
+the static files location to be the name of your respository, which is at the
 bottom of the `.circleci/config.yml` file:
 
 ```yaml
