@@ -16,10 +16,8 @@
 
         <ul class="md-nav__list" data-md-scrollfix="">
           <li class="md-nav__item md-nav__item">
-            <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"> 
-                <label class="md-nav__link md-nav__link" for="__toc">Home</label>
-                  <a class="md-nav__link md-nav__link" href="{{ site.baseurl }}/" title="Home">Home</a>
-
+            <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox">
+              <label class="md-nav__link" for="__toc">Table of contents</label>
             <nav class="md-nav md-nav--secondary">
               <label class="md-nav__title" for="__toc">Table of contents</label>
               <ul id="nav-toc-left" class="md-nav__list" data-md-scrollfix="">
@@ -30,16 +28,16 @@
 
           <!-- This navigation is completely for mobile -->
           {% for section in site.wiki %}<li class="md-nav__item mobile-nav" style="display:none">
-            <a class="md-nav__link" href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}" title="{{ section.title }}">{{ section.title }}</a>
+          <a class="md-nav__link" href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}" title="{{ section.title }}">{{ section.title }}</a>
           </li>{% endfor %}
 
           <!-- This navigation is completely for non mobile -->
-         {% for section in site.wiki %}
-         <li class="md-nav__item not-mobile-nav">
-             <a {% if page.url == section.url %}class="md-nav__link md-nav__link--active pancakes-parent"{% else %}class="md-nav__link pancakes-parent"{% endif %} {% if section.children %}href="#pancakes-{{ section.title | slugify }}"{% else %}href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}"{% endif %}
+          {% for section in site.wiki %}
+          <li class="md-nav__item not-mobile-nav">
+            <a {% if page.url == section.url %}class="md-nav__link md-nav__link--active pancakes-parent"{% else %}class="md-nav__link pancakes-parent"{% endif %} {% if section.children %}href="#pancakes-{{ section.title | slugify }}"{% else %}href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}"{% endif %}
                 id="pancakes-{{ section.title | slugify }}" 
                 title="{{ section.title }}">{{ section.title }}</a>
-         </li>{% endfor %}
+          </li>{% endfor %}
 
         </ul>
       </nav>
