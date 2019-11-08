@@ -43,7 +43,8 @@ $(document).ready(function() {
         var start = '<div class="dropdown more"><span><i class="fa fa-ellipsis-h more" title="Edit"></i></span><div class="dropdown-content">';
 
         // Edit (assuming deployed under main organization repo)
-        var link = "{{ site.wikirepo }}/edit/master/{{ page.path }}#" + did;
+        var filename = "{{ page.path }}".substr("{{ page.path }}".lastIndexOf('/') + 1);
+        var link = "{{ site.wikirepo }}/edit/master/" + filename + "#" + did;
         var button = "<p><a href='" + link + "' target='_blank'>Edit this page</a></p>";
         start += button;
 
