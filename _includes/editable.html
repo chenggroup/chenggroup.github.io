@@ -43,13 +43,12 @@ $(document).ready(function() {
         var start = '<div class="dropdown more"><span><i class="fa fa-ellipsis-h more" title="Edit"></i></span><div class="dropdown-content">';
 
         // Edit (assuming deployed under main organization repo)
-        var filename = "{{ page.path }}".substr("{{ page.path }}".lastIndexOf('/') + 1);
-        var link = "{{ site.wikirepo }}/edit/master/" + filename + "#" + did;
+        var link = "{{ site.repo }}/edit/master/{{ page.path }}#" + did;
         var button = "<p><a href='" + link + "' target='_blank'>Edit this page</a></p>";
         start += button;
 
         // Issues;
-        var link = "{{ site.wikirepo }}/issues/new?labels={% if page.editable %}{{ page.editable }}{% else %}question{% endif %}&title=Question:&body=Question on: {{ site.wikirepo }}/tree/master/{{ page.path }}%23" + did;
+        var link = "{{ site.repo }}/issues/new?labels={% if page.editable %}{{ page.editable }}{% else %}question{% endif %}&title=Question:&body=Question on: {{ site.repo }}/tree/master/{{ page.path }}%23" + did;
 
         var button = "<p><a href='" + link + "' target='_blank'>Ask a Question</a></p>";
         start += button;

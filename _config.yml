@@ -28,7 +28,6 @@ url: # the base hostname & protocol for your site
 
 # Social (First three Required)
 repo: "https://github.com/chenglabwiki/chenglabwiki.github.io" # the repo of web source code 
-wikirepo: "https://github.com/chenglabwiki/wiki" # the repo of wiki documents
 github_user: "chenglabwiki"
 github_repo: "chenglabwiki.github.io"
 
