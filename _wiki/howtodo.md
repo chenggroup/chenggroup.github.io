@@ -28,7 +28,7 @@ wiki 书写使用 markdown 格式。本 wiki 使用 kramdown 作为 markdown 的
 
 ![Screen Shot 2019-11-09 at 02.16.32](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6wiwgauj311t0kwjue.jpg)
 
-推荐在本地用 typora 等编辑器写好 markdown 后直接上传文件，文件请上传至 [_wiki]({{ site.repo }}/tree/master/_wiki) 目录。也可以修改 fork 的仓库的 _wiki 下的文件，然后再提交 PR。
+推荐在本地用 typora 等编辑器写好 markdown 后直接上传文件，文件请上传至 [_wiki]({{ site.repo }}/tree/master/_wiki) 目录 (master 分支)。也可以修改 fork 的仓库的 _wiki 下的文件，然后再提交 PR。
 
 #### 3. 提交 PR
 
@@ -144,6 +144,7 @@ GFM(GitHub Flavored Markdown) 是 github 所使用的 markdown 扩展语法。
 ```yaml
 ---
 title: getting-started
+author: 
 ---
 ```
 
