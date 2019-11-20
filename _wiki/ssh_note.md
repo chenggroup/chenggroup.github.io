@@ -1,5 +1,5 @@
 ---
--title: SSH Usage Note
+title: SSH Usage Note
 ---
 
 # SSH Usage Note
