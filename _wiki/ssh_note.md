@@ -1,3 +1,7 @@
+---
+-title: SSH Usage Note
+---
+
 # SSH Usage Note
 
 Author: Yongbin Zhuang
