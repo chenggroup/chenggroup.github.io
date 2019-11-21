@@ -11,6 +11,14 @@ wiki 书写使用 markdown 格式。本 wiki 使用 kramdown 作为 markdown 的
 
 > 文档中带有 `*` 的部分可以略过。
 
+## 对某篇 wiki 内容有疑问
+
+若某篇 wiki 说得不明白或者有错误，可以使用 `Ask a Question` 的功能。
+
+鼠标移至页面上的省略号，点击 `Ask a Question` 即可跳转至反馈问题的页面 (不过这之前需要有一个 github 的账号): 
+
+![Screen Shot 2019-11-21 at 18.09.52](https://tva1.sinaimg.cn/large/006y8mN6gy1g95to97bj0j30zd07udhn.jpg)
+
 ## 如何上传 wiki
 
 如果还不会 markdown 语法，可以先看 [markdown 语法部分](#markdown-语法)，能被识别为 wiki 的 markdown 文件应在文件的开头插入 [YAML Front Matter](#yaml-front-matter)。把自己的 markdown 文档上传到 wiki 上可以有两种方案，本质都是在使用 github: 1. 上传文件至 github 仓库 (推荐)；2. 由 [wiki 网站]({{ site.baseurl }}) 导向编辑页面。
@@ -109,6 +117,8 @@ Markdown 是一种标记语言，和代码一样，可以用纯文本的形式�
 ### 基本语法
 
 ![markdown-basic-gramma](https://tva1.sinaimg.cn/large/006y8mN6ly1g8qom3uma2j30ow0lrtbm.jpg)
+
+> :warning: 插入图片时切勿使用本地路径，否则在 wiki 上无法查看，具体请参考 [Typro 插入图片设置](#修改图像设置)。
 
 可参考 [markdown 教程](https://www.markdownguide.org/basic-syntax/) 与 [练习](https://www.markdowntutorial.com/) 来学习基本语法。
 
