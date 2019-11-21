@@ -1,10 +1,11 @@
 ---
 title: SSH Usage Note
+authors: Yongbin Zhuang
 ---
 
 # SSH Usage Note
 
-Author: Yongbin Zhuang
+This Note Cannot teach you EveryThing, But you can get more information from command man ssh_config
 
 *This Note Cannot teach you EveryThing, But you can get more information from command `man ssh_config`*
 

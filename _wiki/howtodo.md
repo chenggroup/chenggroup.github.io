@@ -1,5 +1,6 @@
 ---
 title: 如何使用 wiki
+authors: 熊景放
 ---
 
 # 如何使用 wiki
@@ -139,12 +140,31 @@ GFM(GitHub Flavored Markdown) 是 github 所使用的 markdown 扩展语法。
 
 #### YAML Front Matter
 
+##### 加入标题
+
 只有在 `markdown` 文件的头部加入 `YAML Front Matter` 部分，才能使你写的 wiki 展示在网页上。因此最简单的，请在 `YAML Front Matter` 中加入 `title`，如下所示：
 
 ```yaml
 ---
 title: getting-started
-author: 
+---
+```
+
+##### 添加作者
+
+在 `YAML Front Matter` 中加入 `authors` 即可添加作者，多个作者用 yaml 语法的列表表示：
+
+```yaml
+---
+authors: one author
+---
+```
+
+```yaml
+---
+authors:
+  - author1
+  - author2
 ---
 ```
 

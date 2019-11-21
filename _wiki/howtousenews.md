@@ -1,6 +1,6 @@
 ---
-tags:
-  - howtodo
+title: 如何发布 News
+authors: 熊景放
 ---
 
 # 如何发布 News (致管理员)
@@ -37,4 +37,4 @@ tags:
 
 ## 查看 News
 
-进入 <{{ site.baseurl }}/news> 可查看所有 News，<{{ site.baseurl }}/archive> 可查看按时间分类的 News。
+进入 <{{ site.url }}/{{ site.baseurl }}news> 可查看所有 News，<{{ site.url }}/{{ site.baseurl }}archive> 可查看按时间分类的 News。

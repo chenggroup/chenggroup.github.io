@@ -9,11 +9,11 @@ permalink: /news/
 For site changes, see the <a href="https://github.com/{{ site.github_user }}/{{ site.github_repo }}/blob/master/CHANGELOG.md">changelog</a> kept with the code base.</p>
 
 <p class="editor-link"><a href="https://github.com/{{ site.github_user }}/{{ site.github_repo }}/edit/master/CHANGELOG.md" class="btn"><strong>&#9998;</strong> Update Change Log</a></p>
-
 {% for post in site.posts limit:10 %}
    <div class="post-preview">
    <h2><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
-   <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span><br>
+   <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+   {% if post.authors %}<span style="float:right">Authors: {% for author in post.authors %}{{ author }}, {% endfor %}</span>{% endif %}<br>
    {% if post.badges %}{% for badge in post.badges %}<span class="badge badge-{{ badge.type }}">{{ badge.tag }}</span>{% endfor %}{% endif %}
    {{ post.content | split:'<!--more-->' | first }}
    {% if post.content contains '<!--more-->' %}

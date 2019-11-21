@@ -1,11 +1,10 @@
 ---
 title: Guidances for installation of codes
+authors: Yongbin Zhuang
 ---
 
 
 # CP2K installation Guide
-
-## Author: Yong-Bin Zhuang
 
 - Download the release version from official website using wget like
 
