@@ -5,9 +5,26 @@ authors: Yongbin Zhuang
 
 # SSH Usage Note
 
-This Note Cannot teach you EveryThing, But you can get more information from command man ssh_config
+*This Note Cannot teach you EveryThing, But you can get more information from command `man ssh_config`*, `man ssh`
 
-*This Note Cannot teach you EveryThing, But you can get more information from command `man ssh_config`*
+## Create key pair for your own use
+
+`ssh` is the command used for logging in remote computer safely. There exist two ways to login by `ssh`
+
+1. use password
+2. use key 
+
+The first way is familiar with you, like you did with windows system before. The safer one is the second way, i. e. use key to login.
+
+To use key, you have to generate one! use the command to generate key:
+
+```bash
+$ ssh-keygen
+```
+
+Follow the instructions (actually, you just need to keep push `enter` button  :eyeglasses: ​​). From default setting, you will obtain `id_rsa` and `id_rsa.pub` file in your `~/.ssh/` directory.`id_rsa` is the private key used to login, please take care of your key! `id_rsa.pub` is the public key which acts as a lock. You should give your `id_rsa.pub` file to cluster administrator.
+
+{% include alert.html type="tip" content="Give Your Public Key to cluster administrator, then you can get the cluster account." %}
 
 ## Login to Remote Cluster with Proxy
 
