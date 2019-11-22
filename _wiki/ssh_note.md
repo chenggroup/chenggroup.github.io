@@ -38,24 +38,24 @@ Let me explain some terminology:
 - `port`: another restriction on connection to HPC 
 
 Let's set a scenario:
-Now you are not in the office, but you can only connect to you office computer by the computer we said `A` at hand. And through `A`, you login the HPC we said `cluster51`. At normal, you will do the following thing:
+Now you are not in the office, but you can only connect to you office computer by the computer we said `proxy` at hand. And through `A`, you login the HPC we said `cluster51`. At normal, you will do the following thing:
 
 ```bash
-$ ssh username@A
+$ ssh username@proxy
 $ ssh -p port_number -i key_file username@cluster51
 ```
 
 Can we simplify it? Of course! Open you ssh config file at `~/.ssh/config`: just paste the following code
 
 ```bash
-Host chenglab #nickname you set for your office computer
+Host proxy #nickname you set for your office computer
          User robinzhuang #username you set for login
          Hostname 10.24.3.xxx #IP address of your office computer, change the xxx to real one!
  
 Host chenglab51 #nickname for your cluster
          User ch1_101 #username you set, change to real one!
          Hostname 121.192.191.xx #IP for cluster, replace XX!
- #        AddKeysToAgent yes
+         AddKeysToAgent yes
          IdentityFile ~/.ssh/id_rsa # the key file location used in login 
          Port xx # specify the port number, replace xx with real port !
          ProxyCommand ssh chenglab nc %h %p
@@ -68,4 +68,38 @@ $ ssh chenglab51
 ```
 
 Now you can directly connect to the HPC!
+
+This configuration can also apply to your `scp` command, you can directly transfer file with proxy computer:
+
+```bash
+$ scp chenglab51:remote_file local_directory_path
+```
+
+
+
+
+
+## Trouble Shooting
+
+### ssh private key are too open
+
+The error message is 
+
+```bash
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ WARNING: UNPROTECTED PRIVATE KEY FILE! @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for '/home/me/.ssh/id_rsa_targethost' are too open.
+It is recommended that your private key files are NOT accessible by others.
+This private key will be ignored.
+bad permissions: ignore key: /home/me/.ssh/id_rsa_targethost
+```
+
+This arises from the permission of your private key:`id_rsa` file.
+
+Use command `ls -l` to see your `id_rsa` permission. if it is not `-rw-------`, you should change it to that! Use the following command: 
+
+```bash
+$ chmod 600 ~/.ssh/id_rsa
+```
 
