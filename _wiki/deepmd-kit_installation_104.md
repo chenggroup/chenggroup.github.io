@@ -1,3 +1,11 @@
+---
+title: 国重DeePMD-kit安装教程
+---
+
+---
+authors: Yunpei Liu
+---
+
 # 国重DeePMD-kit安装实战全记录
 
 ## 准备工作
