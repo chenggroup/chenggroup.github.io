@@ -59,7 +59,7 @@ chmod +x bazel-0.15.0-installer-linux-x86_64.sh
 export PATH="$PATH:$HOME/bin"
 ```
 
-## 编译
+## tensorflow编译
 
 首先配置tensorflow的编译选项：
 
@@ -205,7 +205,7 @@ rm -fr /tmp/proto /tmp/eigen /tmp/nsync
 
 以完成c++部分的编译。
 
-### DeePMD-kit安装(1.0+)
+## DeePMD-kit安装(1.0+)
 
 首先下载DeePMD-kit，并进入：
 
