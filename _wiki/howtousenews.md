@@ -1,6 +1,7 @@
 ---
 title: 如何发布 News
 authors: 熊景放
+priority: 0.2
 ---
 
 # 如何发布 News (致管理员)

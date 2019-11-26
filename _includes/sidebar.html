@@ -27,12 +27,15 @@
           </li>
 
           <!-- This navigation is completely for mobile -->
-          {% for section in site.wiki %}<li class="md-nav__item mobile-nav" style="display:none">
+          {% assign sorted_wiki = site.wiki | sort:"priority","last" %}
+          {% for section in sorted_wiki %}<li class="md-nav__item mobile-nav" style="display:none">
           <a class="md-nav__link" href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}" title="{{ section.title }}">{{ section.title }}</a>
-          </li>{% endfor %}
+          </li>
+          {% endfor %}
 
           <!-- This navigation is completely for non mobile -->
-          {% for section in site.wiki %}
+          {% assign sorted_wiki = site.wiki | sort:"priority","last" %}
+          {% for section in sorted_wiki %}
           <li class="md-nav__item not-mobile-nav">
             <a {% if page.url == section.url %}class="md-nav__link md-nav__link--active pancakes-parent"{% else %}class="md-nav__link pancakes-parent"{% endif %} {% if section.children %}href="#pancakes-{{ section.title | slugify }}"{% else %}href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}"{% endif %}
                 id="pancakes-{{ section.title | slugify }}" 

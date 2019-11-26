@@ -1,6 +1,7 @@
 ---
 title: 如何使用 wiki
 authors: 熊景放
+priority: 0.1
 ---
 
 # 如何使用 wiki
@@ -179,6 +180,20 @@ authors:
   - author2
 ---
 ```
+
+#### 添加优先级
+
+用 `priority` 指定文章排列的顺序，本条可加可不加，如果缺少这个值，文章会默认按照标题名排列在最后。`priority` 的值越小，排列得越前面，值一样时按默认顺序排列。
+
+```yaml
+---
+title: getting-started
+authors: one author
+priority: 1.1
+---
+```
+
+> 建议 `priority` 的值设成类似小数的形式，整数部分可以表示一系列你想排列在一起的 wiki，小数部分表示系列文章内部的排列顺序。
 
 #### 数学公式
 
