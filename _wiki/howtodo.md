@@ -166,12 +166,14 @@ title: getting-started
 
 ```yaml
 ---
+title: getting-started
 authors: one author
 ---
 ```
 
 ```yaml
 ---
+title: getting-started
 authors:
   - author1
   - author2

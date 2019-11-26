@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Welcom to Chenglab Wiki
+title: Welcome to Chenglab Wiki
 permalink: /
 ---
 
