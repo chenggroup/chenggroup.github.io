@@ -5,19 +5,17 @@ authors: Yongbin Zhuang
 
 
 
-[toc]
+# Installation Guide for Codes and Libraries
 
+## GSL Library installation Guide
 
-
-# GSL Library installation Guide
-
-## Short Introduction
+### Short Introduction
 
 The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers. It is a free open source library under the GNU General Public License. 
 
 This guide is from: https://coral.ise.lehigh.edu/jild13/2016/07/11/hello/
 
-## Install Guide
+### Install Guide
 
 - Download the latest version of gsl library.
   For reference: [**ftp://ftp.gnu.org/gnu/gsl/**](https://www.gnu.org/software/gsl/)
@@ -99,7 +97,7 @@ gcc -L<Path to libgsl>/gsl/lib example.o -lgsl -lgslcblas -lm
 
 - If it is succesfully installed, it will print a  number in your screen.
 
-# CP2K installation Guide
+## CP2K installation Guide
 
 - Download the release version from official website using wget like
 
