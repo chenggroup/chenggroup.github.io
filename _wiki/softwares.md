@@ -9,11 +9,57 @@ authors: Yongbin Zhuang
 
 Before you install anything, especially when you need to compile codes, make sure the type of compiler and the version of compiler you have. Usually, in personal computer, you can use compiler command directly, for instance, `gcc`, `gfortran`, `ifort`,`mpic++`. In remote cluster(High Performance Cluster), the compiler is managed by `module`. You cannnot use it unless you load it in advance. Therefore, make sure which compiler you have in `module`, and use command `module load compiler` to load the compiler you need.
 
-## n2p2 Installationg Guide
+
+
+## DeePMD Installation Guide
 
 ### Short Introduction
 
-n2p2 is a machine learning code to training a machine learning potential. It original paper is from 
+DeePMD-kit is a package written in Python/C++, designed to minimize the effort required to build deep learning based model of interatomic potential energy and force field and to perform molecular dynamics (MD). This brings new hopes to addressing the accuracy-versus-efficiency dilemma in molecular simulations. Applications of DeePMD-kit span from finite molecules to extended systems and from metallic systems to chemically bonded systems. [Ref. Paper](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.120.143001)
+
+### Install Guide
+
+- Here, we display the most easiest way to install DeePMD Code.
+- Make sure you have `GPU` install in your computer. Usually, you can check with the drive of `GPU`
+- Install the `anaconda3` from website. After you installed anaconda3, you can use `conda` command.
+- Install DeePMD with cpu or gpu version. Installation by this way will install lammps as well.
+
+```bash
+#install of cpu version
+conda install deepmd-kit=*=*cpu lammps-dp=*=*cpu -c deepmodeling
+#install of gpu version
+conda install deepmd-kit=*=*gpu lammps-dp=*=*gpu -c deepmodeling
+```
+
+- That's all for installation. Check the install package use command:
+
+```bash
+conda list | grep deep
+```
+
+- You will find four packages related with DeePMD code. You can now directly use command `dp` , `lmp`.
+- To test DeePMD Code. Download DeePMD code from github by:
+
+```bash
+git clone https://github.com/deepmodeling/deepmd-kit.git
+```
+
+- Go to the directory `examples/water/train/`
+- Test training by
+
+```bash
+dp train water_se_a.json
+```
+
+### Install Guide of DeePMD in 国重
+
+{{ site.baseurl }}/[国重安装实战记录](deepmd-kit_installation_104.md)
+
+## n2p2 Installation Guide
+
+### Short Introduction
+
+n2p2 is a machine learning code to training a machine learning potential. It original paper is from [J. Behler and M. Parrinello, Phys. Rev. Lett. 98, 146401 (2007)](https://doi.org/10.1103/PhysRevLett.98.146401)
 
 ### Install Guide
 
