@@ -3,11 +3,94 @@ title: Guidances for installation of codes
 authors: Yongbin Zhuang
 ---
 
-
-
 # Installation Guide for Codes and Libraries
 
-## GSL Library installation Guide
+## First of all!
+
+Before you install anything, especially when you need to compile codes, make sure the type of compiler and the version of compiler you have. Usually, in personal computer, you can use compiler command directly, for instance, `gcc`, `gfortran`, `ifort`,`mpic++`. In remote cluster(High Performance Cluster), the compiler is managed by `module`. You cannnot use it unless you load it in advance. Therefore, make sure which compiler you have in `module`, and use command `module load compiler` to load the compiler you need.
+
+## n2p2 Installationg Guide
+
+### Short Introduction
+
+n2p2 is a machine learning code to training a machine learning potential. It original paper is from 
+
+### Install Guide
+
+- Before Installation, make sure you have installed the [Eigen Library](#Eigen Library Installation Guide) and the [GSL Library](#GSL Library Installation Guide).
+- Make sure you have `gcc` compiler (including `gfortran`), I haven't successfully compiled by `intel` compiler. Make sure you have open MPI(i. e. for `mpic++` command).
+- Download the n2p2 code from github: https://github.com/CompPhysVienna/n2p2. For example, using the following command.
+
+```bash
+git clone https://github.com/CompPhysVienna/n2p2.git
+```
+
+- You can see a directory named `n2p2`, now go into that by:
+
+```bash
+cd n2p2/src
+```
+
+- Modify the configure file `makefile.gnu` 
+
+```makefile
+#modify this file, I just pick out the part you need to modify
+# Enter here paths to GSL or EIGEN if they are not in your standard include
+# path. DO NOT completely remove the entry, leave at least "./".
+PROJECT_GSL=<path to gsllib>/gsl/include/ # substitute <path> with real path
+PROJECT_EIGEN=<path to eigen>/eigen-eigen-323c052e1731 # substitute <path> with real path
+
+ ###############################################################################
+ # COMPILERS AND FLAGS
+ ###############################################################################
+PROJECT_CFLAGS=-O3 -march=native -std=c++11 -fopenmp -L<pato to gsllib>gsl/lib
+```
+
+- Save and quit this file, use the following command to compile code:
+
+```bash
+#choose one of the following command
+make shared # compile a binary with shared library
+make static # compile a binary with static library, I use this one
+```
+
+- After you compiled successfully, you will have all the excutable binary at `n2p2/bin/` directory
+- Add `n2p2/bin/` to you `PATH` environmental variable, you can easily use this. The most important binary is `nnp-train`, this is used for training.
+
+
+
+
+
+
+
+## Eigen Library Installation Guide
+
+### Short Introduction
+
+Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.
+
+### Install Guide
+
+- Download the package from wiki:http://eigen.tuxfamily.org/index.php?title=Main_Page#Overview. For me, I choose the Eigen 3.3.7 released version.
+
+```bash
+wget http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2
+```
+
+- Unpack this tar file by 
+
+```bash
+tar -zxvf 3.3.7.tar.gz
+```
+
+- You will have `eigen-eigen-*` directory in your computer
+- These are all steps you need to install `eigen library`
+
+
+
+
+
+## GSL Library Installation Guide
 
 ### Short Introduction
 
@@ -97,7 +180,7 @@ gcc -L<Path to libgsl>/gsl/lib example.o -lgsl -lgslcblas -lm
 
 - If it is succesfully installed, it will print a  number in your screen.
 
-## CP2K installation Guide
+## CP2K Installation Guide
 
 - Download the release version from official website using wget like
 
