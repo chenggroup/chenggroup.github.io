@@ -53,7 +53,7 @@ dp train water_se_a.json
 
 ### Install Guide of DeePMD in 国重
 
-[国重安装实战记录]({{ site.baseurl }}/wiki/deepmd-kit_installation_104.md)
+[国重安装实战记录]({{ site.baseurl }}/wiki/deepmd-kit_installation_104)
 
 ## n2p2 Installation Guide
 
