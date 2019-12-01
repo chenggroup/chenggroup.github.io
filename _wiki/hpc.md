@@ -8,7 +8,7 @@ Authors: Yongbin Zhuang
 
 
 
-#High Performance Cluster(HPC) Topics
+# High Performance Cluster(HPC) Topics
 
 ## Basic Concepts
 
@@ -20,7 +20,7 @@ CPU is the acronym of Central Processing Unit. You might have been familiar with
 
 The reason I present the chinese word here is to make a connection between what you have learn before and the terminology here, like `Memory`. Memory is the places where data is stored. It is nothing more than your `hard disk` except the speed of message communicating with `core`. The `core` will fetch data directly from `memory` when it works/executes some process. Therefore, if you can put everything in your memory if it is big enough, you will have less time you execute your programs.
 
-###Node/节点
+### Node/节点
 
 This terminology might be redundant if you hear for the first time. It should be enough to count the number of `cores` in HPC, like we have HPC with 1024 `cores`. However, not all of your `cores` can fetch data from same `memory`. Memory has limited space, and cannot connect directly with inifinite `cores`.  Therefore, we have limited number of `cores` to share with one `memory`, which constitute the thing we call `node`. For instance, in `51cluster`(one of HPC in our group), you can type command `bhosts` to display how many nodes we have. In the screen, you will see 32 nodes with 1 login node. For every `node`, it has *24* `cores` with *64* GB `memory` . Check this for `52cluster`, for your practice.
 
