@@ -75,9 +75,19 @@ This configuration can also apply to your `scp` command, you can directly transf
 $ scp chenglab51:remote_file local_directory_path
 ```
 
+##  X11 forward with proxy 
 
+You might want to use X11 forward with proxy. X11 forward is used to display image in your local computer with data from remote computer. For instance, you can use gnuplot in remote computer and display the diagram in you desktop.
 
+Again a quick setting for `~/.ssh/config` is
 
+```bash
+Host *  # valid for all host
+         ForwardAgent yes
+         ForwardX11Trusted yes
+```
+
+Try to login remote computer with `ssh -Y chenglab51`. As we set in previous section, we can use X11 forward with proxy.
 
 ## Trouble Shooting
 

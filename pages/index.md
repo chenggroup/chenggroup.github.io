@@ -6,7 +6,7 @@ permalink: /
 
 # Welcome to Chenglab Wiki
 
-insert introduction of chenglab
+This is group wiki for chenglab which is personal academic group. Visitors are welcomed to have look in our wiki. It's better if you would like to post any suggestions for us.
 
 ## Sections
 
@@ -17,3 +17,8 @@ insert introduction of chenglab
 [About]({{ site.baseurl }}/about): relevant github repositories.
 
 [Open an issue]({{ site.repo }}/issues)
+
+## Pratical Topics
+
+- [Installation Guide for Codes and Libraries]({{ site.baseurl }}/wiki/softwares)
+
