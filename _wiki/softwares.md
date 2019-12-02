@@ -11,6 +11,77 @@ Before you install anything, especially when you need to compile codes, make sur
 
 
 
+
+
+## Anaconda Installation Guide
+
+### Short Introduction
+
+The open-source Anaconda Distribution is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X. Choose the one suitable for you usage. If you'd like to use Anaconda in Cluster, ask cluster administrator if Anaconda have been installed, which avoid storage waste in your cluster's storage.
+
+### Installation Guide
+
+- Go to [this website](https://www.anaconda.com/distribution/), choose the right version for you. Personally, I recommend command line Installer for Linux and Mac OS System, while the Graphical Installer for Windows System
+- Follow the instruction in [this page](https://docs.anaconda.com/anaconda/install/)
+
+
+
+## LAMMPS Installation Guide
+
+### Short Introduction
+
+LAMMPS is a classical molecular dynamics code with a focus on materials modeling. It's an acronym for Large-scale Atomic/Molecular Massively Parallel Simulator.
+
+### Install Guide
+
+- Git clone or download package from [website](https://lammps.sandia.gov/download.html)
+
+```bash
+# command for git
+git clone -b stable https://github.com/lammps/lammps.git mylammps
+```
+
+- We assume you the package path is <lammps-root>
+
+```bash
+cd <lammps-root>/src
+#choose one of the following or both
+# build a serial LAMMPS executable
+make serial 
+# build a parallel LAMMPS executable with MPI
+make mpi        
+```
+
+- You will see the executable binary in `src/lmp_serial` or `src/lmp_mpi`
+
+### Packages and Extra Interfaces of LAMMPS
+
+#### General for Installing Package
+
+- To install package of LAMMPS, just type `make yes-<package name>` for example, `make yes-user-intel`
+
+#### Building Inteface with n2p2
+
+- make sure you have shared library `libnnpif-shared` in your `<path to n2p2>/lib/`
+- export the following in your environmental variable
+
+```bash
+export LD_LIBRARY_PATH=<path to n2p2>/lib:${LD_LIBRARY_PATH}
+```
+
+- Go to LAMMPS root
+
+```bash
+cd <LAMMPS root>/
+ln -s <path to n2p2>/lib/nnp
+cp -r <path to n2p2>/src/interface/LAMMPS/src/USER-NNP <LAMMPS root>/src
+cd <LAMMPS root>/src
+make yes-user-nnp
+make mpi
+```
+
+
+
 ## DeePMD Installation Guide
 
 ### Short Introduction
@@ -90,6 +161,7 @@ PROJECT_EIGEN=<path to eigen>/eigen-eigen-323c052e1731 # substitute <path> with 
  # COMPILERS AND FLAGS
  ###############################################################################
 PROJECT_CFLAGS=-O3 -march=native -std=c++11 -fopenmp -L<pato to gsllib>gsl/lib
+PROJECT_LDFLAGS_BLAS=-lblas -lgslcblas
 ```
 
 - Save and quit this file, use the following command to compile code:
@@ -101,13 +173,12 @@ make static # compile a binary with static library, I use this one
 ```
 
 - After you compiled successfully, you will have all the excutable binary at `n2p2/bin/` directory
-- Add `n2p2/bin/` to you `PATH` environmental variable, you can easily use this. The most important binary is `nnp-train`, this is used for training.
+- Add `n2p2/bin/` to your `PATH` environmental variable, you can easily use this. The most important binary is `nnp-train`, this is used for training.
+- Add n2p2 library to your `LD_LIBRARY_PATH` in `.bashrc`
 
-
-
-
-
-
+```bash
+export LD_LIBRARY_PATH=<Path to n2p2>/lib/:$LD_LIBRARY_PATH
+```
 
 ## Eigen Library Installation Guide
 
@@ -142,7 +213,9 @@ tar -zxvf 3.3.7.tar.gz
 
 The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers. It is a free open source library under the GNU General Public License. 
 
-This guide is from: https://coral.ise.lehigh.edu/jild13/2016/07/11/hello/
+This guide is from: [website tutorial](https://coral.ise.lehigh.edu/jild13/2016/07/11/hello/)
+
+{% include alert.html type="tip" content="I have installed one in cluster51, in directory /share/apps/lib/gsl-2.6. The compiler version: <gcc 6.3.0> for your information" %}
 
 ### Install Guide
 
@@ -225,6 +298,13 @@ gcc -L<Path to libgsl>/gsl/lib example.o -lgsl -lgslcblas -lm
 ```
 
 - If it is succesfully installed, it will print a  number in your screen.
+- add libray path to LD_LIBRARY_PATH in `.bashrc`
+
+```bash
+export LD_LIBRARY_PATH=<path to libgsl>/lib:$LD_LIBRARY_PATH
+```
+
+
 
 ## CP2K Installation Guide
 
