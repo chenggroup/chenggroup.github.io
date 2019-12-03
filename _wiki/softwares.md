@@ -19,6 +19,8 @@ Before you install anything, especially when you need to compile codes, make sur
 
 The open-source Anaconda Distribution is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X. Choose the one suitable for you usage. If you'd like to use Anaconda in Cluster, ask cluster administrator if Anaconda have been installed, which avoid storage waste in your cluster's storage.
 
+{% include alert.html type="tip" content="A minimum version of Conda is install in cluster51 by Yunpei Liu. Use it by module command" %}
+
 ### Installation Guide
 
 - Go to [this website](https://www.anaconda.com/distribution/), choose the right version for you. Personally, I recommend command line Installer for Linux and Mac OS System, while the Graphical Installer for Windows System
@@ -31,6 +33,8 @@ The open-source Anaconda Distribution is the easiest way to perform Python/R dat
 ### Short Introduction
 
 LAMMPS is a classical molecular dynamics code with a focus on materials modeling. It's an acronym for Large-scale Atomic/Molecular Massively Parallel Simulator.
+
+{% include alert.html type="tip" content="I have installed one in cluster51, in directory /share/apps/lammps-7Aug19/. The compiler version: <gcc 6.3.0> and <openmpi 3.0.0> for your information." %}
 
 ### Install Guide
 
@@ -56,9 +60,44 @@ make mpi
 
 ### Packages and Extra Interfaces of LAMMPS
 
+{% include alert.html type="tip" content="Contact Cluster Administrator if you need any uninstalled packages" %}
+
 #### General for Installing Package
 
 - To install package of LAMMPS, just type `make yes-<package name>` for example, `make yes-user-intel`
+
+#### Building USER-ATC Package
+
+- Before you install this package by `make yes-user-atc`, you should install `lib-atc` which is a library for atc package
+- Go to the directory `<LAMMPS root>/lib/atc`, you can follow the instruction in the `README`. Remember to load module `gcc` and `open mpi`
+
+```bash
+cd <LAMMPS root>/lib/atc
+```
+
+- `lib-atc` need library `lapack` and `blas` installed. Check whether this library installed or not by command:
+
+```bash 
+#check for lapack library
+ldconfig -p | grep lapack
+#check for blas library
+ldconfig -p | grep blas
+```
+
+- If `lapack` and `blas` are installed. Change the value of  `EXTRAMAKE` variable to `Makefile.lammps.installed` in the file `Makefile.mpi`.
+
+```bash
+EXTRAMAKE= Makefile.lammps.installed
+```
+
+- Make library by following command
+
+```bash
+make -f Makefile.mpi
+```
+
+- Make sure you have `libatc.a` and `Makefile.lammps` in your current directory
+- Back to directory `<LAMMPS root>/src/` and type `make mpi` to compile mpi version of LAMMPS
 
 #### Building Inteface with n2p2
 
