@@ -297,10 +297,10 @@ $$
 
 ### 引用本网站的其他 wiki
 
-`{% raw %}{{ site.baseurl }}{% endraw %}` 可表示网站的前缀，比如在本网站中就代表 {{ site.baseurl }} 。使用
+使用
 
 ```
-{% raw %}{{ sitebaseurl }}/wiki/name-of-wiki{% endraw %}
+{% raw %}{{ site.baseurl }}/wiki/name-of-wiki{% endraw %}
 ```
 
 即可在 wiki 中引用本网站的其他 wiki 。只需将 `name-of-wiki` 改成想要引用的 wiki 文件名，若不清楚文件名是什么，也可点开相应的 wiki，在搜索栏中可找到对应的名称。
@@ -313,12 +313,14 @@ $$
 
 ### 使用自定义的变量
 
-在 [YAML Front Matter](#yaml-front-matter) 中可添加自定义变量，变量名称可随意取，然后通过 `{{ page.yourvariable }}` 来引用。
+在 [YAML Front Matter](#yaml-front-matter) 中可添加自定义变量，变量名称可随意取，然后通过 `{% raw %}{{ page.yourvariable }}{% endraw %}` 来引用。
 
-比如可通过 `{{ page.priority }}` 来引用 `priority` 变量，其显示为 {{ page.priority }} 。
+比如可通过 `{% raw %}{{ page.priority }}{% endraw %}` 来引用 `priority` 变量，其显示为 {{ page.priority }} 。
 
 ## 参考资料*
 
 要了解更多预设的变量，可参考 [jekyll](https://jekyllrb.com/docs/variables/#page-variables) 的变量部分。
 
 要实现更多复杂的功能，比如条件语句，循环语句，过滤器等功能，可参考 [liquid](https://shopify.github.io/liquid/) 语法。
+
+当然，想要快速获得支持，也可以联系作者或者 [Open an issue]({{ site.repo }}/issues) 。
