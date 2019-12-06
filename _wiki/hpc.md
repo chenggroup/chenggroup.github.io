@@ -1,6 +1,6 @@
 ---
-Title: High Performance Cluster(HPC) Topics
-Authors: Yongbin Zhuang
+title: High Performance Cluster(HPC) Topics
+authors: Yongbin Zhuang
 
 ---
 
