@@ -14,7 +14,7 @@ The following link is for your information:
 
 - [Official Website](http://www.deepmd.org)
 
-- For Install this code: see [Installation Guide](#{{ site.baseurl }}/wiki/softwares#deepmd-installation-guide)
+- For Install this code: see [Installation Guide]({{ site.baseurl }}/wiki/softwares#deepmd-installation-guide)
 
   
 
