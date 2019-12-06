@@ -85,7 +85,7 @@ When your job is runing, you will find following new files in your directory
 - `lcurve.out`: learning curve of machine learning process
 - `model.ckpt.data-00000-of-00001`, `model.ckpt.index`, `checkpoint`, `model.ckpt.meta`: check point file used to restart deepmd training
 
-Congratulation! You have successfuly run your first deepmd training.
+Congratulation! You have successfully run your first deepmd training.
 
 ### Browse Output file
 
@@ -143,7 +143,7 @@ You will see,
    1200    7.69e+00  7.71e+00    8.64e-02  8.69e-02    2.43e-01  2.44e-01    1.0e-03
 ```
 
-These numbers show the error of current machine learning model on the training set and testing set. Let's focus on the column, `l2_e_tst`, `l2_e_trn`, `l2_f_tst` and `l2_f_trn`. `l2_e_tst` means the error for the predicted energy on the testing set. `l2_e_trn` means the error for energy on the training set.  `l2_f_tst` and ` l2_f_trn` are same as above but they are for forces. You can plot these columns with python package `Matplotlib`.
+These numbers show the error of current machine learning model on the training set and testing set. Let's focus on the column, `l2_e_tst`, `l2_e_trn`, `l2_f_tst` and `l2_f_trn`. `l2_e_tst` means the error for the predicted energy on the testing set. `l2_e_trn` means the error for energy on the training set.  `l2_f_tst` and `l2_f_trn` are same as above but they are for forces. You can plot these columns with python package `Matplotlib`.
 
 ## Dive into DeePMD-kit Training
 
@@ -228,6 +228,10 @@ Start your training by:
 dp train input.json
 ```
 
+{% include alert.html type="warning" content="#The above command is in the lsf script, remember in cluster you run traning through lsf script." %}
+
+
+
 ### Restart your training
 
 If you want to restart the training from check point, use:
@@ -236,7 +240,7 @@ If you want to restart the training from check point, use:
 dp train input.json --restart model.ckpt
 ```
 
-
+{% include alert.html type="warning" content="#The above command is in the lsf script, remember in cluster you run traning through lsf script." %}
 
 ## Extra Support
 
