@@ -13,10 +13,11 @@ DeePMD-kit is a tool used to train Machine Learning Potential which mainly devel
 The following link is for your information:
 
 - [Official Website](http://www.deepmd.org)
-
 - For Install this code: see [Installation Guide]({{ site.baseurl }}/wiki/softwares#deepmd-installation-guide)
 
-  
+{% include alert.html type="warning" content="This page is just the experience and understanding of author. If you find any mistake or vague part, please report the issue" %}
+
+
 
 ## First Taste
 
@@ -142,7 +143,98 @@ You will see,
    1200    7.69e+00  7.71e+00    8.64e-02  8.69e-02    2.43e-01  2.44e-01    1.0e-03
 ```
 
-These numbers show the error of current machine learning model on the training set and testing set. Let's focus on the column, `l2_e_tst`, `l2_e_trn`, `  l2_f_tst` and ` l2_f_trn`. `l2_e_tst` means the error for the predicted energy on the testing set. `l2_e_trn` means the error for energy on the training set.  `  l2_f_tst` and ` l2_f_trn` are same as above but they are for forces.
+These numbers show the error of current machine learning model on the training set and testing set. Let's focus on the column, `l2_e_tst`, `l2_e_trn`, `l2_f_tst` and `l2_f_trn`. `l2_e_tst` means the error for the predicted energy on the testing set. `l2_e_trn` means the error for energy on the training set.  `l2_f_tst` and ` l2_f_trn` are same as above but they are for forces. You can plot these columns with python package `Matplotlib`.
+
+## Dive into DeePMD-kit Training
+
+### Prepare Training Data
+
+Previous section just let you taste the running of DeePMD-kit. For training a real machine learning potential for your system, you have to prepare **training data set** for training. In our group, we often use software **cp2k** to run molecular dynamics simulation. If we set the output of forces and position file, you will get `*pos-1.xyz` file for position and `*frc-1.xyz` file for forces. Please collect these two files into one directory, then you can use the script in the section [Extra Support](#extra-support) to convert cp2k xyz data to deepmd training data.
+
+Now we just have a look on the form of deepmd training data. Examples are stored in `<deepmd repository>/examples/water/data/`. Let's take a look on the directory structure. 
+
+```bash
+# directory structre for training data
+.
+├── data
+│   ├── set.000
+│   │   ├── box.npy
+│   │   ├── coord.npy
+│   │   ├── energy.npy
+│   │   └── force.npy
+│   ├── set.001
+│   │   ├── box.npy
+│   │   ├── coord.npy
+│   │   ├── energy.npy
+│   │   └── force.npy
+│   ├── set.002
+│   │   ├── box.npy
+│   │   ├── coord.npy
+│   │   ├── energy.npy
+│   │   └── force.npy
+│   ├── set.003
+│   │   ├── box.npy
+│   │   ├── coord.npy
+│   │   ├── energy.npy
+│   │   └── force.npy
+│   └── type.raw
+```
+
+Clearly, we will see `type.raw` file and a set of directory named `set.*` under the `data` directory. `type.raw` is just a file containing the element symbol for your system. However instead of element symbol in the form of letter like `H`, `O`, `C`, we use numbers to represent element type. It is free to choose the number assigned to element type. For instance, `1` for `H`, `0` for `O`, or reversely, `0` for `H` and `1` for `O`. These numbers are corresponding to the position of element in `"type_map":["O", "H"]` in the file of `input.json`. In this example, `1` for `H`, `0` for `O`. The following is a example of `type.raw`:
+
+```bash
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1   1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1   1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+```
+
+`box.npy`, `coord.npy`, `energy.npy` and `force.npy` are all numpy files storing the information of cell, position, energy and force of the system. Every row of numpy file corresponds to one snapshot of MD or one structure of system. For example, we have 1000 structures for training data. Then the shape of `box.npy`, `coord.npy`, `energy.npy` and `force.npy` is (1000, 9), (1000, number of atoms\*3), (1000, 1), (1000, number of atoms\*3), respectively. 
+
+### Setup Your Input
+
+The input setting file called `input.json`, is the file used to start your training. The full input file will be not placed here, you can see in the `<deepmd repositoy>/examples/water/train/*.json`. Luckly, you don't have to set every parameter. Just copy the file `water_se_a.json`, and modify some keywords. Here I will explain the important keyword you will have to modify.
+
+- `type": "se_a"`: This keyword describe the method you used to convert your structure into input unit for neural network. Usually, you don't need to modify this. `"se_a"` means your use a smooth edition of covertion of the structure, which will save many effort for your.
+- `"sel": [46, 92]`: This keyword is a list containing two numbers. One for your `O` and the other for `H` as you set in `type_map`. The numbers describe the maxium number of such type of element contained in a `local environment`. For the instance of water, you choose an atom we say `H1`. Then, the local environment of `H1`, i.e. the space within the sphere with cutoff `6.00`, has 40 `H` atoms and 20 `O` atoms. So at least you have to set `[20, 40]` in your `input.json` file.
+
+```json
+"descriptor" :{
+         "type":     "se_a",
+         "sel":      [46, 92],
+         "rcut_smth":    5.80,
+         "rcut":     6.00,
+         "neuron":       [25, 50, 100],
+         "resnet_dt":    false,
+         "axis_neuron":  16,
+         "seed":     1,
+         "_comment":     " that's all"
+     },
+```
+
+- `"systems":  ["../data/"]`: The directory containing training data, this is a list, which means you can set multple training data as you wish.
+- `"set_prefix": "set"`: Remember the `set.*` sub directories under the `data` directory? That's it!
+
+```json
+     "systems":  ["../data/"],
+     "set_prefix":   "set",
+```
+
+- `"batch_size": 1`: How many structures you put in one training iteration. This number is limited by your GPU memory. 
+- `"numb_test": 10` : How many structures you put in testing the current machine learning potential. This number is also limited by your GPU memory.
+
+### Start Your Training
+
+Start your training by:
+
+```bash
+dp train input.json
+```
+
+### Restart your training
+
+If you want to restart the training from check point, use:
+
+```bash
+dp train input.json --restart model.ckpt
+```
 
 
 
