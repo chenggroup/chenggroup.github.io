@@ -41,7 +41,7 @@ cp /share/base/script/deepmd.lsf ./
 vim deepmd.lsf
 ```
 
-You will have to modify the input file name in the `lsf` script. In the last line `dp train input.json 1>> train.log 2>> train.log `. Replace `input.json` into `water_se_a.json`. And change the value of `CUDA_VISIBLE_DEVICES` to one of the number in 0, 1, 2, 3. This command select which GPU you will use in training. For g001, there exist four GPUs. Make sure that your task is not submitted to the GPU which is current running the task of other people. To check which GPU is available, use command `ssh g001`, then `nvidia-smi`, you will see the GPU usage.
+You will have to modify the input file name in the `lsf` script. In the last line `dp train input.json 1>> train.log 2>> train.log `. Replace `input.json` into `water_se_a.json`. And change the value of `CUDA_VISIBLE_DEVICES` to one of the number in 0, 1, 2, 3. This command select which GPU you will use in training. For g001, there exist four GPUs. Make sure that your task is not submitted to the GPU which is current running the task of other people. To check which GPU is available, use command `ssh g001 "nvidia-smi"`, you will see the GPU usage.
 
 ```bash
 #!/bin/bash
