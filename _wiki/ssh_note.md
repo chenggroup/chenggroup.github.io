@@ -38,7 +38,7 @@ Let me explain some terminology:
 - `port`: another restriction on connection to HPC 
 
 Let's set a scenario:
-Now you are not in the office, but you can only connect to you office computer by the computer we said `proxy` at hand. And through `A`, you login the HPC we said `cluster51`. At normal, you will do the following thing:
+Now you are not in the office, but you can only connect to you office computer by the computer we said `proxy` at hand. And through `proxy`, you login the HPC we said `cluster51`. At normal, you will do the following thing:
 
 ```bash
 $ ssh username@proxy
