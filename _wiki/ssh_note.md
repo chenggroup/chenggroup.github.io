@@ -9,6 +9,8 @@ authors: Yongbin Zhuang
 
 ## Create key pair for your own use
 
+{% include alert.html type="warning" content="Obligatory for New Comer " %}
+
 `ssh` is the command used for connecting to remote computer safely. There exist two ways to login by `ssh`
 
 1. `use password`
@@ -28,13 +30,15 @@ Follow the instructions (actually, you just need to keep push `enter` button  :e
 
 ## Login to Remote Cluster by SSH
 
+{% include alert.html type="warning" content="Obligatory for New Comer " %}
+
 ```bash
 ssh -i <path to your private key> -p <port number> username@cluster_ip
 #example here
 ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ```
 
-## Using SSH Eligantly by SSH Config
+### Optional: Using SSH Eligantly by SSH Config
 
 As I wrote above, you have to type all the strings into terminal everytime you login. Let's use another method to simplify the login procedure. In your directory `~/.ssh/`, there has a file called `config`. Open it by `vim` command.
 
@@ -46,10 +50,10 @@ We can store the paramters like `<port number>`, `<path to private key>`, `usern
 
 ``` bash
 Host mycluster #nickname for your cluster
-         User ch1_101 #replacement of username in ssh
-         Hostname 121.192.191.51 #replace of cluster_ip in ssh
-         Port 6666 #replacement of -p <port number> in ssh
-         IdentityFile ~/.ssh/id_rsa # replace of -i <path to your private key> in ssh
+    User ch1_101 #replacement of username in ssh
+    Hostname 121.192.191.51 #replace of cluster_ip in ssh
+    Port 6666 #replacement of -p <port number> in ssh
+    IdentityFile ~/.ssh/id_rsa # replace of -i <path to your private key> in ssh
 
 ```
 
@@ -61,7 +65,22 @@ ssh mycluster
 ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ```
 
+## Display Graphs on Local Mechine (X11 Forwarding)
 
+When running a program which needs graphic display, you might download data from remote computer and plot in local. However, this is unnecessary, because we can plot on the remote server and display graph on local computer. All you need is add option `-X` in your `ssh` command:
+
+```bash
+ssh -X -i <para.> -p <para.> username
+```
+
+### Optional: Configure X11 in SSH Config
+
+```bash
+Host <hostname>
+    ForwardX11 yes
+#or
+    ForwardX11Trusted yes
+```
 
 
 
@@ -88,16 +107,15 @@ Can we simplify it? Of course! Open you ssh config file at `~/.ssh/config`: just
 
 ```bash
 Host proxy #nickname you set for your office computer
-         User robinzhuang #username you set for login
-         Hostname 10.24.3.xxx #IP address of your office computer, change the xxx to real one!
+    User robinzhuang #username you set for login
+    Hostname 10.24.3.xxx #IP address of your office computer, change the xxx to real one!
  
 Host chenglab51 #nickname for your cluster
-         User ch1_101 #username you set, change to real one!
-         Hostname 121.192.191.xx #IP for cluster, replace XX!
-         AddKeysToAgent yes
-         IdentityFile ~/.ssh/id_rsa # the key file location used in login 
-         Port xx # specify the port number, replace xx with real port !
-         ProxyCommand ssh chenglab nc %h %p
+    User ch1_101 #username you set, change to real one!
+    Hostname 121.192.191.xx #IP for cluster, replace XX!
+    IdentityFile ~/.ssh/id_rsa # the key file location used in login 
+    Port xx # specify the port number, replace xx with real port !
+    ProxyCommand ssh -o 'ForwardAgent yes' proxy "ssh-add && nc %h %p"
 ```
 
 Then use the computer at hand, directly type:
@@ -122,8 +140,7 @@ Again a quick setting for `~/.ssh/config` is
 
 ```bash
 Host *  # valid for all host
-         ForwardAgent yes
-         ForwardX11Trusted yes
+    ForwardX11Trusted yes
 ```
 
 Try to login remote computer with `ssh -Y chenglab51`. As we set in previous section, we can use X11 forward with proxy.
