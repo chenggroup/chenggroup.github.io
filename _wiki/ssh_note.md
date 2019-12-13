@@ -9,22 +9,80 @@ authors: Yongbin Zhuang
 
 ## Create key pair for your own use
 
-`ssh` is the command used for logging in remote computer safely. There exist two ways to login by `ssh`
+{% include alert.html type="warning" content="Obligatory for New Comer " %}
 
-1. use password
-2. use key 
+`ssh` is the command used for connecting to remote computer safely. There exist two ways to login by `ssh`
+
+1. `use password`
+2. `use key` 
 
 The first way is familiar with you, like you did with windows system before. The safer one is the second way, i. e. use key to login.
 
 To use key, you have to generate one! use the command to generate key:
 
 ```bash
-$ ssh-keygen
+ssh-keygen
 ```
 
 Follow the instructions (actually, you just need to keep push `enter` button  :eyeglasses: ​​). From default setting, you will obtain `id_rsa` and `id_rsa.pub` file in your `~/.ssh/` directory.`id_rsa` is the private key used to login, please take care of your key! `id_rsa.pub` is the public key which acts as a lock. You should give your `id_rsa.pub` file to cluster administrator.
 
 {% include alert.html type="tip" content="Give Your Public Key to cluster administrator, then you can get the cluster account." %}
+
+## Login to Remote Cluster by SSH
+
+{% include alert.html type="warning" content="Obligatory for New Comer " %}
+
+```bash
+ssh -i <path to your private key> -p <port number> username@cluster_ip
+#example here
+ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
+```
+
+### Optional: Using SSH Eligantly by SSH Config
+
+As I wrote above, you have to type all the strings into terminal everytime you login. Let's use another method to simplify the login procedure. In your directory `~/.ssh/`, there has a file called `config`. Open it by `vim` command.
+
+```bash
+vim ~/.ssh/config
+```
+
+We can store the paramters like `<port number>`, `<path to private key>`, `username` and `cluster_ip` into this file. As a result, you can login without typing these parameters. Here, I show a example syntax for configuration file:
+
+``` bash
+Host mycluster #nickname for your cluster
+    User ch1_101 #replacement of username in ssh
+    Hostname 121.192.191.51 #replace of cluster_ip in ssh
+    Port 6666 #replacement of -p <port number> in ssh
+    IdentityFile ~/.ssh/id_rsa # replace of -i <path to your private key> in ssh
+
+```
+
+After you save these setting, you can connect to cluster by simply typing:
+
+```bash
+ssh mycluster
+#equivalent with
+ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
+```
+
+## Display Graphs on Local Mechine (X11 Forwarding)
+
+When running a program which needs graphic display, you might download data from remote computer and plot in local. However, this is unnecessary, because we can plot on the remote server and display graph on local computer. All you need is add option `-X` in your `ssh` command:
+
+```bash
+ssh -X -i <para.> -p <para.> username
+```
+
+### Optional: Configure X11 in SSH Config
+
+```bash
+Host <hostname>
+    ForwardX11 yes
+#or
+    ForwardX11Trusted yes
+```
+
+
 
 ## Login to Remote Cluster with Proxy
 
@@ -41,30 +99,29 @@ Let's set a scenario:
 Now you are not in the office, but you can only connect to you office computer by the computer we said `proxy` at hand. And through `proxy`, you login the HPC we said `cluster51`. At normal, you will do the following thing:
 
 ```bash
-$ ssh username@proxy
-$ ssh -p port_number -i key_file username@cluster51
+ssh username@proxy
+ssh -p port_number -i key_file username@cluster51
 ```
 
 Can we simplify it? Of course! Open you ssh config file at `~/.ssh/config`: just paste the following code
 
 ```bash
 Host proxy #nickname you set for your office computer
-         User robinzhuang #username you set for login
-         Hostname 10.24.3.xxx #IP address of your office computer, change the xxx to real one!
+    User robinzhuang #username you set for login
+    Hostname 10.24.3.xxx #IP address of your office computer, change the xxx to real one!
  
 Host chenglab51 #nickname for your cluster
-         User ch1_101 #username you set, change to real one!
-         Hostname 121.192.191.xx #IP for cluster, replace XX!
-         AddKeysToAgent yes
-         IdentityFile ~/.ssh/id_rsa # the key file location used in login 
-         Port xx # specify the port number, replace xx with real port !
-         ProxyCommand ssh chenglab nc %h %p
+    User ch1_101 #username you set, change to real one!
+    Hostname 121.192.191.xx #IP for cluster, replace XX!
+    IdentityFile ~/.ssh/id_rsa # the key file location used in login 
+    Port xx # specify the port number, replace xx with real port !
+    ProxyCommand ssh -o 'ForwardAgent yes' proxy "ssh-add && nc %h %p"
 ```
 
 Then use the computer at hand, directly type:
 
 ```bash
-$ ssh chenglab51
+ssh chenglab51
 ```
 
 Now you can directly connect to the HPC!
@@ -72,7 +129,7 @@ Now you can directly connect to the HPC!
 This configuration can also apply to your `scp` command, you can directly transfer file with proxy computer:
 
 ```bash
-$ scp chenglab51:remote_file local_directory_path
+scp chenglab51:remote_file local_directory_path
 ```
 
 ##  X11 forward with proxy 
@@ -83,8 +140,7 @@ Again a quick setting for `~/.ssh/config` is
 
 ```bash
 Host *  # valid for all host
-         ForwardAgent yes
-         ForwardX11Trusted yes
+    ForwardX11Trusted yes
 ```
 
 Try to login remote computer with `ssh -Y chenglab51`. As we set in previous section, we can use X11 forward with proxy.
@@ -110,6 +166,6 @@ This arises from the permission of your private key:`id_rsa` file.
 Use command `ls -l` to see your `id_rsa` permission. if it is not `-rw-------`, you should change it to that! Use the following command: 
 
 ```bash
-$ chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa
 ```
 
