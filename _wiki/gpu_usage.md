@@ -40,9 +40,9 @@ dp train input.json > train.log
 
 {%
 
-include alert.html type="tldr" title="注意"
+include warning.html type="warning" title="注意"
 
-content="在提交脚本里指定`CUDA_VISIBLE_DEVICES`会导致`device not available`的错误，进而可能导致整个LSF系统无法正确使用GPU。"
+content="在提交脚本里指定\`CUDA_VISIBLE_DEVICES\` 会导致\`device not available\`的错误，进而可能导致整个LSF系统无法正确使用GPU。"
 
 %}
 
