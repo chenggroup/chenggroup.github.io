@@ -22,7 +22,7 @@ title: 使用集群上的 gpu
 
 > lsf 提交脚本需要含有 `BSUB -R` 选项，且不要包含 `export $CUDA_VISIBLE_DEVICES`
 
-比如，在 `210.34.15.205` 使用 dpgen 的提交脚本如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
+比如，在 `210.34.15.205` 使用 deepmd 的提交脚本如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
 
 ```bash
 #!/bin/bash
