@@ -240,7 +240,7 @@ body, input {
 code, kbd, pre {
   color: rgba(0, 0, 0, .87);
   font-feature-settings: "kern";
-  font-family: Menlo, Monaco, Courier New, Courier, monospace
+  font-family: SFMono-Regular, Liberation Mono, Menlo, Monaco, Consolas, Courier New, Courier, monospace
 }
 
 .md-typeset {
