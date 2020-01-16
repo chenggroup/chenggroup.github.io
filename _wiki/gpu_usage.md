@@ -4,9 +4,18 @@ title: 使用集群上的 gpu
 
 # 使用集群上的 gpu
 
+## gpu队列概况
+
+目前课题组GPU有两个IP地址：
+
+- `210.34.15.205`：包含4个节点（`mgt g001 g002 g003`），每个节点上有8张2080 Ti。`mgt` 作为计算节点的同时作为管理节点。
+- `121.192.191.51`：包含1个节点（`g001`），节点上有4张Tesla V100。登陆到51上可以使用。
+
+两个节点均可联系管理员开通使用权限。
+
 ## 提交任务至 gpu
 
-在 `210.34.15.205` 上，需要通过指定 `CUDA_VISIBLE_DEVICES` 来对任务进行管理。
+在GPU节点上，需要通过指定 `CUDA_VISIBLE_DEVICES` 来对任务进行管理。
 
 ```bash
 #!/bin/bash
@@ -23,9 +32,9 @@ title: 使用集群上的 gpu
 > lsf 提交脚本中需要包含 `export CUDA_VISIBLE_DEVICES=X` ，其中 `X` 数值需要根据具体节点的卡的使用情况确定。
 
 使用者可以用 `ssh <host> nvidia-smi` 登陆到对应节点（节点名为 `<host>`）检查gpu使用情况。
-输出示例如下：
+示例如下：
 
-```
+```bash
 $ ssh g001 nvidia-smi
 Thu Jan 16 10:05:48 2020
 +-----------------------------------------------------------------------------+
@@ -78,7 +87,7 @@ Thu Jan 16 10:05:48 2020
 #BSUB -J train
 #BSUB -o %J.stdout
 #BSUB -e %J.stderr
-#BSUB -n 1
+#BSUB -n 4
 #BSUB -R "select[ngpus>0] rusage[ngpus_excl_p=1]"
 
 module add cuda/9.2
@@ -97,7 +106,7 @@ dp train input.json > train.log
 #BSUB -J train
 #BSUB -o %J.stdout
 #BSUB -e %J.stderr
-#BSUB -n 1
+#BSUB -n 4
 #BSUB -R "select[ngpus>0] rusage[ngpus_excl_p=1]"
 
 module add cuda/9.2
@@ -106,3 +115,5 @@ source /share/base/scripts/export_visible_devices
 
 dp train input.json > train.log
 ```
+
+`/share/base/scripts/export_visible_devices` 可以使用flag `-t mem` 控制显存识别下限，即使用显存若不超过 `mem` 的数值，则认为该卡未被使用。根据实际使用情况和经验，默认100 MB以下视为空卡，即可以向该卡提交任务。
