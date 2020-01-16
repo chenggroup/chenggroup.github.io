@@ -88,7 +88,6 @@ Thu Jan 16 10:05:48 2020
 #BSUB -o %J.stdout
 #BSUB -e %J.stderr
 #BSUB -n 4
-#BSUB -R "select[ngpus>0] rusage[ngpus_excl_p=1]"
 
 module add cuda/9.2
 module add deepmd/1.0
@@ -107,7 +106,6 @@ dp train input.json > train.log
 #BSUB -o %J.stdout
 #BSUB -e %J.stderr
 #BSUB -n 4
-#BSUB -R "select[ngpus>0] rusage[ngpus_excl_p=1]"
 
 module add cuda/9.2
 module add deepmd/1.0
