@@ -117,3 +117,42 @@ dp train input.json > train.log
 ```
 
 `/share/base/scripts/export_visible_devices` 可以使用flag `-t mem` 控制显存识别下限，即使用显存若不超过 `mem` 的数值，则认为该卡未被使用。根据实际使用情况和经验，默认100 MB以下视为空卡，即可以向该卡提交任务。
+
+## dpgen提交gpu任务参数设置
+
+以训练步骤为例：
+
+```json
+{
+  "train": [
+    {
+      "machine": {
+        "machine_type": "lsf",
+        "hostname": "210.34.15.205",
+        "port": 22,
+        "username": "username",
+        "password": "password",
+        "work_path": "/some/remote/path"
+      },
+      "resources": {
+        "node_cpu": 4,
+        "numb_node": 1,
+        "task_per_node": 4,
+        "partition": "large",
+        "exclude_list": [],
+        "source_list": [
+            "/share/base/scripts/export_visible_devices -t 100"
+        ],
+        "module_list": [
+            "cuda/9.2",
+            "deepmd/1.0"
+                ],
+        "time_limit": "96:0:0",
+        "sleep": 20
+      },
+      "python_path": "/share/deepmd-1.0/bin/python3.6"
+    }
+  ],
+  ......
+}
+```
