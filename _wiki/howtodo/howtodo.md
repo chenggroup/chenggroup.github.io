@@ -281,6 +281,10 @@ $$
 {% include alert.html type="danger" content="This alerts danger!" %}
 {% include alert.html type="success" content="This alerts success" %}
 
+{% include alert.html type="tip" 
+content="<code>content</code> 中请使用纯文本，不要加入 <code>markdown</code> 的标记。如果硬要表示行内代码或是加粗等效果，请直接用 <code>html</code> 的标记，如 <code>...</code> 表示代码，<strong>...</strong> 表示加粗。"
+%}
+
 #### 测验*
 
 在 `_data/quizzes` 中添加有关测验的 `yaml` 格式文件 (`example-quiz` 是一个简单的例子)，然后在 wiki 中用如下方式引入：
