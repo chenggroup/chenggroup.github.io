@@ -6,7 +6,7 @@ title: 使用集群上的 gpu
 
 ## 提交任务至 gpu
 
-在 `210.34.15.205` 上，可直接使用 lsf 为任务自动分配 gpu 资源，而不用指定 `CUDA_VISIBLE_DEVICES` 。
+在 `210.34.15.205` 上，需要通过指定 `CUDA_VISIBLE_DEVICES` 来对任务进行管理。
 
 ```bash
 #!/bin/bash
@@ -16,8 +16,8 @@ title: 使用集群上的 gpu
 #BSUB -J test
 #BSUB -o %J.stdout
 #BSUB -e %J.stderr
-#BSUB -n 1
-#BSUB -R "rusage[ngpus_excl_p=1]"
+#BSUB -n 4
+
 ```
 
 > lsf 提交脚本需要含有 `BSUB -R` 选项，且不要包含 `export $CUDA_VISIBLE_DEVICES`
@@ -34,7 +34,8 @@ title: 使用集群上的 gpu
 #BSUB -n 1
 #BSUB -R "select[ngpus>0] rusage[ngpus_excl_p=1]"
 
-module add deepmd/1.0.2
+module add cuda/9.2
+module add deepmd/1.0
 dp train input.json > train.log
 ```
 
