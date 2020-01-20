@@ -65,7 +65,7 @@ You will have to modify the input file name in the `lsf` script. In the last lin
 module add cuda/10.0 deepmd/1.0
 
 # select the very GPU(0,1,2,3) for training
-CUDA_VISIBLE_DEVICES=0
+export CUDA_VISIBLE_DEVICES=0
 
 dp train input.json 1>> train.log 2>> train.log 
 ```
@@ -228,7 +228,7 @@ Start your training by:
 dp train input.json
 ```
 
-{% include alert.html type="warning" content="#The above command is in the lsf script, remember in cluster you run traning through lsf script." %}
+{% include alert.html type="warning" content="The above command is in the lsf script, remember in cluster you run traning through lsf script." %}
 
 
 
@@ -240,7 +240,15 @@ If you want to restart the training from check point, use:
 dp train input.json --restart model.ckpt
 ```
 
-{% include alert.html type="warning" content="#The above command is in the lsf script, remember in cluster you run traning through lsf script." %}
+{% include alert.html type="warning" content="The above command is in the lsf script, remember in cluster you run traning through lsf script." %}
+
+
+
+## Trouble Shooting
+
+### warning: loc idx out of lower bound
+
+Solution: https://github.com/deepmodeling/deepmd-kit/issues/21
 
 ## Extra Support
 
