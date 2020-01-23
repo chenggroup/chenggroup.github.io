@@ -28,6 +28,121 @@ The open-source Anaconda Distribution is the easiest way to perform Python/R dat
 
 
 
+## QUIP Installation Guide
+
+### Short Introduction
+
+The `QUIP` package is a collection of software tools to carry out molecular dynamics simulations. It implements a variety of interatomic potentials and tight binding quantum mechanics, and is also able to call external packages, and serve as plugins to other software such as [LAMMPS](http://lammps.sandia.gov/), [CP2K](http://www.cp2k.org/) and also the python framework [ASE](https://wiki.fysik.dtu.dk/ase). Various hybrid combinations are also supported in the style of QM/MM, with a particular focus on materials systems such as metals and semiconductors.
+
+{% include alert.html type="tip" content="The tested compiler version: <gcc 6.3.0> and <openmpi 3.0.0> for your information.  %}
+
+### Use QUIP and quippy in cluster 51
+
+ If you need use QUIP/GAP in cluster 51, please used command: 
+
+```
+module load gcc/6.3.0 mpi/openmpi/3.0.0
+module load QUIP/GAP
+```
+
+If you want to use quippy:
+
+```
+module load miniconda/3
+source activate /share/apps/QUIP/quippy-py3/
+```
+
+### Install Guide
+
+- Git clone from repository
+
+```bash
+git clone --recursive https://github.com/libAtoms/QUIP.git
+```
+
+- Go to the package root and export variable
+
+```bash
+export QUIP_ARCH=linux_x86_64_gfortran
+```
+
+- Make configuration
+
+```bash
+make config
+#if everything fine
+make
+```
+
+### Packages and Extra Interfaces of QUIP
+
+#### Add GAP Packages
+
+- Download GAP file from [here](#http://www.libatoms.org/gap/gap_download.html), then you obtain a tar file named `GAP.tar`, unzip it
+
+```bash
+tar -xvf GAP.tar
+```
+
+- You will obtain a directory named `GAP/`, copy this directory into QUIP root/src.
+
+```bash
+cp -r GAP <QUIP root>/src/
+```
+
+- Reconfig your make by choose `install GAP` as `y` 
+
+```bash
+#recompile this code again
+make
+```
+
+#### Build QUIPPY, A QUIP Python Interface
+
+- Export another environmental variable
+
+```bash
+#install for your self
+export QUIPPY_INSTALL_OPTS=--user
+#choose the location for installation of quippy
+export QUIPPY_INSTALL_OPTS=--prefix=<directory>
+```
+
+- Go to `<QUIP root>/src/f90wrap`, and install f90wrap by:
+
+```bash
+pip install .
+```
+
+- Back to `<QUIP root>`
+
+```bash
+make install-quippy
+```
+
+- Test whether installed successfully.
+
+```bash
+make test
+```
+
+#### Trouble Shooting
+
+##### ImportError: dynamic module does not define module export function
+
+```
+Example:
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/share/apps/QUIP/quippy-py3/lib/python3.8/site-packages/quippy-https_github.com_libAtoms_QUIP.git_ec1ed34_dirty-py3.8-linux-x86_64.egg/quippy/__init__.py", line 2, in <module>
+    import _quippy
+ImportError: dynamic module does not define module export function (PyInit__quippy)
+```
+
+Solution: add <QUIP_root>/build/${QUIP_ARCH} into your Python PATH
+
+
+
 ## LAMMPS Installation Guide
 
 ### Short Introduction
