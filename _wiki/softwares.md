@@ -34,7 +34,23 @@ The open-source Anaconda Distribution is the easiest way to perform Python/R dat
 
 The `QUIP` package is a collection of software tools to carry out molecular dynamics simulations. It implements a variety of interatomic potentials and tight binding quantum mechanics, and is also able to call external packages, and serve as plugins to other software such as [LAMMPS](http://lammps.sandia.gov/), [CP2K](http://www.cp2k.org/) and also the python framework [ASE](https://wiki.fysik.dtu.dk/ase). Various hybrid combinations are also supported in the style of QM/MM, with a particular focus on materials systems such as metals and semiconductors.
 
-{% include alert.html type="tip" content="The tested compiler version: <gcc 6.3.0> and <openmpi 3.0.0> for your information." %}
+{% include alert.html type="tip" content="The tested compiler version: <gcc 6.3.0> and <openmpi 3.0.0> for your information.  %}
+
+### Use QUIP and quippy in cluster 51
+
+ If you need use QUIP/GAP in cluster 51, please used command: 
+
+```
+module load gcc/6.3.0 mpi/openmpi/3.0.0
+module load QUIP/GAP
+```
+
+If you want to use quippy:
+
+```
+module load miniconda/3
+source activate /share/apps/QUIP/quippy-py3/
+```
 
 ### Install Guide
 
@@ -110,7 +126,20 @@ make install-quippy
 make test
 ```
 
+#### Trouble Shooting
 
+##### ImportError: dynamic module does not define module export function
+
+```
+Example:
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "/share/apps/QUIP/quippy-py3/lib/python3.8/site-packages/quippy-https_github.com_libAtoms_QUIP.git_ec1ed34_dirty-py3.8-linux-x86_64.egg/quippy/__init__.py", line 2, in <module>
+    import _quippy
+ImportError: dynamic module does not define module export function (PyInit__quippy)
+```
+
+Solution: add <QUIP_root>/build/${QUIP_ARCH} into your Python PATH
 
 
 
