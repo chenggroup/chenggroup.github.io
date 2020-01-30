@@ -34,7 +34,9 @@ The open-source Anaconda Distribution is the easiest way to perform Python/R dat
 
 The `QUIP` package is a collection of software tools to carry out molecular dynamics simulations. It implements a variety of interatomic potentials and tight binding quantum mechanics, and is also able to call external packages, and serve as plugins to other software such as [LAMMPS](http://lammps.sandia.gov/), [CP2K](http://www.cp2k.org/) and also the python framework [ASE](https://wiki.fysik.dtu.dk/ase). Various hybrid combinations are also supported in the style of QM/MM, with a particular focus on materials systems such as metals and semiconductors.
 
+
 {% include alert.html type="tip" content="The tested compiler version: <gcc 6.3.0> and <openmpi 3.0.0> for your information." %}
+
 
 ### Use QUIP and quippy in cluster 51
 
