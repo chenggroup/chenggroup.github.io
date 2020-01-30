@@ -164,6 +164,7 @@ make gam
 
 ### Plugins
 #### Wannier90
+
 1. Download Wannier90 from http://www.wannier.org/download/ . *Notice: currently VASP only support Wannier90-1.2*
 
 2. Modify compile file for Wannier90  `make.sys.intel`. Here we use the MKL.
@@ -196,10 +197,11 @@ CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
              -Duse_shmem \
              -DVASP2WANNIER90   ## modify this line for Wannier90
              
-LLIBS += ../../libwannier.a  ## change here to the location of libwannier.a  
+LLIBS += ../../libwannier.a  ## change here to the location of libwannier.a
 ```
 
 ### TODO in the future
+
 1. Install vasp_gpu version
 2. Benchmark different libary (FFTW/MKL)
 
