@@ -5,11 +5,9 @@ authors: Yongbin Zhuang
 
 # Installation Guide for Codes and Libraries
 
-## First of all!
+## First of all! Load the environments!
 
-Before you install anything, especially when you need to compile codes, make sure the type of compiler and the version of compiler you have. Usually, in personal computer, you can use compiler command directly, for instance, `gcc`, `gfortran`, `ifort`,`mpic++`. In remote cluster(High Performance Cluster), the compiler is managed by `module`. You cannnot use it unless you load it in advance. Therefore, make sure which compiler you have in `module`, and use command `module load compiler` to load the compiler you need.
-
-
+Before you install anything, especially when you need to compile codes, make sure the type of compiler and the version of compiler you have. Usually, in your personal computer, you can use compiler command directly, for instance, `gcc`, `gfortran`, `ifort`,`mpic++`. In remote cluster(High Performance Cluster), the compiler is managed by `module`. You cannnot use it unless you load it in advance. Therefore, make sure which compiler you have in `module`, and use command like `module load gcc/4.9.4` to load required compilers.
 
 
 
@@ -143,7 +141,67 @@ ImportError: dynamic module does not define module export function (PyInit__quip
 
 Solution: add <QUIP_root>/build/${QUIP_ARCH} into your Python PATH
 
+## VASP
 
+### Short Introduction
+(TODO)
+
+### Install Guide
+1. Get the VASP source code and pseudopotentials.
+
+2. Load environment
+```bash
+module load intel
+```
+3. Choose `makefile.include` according to the platform and make
+```
+cd vasp.5.4.4
+make std
+make gam
+```
+
+4. If everything is right, you will find `vasp_std` in `vasp.5.4.4/build/std` and you can run it with `mpirun -np 24 vasp_std`.
+
+### Plugins
+#### Wannier90
+1. Download Wannier90 from http://www.wannier.org/download/ . *Notice: currently VASP only support Wannier90-1.2*
+
+2. Modify compile file for Wannier90  `make.sys.intel`. Here we use the MKL.
+```bash
+#LIBDIR = /opt/intel/mkl721/lib/32
+#LIBS = -L$(LIBDIR) -lmkl_lapack -lmkl_ia32 -lguide -lpthread
+LIBDIR = $(MKLROOT)/lib/intel64
+LIBS = -L$(LIBDIR) -mkl -lpthread
+```
+
+3. Compile and test
+```bash
+cp ./config/make.inc.ifort make.inc
+make 
+make lib # compile to get the libary: libwannier.a 
+make tests # test whether the compilation is success
+```
+
+4. Copy the `libwannier.a ` libary file to VASP libary path and modify VASP `makefile.include`.
+```bash
+# Precompiler options
+CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
+             -DMPI -DMPI_BLOCK=8000 \
+             -Duse_collective \
+             -DscaLAPACK \
+             -DCACHE_SIZE=4000 \
+             -Davoidalloc \
+             -Duse_bse_te \
+             -Dtbdyn \
+             -Duse_shmem \
+             -DVASP2WANNIER90   ## modify this line for Wannier90
+             
+LLIBS += ../../libwannier.a  ## change here to the location of libwannier.a  
+```
+
+### TODO in the future
+1. Install vasp_gpu version
+2. Benchmark different libary (FFTW/MKL)
 
 ## LAMMPS Installation Guide
 
