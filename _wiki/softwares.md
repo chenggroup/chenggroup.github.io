@@ -184,7 +184,7 @@ make tests # test whether the compilation is success
 
 4. Copy the `libwannier.a ` libary file to VASP libary path and modify VASP `makefile.include`.
 ```bash
-# Precompiler options
+#Precompiler options
 CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
              -DMPI -DMPI_BLOCK=8000 \
              -Duse_collective \
