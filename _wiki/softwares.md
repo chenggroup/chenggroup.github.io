@@ -201,10 +201,19 @@ CPP_OPTIONS= -DHOST=\"LinuxIFC\"\
 LLIBS += ../../libwannier.a  ## change here to the location of libwannier.a
 ```
 
+### Compilation optimization
+If you use `Intel Xeon Silver/Gold/Platium` CPU, using the following compilation parameters will get a 2✖ speedup! (Already test on 205 server)
+```shell
+OFLAG      = -O3 -xCORE-AVX512
+```
+
 ### TODO in the future
 
 1. Install vasp_gpu version
 2. Benchmark different libary (FFTW/MKL)
+3. other plugins: VASP-neb, vasp-beef
+4. vasp6
+
 
 ## LAMMPS Installation Guide
 
