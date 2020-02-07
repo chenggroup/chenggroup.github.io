@@ -7,9 +7,31 @@ authors: Yongbin Zhuang
 
 ## First of all! Load the environments!
 
-Before you install anything, especially when you need to compile codes, make sure the type of compiler and the version of compiler you have. Usually, in your personal computer, you can use compiler command directly, for instance, `gcc`, `gfortran`, `ifort`,`mpic++`. In remote cluster(High Performance Cluster), the compiler is managed by `module`. You cannnot use it unless you load it in advance. Therefore, make sure which compiler you have in `module`, and use command like `module load gcc/4.9.4` to load required compilers.
+Before you install anything, especially when you need to compile codes, make sure the type of compiler and the version of compiler you have. Usually, in your personal computer, you can use compiler command directly, for instance, `gcc`, `gfortran`, `ifort`,`mpic++`. In remote cluster(High Performance Cluster), the compiler is managed by `module`. You cannnot use it unless you load it in advance. Therefore, make sure which compiler you have in `module`, and use command such as `module load gcc/4.9.4` to load required compilers.
 
+### General Protocal for Installation:
 
+1. Compile the Code
+2. Quick test the code at server node
+3. Write module files to code (we recommend to manage codes by module)
+4. Test the code in the client node
+5. write example lsf file in `/share/base/scripts`
+
+### Where to Install?
+
+Install in the `/share/` directory. `/share/` directory is the one synchronized to all the nodes by nfs. 
+
+1. Libraries: `/share/apps/lib/<library name>/<version>`
+2. Codes, Pacakges, Softwares: `/share/apps/<packages name>/<version>`
+
+### Standard in Writing Module file
+
+1. module name: `<package name>/<version>`, like `cp2k/6.1`
+
+### Standard in Writing lsf file
+
+1. export necessary environmental variable
+2. load prerequisite module
 
 ## Anaconda Installation Guide
 
@@ -163,6 +185,7 @@ make gam
 4. If everything is right, you will find `vasp_std` in `vasp.5.4.4/build/std` and you can run it with `mpirun -np 24 vasp_std`.
 
 ### Plugins
+
 #### Wannier90
 
 1. Download Wannier90 from http://www.wannier.org/download/ . *Notice: currently VASP only support Wannier90-1.2*
@@ -297,6 +320,17 @@ make yes-user-nnp
 make mpi
 ```
 
+#### Building with Plumed
+
+- Before you install, make sure the Plumed has installed
+- To directory `<LAMMPS root>/src/` 
+
+```bash
+make lib-plumed args="-p <path to plumed directory>"
+make yes-user-plumed
+make mpi
+```
+
 
 
 ## DeePMD Installation Guide
@@ -396,6 +430,38 @@ make static # compile a binary with static library, I use this one
 ```bash
 export LD_LIBRARY_PATH=<Path to n2p2>/lib/:$LD_LIBRARY_PATH
 ```
+
+## Plumed Installation Guide
+
+### Short Introduction
+
+PLUMED is an open-source, community-developed library that provides a wide range of different methods, which include:
+
+- enhanced-sampling algorithms
+- free-energy methods
+- tools to analyze the vast amounts of data produced by molecular dynamics (MD) simulations.
+
+These techniques can be used in combination with a large toolbox of collective variables that describe complex processes in physics, chemistry, material science, and biology.
+
+{% include alert.html type="tip" content="I have installed one in cluster51. Use module load plumed/2.6.0 to use this library. The compiler version: <gcc 6.3.0> <openmpi/3.0.0> for your information" %}
+
+### Install Guide
+
+- Download package from [here.](https://www.plumed.org//download.html)
+- Basic Configure
+
+```bash
+./configure --prefix=<path you want to install> LDFLAGS=-L'/share/apps/lib/fftw/3.3.8/lib' CPPFLAGS=-I'/share/apps/lib/fftw/3.3.8/lib '
+```
+
+- Compile
+
+```bash
+make -j 32
+make install
+```
+
+
 
 ## Eigen Library Installation Guide
 
@@ -521,6 +587,60 @@ gcc -L<Path to libgsl>/gsl/lib example.o -lgsl -lgslcblas -lm
 export LD_LIBRARY_PATH=<path to libgsl>/lib:$LD_LIBRARY_PATH
 ```
 
+## Libxc Library Installation Guide
+
+- Download the latest stable version of libxc from official website:
+
+```bash
+wget http://www.tddft.org/programs/libxc/down.php?file=4.3.4/libxc-4.3.4.tar.gz
+```
+
+
+
+## FFTW Library Installation Guide
+
+### Short Introduction
+
+FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST).
+
+{% include alert.html type="tip" content="I have installed one in cluster51, in directory /share/apps/lib/fftw/3.3.8. Use module load fftw/3.3.8 to use this library. The compiler version: <gcc 6.3.0> for your information" %}
+
+### Install Guide
+
+- Download the release version from official website using wget
+
+```bash
+wget http://www.fftw.org/fftw-3.3.8.tar.gz
+```
+
+- Unzi the package
+
+```bash
+tar -xvf fftw-3.3.8.tar.gz
+```
+
+- Go to the directory `fftw-3.3.8`
+
+```bash
+./configure --prefix=<path to you want to install>    \
+            --enable-shared  \
+            --enable-threads \
+            --enable-sse2    \
+            --enable-avx     
+```
+
+- If configure is finished
+
+```bash
+make
+#check if you install finished
+make check
+#install to the final directory which you have set in --prefix
+make install
+```
+
+
+
 
 
 ## CP2K Installation Guide
@@ -553,3 +673,4 @@ tar -xvf cp2k-6.1.tar.bz2
 - the minimum required is `with-openblas=install`, if you want to compile successfully.
 
   
+
