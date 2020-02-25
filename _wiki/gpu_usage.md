@@ -75,7 +75,7 @@ Thu Jan 16 10:05:48 2020
 |    5    205527      C   lmp                                          611MiB |
 +-----------------------------------------------------------------------------+
 ```
-表示目前该节点（ `g001` ）上5号卡正在被进程号为205527的进程 `lmp` 使用，占用显存为611 MB，gpu使用率为62%。
+表示目前该节点（ `g001` ）上5号卡正在被进程号为205527的进程 `lmp` 使用，占用显存为611 MB，gpu利用率为62%。
 
 
 在 `210.34.15.205` 使用 deepmd 的提交脚本示例如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
@@ -96,7 +96,11 @@ export CUDA_VISIBLE_DEVICES=0
 dp train input.json > train.log
 ```
 
-也可以使用检测脚本`/share/base/scripts/export_visible_devices`来确定 `$CUDA_VISIBLE_DEVICES` 的值，示例如下：
+### 检测脚本
+
+目前205服务器上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
+
+可以使用检测脚本`/share/base/scripts/export_visible_devices`来确定 `$CUDA_VISIBLE_DEVICES` 的值，示例如下：
 
 ```bash
 #!/bin/bash
@@ -115,6 +119,8 @@ dp train input.json > train.log
 ```
 
 `/share/base/scripts/export_visible_devices` 可以使用flag `-t mem` 控制显存识别下限，即使用显存若不超过 `mem` 的数值，则认为该卡未被使用。根据实际使用情况和经验，默认100 MB以下视为空卡，即可以向该卡提交任务。
+
+也可以使用检测脚本`/share/base/scripts/avail_gpu.sh`来确定 `$CUDA_VISIBLE_DEVICES` 的值。`/share/base/scripts/avail_gpu.sh` 可以使用flag `-t util` 控制显卡利用率可用上限，即使用显卡利用率若超过 `util` 的数值，则认为该卡被使用。目前脚本默认显卡利用率低于5%视为空卡，即可以向该卡提交任务。
 
 ## dpgen提交gpu任务参数设置
 
