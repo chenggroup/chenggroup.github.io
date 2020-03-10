@@ -4,45 +4,45 @@ authors: Yongbin Zhuang
 
 ---
 
-# DeePMD-kit Usage Guide
+# DeePMD-kit 使用入门
 
-## Short Introduction
+## 简介
 
-DeePMD-kit is a tool used to train Machine Learning Potential which mainly develped by Linfeng Zhang, Han Wang. Jianxing Huang and Yongbin Zhuang had a short time involving the develpment and implementation of DeePMD-kit. If there has any question, ask them.
+DeePMD-kit是一个训练神经网络势能(Machine Learning Potential)的代码包。该包主要由张林峰（普林斯顿大学），王涵（北京应用物理与计算数学研究所）开发。黄剑兴和庄永斌曾经短时间参与开发。如有问题，可以向他们询问。
 
-The following link is for your information:
+以下为参考信息:
 
-- [Official Website](http://www.deepmd.org)
-- For Install this code: see [Installation Guide]({{ site.baseurl }}/wiki/softwares#deepmd-installation-guide)
+- [官网](http://www.deepmd.org)
+- 安装方法:  [Installation Guide]({{ site.baseurl }}/wiki/softwares#deepmd-installation-guide)
 
-{% include alert.html type="warning" content="This page is just the experience and understanding of author. If you find any mistake or vague part, please report the issue" %}
+{% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者" %}
 
+## 第一次尝试
 
+### 运行第一次机器学习
 
-## First Taste
+如果你正在使用chenglab51集群，请使用`lsf`脚本来提交deepmd任务。
 
-### Run you first Machine Learning Training
-
-If you are in the chenglab51 cluster, use deepmd by `lsf` script. Please download the deepmd-kit from github, we will use example of water.
+请从github下载DeePMD-kit的代码，我们将会使用里面的水模型做为例子。
 
 ```bash
 git clone https://github.com/deepmodeling/deepmd-kit.git
 ```
 
-Now go to the directory containing water example
+首先进入含有水模型的例子的目录
 
 ```bash 
 cd <deepmd repositoy>/examples/water/train/
 ```
 
-You will see many `json` file inside. These are example files of deepmd training input. Just take file `water_se_a.json`. Copy the `lsf` script from `/share/base/script/deepmd.lsf ` to this directory and open it. 
+你会看到许多`json`为后缀的文件。这些都是DeePMD-kit使用的输入文件。我们只需要使用`water_se_a.json`文件作为例子。现在复制制`/share/base/script/deepmd.lsf`到当前文件夹，并且修改它。
 
 ```bash
 cp /share/base/script/deepmd.lsf ./
 vim deepmd.lsf
 ```
 
-You will have to modify the input file name in the `lsf` script. In the last line `dp train input.json 1>> train.log 2>> train.log `. Replace `input.json` into `water_se_a.json`. And change the value of `CUDA_VISIBLE_DEVICES` to one of the number in 0, 1, 2, 3. This command select which GPU you will use in training. For g001, there exist four GPUs. Make sure that your task is not submitted to the GPU which is current running the task of other people. To check which GPU is available, use command `ssh g001 "nvidia-smi"`, you will see the GPU usage.
+你现在仅需要修改`lsf`脚本中的输入文件名称即可。把脚本中的`input.json`替换成`water_se_a.json`。
 
 ```bash
 #!/bin/bash
@@ -64,13 +64,13 @@ You will have to modify the input file name in the `lsf` script. In the last lin
 # add modulefiles
 module add cuda/10.0 deepmd/1.0
 
-# select the very GPU(0,1,2,3) for training
-export CUDA_VISIBLE_DEVICES=0
+# automatic select the gpu
+source /share/base/script/find_gpu.sh
 
 dp train input.json 1>> train.log 2>> train.log 
 ```
 
-Submit the job by:
+使用如下命令提交任务：
 
 ```bash
 #submit your job
@@ -79,23 +79,23 @@ bsub < deepmd.lsf
 bjobs 
 ```
 
-When your job is runing, you will find following new files in your directory
+当任务执行中，当前目录会生成以下文件：
 
-- `train.log`: log file containing your training information
-- `lcurve.out`: learning curve of machine learning process
-- `model.ckpt.data-00000-of-00001`, `model.ckpt.index`, `checkpoint`, `model.ckpt.meta`: check point file used to restart deepmd training
+- `train.log`: 训练的记录文件
+- `lcurve.out`: 机器学习的学习曲线
+- `model.ckpt.data-00000-of-00001`, `model.ckpt.index`, `checkpoint`, `model.ckpt.meta`: 以上三个为训练存档点
 
-Congratulation! You have successfully run your first deepmd training.
+非常好！已经成功开始第一次机器学习训练了！
 
-### Browse Output file
+### 浏览输出文件
 
-Use `less` command to browse your files
+使用 `less` 命令来浏览输出文件
 
 ```bash
 less train.log
 ```
 
-You will see following message in the end of your file
+你将会看到如下内容
 
 ```bash
 # DEEPMD: initialize model from scratch
@@ -116,15 +116,15 @@ You will see following message in the end of your file
 # DEEPMD: batch    1200 training time 4.37 s, testing time 0.14 s
 ```
 
-The number following from batch is how many structure you have put into training so far. This batch number will appear after every 100 batches training. The training time is the time you training 100 batches. Testing Time is the time you test the current machine learning model. The frequence of print message is set on the line `"disp_freq":  100` in the `water_se_a.json` file. This means after every 100 batch training you will get a message.
+在`batch`后面的数字表明程序已经放入了多少数据进行训练。这个数字的显示间隔，即100，是在输入文件的`"disp_freq":  100` 设置的。
 
-Browse your `lcurve.out`
+现在来看看你的学习曲线 `lcurve.out`
 
 ```bash
 less lcurve.out
 ```
 
-You will see,
+你将会看到：
 
 ```bash
 # batch      l2_tst    l2_trn    l2_e_tst  l2_e_trn    l2_f_tst  l2_f_trn         lr
@@ -143,15 +143,23 @@ You will see,
    1200    7.69e+00  7.71e+00    8.64e-02  8.69e-02    2.43e-01  2.44e-01    1.0e-03
 ```
 
-These numbers show the error of current machine learning model on the training set and testing set. Let's focus on the column, `l2_e_tst`, `l2_e_trn`, `l2_f_tst` and `l2_f_trn`. `l2_e_tst` means the error for the predicted energy on the testing set. `l2_e_trn` means the error for energy on the training set.  `l2_f_tst` and `l2_f_trn` are same as above but they are for forces. You can plot these columns with python package `Matplotlib`.
+这些数字展示了当前机器学习模型对于数据预测的误差有多大。 `l2_e_tst` 意味着在测试集上使用机器学习模型预测的能量误差会有多大。 `l2_e_trn` 意味着在训练集上使用机器学习模型预测的能量误差会有多大。 `l2_f_tst` and `l2_f_trn` 表示相同意义，不过是对于力的预测. 你可以使用`Matplotlib` Python包进行作图。
 
-## Dive into DeePMD-kit Training
+## 使用进阶
 
-### Prepare Training Data
+### 准备训练数据
 
-Previous section just let you taste the running of DeePMD-kit. For training a real machine learning potential for your system, you have to prepare **training data set** for training. In our group, we often use software **cp2k** to run molecular dynamics simulation. If we set the output of forces and position file, you will get `*pos-1.xyz` file for position and `*frc-1.xyz` file for forces. Please collect these two files into one directory, then you can use the script in the section [Extra Support](#extra-support) to convert cp2k xyz data to deepmd training data.
+前半部分仅仅是让你运行DeePMD-kit进行训练。为了训练一个针对你的体系的模型，你需要自己来准备数据。这些数据都是第一性原理计算得到的数据。这些数据可以是单点能计算得到的数据，或者是分子动力学模拟得到的数据。作为数据集需要的数据有：
 
-Now we just have a look on the form of deepmd training data. Examples are stored in `<deepmd repository>/examples/water/data/`. Let's take a look on the directory structure. 
+- 体系的结构文件：`coord.npy`
+- 体系的结构文件对应的元素标记：`type.raw`
+- 体系的结构文件对应的能量：`energy.npy`
+- 体系的结构文件对应的力：`force.npy`
+- 体系的结构文件对应的晶胞大小，如果是非周期性体系，请在训练文件里准备一个超大周期边界条件：`box.npy`
+
+代码块里的文件名为DeePMD-kit使用的命名。`npy`后缀为Python的numpy代码包生成的文件，请在此之前学习numpy。如果你使用`cp2k`得到数据，你会有 `*pos-1.xyz` 和 `*frc-1.xyz` 文件。你可以使用[帮助](#extra-support)的脚本转化成DeePMD-kit的数据集格式。
+
+现在我们来看看DeePMD-kit的训练数据格式。之前我们训练的水模型的数据集储存在 `<deepmd repository>/examples/water/data/`. 让我们来看看数据集的目录结构：
 
 ```bash
 # directory structre for training data
@@ -180,20 +188,20 @@ Now we just have a look on the form of deepmd training data. Examples are stored
 │   └── type.raw
 ```
 
-Clearly, we will see `type.raw` file and a set of directory named `set.*` under the `data` directory. `type.raw` is just a file containing the element symbol for your system. However instead of element symbol in the form of letter like `H`, `O`, `C`, we use numbers to represent element type. It is free to choose the number assigned to element type. For instance, `1` for `H`, `0` for `O`, or reversely, `0` for `H` and `1` for `O`. These numbers are corresponding to the position of element in `"type_map":["O", "H"]` in the file of `input.json`. In this example, `1` for `H`, `0` for `O`. The following is a example of `type.raw`:
+显然，我们会看到`type.raw`文件和一堆以`set`开头的目录。`type.raw`文件记录了体系的元素信息。如果你打开你会发现它仅仅记录了一堆数字。这些数字对应着你在`water_se_a.json`中`"type_map":["O","H"]`的信息。此时`0`代表`O`,`1`代表`H`。对应着`["O","H"]`中的位置，其中第一位为0。
 
 ```bash
 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1   1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1   1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
 
-`box.npy`, `coord.npy`, `energy.npy` and `force.npy` are all numpy files storing the information of cell, position, energy and force of the system. Every row of numpy file corresponds to one snapshot of MD or one structure of system. For example, we have 1000 structures for training data. Then the shape of `box.npy`, `coord.npy`, `energy.npy` and `force.npy` is (1000, 9), (1000, number of atoms\*3), (1000, 1), (1000, number of atoms\*3), respectively. 
+`box.npy`, `coord.npy`, `energy.npy` 和 `force.npy` 储存的信息在上文已经说过。唯一需要注意的是这些文件都储存着一个超大的矩阵。如果我们有Y个结构，每个结构有X个原子。`box.npy`, `coord.npy`, `energy.npy` 和 `force.npy` 对应的矩阵形状分别是 (Y, 9), (Y, X\*3), (Y, 1), (Y, X\*3)。
 
-### Setup Your Input
+### 设置你的输入文件
 
-The input setting file called `input.json`, is the file used to start your training. The full input file will be not placed here, you can see in the `<deepmd repositoy>/examples/water/train/*.json`. Luckly, you don't have to set every parameter. Just copy the file `water_se_a.json`, and modify some keywords. Here I will explain the important keyword you will have to modify.
+输入文件是`json`文件。你可以使用之前我们的`json`文件进行细微改动就投入到自己体系的训练中。这些需要修改的关键词如下：
 
-- `type": "se_a"`: This keyword describe the method you used to convert your structure into input unit for neural network. Usually, you don't need to modify this. `"se_a"` means your use a smooth edition of covertion of the structure, which will save many effort for your.
-- `"sel": [46, 92]`: This keyword is a list containing two numbers. One for your `O` and the other for `H` as you set in `type_map`. The numbers describe the maxium number of such type of element contained in a `local environment`. For the instance of water, you choose an atom we say `H1`. Then, the local environment of `H1`, i.e. the space within the sphere with cutoff `6.00`, has 40 `H` atoms and 20 `O` atoms. So at least you have to set `[20, 40]` in your `input.json` file.
+- `type": "se_a"`: 设置描述符（descriptor）类型。一般使用`se_a`。
+- `"sel": [46, 92]`: 设置每个原子的截断半径内所拥有的最大原子数。注意这里的两个数字46，92分别对应的是`O`原子和`H`原子。与你在`type_map`里设置的元素类型是相对应的。
 
 ```json
 "descriptor" :{
@@ -209,38 +217,38 @@ The input setting file called `input.json`, is the file used to start your train
      },
 ```
 
-- `"systems":  ["../data/"]`: The directory containing training data, this is a list, which means you can set multple training data as you wish.
-- `"set_prefix": "set"`: Remember the `set.*` sub directories under the `data` directory? That's it!
+- `"systems":  ["../data/"]`: 设置包含训练数据的目录。
+- `"set_prefix": "set"`: 上文中是不是有介绍一些以`set` 开头的目录。就是它们
 
 ```json
-     "systems":  ["../data/"],
+     "systems":  ["../data/"]
      "set_prefix":   "set",
 ```
 
-- `"batch_size": 1`: How many structures you put in one training iteration. This number is limited by your GPU memory. 
-- `"numb_test": 10` : How many structures you put in testing the current machine learning potential. This number is also limited by your GPU memory.
+- `"batch_size": 1`: 每个批次（batch）的大小，该数字代表结构数量。记住每一次迭代会放一个批次的结构进入训练。
+- `"numb_test": 10` : 每次迭代中，测试集的结构数量。注意测试集是随机从数据集里挑选的，如果有多个数据集或多个set，那么一般只会从最后一个目录里挑选。
 
-### Start Your Training
+### 开始你的训练
 
-Start your training by:
+使用如下命令开始:
 
 ```bash
 dp train input.json
 ```
 
-{% include alert.html type="warning" content="The above command is in the lsf script, remember in cluster you run traning through lsf script." %}
+{% include alert.html type="warning" content="记住在集群上训练，请使用lsf脚本。" %}
 
 
 
-### Restart your training
+### 重启你的训练
 
-If you want to restart the training from check point, use:
+使用以下命令重启:
 
 ```bash
 dp train input.json --restart model.ckpt
 ```
 
-{% include alert.html type="warning" content="The above command is in the lsf script, remember in cluster you run traning through lsf script." %}
+{% include alert.html type="warning" content="记住在集群上训练，请使用lsf脚本。" %}
 
 
 
