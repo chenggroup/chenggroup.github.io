@@ -1,55 +1,55 @@
 ---
-title: SSH Usage Note
-authors: Yongbin Zhuang
+title: SSH 使用入门
+authors: 庄永斌
 ---
 
-# SSH Usage Note
+# SSH 使用入门
 
-*This Note Cannot teach you EveryThing, But you can get more information from command `man ssh_config`*, `man ssh`
+*此入门仅介绍一些作者认为必要且实用的功能，完善的帮助手册可以通过命令，`man ssh_config`, `man ssh`查看* 
 
-## Create key pair for your own use
+## 创建密钥对
 
-{% include alert.html type="warning" content="Obligatory for New Comer " %}
+{% include alert.html type="warning" content="新人必学" %}
 
-`ssh` is the command used for connecting to remote computer safely. There exist two ways to login by `ssh`
+`ssh` 是用来安全进行登录远程电脑的命令。使用后，有两种选择来验证登录
 
-1. `use password`
-2. `use key` 
+1. 使用密码
+2. 使用密钥 
 
-The first way is familiar with you, like you did with windows system before. The safer one is the second way, i. e. use key to login.
+第一种方法已经为大众所熟知，但是不安全。因此我们采用密钥进行登录。
 
-To use key, you have to generate one! use the command to generate key:
+使用如下命令生成密钥:
 
 ```bash
 ssh-keygen
 ```
 
-Follow the instructions (actually, you just need to keep push `enter` button  :eyeglasses: ​​). From default setting, you will obtain `id_rsa` and `id_rsa.pub` file in your `~/.ssh/` directory.`id_rsa` is the private key used to login, please take care of your key! `id_rsa.pub` is the public key which acts as a lock. You should give your `id_rsa.pub` file to cluster administrator.
+根据终端的提示进行操作（实际上你可能只需要不停按`enter`键）。默认情况下你会在`~/.ssh`目录中得到`id_rsa`和`id_rsa.pub`文件，他们分别是私钥和公钥。创建好了之后请把`id_rsa.pub`文件给服务器管理员。
 
-{% include alert.html type="tip" content="Give Your Public Key to cluster administrator, then you can get the cluster account." %}
+{% include alert.html type="warning" content="私钥是登录集群的钥匙，请务必保管好这个文件，防止自己的电脑被入侵" %}
 
-## Login to Remote Cluster by SSH
+## 使用SSH登录服务器
 
-{% include alert.html type="warning" content="Obligatory for New Comer " %}
+{% include alert.html type="warning" content="新人必学" %}
 
 ```bash
-ssh -i <path to your private key> -p <port number> username@cluster_ip
+ssh -i <path to your private key> -p <port number> username@server_ip
 #example here
 ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ```
 
-### Optional: Using SSH Eligantly by SSH Config
+### 可选：优雅地的使用SSH
 
-As I wrote above, you have to type all the strings into terminal everytime you login. Let's use another method to simplify the login procedure. In your directory `~/.ssh/`, there has a file called `config`. Open it by `vim` command.
+为了避免每次都输入一大串命令。 请使用vim编辑如下文件：
 
 ```bash
 vim ~/.ssh/config
 ```
 
-We can store the paramters like `<port number>`, `<path to private key>`, `username` and `cluster_ip` into this file. As a result, you can login without typing these parameters. Here, I show a example syntax for configuration file:
+我们可以把SSH命令的参数都储存在这个文件里。以下是语法示例文件：
 
 ``` bash
-Host mycluster #nickname for your cluster
+Host myserver #nickname for your cluster
     User ch1_101 #replacement of username in ssh
     Hostname 121.192.191.51 #replace of cluster_ip in ssh
     Port 6666 #replacement of -p <port number> in ssh
@@ -57,53 +57,50 @@ Host mycluster #nickname for your cluster
 
 ```
 
-After you save these setting, you can connect to cluster by simply typing:
+保存上述文件，你就可以简单地使用如下命令登录:
 
 ```bash
-ssh mycluster
+ssh myserver
 #equivalent with
 ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ```
 
-## Display Graphs on Local Mechine (X11 Forwarding)
+### 加深理解
 
-When running a program which needs graphic display, you might download data from remote computer and plot in local. However, this is unnecessary, because we can plot on the remote server and display graph on local computer. All you need is add option `-X` in your `ssh` command:
+{% include alert.html type="warning" content="该视频仅帮助理解SSH原理以及基本操作，视频中含有本笔记未要求的内容，但是大部分普通用户没有权限执行。" %}
+
+<iframe src="https://player.bilibili.com/player.html?aid=65952912&bvid=BV1y4411q7PW&cid=114414833&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600" width="800"> </iframe>
+
+## 在本地电脑显示服务器图像 (X11 Forwarding)
+
+使用终端登录服务器后没办法直接显示图形界面。有时候在*服务器*上使用画图软件时，可以通过X11 Forwarding功能将图像显示到本地电脑上。只需要在命令里加上`-X`或者`-Y`：
 
 ```bash
-ssh -X -i <para.> -p <para.> username
+ssh -X -i <para.> -p <para.> username@server_ip
 ```
 
-### Optional: Configure X11 in SSH Config
+### 可选：在config文件中配置X11 Forwarding
 
 ```bash
-Host <hostname>
-    ForwardX11 yes
-#or
-    ForwardX11Trusted yes
+Host <hostnickname>
+    ForwardX11 yes  # equivalent to -X
+    ForwardX11Trusted yes # equivalent to -Y (This option valid only if your ForwardX11 is set to yes!)
 ```
 
+## 使用跳板机/代理进行远程登录
 
+本组的服务器限制了登录的ip，即你只能在学校ip范围内进行登录。同时由于登录需要密钥，而密钥保存在办公室电脑上，因此登录就必须使用办公室电脑。因此，人不在办公室时就很难登录服务器。
 
-## Login to Remote Cluster with Proxy
-
-There are often inconvinences or restricted policies when we use HPC. 
-Especially, the HPC has restricted the port or IP address when we try to connect by SSH. To login HPC when you outside the office, you have to login your office computer remotely, then login the HPC. There has configuration you can set to simplify this process.
-
-Let me explain some terminology:
-
-- `proxy`: the proxy is the office computer you use to login HPC. Because HPC restricts the reachable IP.
-- `key`: A file used to connect the HPC.
-- `port`: another restriction on connection to HPC 
-
-Let's set a scenario:
-Now you are not in the office, but you can only connect to you office computer by the computer we said `proxy` at hand. And through `proxy`, you login the HPC we said `cluster51`. At normal, you will do the following thing:
+解决方法就是，先通过SSH登录到办公室电脑（仅自己的用户名密码即可），再通过办公室电脑登录到服务器。此时办公室电脑是作为*跳板*来使用的：
 
 ```bash
 ssh username@proxy
 ssh -p port_number -i key_file username@cluster51
 ```
 
-Can we simplify it? Of course! Open you ssh config file at `~/.ssh/config`: just paste the following code
+### 可选：在config文件中配置跳板机
+
+打开 `~/.ssh/config`: 复制以下代码，
 
 ```bash
 Host proxy #nickname you set for your office computer
@@ -118,34 +115,32 @@ Host chenglab51 #nickname for your cluster
     ProxyCommand ssh -o 'ForwardAgent yes' proxy "ssh-add && nc %h %p"
 ```
 
-Then use the computer at hand, directly type:
+我们可以发现其实是直接登录课题组服务器的一些改进，我们首先配置了从这台电脑登录到跳板机的命令，然后再配置利用跳板机到服务器的命令。
+
+完成以上配置后可以使用如下命令直接配置：
 
 ```bash
 ssh chenglab51
 ```
 
-Now you can directly connect to the HPC!
+## 使用SCP进行文件传输
 
-This configuration can also apply to your `scp` command, you can directly transfer file with proxy computer:
+SCP实际上是SSH+FTP的结合，如果配置好了SSH命令，可以使用以下命令来进行文件传输：
 
 ```bash
 scp chenglab51:remote_file local_directory_path
 ```
 
-##  X11 forward with proxy 
+### 在使用跳板机的情况下使用X11 Forwarding
 
-You might want to use X11 forward with proxy. X11 forward is used to display image in your local computer with data from remote computer. For instance, you can use gnuplot in remote computer and display the diagram in you desktop.
-
-Again a quick setting for `~/.ssh/config` is
+只需要在 `~/.ssh/config` 中加入
 
 ```bash
 Host *  # valid for all host
     ForwardX11Trusted yes
 ```
 
-Try to login remote computer with `ssh -Y chenglab51`. As we set in previous section, we can use X11 forward with proxy.
-
-## Trouble Shooting
+## 问题解决
 
 ### ssh private key are too open
 
@@ -167,5 +162,20 @@ Use command `ls -l` to see your `id_rsa` permission. if it is not `-rw-------`, 
 
 ```bash
 chmod 600 ~/.ssh/id_rsa
+```
+
+### No xauth data; using fake authentication data for X11 forwarding.
+
+The error message is
+
+```bash
+Warning: No xauth data; using fake authentication data for X11 forwarding.
+```
+
+This is because `ssh` can't find your xauth location. Usually, the location is in `/opt/X11/bin/xauth`. Add this in your ssh configure file:
+
+```bash
+Host *
+    XAuthLocation /opt/X11/bin/xauth
 ```
 
