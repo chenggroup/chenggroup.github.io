@@ -22,9 +22,13 @@ title: 书籍推荐
 4. [Statistical Mechanics](https://book.douban.com/subject/4669257/)
 
    > 系统而全的物理向统计力学入门，公式推导详细，认真看会对统计力学有相对深度的理解
+
 ## 编程系列
 
 1. [Python Crash Course](https://book.douban.com/subject/26284937/)
 
    > python编程的系统入门书，project章节只需要看数据展示部分。
+   
+2. [Numerical Python](https://book.douban.com/subject/33088627/)
 
+   > 有关于数据科学中使用python的text book，numpy，scipy，matplotlib都有包括
