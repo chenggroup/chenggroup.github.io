@@ -1,5 +1,5 @@
 ---
-title: n2p2 Usage Guide
+title: Anaconda
 authors: Yongbin Zhuang
 
 ---
@@ -30,10 +30,10 @@ channels:
   - defaults
 ssl_verify: true
 envs_dirs:
-modify, this is where your environment file in
+#modify, this is where your environment file in
   - /data/ch2_101/conda/env
 pkgs_dirs:
-modify, this is where your package file in
+#modify, this is where your package file in
   - /data/ch2_101/conda/pkgs
 ```
 
