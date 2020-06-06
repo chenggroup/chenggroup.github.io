@@ -41,6 +41,7 @@ cd <deepmd repositoy>/examples/water/train/
 cp /share/base/script/deepmd.lsf ./
 vim deepmd.lsf
 ```
+{% include alert.html type="warning" content="如果调用的是1.0的版本，需要在learning_rate下加入decay_rate关键词，一般设为0.95." %}
 
 你现在仅需要修改`lsf`脚本中的输入文件名称即可。把脚本中的`input.json`替换成`water_se_a.json`。
 
