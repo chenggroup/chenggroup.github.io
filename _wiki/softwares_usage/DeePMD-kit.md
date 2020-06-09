@@ -1,6 +1,6 @@
 ---
-title: DeePMD-kit Usage Guide
-authors: Yongbin Zhuang
+title: DeePMD-kit 使用入门
+authors: 庄永斌
 
 ---
 

@@ -28,7 +28,11 @@ title: 书籍推荐
 1. [Python Crash Course](https://book.douban.com/subject/26284937/)
 
    > python编程的系统入门书，project章节只需要看数据展示部分。
-   
+
 2. [Numerical Python](https://book.douban.com/subject/33088627/)
 
    > 有关于数据科学中使用python的text book，numpy，scipy，matplotlib都有包括
+
+3. [Fortran for Scientists & Engineers](https://book.douban.com/subject/2248942/)
+
+   > Fortran入门+基础，例子简单明了，全面，20天左右可做完全书
