@@ -35,4 +35,4 @@ title: 书籍推荐
 
 3. [Fortran for Scientists & Engineers](https://book.douban.com/subject/2248942/)
 
-   > Fortran入门+基础，例子简单明了，全面，20天左右可做完全书
+   > Fortran入门+基础，例子简单明了，全面，20天左右可做完全书，每个章节后面的总结和代码参考很完善。另外关于和C/C++的接口教程在附录Fortran/C Interoperablity
