@@ -8,8 +8,9 @@ authors: Yongbin Zhuang
 
 ## 学习目标
 
-- 设置CP2K环境变量
-- 检查CP2K输入文件input.inp
+- 设置cp2k环境变量
+- 书写cp2k的输入文件
+- 检查cp2k输入文件input.inp
 - 单点能计算
 - 结构优化
 - 分子动力学
@@ -36,9 +37,68 @@ export CP2K_DATA_DIR=/somewhere/basis/
 
 之后在使用赝势和基组时可以直接写文件名字而不需要指出路径。
 
+## 书写cp2k输入文件
+
+cp2k输入文件的书写在[cp2k官网](https://www.cp2k.org/howto)中有许多例子，请大家自己上网学习。
+
+除了简单的SECTION, VALUE的书写形式以外，cp2k还提供了一些简单的变量设置条件判断等设定方式，具体参考[cp2k输入参考手册](https://manual.cp2k.org/cp2k-6_1-branch/index.html)。
+
+### 什么是好的输入文件习惯?
+
+cp2k的输入文件参数设置繁杂，往往我们是第一次从头到位写一遍或者直接拿别人的input修改后进行使用。但是这样会造成书写错误或者设置错误频繁发生。提交超算之后被退回来的话排队时间就浪费了。在此笔者有几个建议：
+
+1. 使用`cp2k.popt -c input.inp` 检查输入文件的语法
+2. 使用注释(#)来提醒输入文件的设置
+3. 使用变量和条件判断来简单的开关cp2k的功能
+
+```
+#a good example of input file
+#set variable and condition to open/close section in cp2k
+#if variable is 0 in condition, it is false, otherwise it is true
+@SET HSE06 0
+
+########## This part is HSE06 ##########
+@IF ${HSE06}
+            &XC_FUNCTIONAL
+                &PBE
+                    SCALE_X 0.0
+                    SCALE_C 1.0
+                &END PBE
+                &XWPBE
+                    SCALE_X -0.25
+                    SCALE_X0 1.0
+                    OMEGA 0.11
+                &END XWPBE
+            &END XC_FUNCTIONAL
+            &HF
+                &SCREENING
+                    EPS_SCHWARZ 1.0E-6
+                    SCREEN_ON_INITIAL_P FALSE
+                &END SCREENING
+                &INTERACTION_POTENTIAL
+                    POTENTIAL_TYPE SHORTRANGE
+                    OMEGA 0.11
+                    T_C_G_DATA t_c_g.dat
+                &END INTERACTION_POTENTIAL
+                &MEMORY
+                    MAX_MEMORY 10000
+                    EPS_STORAGE_SCALING 0.1
+                &END MEMORY
+                &PERIODIC
+                     NUMBER_OF_SHELLS 0
+                &END PERIODIC
+                FRACTION 0.25
+            &END HF
+@ENDIF
+```
+
+{% include alert.html type="warning" content="#注释要单独占一行，代码和注释混合会导致input读入错误" %}
+
+
+
 ## 检查cp2k输入文件
 
-在服务器上，需要通过`module lood cp2k/版本号` 来启动cp2k软件。Load后，可以使用cp2k.popt命令，这是CP2K软件的主要程序。
+在服务器上，需要通过`module load cp2k/版本号` 来启动cp2k软件。Load后，可以使用cp2k.popt命令，这是CP2K软件的主要程序。
 
 CP2K的计算运行是
 
@@ -54,5 +114,5 @@ cp2k.popt input.inp > output
 cp2k.popt -c input.inp
 ```
 
-
+{% include alert.html type="warning" content="cp2k.popt -c 仅检查是否有语法错误，实际运行的错误不会检查出来" %}
 
