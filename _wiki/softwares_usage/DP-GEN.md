@@ -16,7 +16,7 @@ Deep Potential Generator (DP-GEN) 是一个将神经网络势能（machine learn
 - 参考文献：[Active learning of uniformly accurate interatomic potentials for materials simulation](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.3.023804)
 
 {% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对DeePMD-kit有一定了解。" %}
-指路：[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit.md)
+指路：[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit)
 
 DP-GEN的工作流是由以下三步组成的循环：
 
@@ -36,15 +36,15 @@ DP-GEN的工作流是由以下三步组成的循环：
 
   制定上述三个步骤分别在哪个服务器计算。
 
-{% include alert.html type="warning" content="`machine.json` 只指定计算**执行**的地址，计算生成的数据存储在`param.json``machine.json`所在文件夹下,计算所需的训练集和结构文件在`param.json`中指定路径（位于dpgen run命令所在服务服务器上）。205上的计算执行地址建议写在`\home`文件夹下，但是提交任务建议在205/51/52的`\data`下。" %}
+{% include alert.html type="warning" content="machine.json只指定计算执行的地址，计算生成的数据存储在param.json和machine.json所在文件夹下,计算所需的训练集和结构文件在param.json中指定路径（位于dpgen run命令所在服务服务器上）。205上的计算执行地址建议写在\home文件夹下，但是提交任务建议在205/51/52的\data下。" %}
 
 - 初始训练集数据
 
-  放在提交dpgen所在的服务器上，用于训练势函数，参照[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit.md)中方法生成。
+  放在提交dpgen所在的服务器上，用于训练势函数，参照[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit)中方法生成。
 
 - MD采样的初始结构
 
-  放在提交dpgen所在的服务器上，必须使用vasp5.x的POSCAR，把.xyz文件转化为POSCAR的脚本可见[文末](###.xyz转化为POSCAR脚本)。
+  放在提交dpgen所在的服务器上，必须使用vasp5.x的POSCAR，把.xyz文件转化为POSCAR的脚本可见[文末](###script-from-xyz-to-poscar)。
 
 ### 输出文件
 
@@ -62,7 +62,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 - `nohup.out` 
 
-  这个并不是必要输出，但是建议使用[nohup命令]({{ site.baseurl }}/wiki/miscellaneous.md)把dpgen挂在后台运行。这个文件中输出的信息和`dpgen.log`的基本一致。
+  这个并不是必要输出，但是建议使用[nohup命令]({{ site.baseurl }}/wiki/miscellaneous)把dpgen挂在后台运行。这个文件中输出的信息和`dpgen.log`的基本一致。
 
 ## 例子
 
@@ -413,7 +413,7 @@ DP-GEN的工作流是由以下三步组成的循环：
   bsub<*.sub
   ```
 
-### .xyz转化为POSCAR脚本
+### script from xyz to POSCAR
 
 ```python
 from ase.io import iread, write
