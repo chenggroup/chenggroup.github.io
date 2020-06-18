@@ -383,7 +383,9 @@ DP-GEN的工作流是由以下三步组成的循环：
 {% include alert.html type="info" title="comment" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
 
 准备好所有的输入文件后，就可以用以下指令提交dpgen任务啦！
+
 `dpgen run param.json machine.json`
+
 {% include alert.html type="info" title="comment" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[GitHub](https://github.com/deepmodeling/dpgen)。" %}
 
 ## Bonus！
