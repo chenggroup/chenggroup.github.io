@@ -15,7 +15,7 @@ Deep Potential Generator (DP-GEN) 是一个将神经网络势能（machine learn
 - [GitHub](https://github.com/deepmodeling/dpgen)
 - 参考文献：[Active learning of uniformly accurate interatomic potentials for materials simulation](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.3.023804)
 
-{% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对[DeePMD-kit]([https://chenggroup.github.io/wiki/softwares_usage/DeePMD-kit#%E7%AE%80%E4%BB%8B](https://chenggroup.github.io/wiki/softwares_usage/DeePMD-kit))有一定了解。" %}
+{% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit.md)有一定了解。" %}
 
 DP-GEN的工作流是由以下三步组成的循环：
 
@@ -35,11 +35,11 @@ DP-GEN的工作流是由以下三步组成的循环：
 
   制定上述三个步骤分别在哪个服务器计算。
 
-{% include alert.html type="warning" content="`machine.json` 只指定计算**执行**的地址，计算生成的数据存储在`param.json``machine.json`所在文件夹下。计算所需的训练集和结构文件在`param.json`中指定路径（位于提交dpgen任务所在的服务器上）。205上的计算执行地址建议写在`\home`文件夹下，但是提交任务建议在205/51/52的`\data`下。" %}
+{% include alert.html type="warning" content="`machine.json` 只指定计算**执行**的地址，计算生成的数据存储在`param.json``machine.json`所在文件夹下,计算所需的训练集和结构文件在`param.json`中指定路径（位于dpgen run命令所在服务服务器上）。205上的计算执行地址建议写在`\home`文件夹下，但是提交任务建议在205/51/52的`\data`下。" %}
 
 - 初始训练集数据
 
-  放在提交dpgen所在的服务器上，用于训练势函数，参照[DeePMD-kit]([https://chenggroup.github.io/wiki/softwares_usage/DeePMD-kit#%E7%AE%80%E4%BB%8B](https://chenggroup.github.io/wiki/softwares_usage/DeePMD-kit))中方法生成。
+  放在提交dpgen所在的服务器上，用于训练势函数，参照[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit.md)中方法生成。
 
 - MD采样的初始结构
 
@@ -61,7 +61,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 - `nohup.out` 
 
-  这个并不是必要输出，但是建议使用[nohup命令](https://chenggroup.github.io/wiki/miscellaneous)把dpgen挂在后台运行。这个文件中输出的信息和`dpgen.log`的基本一致。
+  这个并不是必要输出，但是建议使用[nohup命令]({{ site.baseurl }}/wiki/miscellaneous.md)把dpgen挂在后台运行。这个文件中输出的信息和`dpgen.log`的基本一致。
 
 ## 例子
 
@@ -382,6 +382,10 @@ DP-GEN的工作流是由以下三步组成的循环：
 ```
 {% include alert.html type="info" title="comment" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
 
+准备好所有的输入文件后，就可以用以下指令提交dpgen任务啦！
+`dpgen run param.json machine.json`
+{% include alert.html type="info" title="comment" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[GitHub](https://github.com/deepmodeling/dpgen)。" %}
+
 ## Bonus！
 
 ### 常见报错问题（欢迎补充&修正）
@@ -420,4 +424,9 @@ for j in range(2):
             ase.io.write('POSCAR_'+str(j)+'_'+str(int(i/20)-1), atoms, format='vasp',vasp5=True)
 
 ```
-
+或者调用`ase.io.vasp`里的`write`:
+```python
+def write_vasp(filename, atoms, label=None, direct=False, sort=None,
+symbol_count=None, long_format=True, vasp5=False,
+ignore_constraints=False):
+```
