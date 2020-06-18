@@ -15,7 +15,8 @@ Deep Potential Generator (DP-GEN) 是一个将神经网络势能（machine learn
 - [GitHub](https://github.com/deepmodeling/dpgen)
 - 参考文献：[Active learning of uniformly accurate interatomic potentials for materials simulation](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.3.023804)
 
-{% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit.md)有一定了解。" %}
+{% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对DeePMD-kit有一定了解。" %}
+指路：[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit.md)
 
 DP-GEN的工作流是由以下三步组成的循环：
 
@@ -280,7 +281,9 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 ```
 
-{% include alert.html type="tip" title="comment" content="CP2K的input中部分参数有默认设置写入，具体可参照[cp2k.py](https://github.com/deepmodeling/dpgen/blob/master/dpgen/generator/lib/cp2k.py)。" %}
+{% include alert.html type="tip" title="comment" content="CP2K的input中部分参数有默认设置写入，具体可参照cp2k.py。" %}
+
+指路：[cp2k.py](https://github.com/deepmodeling/dpgen/blob/master/dpgen/generator/lib/cp2k.py)
 
 {% include alert.html type="warning" title="comment" content="金属体系OT section需要手动关闭，具体见上方的设置。" %}
 
@@ -386,7 +389,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 `dpgen run param.json machine.json`
 
-{% include alert.html type="info" title="comment" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[GitHub](https://github.com/deepmodeling/dpgen)。" %}
+{% include alert.html type="info" title="comment" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见官方GitHub。" %}
 
 ## Bonus！
 
