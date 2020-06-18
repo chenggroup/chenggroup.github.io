@@ -35,7 +35,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
   制定上述三个步骤分别在哪个服务器计算。
 
-{% include alert.html type="warning" content="`machine.json` 只指定计算**执行**的地址，但是训练集和生成数据存储的地址是在`param.json` 中指定（位于提交dpgen run命令所在的服务器上）。205上的计算执行地址建议写在`\home`文件夹下，但是储存建议在205/51/52的`/data`下。" %}
+{% include alert.html type="warning" content="`machine.json` 只指定计算**执行**的地址，计算生成的数据存储在`param.json``machine.json`所在文件夹下。计算所需的训练集和结构文件在`param.json`中指定路径（位于提交dpgen任务所在的服务器上）。205上的计算执行地址建议写在`\home`文件夹下，但是提交任务建议在205/51/52的`\data`下。" %}
 
 - 初始训练集数据
 
@@ -297,8 +297,6 @@ DP-GEN的工作流是由以下三步组成的循环：
         "hostname": "210.34.15.205",
         "port": 22,
         "username": "jxzhu",
-        "password": "........",
-        "_comment": "YOU PASSWORD!",
         "work_path": "/home/jxzhu/pt-oh/train"
       },
       "resources": {
@@ -326,8 +324,6 @@ DP-GEN的工作流是由以下三步组成的循环：
         "hostname": "210.34.15.205",
         "port": 22,
         "username": "jxzhu",
-        "password": "........",
-        "_comment": "YOU PASSWORD!",
         "work_path": "/home/jxzhu/pt-oh/dpmd"
       },
       "resources": {
@@ -384,6 +380,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 }
 
 ```
+{% include alert.html type="info" title="comment" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
 
 ## Bonus！
 
