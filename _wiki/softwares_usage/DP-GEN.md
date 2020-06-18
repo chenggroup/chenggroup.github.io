@@ -43,7 +43,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 - MD采样的初始结构
 
-  - 放在提交dpgen所在的服务器上，必须使用vasp5.x的POSCAR，把.xyz文件转化为POSCAR的脚本可见[文末](###.xyz转化为POSCAR脚本)。
+  放在提交dpgen所在的服务器上，必须使用vasp5.x的POSCAR，把.xyz文件转化为POSCAR的脚本可见[文末](###.xyz转化为POSCAR脚本)。
 
 ### 输出文件
 
@@ -204,7 +204,7 @@ DP-GEN的工作流是由以下三步组成的循环：
   
   ```
 
-  - 标记（计算单点能，此处以CP2K为例，VASP的设置可在官方GitHub中查看）
+ - 标记（计算单点能，此处以CP2K为例，VASP的设置可在官方GitHub中查看）
 
 ```python
 {
