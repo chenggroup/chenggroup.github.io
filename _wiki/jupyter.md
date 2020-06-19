@@ -31,6 +31,10 @@ jupyter notebook --no-browser --port=<port number>
 ssh -N -f -L localhost:8888:localhost:<port number> username@your_remote_host_name
 ```
 
+It is notable that you need to add all the modification for ssh as you do usually, such as `-i` for keys and `-P` for ports.
+
+You can simplfy the command with the help of (this guide)[{{ site.baseurl }}/wiki/ssh_note].
+
 - Open your browser and type `localhost:8888` into the address. If you encounter the page which requires your to enter `password` or `token`, you can find `token` of your notebook by command:
 
 ```bash
