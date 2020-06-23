@@ -49,19 +49,18 @@ vim ~/.ssh/config
 我们可以把SSH命令的参数都储存在这个文件里。以下是语法示例文件：
 
 ``` bash
-Host myserver #nickname for your cluster
-    User ch1_101 #replacement of username in ssh
-    Hostname 121.192.191.51 #replace of cluster_ip in ssh
-    Port 6666 #replacement of -p <port number> in ssh
+Host myserver # nickname for your cluster
+    User ch1_101 # replacement of username in ssh
+    Hostname 121.192.191.51 # replace of cluster_ip in ssh
+    Port 6666 # replacement of -p <port number> in ssh
     IdentityFile ~/.ssh/id_rsa # replace of -i <path to your private key> in ssh
-
 ```
 
 保存上述文件，你就可以简单地使用如下命令登录:
 
 ```bash
 ssh myserver
-#equivalent with
+# equivalent with
 ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ```
 
@@ -103,16 +102,16 @@ ssh -p port_number -i key_file username@cluster51
 打开 `~/.ssh/config`: 复制以下代码，
 
 ```bash
-Host proxy #nickname you set for your office computer
-    User robinzhuang #username you set for login
-    Hostname 10.24.3.xxx #IP address of your office computer, change the xxx to real one!
+Host proxy # nickname you set for your office computer
+    User robinzhuang # username you set for login
+    Hostname 10.24.3.xxx # IP address of your office computer, change the xxx to real one!
  
-Host chenglab51 #nickname for your cluster
-    User ch1_101 #username you set, change to real one!
-    Hostname 121.192.191.xx #IP for cluster, replace XX!
+Host chenglab51 # nickname for your cluster
+    User ch1_101 # username you set, change to real one!
+    Hostname 121.192.191.xx # IP for cluster, replace XX!
     IdentityFile ~/.ssh/id_rsa # the key file location used in login 
     Port xx # specify the port number, replace xx with real port !
-    ProxyCommand ssh -o 'ForwardAgent yes' proxy "ssh-add && nc %h %p"
+    ProxyJump proxy # use Host proxy as Jump Server
 ```
 
 我们可以发现其实是直接登录课题组服务器的一些改进，我们首先配置了从这台电脑登录到跳板机的命令，然后再配置利用跳板机到服务器的命令。
@@ -121,6 +120,17 @@ Host chenglab51 #nickname for your cluster
 
 ```bash
 ssh chenglab51
+```
+
+### 可选：在config文件中转发端口
+
+有时，我们在服务器上部署了 `jupyter notebook` 等服务时，需要把远程的某个端口 (以下例子中为 `8888` 端口) 转发到本地的某个端口 (以下例子中为 `9999` 端口)，使得在本地访问 `https://localhost:9999` 时也能访问远程的 `jupyter notebook` 服务。
+
+```bash
+Host chenglab51 # nickname for your cluster
+    User ch1_101 # username you set, change to real one!
+    Hostname 121.192.191.xx # IP for cluster, replace XX!
+    LocalForward 9999 localhost:8888 # fist IP is your local IP, second IP is remote IP you want to forward
 ```
 
 ## 使用SCP进行文件传输
@@ -140,7 +150,44 @@ Host *  # valid for all host
     ForwardX11Trusted yes
 ```
 
-## 问题解决
+## 一份示例配置文件
+
+以下为 `~/.ssh/config` 的一个示例，需要时可在这份示例文件上进行修改，必要修改的部分已在注释中标出，`General config` 可以直接照抄: 
+
+```bash
+# General config
+Host *
+    ForwardX11Trusted yes
+    ForwardAgent yes
+    AddKeysToAgent yes
+    ServerAliveInterval 60
+    ControlPersist yes
+    ControlMaster auto
+    ControlPath /tmp/%r@%h:%p
+
+# set proxy
+Host nickname_proxy # nickname for your Jump Server
+    Hostname 10.24.3.142 # IP for Jump Server (REPlACE IT!)
+    User chenglab # your username for Jump Server (REPlACE IT!)
+
+# 51 and 52
+Host nickname_51 # nickname for your cluster
+    Hostname 121.192.191.51
+    User ch1_102 # your 51 username (REPlACE IT!)
+    LocalForward 8051 localhost:8888
+
+Host nickname52 # nickname for your cluster
+    Hostname 121.192.191.52
+    User ch2_102 # your 52 username (REPlACE IT!)
+    LocalForward 8052 localhost:8888
+    
+# set same parts for 51 and 52
+Host nickname_51 nickname_52 # use your own nickname
+    Port 6666
+    ProxyJump nickname_proxy # use your own nickname
+```
+
+## 常见问题
 
 ### ssh private key are too open
 
