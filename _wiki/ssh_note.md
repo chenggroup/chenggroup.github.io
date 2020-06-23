@@ -78,7 +78,7 @@ ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ssh -X -i <para.> -p <para.> username@server_ip
 ```
 
-### 可选：在config文件中配置X11 Forwarding
+### 在config文件中配置X11 Forwarding*
 
 ```bash
 Host <hostnickname>
@@ -97,7 +97,7 @@ ssh username@proxy
 ssh -p port_number -i key_file username@cluster51
 ```
 
-### 可选：在config文件中配置跳板机
+### 在config文件中配置跳板机*
 
 打开 `~/.ssh/config`: 复制以下代码，
 
@@ -116,13 +116,15 @@ Host chenglab51 # nickname for your cluster
 
 我们可以发现其实是直接登录课题组服务器的一些改进，我们首先配置了从这台电脑登录到跳板机的命令，然后再配置利用跳板机到服务器的命令。
 
+> 如果上述的 `ProxyJump proxy` 不起作用，可将其替换为 `ProxyCommand ssh -o 'ForwardAgent yes' proxy "ssh-add ~/.ssh/id_rsa && nc %h %p"` ，请用你的密钥的路径来代替上述的 `~/.ssh/id_rsa` 部分。
+
 完成以上配置后可以使用如下命令直接配置：
 
 ```bash
 ssh chenglab51
 ```
 
-### 可选：在config文件中转发端口
+### 在config文件中转发端口*
 
 有时，我们在服务器上部署了 `jupyter notebook` 等服务时，需要把远程的某个端口 (以下例子中为 `8888` 端口) 转发到本地的某个端口 (以下例子中为 `9999` 端口)，使得在本地访问 `https://localhost:9999` 时也能访问远程的 `jupyter notebook` 服务。
 
@@ -185,6 +187,22 @@ Host nickname52 # nickname for your cluster
 Host nickname_51 nickname_52 # use your own nickname
     Port 6666
     ProxyJump nickname_proxy # use your own nickname
+```
+
+## 超纲的部分​​*
+
+在配置文件中实现类似选择语句的功能，以下例子描述的是当网络环境随时变更时，连接同一台机器可能会需要访问不同IP时所采取的策略。
+
+> 此例子不建议初学者直接复制粘贴，其中需要替换的部分请根据具体应用场景来自行斟酌
+
+```bash
+Host elements
+    User chenglab
+    Match host elements exec "nc -G 4 -z 10.24.3.144 %p"
+        Hostname 10.24.3.144 # Private net IP
+    Match host elements
+        Hostname xxx.xxx.xxx.xxx # Public net IP
+        Port 6000
 ```
 
 ## 常见问题
