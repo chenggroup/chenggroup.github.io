@@ -412,7 +412,24 @@ DP-GEN的工作流是由以下三步组成的循环：
   ```shell
   bsub<*.sub
   ```
+- AssertionError
 
+  某个单点能计算中断后重新开始，导致cp2k的output中有重叠。可以在02.fp文件夹下用以下脚本进行检查：
+  
+  ```python
+  import dpdata
+  import glob
+  l = glob.glob("task.002*")
+  l.sort()
+  stc = dpdata.LabeledSystem(l[0]+'/output',fmt='cp2k/output')
+  for i in l[1:]:
+      print(i)
+      stc += dpdata.LabeledSystem(i+'/output',fmt='cp2k/output')
+
+  ```
+  
+  其中`task.002.*`代表遍历002system中的被标记的结构。如果不同系统的原子数相同，也可以直接用`task.00*`一次性检查所有的结构。
+  
 ### script from xyz to POSCAR
 
 ```python
