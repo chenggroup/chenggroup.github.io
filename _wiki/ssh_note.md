@@ -7,6 +7,18 @@ authors: 庄永斌
 
 *此入门仅介绍一些作者认为必要且实用的功能，完善的帮助手册可以通过命令，`man ssh_config`, `man ssh`查看* 
 
+
+
+## 学习目标
+
+- 使用SSH登录服务器/集群
+- 使用SCP进行文件传输
+
+### 可选目标
+
+- 使用ssh config文件进行SSH登录管理
+- 学会用跳板机进行SSH登录
+
 ## 创建密钥对
 
 {% include alert.html type="warning" content="新人必学" %}
