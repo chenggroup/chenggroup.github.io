@@ -28,6 +28,7 @@ jupyter notebook --no-browser --port=<port number>
 ```bash
 # make sure to change `username` to your real username in remote host
 # change `your_remote_host_name` to your address of your working station
+#<port number> is the same as above port number, for example 8898
 ssh -N -f -L localhost:8888:localhost:<port number> username@your_remote_host_name
 ```
 
