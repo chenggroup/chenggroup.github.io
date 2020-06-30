@@ -312,9 +312,10 @@ make -f Makefile.mpi
 #### Building Inteface with n2p2
 
 - make sure you have shared library `libnnpif-shared` in your `<path to n2p2>/lib/`
-- export the following in your environmental variable
+- export the following in your environmental variable(optional)
 
 ```bash
+#export this if you use shared library, skip if you are using static library
 export LD_LIBRARY_PATH=<path to n2p2>/lib:${LD_LIBRARY_PATH}
 ```
 
@@ -322,7 +323,7 @@ export LD_LIBRARY_PATH=<path to n2p2>/lib:${LD_LIBRARY_PATH}
 
 ```bash
 cd <LAMMPS root>/
-ln -s <path to n2p2>/lib/nnp
+ln -s <path to n2p2> lib/nnp
 cp -r <path to n2p2>/src/interface/LAMMPS/src/USER-NNP <LAMMPS root>/src
 cd <LAMMPS root>/src
 make yes-user-nnp
@@ -428,8 +429,8 @@ PROJECT_LDFLAGS_BLAS=-lblas -lgslcblas
 
 ```bash
 #choose one of the following command
-make shared # compile a binary with shared library
-make static # compile a binary with static library, I use this one
+make MODE=shared # compile a binary with shared library
+make MODE=static # compile a binary with static library, I use this one
 ```
 
 - After you compiled successfully, you will have all the excutable binary at `n2p2/bin/` directory
