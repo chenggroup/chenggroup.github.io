@@ -15,8 +15,8 @@ It adds three main features:
 You can clone the repository right to where you want to host the wikis:
 
 ```bash
-git clone https://github.com/xjf729/mywiki.git
-cd mywiki
+git clone https://github.com/chenggroup/chenggroup.github.io.git
+cd chenggroup.github.io.git
 ```
 
 ### 2. Customize

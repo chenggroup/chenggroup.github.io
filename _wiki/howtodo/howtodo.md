@@ -81,7 +81,7 @@ wiki 书写使用 markdown 格式。本 wiki 使用 kramdown 作为 markdown 的
 #### 1. 下载网站源码至本地
 
 ```bash
-git clone https://github.com/{{ site.github_user }}/{{ site.github_repo }}.git --recurse-submodules
+git clone https://github.com/{{ site.github_user }}/{{ site.github_repo }}.git
 cd {{ site.github_repo }}
 ```
 
@@ -271,6 +271,8 @@ $$
 {%raw%}{% include alert.html type="tldr" title="tldr" content="TLDR means too long, didn't read" %}{%endraw%}
 ```
 
+> <code>content</code> 中请使用纯文本，不建议在其中使用 <code>markdown</code> 的标记。
+
 改变 `type` 就能使用不同的提示类型
 
 {% include alert.html type="tldr" content="TLDR means too long, didn't read" %}
@@ -280,10 +282,6 @@ $$
 {% include alert.html type="warning" content="This is a warning" %}
 {% include alert.html type="danger" content="This alerts danger!" %}
 {% include alert.html type="success" content="This alerts success" %}
-
-{% include alert.html type="tip" 
-content="<code>content</code> 中请使用纯文本，不要加入 <code>markdown</code> 的标记。如果硬要表示行内代码或是加粗等效果，请直接用 <code>html</code> 的标记，如 <code>...</code> 表示代码，<strong>...</strong> 表示加粗。"
-%}
 
 #### 测验*
 

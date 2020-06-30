@@ -14,11 +14,11 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: XMU Chenglab Wiki
+title: XMU Chenggroup Wiki
 email: chengjun@xmu.edu.cn
-author: Chenglab
+author: Chenggroup
 description: > # this means to ignore newlines until "baseurl:"
-    This is a wiki website of chenglab.
+    This is a wiki website of Chenggroup.
 
 # DO NOT CHANGE THE LINE OF THIS FILE without editing .circleci/circle_urls.sh
 baseurl: # the subpath of your site, e.g. /blog
@@ -27,9 +27,9 @@ baseurl: # the subpath of your site, e.g. /blog
 url: # the base hostname & protocol for your site
 
 # Social (First three Required)
-repo: "https://github.com/chenglabwiki/chenglabwiki.github.io" # the repo of web source code 
-github_user: "chenglabwiki"
-github_repo: "chenglabwiki.github.io"
+repo: "https://github.com/chenggroup/chenggroup.github.io" # the repo of web source code 
+github_user: "chenggroup"
+github_repo: "chenggroup.github.io"
 
 # Optional
 twitter: 
