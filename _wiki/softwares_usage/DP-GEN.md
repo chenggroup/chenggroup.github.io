@@ -280,9 +280,9 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 ```
 
-{% include alert.html type="tip" title="comment" content="CP2K的input中部分参数有默认设置写入，具体可参照[cp2k.py](https://github.com/deepmodeling/dpgen/blob/master/dpgen/generator/lib/cp2k.py)。" %}
+{% include alert.html type="tip" title="计算设置" content="CP2K的input中部分参数有默认设置写入，具体可参照[cp2k.py](https://github.com/deepmodeling/dpgen/blob/master/dpgen/generator/lib/cp2k.py)。" %}
 
-{% include alert.html type="warning" title="comment" content="金属体系OT section需要手动关闭，具体见上方的设置。" %}
+{% include alert.html type="warning" title="计算设置" content="金属体系OT section需要手动关闭，具体见上方的设置。" %}
 
 
 
@@ -306,7 +306,7 @@ DP-GEN的工作流是由以下三步组成的循环：
         "partition": "large",
         "exclude_list": [],
         "source_list": [
-          "/share/base/scripts/export_visible_devices -t 800"
+          "/share/base/scripts/export_visible_devices"
         ],
         "module_list": [
             "cuda/9.2",
@@ -380,13 +380,15 @@ DP-GEN的工作流是由以下三步组成的循环：
 }
 
 ```
-{% include alert.html type="info" title="comment" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
+{% include alert.html type="info" title="登录设置" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
+
+{% include alert.html type="info" title="GPU调用设置" content="在训练和采样中我们调用source_list关键词下的脚本自动检索占用显存少于特定值的GPU进行提交。对于训练任务，建议独占一张GPU，故可不设置-t xxx （默认为100）。对于采样步骤，可以采用上文中的设置，也可以调用同一目录下的avail_gpu.sh并设置-t 50，防止多任务挤兑。" %}
 
 准备好所有的输入文件后，就可以用以下指令提交dpgen任务啦！
 
 `dpgen run param.json machine.json`
 
-{% include alert.html type="info" title="comment" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[GitHub](https://github.com/deepmodeling/dpgen)。" %}
+{% include alert.html type="info" title="提交任务" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[GitHub](https://github.com/deepmodeling/dpgen)。" %}
 
 ## Bonus！
 
