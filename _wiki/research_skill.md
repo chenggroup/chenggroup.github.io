@@ -13,7 +13,9 @@ authors: 庄永斌
 
 youtube 视频(如不能观看联系管理员给予建议)
 
-<iframe width="800" height="600" src="https://www.youtube.com/embed/SSVI-9kLSaI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=73708985&bvid=BV1TE411h7B9&cid=126075594&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+
+
 
 Whitesides教授的大作
 
