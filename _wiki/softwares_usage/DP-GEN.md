@@ -309,7 +309,7 @@ DP-GEN的工作流是由以下三步组成的循环：
         "partition": "large",
         "exclude_list": [],
         "source_list": [
-          "/share/base/scripts/export_visible_devices -t 800"
+          "/share/base/scripts/export_visible_devices"
         ],
         "module_list": [
             "cuda/9.2",
@@ -336,7 +336,7 @@ DP-GEN的工作流是由以下三步组成的循环：
         "partition": "large",
         "exclude_list": [],
         "source_list": [
-          "/share/base/scripts/export_visible_devices"
+          "/share/base/scripts/export_visible_devices -t 800"
         ],
         "module_list": [
             "cuda/9.2",
