@@ -309,7 +309,7 @@ DP-GEN的工作流是由以下三步组成的循环：
         "partition": "large",
         "exclude_list": [],
         "source_list": [
-          "/share/base/scripts/export_visible_devices -t 800"
+          "/share/base/scripts/export_visible_devices"
         ],
         "module_list": [
             "cuda/9.2",
@@ -330,9 +330,9 @@ DP-GEN的工作流是由以下三步组成的循环：
         "work_path": "/home/jxzhu/pt-oh/dpmd"
       },
       "resources": {
-	"node_cpu": 4,
+        "node_cpu": 2,
         "numb_node": 1,
-        "task_per_node": 4,
+        "task_per_node": 2,
         "partition": "large",
         "exclude_list": [],
         "source_list": [
@@ -385,7 +385,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 ```
 {% include alert.html type="info" title="登录设置" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
 
-{% include alert.html type="info" title="GPU调用设置" content="在训练和采样中我们调用source_list关键词下的脚本自动检索占用显存少于特定值的GPU进行提交。对于训练任务，建议独占一张GPU，故可不设置-t xxx （默认为100）。对于采样步骤，可以采用上文中的设置，也可以调用同一目录下的avail_gpu.sh并设置-t 50，防止多任务挤兑。" %}
+{% include alert.html type="info" title="GPU调用设置" content="根据上述规则，在训练时通常使用4个CPU核作为标记，而采样（MD）时采用2个。在训练和采样中我们调用source_list关键词下的脚本自动检索占用显存少于特定值的GPU进行提交。对于训练任务，建议独占一张GPU，故可不设置<code>-t xxx</code> （默认为100）。对于采样步骤，可以采用上文中的设置，也可以调用同一目录下的avail_gpu.sh并设置<code>-t 50</code>（或一个更小的值），防止多任务挤兑。" %}
 
 准备好所有的输入文件后，就可以用以下指令提交dpgen任务啦！
 
