@@ -31,7 +31,7 @@ author: 熊景放
 
 ### 205 服务器上设置推送
 
-在服务器提交脚本中加上 `module load clactool/scripts` ，并在最后加上 `dingtalk_notification WEBHOOK` 即可实现推送至钉钉。示例脚本如下
+在服务器提交脚本中加上 `module load calctool/scripts` ，并在最后加上 `dingtalk_notification WEBHOOK` 即可实现推送至钉钉。示例脚本如下
 
 ```bash
 #!/bin/bash
@@ -46,6 +46,6 @@ module load calctool/scripts
 
 MPIRUN_COMMAND  # your command to run software
 
-dingtalk_notification https://oapi.dingtalk.com/robot/send?access_token=...  # replace it by your webhook
+dingtalk_notification https://oapi.dingtalk.com/robot/send?access_token=xxxx  # replace it by your webhook
 ```
 
