@@ -1,5 +1,6 @@
 ---
 title: ECINT 的使用
+todo: update pbc section
 author: 熊景放
 ---
 
@@ -19,7 +20,7 @@ author: 熊景放
 ssh -p 8099 chenglab@10.24.3.144
 ```
 
-## 运行
+## 输入文件
 
 在想要运行工作流的工作路径下准备一个 `.json` 输入文件，示例如下 (要用 `"`，而不是 `'`): 
 
@@ -32,7 +33,7 @@ ssh -p 8099 chenglab@10.24.3.144
   "cell": [12, 12, 12],
   "metadata": {
     "kind_section": {
-      "BASIS_SET": "DZVP-MOLOPT-SR-GTH",
+      "BASIS_SET": "TZV2P-GTH",
       "POTENTIAL": "GTH-PBE"
     }
   }
@@ -53,9 +54,11 @@ structure:
 cell: [12, 12, 12]
 metadata:
   kind_section:
-    BASIS_SET: DZVP-MOLOPT-SR-GTH
+    BASIS_SET: TZV2P-GTH
     POTENTIAL: GTH-PBE
 ```
+
+> 更多输入的例子在 <https://github.com/chenggroup/ecint/tree/develop/example>
 
 ### 各关键词解释
 
@@ -65,52 +68,56 @@ metadata:
 
 - **resdir** (选填, default: 当前所在路径): 结果文件的储存路径
 
-- **structure/structures_folder** (必填其中之一): 如果需要输入多个结构 structure 则是列表的形式，列表中是所需的结构文件的路径，如果是 structure 直接输入一个结构文件路径即可，如果批量进行计算，则把批量的结构所在文件夹加入 structures_folder
+- **structure/structures_folder** (必填其中之一): 仅输入一个结构时，structure 为结构文件的路径，对于 neb 这种需要多个输入结构的，structure 为结构文件路径的列表。如果批量进行计算，则把批量的结构所在文件夹加入 structures_folder (暂不支持 neb)
 
 - **cell** (选填): 设置了 cell 后会改变那些结构中不包含 cell 信息的 cell。如果用的是 .xyz 格式，一般需要设置 cell (因为 .xyz 一般不包含 cell 的信息)，.cif or POSCAR(.vasp) 则不需要设置。cell 的格式与 ase 中的 cell 格式保持一致，如 [12, 12, 12] 或 [[12, 0, 0], [0, 12, 0], [0, 0, 12]] 或 [12, 12, 12, 90, 90, 90]
 
 - **metadata** (选填): 
 
-  - config: cp2k 输入参数的基本设置
+  > 以下参数可不填，对于不同的 workflow 均有不同的[默认值](#可选用的-workflow)
+
+  - config: 可以为 dict, .json, .yaml，表示 cp2k 输入参数的基本设置，以 dict 的形式来表示 cp2k 输入，无特殊需求可不更改
 
   - kind_section: 配置 BASIS_SET 和 POTENTIAL 的基本信息，可以有四种输入形式
+  
+    > 若设置了 kind_section 的话，需同时设置 `BASIS_SET` 与 `POTENTIAL`
 
     - ```python
       # .json
-      "kind_section": {"BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}
-
+      "kind_section": {"BASIS_SET": "TZV2P-GTH", "POTENTIAL": "GTH-PBE"}
+  
       # or .yaml
       kind_section:
-        BASIS_SET: DZVP-MOLOPT-SR-GTH
-      POTENTIAL: GTH-PBE
+        BASIS_SET: TZV2P-GTH
+        POTENTIAL: GTH-PBE
       ```
       
     - ```python
       # .json
-      "kind_section": {"H": {"BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}, "O": {"BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}, ...}
+      "kind_section": {"H": {"BASIS_SET": "TZV2P-GTH", "POTENTIAL": "GTH-PBE"}, "O": {"BASIS_SET": "TZV2P-GTH", "POTENTIAL": "GTH-PBE"}, ...}
   
       # or .yaml
       kind_section:
         H:
-          BASIS_SET: DZVP-MOLOPT-SR-GTH
+          BASIS_SET: TZV2P-GTH
           POTENTIAL: GTH-PBE
         O:
-          BASIS_SET: DZVP-MOLOPT-SR-GTH
+          BASIS_SET: TZV2P-GTH
           POTENTIAL: GTH-PBE
         ...
       ```
       
     - ```python
       # .json
-      "kind_section": [{"_": "H", "BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}, {"_": "O", "BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}, ...]
+      "kind_section": [{"_": "H", "BASIS_SET": "TZV2P-GTH", "POTENTIAL": "GTH-PBE"}, {"_": "O", "BASIS_SET": "TZV2P-GTH", "POTENTIAL": "GTH-PBE"}, ...]
       
       # or .yaml
       kind_section:
         - _: H
-          BASIS_SET: DZVP-MOLOPT-SR-GTH
+          BASIS_SET: TZV2P-GTH
           POTENTIAL: GTH-PBE
         - _: O
-          BASIS_SET: DZVP-MOLOPT-SR-GTH
+          BASIS_SET: TZV2P-GTH
           POTENTIAL: GTH-PBE
         ...
       ```
@@ -123,19 +130,126 @@ metadata:
       kind_section: <<YOUR_KIND_SECTION_FILE>>  # .json or .yaml
       ```
   
-  - machine: 选择配置好的服务器 (目前仅支持 `cp2k@aiida_test`) 以及配置资源的使用情况
+  - **machine**: 选择配置好的服务器 (目前仅支持 `cp2k@aiida_test`) 以及配置资源的使用情况
+  
+    ```json
+    // example
+    {
+        "code@computer": "cp2k@aiida_test",
+        "nnode": 2,
+        "queue": "medium"
+    }
+    ```
+  
+    - code@computer: 配置好的 aiida 服务器 (目前仅支持 `cp2k@aiida_test`)
+    - nnode/nprocs/n (选填其中之一): 使用服务器节点数/使用服务器核数/使用服务器核数
+    - walltime/max_wallclock_seconds/w (选填其中之一): 强制终止计算时间，单位 s
+    - queue/queue_name/q (选填其中之一): 服务器队列名
+    - ptile: 每节点至少需使用的核数，默认值为每节点的核数
   
   - ...: some parameters for special workflow
+  
+- **subdata** (选填): 
 
-### 可选用的 workflow
+  > 用于修改多步工作流中，每步工作流的 `config`, `kind_section`, `machine`, 其设置会覆盖掉 `metada` 中的相关设置。
+  >
+  > e.g. `NebWorkChain` 由三部分组成: `geoopt`, `neb`, `frequency`. 若输入如下: 
+  >
+  > ```yaml
+  > workflow: NebWorkChain
+  > webhook: https://oapi.dingtalk.com/robot/send?access_token=xxx  # your own webhook
+  > resdir: results_yaml
+  > structure:
+  >   - ethane_1_opt.xyz
+  >   - ethane_s1.xyz
+  >   - ethane_ts.xyz
+  >   - ethane_s2.xyz
+  > cell:
+  >   - [12, 0, 0]
+  >   - [0, 12, 0]
+  >   - [0, 0, 12]
+  > metadata:
+  >   kind_section:
+  >     BASIS_SET: DZVP-MOLOPT-SR-GTH
+  >     POTENTIAL: GTH-PBE
+  > subdata:
+  >   geoopt:
+  >     kind_section:
+  >       BASIS_SET: TZV2P-MOLOPT-GTH
+  >       POTENTIAL: GTH-PBE
+  > ```
+  >
+  > 则 `geoopt` 部分的 `kind_section` 会被更新为 `{"BASIS_SET": "TZV2P-MOLOPT-GTH", "POTENTIAL": "GTH-PBE"}` ，而 `neb` 与 `frequency` 部分的 `kind_section` 则与 `metadata` 中的保持一致。
+
+  - <<sub_workflow_1>>: 
+    - config: 见 `metadata`
+    - kind_section: 见 `metadata`
+    - machine: 见 `metadata`
+  - <<sub_workflow_2>>: 
+    - config
+    - kind_section
+    - machine
+  - ...
+
+## 可选用的 workflow
 
 输出的基本信息在 `results.dat` 中，以下 workflow 中仅说明除了 `results.dat` 外的输出文件
 
-- EnergySingleWorkChain: just single point energy
-- GeooptSingleWorkChain: just geomertry optimization
-- NebSingleWorkChain: just CI-NEB
-- FrequencySingleWorkChain: just vabrational analysis
-- NebWorkChain: Goopt for initial and final state --> NEB --> Vabrational analysis
+### EnergySingleWorkChain
+
+> Just single point energy
+
+- 输入默认值:
+  - config: [energy.json](https://github.com/chenggroup/ecint/blob/develop/ecint/workflow/units/energy.json)
+  - kind_section: `{"BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}`
+  - machine: `{"code@computer": "cp2k@aiida_test", "nnode": 1, "walltime": 12 * 60 * 60, "queue": "medium"}`
+- 其他输出: 无，能量信息输出在 `results.dat` 中
+
+### GeooptSingleWorkChain
+
+> Just geomertry optimization
+
+- 输入默认值:
+  - config: [geoopt.json](https://github.com/chenggroup/ecint/blob/develop/ecint/workflow/units/geoopt.json)
+  - kind_section: `{"BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}`
+  - machine: `{"code@computer": "cp2k@aiida_test", "nnode": 1, "walltime": 12 * 60 * 60, "queue": "medium"}`
+- 其他输出: 
+  - 结构优化完后的结构: `structure_geoopt.xyz`
+
+### NebSingleWorkChain
+
+> Just CI-NEB
+
+- 输入默认值:
+  - config: [neb.json](https://github.com/chenggroup/ecint/blob/develop/ecint/workflow/units/neb.json)
+  - kind_section: `{"BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}`
+  - machine: `{"code@computer": "cp2k@aiida_test", "nnode": number_of_replica, "queue": "large"}`
+- 其他输出:
+  - 包含始终态及中间态的 trajectory: `images_traj.xyz`
+  - 势能曲线: `potential_energy_curve.png`
+  - 过渡态结构: `transition_state.xyz`
+
+### FrequencySingleWorkChain
+
+> Just vabrational analysis
+
+- 输入默认值:
+  - config: [frequency.json](https://github.com/chenggroup/ecint/blob/develop/ecint/workflow/units/frequency.json)
+  - kind_section: `{"BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}`
+  - machine: `{"code@computer": "cp2k@aiida_test", "nnode": 4, "queue": "large"}`
+- 其他输出:
+  - 振动频率的值: `frequency.txt`
+
+### NebWorkChain
+
+> Goopt for initial and final state --> NEB --> Vabrational analysis
+
+- 输入默认值:
+  - geoopt: {default value in GeooptSingleWorkChain}
+  - neb: {default value in NebSingleWorkChain}
+  - frequency: {default value in FrequencySingleWorkChain}
+- 其他输出:
+  - all outputs of GeooptSingleWorkChain, NebSingleWorkChain and FrequencySingleWorkChain
 
 ### 运行命令
 
