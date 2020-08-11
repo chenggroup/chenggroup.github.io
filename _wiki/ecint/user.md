@@ -20,6 +20,8 @@ author: 熊景放
 ssh -p 8099 chenglab@10.24.3.144
 ```
 
+> 建议在用工作流时，先在 `~/users` 下建立一个以自己名字命名的工作目录，`users/public.data` 为 51/52 的 `/public.data`
+
 ## 输入文件
 
 在想要运行工作流的工作路径下准备一个 `.json` 输入文件，示例如下 (要用 `"`，而不是 `'`): 
@@ -62,13 +64,13 @@ metadata:
 
 ### 各关键词解释
 
-- **workflow** (必填): workflow 的名字
+- **workflow** (必填): workflow 的名字，具体可选的请见[可选用的 workflow](#可选用的-workflow) 部分
 
 - **webhook** (选填): 钉钉机器人 [webhook](https://chenggroup.github.io/wiki/notification_for_hpc#申请钉钉机器人)，当工作流完成时想要即时收到钉钉提醒时可设置，否则可不用
 
 - **resdir** (选填, default: 当前所在路径): 结果文件的储存路径
 
-- **structure/structures_folder** (必填其中之一): 仅输入一个结构时，structure 为结构文件的路径，对于 neb 这种需要多个输入结构的，structure 为结构文件路径的列表。如果批量进行计算，则把批量的结构所在文件夹加入 structures_folder (暂不支持 neb)
+- **structure/structures_folder** (必填其中之一): 仅输入一个结构时，structure 为结构文件的路径 (非列表)，对于 neb 这种需要多个输入结构的，structure 为结构文件路径的列表。如果批量进行计算，则把批量的结构所在文件夹加入 structures_folder (暂不支持 neb)
 
 - **cell** (选填): 设置了 cell 后会改变那些结构中不包含 cell 信息的 cell。如果用的是 .xyz 格式，一般需要设置 cell (因为 .xyz 一般不包含 cell 的信息)，.cif or POSCAR(.vasp) 则不需要设置。cell 的格式与 ase 中的 cell 格式保持一致，如 [12, 12, 12] 或 [[12, 0, 0], [0, 12, 0], [0, 0, 12]] 或 [12, 12, 12, 90, 90, 90]
 
@@ -76,11 +78,11 @@ metadata:
 
   > 以下参数可不填，对于不同的 workflow 均有不同的[默认值](#可选用的-workflow)
 
-  - config: 可以为 dict, .json, .yaml，表示 cp2k 输入参数的基本设置，以 dict 的形式来表示 cp2k 输入，无特殊需求可不更改
+  - config: 可以为 dict, .json, .yaml，表示 cp2k 输入参数的基本设置，以 dict 的形式来表示 cp2k 输入，一些细致的设置，如计算精度，可在此处修改，也可[通过 cp2k 输入文件进行转化](#CP2K-input-转-config)。无特殊需求可不更改。config 的示例如下: 
 
   - kind_section: 配置 BASIS_SET 和 POTENTIAL 的基本信息，可以有四种输入形式
   
-    > 若设置了 kind_section 的话，需同时设置 `BASIS_SET` 与 `POTENTIAL`
+    > 若设置了 kind_section 的话，需同时设置 `BASIS_SET` 与 `POTENTIAL`。如果按元素来指定了 `BASIS_SET` 或 `POTENTIAL` 的话，需要指定所有元素的设置。设置比较复杂的话推荐以文件的方式 (下面的第四种方法) 来引用 `kind_section`
 
     - ```python
       # .json
@@ -123,6 +125,16 @@ metadata:
       ```
   
     - ```python
+      # <<YOUR_KIND_SECTION_FILE>> example
+      kind_section:
+        H:
+          BASIS_SET: TZV2P-GTH
+          POTENTIAL: GTH-PBE
+        O:
+          BASIS_SET: TZV2P-GTH
+          POTENTIAL: GTH-PBE
+        ...
+      
       # .json
       "kind_section": "<<YOUR_KIND_SECTION_FILE>>"  # YOUR_KIND_SECTION_FILE can be .json or .yaml
       
@@ -203,7 +215,8 @@ metadata:
   - config: [energy.json](https://github.com/chenggroup/ecint/blob/develop/ecint/workflow/units/energy.json)
   - kind_section: `{"BASIS_SET": "DZVP-MOLOPT-SR-GTH", "POTENTIAL": "GTH-PBE"}`
   - machine: `{"code@computer": "cp2k@aiida_test", "nnode": 1, "walltime": 12 * 60 * 60, "queue": "medium"}`
-- 其他输出: 无，能量信息输出在 `results.dat` 中
+- 其他输出: 
+  - 包含能量信息的结构: `coords.xyz`
 
 ### GeooptSingleWorkChain
 
@@ -251,7 +264,25 @@ metadata:
 - 其他输出:
   - all outputs of GeooptSingleWorkChain, NebSingleWorkChain and FrequencySingleWorkChain
 
-### 运行命令
+## CP2K input 转 config
+
+使用工具 `inp2config` 可将 cp2k 输入文件转成 `config` 所需的形式, `<<CP2K_INP>>` 为 cp2k 输入文件路径 `<<CONFIG>>` 为输出的 `config` 文件路径，后缀为 `.json`/`.yaml`:
+
+```bash
+inp2config <<CP2K_INP>> <<CONFIG>>
+# e.g.
+inp2config input.inp config.yaml
+```
+
+要根据 cp2k 输入文件一并生成 `kind_section` 的输入设置, `<<KIND_SECTION>>` 为输出的 `kind_section` 路径，后缀为 `.json/.yaml`:
+
+```bash
+inp2config <<CP2K_INP>> <<CONFIG>> -k <<KIND_SECTIOn>>
+# e.g.
+inp2config input.inp config.yaml -k kind_section.yaml
+```
+
+## 提交任务
 
 运行以下命令即可提交工作流，`<<YOUR_INPUT_FILE>>` 为 `.json` 或 `.yaml` 输入文件的路径，缺省值为当前路径下的 `ecint.json`
 
@@ -259,6 +290,37 @@ metadata:
 ecrun <<YOUR_INPUT_FILE>>
 ```
 
+## 推送
+
+计算完成的截图如下: 
+
+<img src="https://i.loli.net/2020/08/04/9WA7ebPaCGoSy62.png" alt="image-20200804224518088"  />
+
+计算出错的截图如下:
+
+<img src="https://i.loli.net/2020/08/05/bd1FeLXTjq6vMhx.png" alt="image-20200805150759298" style="zoom: 64%;" />
+
 ## 常见错误
 
-待补充...
+### 读取结构文件错误
+
+```bash
+  File "xxx/lib/python3.7/site-packages/ase/io/formats.py", line 599, in read
+    io = ioformats[format]
+KeyError: 'coord'
+```
+
+错误原因: 无法识别扩展名
+
+解决方案: 注意扩展名，使用正确的扩展名，如 `.xyz`, `.cif`, POSCAR 可用 `POSCAR` 与 `.vasp`
+
+### 读取 xyz 错误
+
+```bash
+ase.io.extxyz.XYZError: ase.io.extxyz: Expected xyz header but got: invalid literal for int() with base 10: ...
+```
+
+错误原因: xyz 文件格式错误，xyz 文件第一行是所有原子个数，第二行是注释行(可空着)，第三行开始才是坐标
+
+解决方案: 如果第一行开始就是坐标的话，需要在前面加上原子个数 (如 180) 的行以及一个空行
+
