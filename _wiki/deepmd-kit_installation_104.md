@@ -30,10 +30,10 @@ conda activate deepmd
 下载并编译nccl：
 
 ```
-cd /some/nccl_install_path
+cd /some/nccl_download_path
 git clone https://github.com/NVIDIA/nccl.git -b v2.4.8-1
 cd nccl
-make -j src.build --prefix="/some/local/path" NVCC_GENCODE="-gencode=arch=compute_70,code=sm_70"
+make -j src.build --prefix="/some/nccl_install_path" NVCC_GENCODE="-gencode=arch=compute_70,code=sm_70"
 ```
 
 由于国重GPU节点不能直接联网，故使用登陆节点进行编译效率较高，但由于缺少必要的依赖`libcuda.so`和`libcuda.so.1`（包含在GPU驱动中，登陆节点未安装），故采用stubs所带的库编译，并手动加入环境变量。
@@ -99,7 +99,7 @@ Do you wish to build TensorFlow with TensorRT support? [y/N]: N
 
 Please specify the NCCL version you want to use. If NCCL 2.2 is not installed, then you can use version 1.3 that can be fetched automatically but it may have worse performance with multiple GPUs. [Default is 2.2]: 2.4.8
 
-Please specify the location where NCCL 2 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]:/some/nccl_install_path/nccl
+Please specify the location where NCCL 2 library is installed. Refer to README.md for more details. [Default is /usr/local/cuda]:/some/nccl_install_path
 
 Please note that each additional compute capability significantly increases your build time and binary size. [Default is: 3.5,7.0] 6.1
 
