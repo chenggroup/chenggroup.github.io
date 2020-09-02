@@ -52,7 +52,7 @@ ln -s /share/cuda/10.0/lib64/stubs/libcuda.so /some/local/path/libcuda.so.1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/cuda/10.0/lib64/stubs:/some/local/path
 ```
 
-{% include tip.html type="tip" title="提示" content="若在51服务器上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量。" %}
+{% include alert.html type="tip" title="提示" content="若在51服务器上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量。" %}
 
 ## 安装Tensorflow的C++ 接口
 
@@ -156,9 +156,9 @@ Configuration finished
 bazel build -c opt --verbose_failures //tensorflow:libtensorflow_cc.so
 ```
 
-{% include info.html type="info" title="说明" content="安装高版本Tensorflow（如2.1.0）时，若提示没有<code>git -c</code>的命令，请升级git到最新版。用户可能需要在本地进行编译并加入环境变量。" %}
+{% include alert.html type="info" title="说明" content="安装高版本Tensorflow（如2.1.0）时，若提示没有<code>git -c</code>的命令，请升级git到最新版。用户可能需要在本地进行编译并加入环境变量。" %}
 
-{% include tip.html type="tip" title="提示" content="一般情况下，bazel默认在<code>~/.cache/bazel</code>下进行编译。由于编译所需硬盘空间较大，如有需要，请在运行bazel前采用环境变量指定编译用临时文件夹，以<code>/data/user/.bazel</code>为例。</br><pre><code>export TEST_TMPDIR=/data/user/.bazel</code></pre>" %}
+{% include alert.html type="tip" title="提示" content="一般情况下，bazel默认在<code>~/.cache/bazel</code>下进行编译。由于编译所需硬盘空间较大，如有需要，请在运行bazel前采用环境变量指定编译用临时文件夹，以<code>/data/user/.bazel</code>为例。</br><pre><code>export TEST_TMPDIR=/data/user/.bazel</code></pre>" %}
 
 ### 整合运行库与头文件
 
