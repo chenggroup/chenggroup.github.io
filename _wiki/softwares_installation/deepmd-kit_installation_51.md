@@ -221,8 +221,7 @@ git clone --recursive https://github.com/deepmodeling/deepmd-kit.git deepmd-kit
 如果不慎漏了<code>--recursive</code>， 可以采取以下的补救方法，效果与直接 clone 一样：
 <pre><code>cd deepmd-kit/source/op/cuda/
 git clone https://github.com/NVlabs/cub.git
-<pre></code>
-" %}
+<pre></code>" %}
 
 随后通过pip安装DeePMD-kit：
 
