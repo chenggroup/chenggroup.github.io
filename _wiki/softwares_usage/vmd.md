@@ -87,3 +87,6 @@ defaults write org.macosforge.xquartz.X11 enable_iglx -bool true
 ```
 
 即可解决问题
+
+Ref: https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/28494.html
+
