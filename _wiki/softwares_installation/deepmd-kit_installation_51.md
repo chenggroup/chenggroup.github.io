@@ -1,6 +1,8 @@
 ---
 title: DeePMD-kit新版安装教程
-authors: Jiaxin Zhu, Yunpei Liu
+authors:
+  - Jiaxin Zhu
+  - Yunpei Liu
 ---
 
 # DeepMD-kit安装实战2.0
@@ -33,7 +35,7 @@ authors: Jiaxin Zhu, Yunpei Liu
 
 检查可用的模块，并加载必要的模块：
 
-```
+```shell
 module avail
 module add cuda/10.0
 module add gcc/4.9.4
@@ -47,7 +49,7 @@ module add gcc/4.9.4
 
 由于GPU节点不能联网，故我们需要将所需的驱动程序库`libcuda.so`和`libcuda.so.1`手动链接到某个路径`/some/local/path`并加入环境变量。
 
-```
+```shell
 ln -s /share/cuda/10.0/lib64/stubs/libcuda.so /some/local/path/libcuda.so.1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/cuda/10.0/lib64/stubs:/some/local/path
 ```
@@ -152,20 +154,20 @@ Configuration finished
 
 随后进行编译，由于时间较长，可以考虑使用screen或者tmux将进程放置在后台。
 
-```
+```shell
 bazel build -c opt --verbose_failures //tensorflow:libtensorflow_cc.so
 ```
 
 {% include alert.html type="info" title="说明" content="安装高版本Tensorflow（如2.1.0）时，若提示没有<code>git -c</code>的命令，请升级git到最新版。用户可能需要在本地进行编译并加入环境变量。" %}
 
-{% include alert.html type="tip" title="提示" content="一般情况下，bazel默认在<code>~/.cache/bazel</code>下进行编译。由于编译所需硬盘空间较大，如有需要，请在运行bazel前采用环境变量指定编译用临时文件夹，以<code>/data/user/.bazel</code>为例。</br><pre><code>export TEST_TMPDIR=/data/user/.bazel</code></pre>" %}
+{% include alert.html type="tip" title="提示" content="一般情况下，bazel默认在<code>~/.cache/bazel</code>下进行编译。由于编译所需硬盘空间较大，如有需要，请在运行bazel前采用环境变量指定编译用临时文件夹，以<code>/data/user/.bazel</code>为例：</br><pre><code>export TEST_TMPDIR=/data/user/.bazel</code></pre>" %}
 
 ### 整合运行库与头文件
 
 假设Tensorflow C++ 接口安装在`/some/workspace/tensorflow_root`下，则定义环境变量：
 
 ```
-export tensorflow_root=`/some/workspace/tensorflow_root`
+export tensorflow_root='/some/workspace/tensorflow_root'
 ```
 
 创建上述文件夹并从编译结果中抽取运行库和头文件。
@@ -215,11 +217,14 @@ git clone --recursive https://github.com/deepmodeling/deepmd-kit.git deepmd-kit
 
 在运行git clone时记得要`--recursive`，这样才可以将全部文件正确下载下来，否则在编译过程中会报错。
 
-> 如果不慎漏了`--recursive`， 可以采取以下的补救方法，效果与直接 clone 一样。
-> ```bash
-> cd deepmd-kit/source/op/cuda/
-> git clone https://github.com/NVlabs/cub.git
-> ```
+{% include alert.html type="tip" title="提示" content="
+如果不慎漏了<code>--recursive</code>， 可以采取以下的补救方法，效果与直接 clone 一样。
+
+<pre><code>cd deepmd-kit/source/op/cuda/
+git clone https://github.com/NVlabs/cub.git
+</code></pre>
+
+" %}
 
 随后通过pip安装DeePMD-kit：
 
@@ -254,7 +259,7 @@ export CXX=`which g++`
 
 在build目录下运行：
 
-```
+```shell
 cmake -DTENSORFLOW_ROOT=$tensorflow_root -DCMAKE_INSTALL_PREFIX=$deepmd_root ..
 ```
 
@@ -262,7 +267,7 @@ cmake -DTENSORFLOW_ROOT=$tensorflow_root -DCMAKE_INSTALL_PREFIX=$deepmd_root ..
 
 最后编译并安装：
 
-```
+```shell
 make
 make install
 ```
@@ -309,7 +314,7 @@ make yes-kspace
 
 如果没有`make yes-kspace` 会因缺少`pppm.h`报错。
 
-编译软件：
+导入MPI模块，随后调用进行编译：
 
 ```bash
 module load intel/17u5 mpi/intel/17u5
@@ -318,5 +323,5 @@ make mpi -j4
 
 {% include alert.html type="warning" title="注意" content="此处使用的GCC版本应与之前编译Tensorflow C++接口和DeePMD-kit C++接口一致，否则可能会报错<code>@GLIBCXX_3.4.XX</code>。" %}
 
-
+编译得到的`lmp_mpi`即为包含了DeePMD-kit C++接口的Lammps可执行程序，可利用训练得到的势函数进行MD模拟等应用。
 
