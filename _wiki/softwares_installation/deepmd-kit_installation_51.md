@@ -70,7 +70,7 @@ chmod +x bazel-0.24.0-installer-linux-x86_64.sh
 export PATH="$HOME/bin:$PATH"
 ```
 
-{% include alert.html type="warning" title="注意" content="注意bazel的兼容性问题，合理的bazel版本设置请参阅<a href="https://www.tensorflow.org/install/source#tested_build_configurations">Tensorflow官方文档中的说明</a>。" %}
+{% include alert.html type="warning" title="注意" content="注意bazel的兼容性问题，合理的bazel版本设置请参阅<a href='https://www.tensorflow.org/install/source#tested_build_configurations'>Tensorflow官方文档中的说明</a>。" %}
 
 ### 下载TensorFlow源代码
 
@@ -160,7 +160,7 @@ bazel build -c opt --verbose_failures //tensorflow:libtensorflow_cc.so
 
 {% include alert.html type="info" title="说明" content="安装高版本Tensorflow（如2.1.0）时，若提示没有<code>git -c</code>的命令，请升级git到最新版。用户可能需要在本地进行编译并加入环境变量。" %}
 
-{% include alert.html type="tip" title="提示" content="一般情况下，bazel默认在<code>~/.cache/bazel</code>下进行编译。由于编译所需硬盘空间较大，如有需要，请在运行bazel前采用环境变量指定编译用临时文件夹，以<code>/data/user/.bazel</code>为例：<code>export TEST_TMPDIR=/data/user/.bazel</code>" %}
+{% include alert.html type="tip" title="提示" content="一般情况下，bazel默认在<code>~/.cache/bazel</code>下进行编译。由于编译所需硬盘空间较大，如有需要，请在运行bazel前采用环境变量指定编译用临时文件夹，以<code>/data/user/.bazel</code>为例：<pre><code>export TEST_TMPDIR=/data/user/.bazel</code></pre>" %}
 
 ### 整合运行库与头文件
 
