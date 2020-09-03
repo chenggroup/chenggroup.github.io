@@ -68,7 +68,7 @@ chmod +x bazel-0.24.0-installer-linux-x86_64.sh
 export PATH="$HOME/bin:$PATH"
 ```
 
-{% include alert.html type="warning" title="注意" content="注意bazel的兼容性问题，合理的bazel版本设置请参阅<a href="https://www.tensorflow.org/install/source#tested_build_configurations">Tensorflow官方文档中的说明</a>。" %}
+{% include alert.html type="warning" title="注意" content="注意bazel的兼容性问题，合理的bazel版本设置请参阅<a href='https://www.tensorflow.org/install/source#tested_build_configurations'>Tensorflow官方文档中的说明</a>。" %}
 
 ### 下载TensorFlow源代码
 
