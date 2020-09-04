@@ -1,8 +1,9 @@
 ---
-title: DeePMD-kit新版安装教程
+title: DeePMD-kit安装教程2.0
 authors: 
   - Jiaxin Zhu
   - Yunpei Liu
+priority: 2.4
 ---
 
 # DeepMD-kit安装实战2.0

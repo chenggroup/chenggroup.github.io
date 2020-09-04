@@ -1,7 +1,7 @@
 ---
 title: DeePMD-kit 使用入门
 authors: 庄永斌
-
+priority: 2.2
 ---
 
 # DeePMD-kit 使用入门

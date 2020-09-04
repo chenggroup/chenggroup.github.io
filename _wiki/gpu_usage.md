@@ -1,5 +1,6 @@
 ---
 title: 使用集群上的 gpu
+priority: 2.1
 ---
 
 # 使用集群上的 gpu

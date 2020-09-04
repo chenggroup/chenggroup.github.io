@@ -1,6 +1,7 @@
 ---
 title: SSH 使用入门
 authors: 庄永斌
+priority: 1.3
 ---
 
 # SSH 使用入门

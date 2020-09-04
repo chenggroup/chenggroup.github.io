@@ -1,9 +1,12 @@
 ---
-title: 国重DeePMD-kit安装教程
+title: DeePMD-kit安装教程1.0
 authors: Yunpei Liu
+priority: 2.9
 ---
 
-# 国重DeePMD-kit安装实战全记录
+# DeepMD-kit安装实战2.0
+
+> 本部分写于2019年11月，基于国重账号环境进行安装，适用于Tensorflow版本低于1.13的情形。目前针对更高版本已经有[新版教程]({{ site.baseurl }}/wiki/softwares_installation/deepmd-kit_installation_51)，请移步。
 
 ## 准备工作
 

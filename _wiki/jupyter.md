@@ -1,6 +1,7 @@
 ---
 Title: Jupyter Software Guide
 Authors: Yongbin Zhuang 
+priority: 1.2
 ---
 
 
