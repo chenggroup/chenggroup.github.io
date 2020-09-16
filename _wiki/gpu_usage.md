@@ -173,6 +173,8 @@ Slurm 与 LSF 命令对照表如下所示：
 
 ## dpgen提交gpu任务参数设置
 
+### LSF系统
+
 以训练步骤为例：
 
 ```json
@@ -209,3 +211,39 @@ Slurm 与 LSF 命令对照表如下所示：
   ......
 }
 ```
+
+### Slurm 系统
+
+以训练步骤为例：
+
+```json
+{
+  "train": [
+    {
+      "machine": {
+        "machine_type": "slurm",
+        "hostname": "210.34.15.205",
+        "port": 22,
+        "username": "chenglab",
+        "work_path": "/home/chenglab/ypliu/dprun/train"
+      },
+      "resources": {
+        "numb_gpu": 1,
+        "numb_node": 1,
+        "task_per_node": 2,
+        "partition": "gpu",
+        "exclude_list": [],
+        "source_list": [],
+        "module_list": [
+            "deepmd/1.2"
+        ],
+        "time_limit": "96:0:0",
+        "sleep": 20
+      },
+      "python_path": "/share/apps/deepmd/1.2/bin/python3.6"
+    }
+  ],
+  ...
+}
+```
+
