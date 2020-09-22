@@ -3,9 +3,9 @@ title: 使用集群上的 gpu
 priority: 2.1
 ---
 
-# 使用集群上的 gpu
+# 使用集群上的 GPU
 
-## gpu队列概况
+## GPU 队列概况
 
 目前课题组GPU有两个IP地址：
 
@@ -14,9 +14,11 @@ priority: 2.1
 
 两个节点均可联系管理员开通使用权限。
 
-## 提交任务至 gpu
+## 提交任务至 GPU
 
 ### LSF 作业管理系统
+
+目前 LSF 系统在51服务器上使用。
 
 在GPU节点上，需要通过指定 `CUDA_VISIBLE_DEVICES` 来对任务进行管理。
 
@@ -34,7 +36,7 @@ priority: 2.1
 
 > lsf 提交脚本中需要包含 `export CUDA_VISIBLE_DEVICES=X` ，其中 `X` 数值需要根据具体节点的卡的使用情况确定。
 
-使用者可以用 `ssh <host> nvidia-smi` 登陆到对应节点（节点名为 `<host>`）检查gpu使用情况。
+使用者可以用 `ssh <host> nvidia-smi` 登陆到对应节点（节点名为 `<host>`）检查 GPU 使用情况。
 示例如下：
 
 ```bash
@@ -78,7 +80,7 @@ Thu Jan 16 10:05:48 2020
 |    5    205527      C   lmp                                          611MiB |
 +-----------------------------------------------------------------------------+
 ```
-表示目前该节点（ `g001` ）上5号卡正在被进程号为205527的进程 `lmp` 使用，占用显存为611 MB，gpu利用率为62%。
+表示目前该节点（ `g001` ）上5号卡正在被进程号为205527的进程 `lmp` 使用，占用显存为611 MB，GPU 利用率为62%。
 
 
 在 `210.34.15.205` 使用 deepmd 的提交脚本示例如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
@@ -101,9 +103,9 @@ dp train input.json > train.log
 
 #### 检测脚本
 
-目前205服务器上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
+目前51服务器上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
 
-可以使用检测脚本`/share/base/scripts/export_visible_devices`来确定 `$CUDA_VISIBLE_DEVICES` 的值，示例如下：
+可以使用检测脚本`/share/base/tools/export_visible_devices`来确定 `$CUDA_VISIBLE_DEVICES` 的值，示例如下：
 
 ```bash
 #!/bin/bash
@@ -121,15 +123,15 @@ source /share/base/scripts/export_visible_devices
 dp train input.json > train.log
 ```
 
-`/share/base/scripts/export_visible_devices` 可以使用flag `-t mem` 控制显存识别下限，即使用显存若不超过 `mem` 的数值，则认为该卡未被使用。根据实际使用情况和经验，默认100 MB以下视为空卡，即可以向该卡提交任务。
+`/share/base/tools/export_visible_devices` 可以使用flag `-t mem` 控制显存识别下限，即使用显存若不超过 `mem` 的数值，则认为该卡未被使用。根据实际使用情况和经验，默认100 MB以下视为空卡，即可以向该卡提交任务。
 
-也可以使用检测脚本`/share/base/scripts/avail_gpu.sh`来确定 `$CUDA_VISIBLE_DEVICES` 的值。`/share/base/scripts/avail_gpu.sh` 可以使用flag `-t util` 控制显卡利用率可用上限，即使用显卡利用率若超过 `util` 的数值，则认为该卡被使用。目前脚本默认显卡利用率低于5%视为空卡，即可以向该卡提交任务。
+也可以使用检测脚本`/share/base/tools/avail_gpu.sh`来确定 `$CUDA_VISIBLE_DEVICES` 的值。`/share/base/tools/avail_gpu.sh` 可以使用flag `-t util` 控制显卡利用率可用上限，即使用显卡利用率若超过 `util` 的数值，则认为该卡被使用。目前脚本默认显卡利用率低于5%视为空卡，即可以向该卡提交任务。
 
 ### Slurm 管理系统
 
-目前本系统在 205 节点的 `g001` 节点测试中。
+目前本系统在 205 服务器测试中。
 
-采用 Slurm 系统可以直接对 GPU 进行分配，因此不再需要上述的检测脚本。其提交脚本示例如下：
+采用 Slurm 系统可以直接对 GPU 进行分配，因此不再需要上述的检测脚本。由于 GPU 任务在执行过程中仍需要少量 CPU 资源，请大家在使用时按照一个 GPU 任务对应该节点上 2 个 CPU 核的方式提交。其提交脚本示例如下：
 
 ```bash
 #!/bin/bash -l
@@ -154,6 +156,12 @@ Slurm 与 LSF 命令对照表如下所示：
 | `bjobs`              | `squeue`             | 浏览当前用户提交的作业任务                   |
 | `bqueues`            | `sinfo`<br/>` sinfo -s` | 浏览当前节点和队列信息，'-s'命令表示简易输出 |
 | `bhosts` | `sinfo -N` |查看当前节点列表|
+| `bjobs -l 123` | `scontrol show job 123` |查看 123 号任务的详细信息。<br>若不指定任务号则输出当前所有任务信息|
+| `bqueues -l queue` | `scontrol show partition queue` |查看队列名为`queue`的队列的详细信息。<br>若不指定队列则返回当前所有可用队列的详细信息。|
+| `bhosts -l g001` | `scontrol show node g001` |查看节点名为 `g001`的节点状态。<br>若不指定节点则返回当前所有节点信息。|
+| `bpeek 123` | `speek 123` \* |查看 123 号任务的标准输出。|
+
+> \* `speek` 命令不是 Slurm 标准命令，仅适用 205 节点使用。
 
 作业提交脚本对照表：
 
@@ -162,7 +170,7 @@ Slurm 与 LSF 命令对照表如下所示：
 | `#BSUB`                   | `#SBATCH`                                | 前缀                                                         |
 | `-q queue_name`           | `-p queue_name` 或 `--partition=queue_name` | 指定队列名称                                                 |
 | `-n 64`                   | `-n 64`                                  | 指定使用64个核                                               |
-| ---- | `-N 1` |使用1个节点|
+| --- | `-N 1` |使用1个节点|
 | `-W [hh:mm:ss]`           | `-t [minutes]` 或 `-t [days-hh:mm:ss]`  | 指定最大使用时间                                    |
 | `-o file_name`           | `-o file_name`                           | 指定标准输出文件名                |
 | `-e file_name`            | `-e file_name`                           | 指定报错信息文件名                                  |
@@ -170,10 +178,13 @@ Slurm 与 LSF 命令对照表如下所示：
 | `-M 128`                  | `-mem-per-cpu=128M` 或 `--mem-per-cpu=1G` | 限制内存使用量                              |
 | `-R "span[ptile=16]"`     | `--tasks-per-node=16`                    | 指定每个核使用的节点数                                |
 
+通过 `scontrol` 命令可以方便地修改任务的队列、截止时间、排除节点等信息，使用方法类似于 LSF 系统的 `bmod` 命令，但使用上更加简洁。
 
-## dpgen提交gpu任务参数设置
+{% include alert.html type="tip" title="链接" content="更多使用教程和说明请参考：<a href='http://hmli.ustc.edu.cn/doc/userguide/slurm-userguide.pdf'>Slurm作业调度系统使用指南</a>" %}
 
-### LSF系统
+## dpgen 提交 GPU 任务参数设置
+
+### LSF 系统
 
 以训练步骤为例：
 
