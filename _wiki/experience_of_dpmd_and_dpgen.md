@@ -14,6 +14,7 @@ authors: 黄剑兴
 1. 形象化理解sel_a：一个原子越高概率出现，对应sela越大；sela对应以任意原子为center，能找到的该原子的最大数目
 2. neuron network和resnet大小一般不修改；同时训练多个势函数需要修改随机种子`seed`
 3. 用于实际使用的势函数需要well-train，需要“长训练”，常用设置为：
+
 ```python
 "learning_rate" - "decay_steps"：20000,
 "stop_batch": 400000, # 使用200000 步也大致没有问题。
@@ -37,6 +38,7 @@ authors: 黄剑兴
 ## DFT单点能计算经验
 - 一般对体系影响最大的是k点，需要测试不同的k点，k点数目和计算成本是对应的
 - vasp擅长小体系多k点并行；大体系少k点会显著较慢；可以使用kspacing控制，参照
+
 ```python
 from pymatgen import Structure
 from math import pi
@@ -53,6 +55,7 @@ kpoint_c = np.ceil( 2*pi/kspacing_range/c).astype('int')
 df = pd.DataFrame({'kspacing': kspacing, 'a': kpoint_a, 'b': kpoint_b, 'c': kpoint_c})
 print(df) # 查看不同kspacing 对应的K点数目
 ```
+
 - 主要的INCAR计算参数是
     - ENCUT（一般取600/650保证quality，对计算速度影响不明显）；
      - ISMEAR=0（ISMEAR=-5的 Bloch方法需要k不小于4个，有时候不能用，测试表明，二者能量/力误差在1e-3以下，ISMEAR=0计算成本更低）
@@ -60,6 +63,7 @@ print(df) # 查看不同kspacing 对应的K点数目
     - LASPH可以考虑加入，提高精度，极少量成本。
     - LWAVE，LCHARG关掉，减少计算时间和储存空间浪费。
 - 测试计算的思路应当是：先选一个最贵的，再提高精度，看是否收敛，之后以此为参照，降低不同参数。在保证了精度可靠的基础上，减少计算成本
+
 ```python
 from ase.io import read
 at = read('OUTCAR')
@@ -69,6 +73,7 @@ dEperAtom = dE/len(ref) # 要求小于1meV/atom
 dF = ref.get_forces() - at.get_forces()
 pritn(dF.max(), dF.min()) # 要求在5meV/A以下，尽可能在1meV/A 以下
 ```
+
 4. LREAL = auto，对于大体系，推荐是real（auto默认会设置），对于GPU，必须要real。由于求积分方法差异，在实空间计算会引入1·2meV/atom的系统误差。
 5. VASP输出的结构只要是电子步收敛的，都可以添加到训练集。需要注意添加了错误的结构（能量绝对值极大）会导致训练误差无法下降。
 6. 如果VASP计算只有单K点，使用vasp_gam，相对vasp_std可以节省1/6 - 1/3的时间。
@@ -77,10 +82,13 @@ pritn(dF.max(), dF.min()) # 要求在5meV/A以下，尽可能在1meV/A 以下
 随着模拟时间和模拟体系扩增，储存文件占用的空间非常巨大。在储存文件时候注意：
 1. 保留必要的输入和输出文件：包括初始结构(data.lmp)，计算设置(input.lammps)，计算输出(log)，轨迹(traj)
 2. 建议用如下方案压缩：
+
 ```shell
 zip -9r -y data.zip data/   # 使用最大压缩率；保留文件相对路径压缩
 ```
+
 也可以用npz压缩，相比zip直接压缩提高5%左右。
+
 ```cpython
 import numpy as np
 data = ...
