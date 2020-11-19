@@ -31,7 +31,7 @@ Now you can reference figures in the SI as
 
 Be cautious: You need to recompile both the paper and the SI after doing so.
 
-For overleaf users, please refer to [here](https://github.com/ChiahsinChu/chenggroup.github.io/tree/master/_wiki/softwares_usage).
+For overleaf users, please refer to [here](https://www.overleaf.com/learn/how-to/Cross_referencing_with_the_xr_package_in_Overleaf).
 
 **Thanks for the suggestion from Dr. Katharina Doblhoff-Dier in Leiden University.**
 
