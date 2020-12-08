@@ -13,6 +13,7 @@ DeePMD-kit是一个训练神经网络势能(Machine Learning Potential)的代码
 以下为参考信息:
 
 - [官网](http://www.deepmd.org)
+- [官方文档](https://deepmd.readthedocs.io/en/latest/index.html)
 - 安装方法:  [Installation Guide]({{ site.baseurl }}/wiki/softwares#deepmd-installation-guide)
 
 {% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者" %}
@@ -229,6 +230,7 @@ less lcurve.out
 
 - `"batch_size": 1`: 每个批次（batch）的大小，该数字代表结构数量。记住每一次迭代会放一个批次的结构进入训练。
 - `"numb_test": 10` : 每次迭代中，测试集的结构数量。注意测试集是随机从数据集里挑选的，如果有多个数据集或多个set，那么一般只会从最后一个目录里挑选。
+- 更多参数说明，请参考官方文档：[https://deepmd.readthedocs.io/en/latest/train-input.html](https://deepmd.readthedocs.io/en/latest/train-input.html)
 
 ### 开始你的训练
 
