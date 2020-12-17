@@ -182,6 +182,16 @@ Slurm 与 LSF 命令对照表如下所示：
 
 {% include alert.html type="tip" title="链接" content="更多使用教程和说明请参考：<a href='http://hmli.ustc.edu.cn/doc/userguide/slurm-userguide.pdf'>Slurm作业调度系统使用指南</a>" %}
 
+#### 任务优先级设置（QoS）
+
+由于任务本身的优先级需求，即日起在205上试点采用QoS对任务进行管理。默认情况下提交的任务Qos设置为normal，如果任务比较紧急，可以向管理员申请使用emergency优先级，采用此优先级的任务默认排在队列顶。
+
+使用方法如下，即在提交脚本中加入下行：
+
+```bash
+#SBATCH --qos emergency
+```
+
 ## dpgen 提交 GPU 任务参数设置
 
 ### LSF 系统
@@ -249,6 +259,40 @@ Slurm 与 LSF 命令对照表如下所示：
             "deepmd/1.2"
         ],
         "time_limit": "96:0:0",
+        "sleep": 20
+      },
+      "python_path": "/share/apps/deepmd/1.2/bin/python3.6"
+    }
+  ],
+  ...
+}
+```
+
+若提交任务使用QoS设置，则可以在`resources`中增加`qos`项目，示例如下：
+
+```json
+{
+  "train": [
+    {
+      "machine": {
+        "machine_type": "slurm",
+        "hostname": "210.34.15.205",
+        "port": 22,
+        "username": "chenglab",
+        "work_path": "/home/chenglab/ypliu/dprun/train"
+      },
+      "resources": {
+        "numb_gpu": 1,
+        "numb_node": 1,
+        "task_per_node": 2,
+        "partition": "gpu",
+        "exclude_list": [],
+        "source_list": [],
+        "module_list": [
+            "deepmd/1.2"
+        ],
+        "time_limit": "96:0:0",
+        "qos": "normal",
         "sleep": 20
       },
       "python_path": "/share/apps/deepmd/1.2/bin/python3.6"
