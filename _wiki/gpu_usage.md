@@ -1,5 +1,5 @@
 ---
-title: 使用集群上的 gpu
+title: 使用集群上的 GPU
 priority: 2.1
 ---
 
