@@ -113,7 +113,7 @@ cp2k轨迹文件/网格文件，如舍不得丢掉。可以采用[bqbtool](https
 # 压缩轨迹文件
 bqbtool compress postraj xxx.xyz xxx.bqb
 # 压缩cube文件, 可提前把cube文件按顺序cat到一个文件中。
-bqbtool compress postraj xxx.cube xxx.bqb
+bqbtool compress voltraj xxx.cube xxx.bqb
 ```
 
 ## 集群打包要点
