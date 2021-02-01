@@ -11,6 +11,23 @@ author: Yunpei Liu, Yongbin Zhuang
 
 本文将给出一些具体的攻略，供大家参考使用。
 
+## 一些常识
+
+Linux中文件储存上限与`储存空间`和`储存数目`有关系。因此我们不仅需要关注储存空间（文件）大小，还需要关注文件的数目。例如DP-GEN产生的大量碎片化文件和cp2k的potential mean force 产生的大量Lagrange Multiplier文件都会影响文件储存。
+
+以下命令可以查看自己的文件/目录大小
+
+```bash
+# 查看当前目录的大小
+du -sch .
+# 查看某文件的大小
+du -sch file_name
+# 查看该目录下所有文件/目录大小
+du -sch ./*
+```
+
+
+
 ## 文件打包与压缩
 
 ### tar命令
