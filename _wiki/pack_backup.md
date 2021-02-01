@@ -1,6 +1,6 @@
 ---
 title: 文件整理与备份攻略
-author: Yunpei Liu
+author: Yunpei Liu, Yongbin Zhuang
 ---
 
 # 文件整理与备份攻略
@@ -87,4 +87,47 @@ mkdir /tmp/empty
  ```bash
 rsync --delete -rlptD /tmp/empty/ /some/path
  ```
+
+
+
+## 常用软件的文件处理
+
+### cp2k
+
+cp2k在计算中会产生大(量)文件，以下文件可以删除。
+
+- 波函数文件（`.wfn`）：波函数文件储存DFT计算的轨道信息，常用于restart。但`.wfn`文件往往随着体系增大而迅速增大。如无必要（重要波函数），算完之后即可将其删除。
+- 网格文件（`.cube`）：这类文件储存着三维空间信息，例如：静电势、分子轨道。大小中等（10MB左右）。按普通AIMD长度（60000步），每50步输出一个会有1200个`.cube`文件。累积下来空间不容小觑。如分析完毕，即可删除，或用压缩工具压缩，或用专业的`bqbtool`压缩。
+- 轨迹文件（`.xyz`）: 分子动力学/结构优化输出的轨迹文件，包含普通轨迹文件，速度文件，力文件。普通AIMD长度输出的三个文件基本在1至2GB左右。如使用机器学习势函数会储存大量轨迹数据，常常会达到100GB左右。如分析完毕，即可删除，或用压缩工具压缩，或用专业的`bqbtool`压缩。
+- 态密度文件（`.pdos`）: 体系的态密度文件，大小偏小，约为1至2MB左右一个文件，但一个体系会输出多个文件，因此差不多在6至8MB，与网格文件类似，大量积累后会产生空间占用。如分析完毕，即可删除，或用压缩工具压缩。
+
+
+
+## 压缩工具: bqbtool
+
+cp2k轨迹文件/网格文件，如舍不得丢掉。可以采用[bqbtool](https://brehm-research.de/bqb.php)进行压缩。bqbtool专门针对此类型文件进行压缩开发的工具，压缩率达到10%。
+
+个人安装参考bqb手册，`51`和`52`服务器上已经安装，使用命令如下：
+
+```bash
+# 压缩轨迹文件
+bqbtool compress postraj xxx.xyz xxx.bqb
+# 压缩cube文件, 可提前把cube文件按顺序cat到一个文件中。
+bqbtool compress postraj xxx.cube xxx.bqb
+```
+
+## 集群打包要点
+
+本次`51`和`52`将进行迁移，文件的数目将会影响迁移速度。因此尽可能地把原本目录压缩成几个文件，可以提升迁移速度，例如:
+
+```bash
+-rw-rw-r-- 1 jyhu jyhu 668M Jan 15 17:58 1-CoO.tar.gz
+-rw-rw-r-- 1 jyhu jyhu 559M Jan 15 15:40 2-ZIS.tar.gz
+-rw-rw-r-- 1 jyhu jyhu 2.6G Jan 15 17:07 3-LiS@TiO2.tar.gz
+-rw-rw-r-- 1 jyhu jyhu 2.8G Jan 15 15:53 4-Graphene.tar.gz
+-rw-rw-r-- 1 jyhu jyhu 3.4M Jan 16 11:05 NEB.tar.gz
+-rw-rw-r-- 1 jyhu jyhu 324M Jan 16 11:07 pKa-jqli.tar.gz
+```
+
+打包方法可以采用`tar`压缩，参照[以上部分](#文件打包与压缩)
 
