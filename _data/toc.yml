@@ -1,0 +1,5 @@
+- title: "Tutorials"
+  url: "_wiki/tutorial"
+  children:
+    - title: Linux快速基础入门
+      url: "docs/tutorial#Linux快速基础入门"
