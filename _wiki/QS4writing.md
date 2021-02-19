@@ -1,9 +1,9 @@
 ---
 title: Quick Start for Paper Writing（科研写作急速上手）
-authors: Jia-Xin Zhu（朱嘉欣）
+authors: 朱嘉欣
 ---
 
-# Quick Start for Paper Writing
+# Quick Start for Writing
 
 
 
@@ -207,3 +207,12 @@ Because of the advent of advanced experimental (e.g., synchrotron-based techniqu
 
 ***最后，向我第一个项目的日常导师，荷兰莱顿大学的 Dr. Katharina Doblhoff-Dier 表示诚挚的感谢。***
 
+
+
+# 年度汇报标准
+
+研究生（博士和硕士）前两年每年应写一次汇报。汇报使用**LaTeX**撰写。模板选用revtex的AIP模板。以**英文**撰写
+
+硕士生第一年报告的词数应在4500左右，第二年报告应在6000左右。
+
+博士生第一年报告的词数应在6000左右，第二年报告应在7500左右。
