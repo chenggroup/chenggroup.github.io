@@ -13,6 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+encoding: utf-8
 
 title: XMU Chenggroup Wiki
 email: chengjun@xmu.edu.cn
@@ -43,7 +44,7 @@ logo_width: 34
 color: "#00a1d6"
 
 # Build settings
-markdown: kramdown
+# markdown: kramdown
 
 # If you add tags to pages, you can link them to some external search
 # If you want to disable this, comment the URL.
