@@ -7,10 +7,10 @@ priority: 2.1
 
 ## GPU 队列概况
 
-目前课题组GPU有两个IP地址：
+目前课题组GPU有两个集群：
 
-- `210.34.15.205`：包含4个节点（`mgt g001 g002 g003`），每个节点上有8张2080 Ti。`mgt` 作为计算节点的同时作为管理节点。
-- `121.192.191.51`：包含1个节点（`g001`），节点上有4张Tesla V100。登陆到51上可以使用。
+- 205：包含 4 个节点（`mgt g001 g002 g003`），每个节点上有 8 张 2080 Ti。`mgt` 作为计算节点的同时作为管理节点。
+- 191：包含 1 个节点（`g001`），节点上有 4 张 Tesla V100。登陆到 191 上可以使用。
 
 两个节点均可联系管理员开通使用权限。
 
@@ -18,14 +18,14 @@ priority: 2.1
 
 ### LSF 作业管理系统
 
-目前 LSF 系统在51服务器上使用。
+目前 LSF 系统在 191 服务器上使用。
 
 在GPU节点上，需要通过指定 `CUDA_VISIBLE_DEVICES` 来对任务进行管理。
 
 ```bash
 #!/bin/bash
 
-#BSUB -q large
+#BSUB -q gpu
 #BSUB -W 24:00
 #BSUB -J test
 #BSUB -o %J.stdout
@@ -40,50 +40,44 @@ priority: 2.1
 示例如下：
 
 ```bash
-$ ssh g001 nvidia-smi
-Thu Jan 16 10:05:48 2020
+$ ssh c51-g001 nvidia-smi
+Wed Mar 10 12:59:01 2021
 +-----------------------------------------------------------------------------+
-| NVIDIA-SMI 410.48                 Driver Version: 410.48                    |
+| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
 |-------------------------------+----------------------+----------------------+
 | GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
 | Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
 |===============================+======================+======================|
-|   0  GeForce RTX 208...  Off  | 00000000:1A:00.0 Off |                  N/A |
-| 16%   26C    P8    21W / 250W |     10MiB / 10989MiB |      0%      Default |
+|   0  Tesla V100-SXM2...  Off  | 00000000:61:00.0 Off |                    0 |
+| N/A   42C    P0    42W / 300W |      3MiB / 32510MiB |      0%      Default |
+|                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
-|   1  GeForce RTX 208...  Off  | 00000000:1B:00.0 Off |                  N/A |
-| 16%   27C    P8    21W / 250W |     10MiB / 10989MiB |      0%      Default |
+|   1  Tesla V100-SXM2...  Off  | 00000000:62:00.0 Off |                    0 |
+| N/A   43C    P0    44W / 300W |  31530MiB / 32510MiB |     62%      Default |
+|                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
-|   2  GeForce RTX 208...  Off  | 00000000:3D:00.0 Off |                  N/A |
-| 16%   24C    P8     2W / 250W |     10MiB / 10989MiB |      0%      Default |
+|   2  Tesla V100-SXM2...  Off  | 00000000:89:00.0 Off |                    0 |
+| N/A   43C    P0    45W / 300W |      3MiB / 32510MiB |      0%      Default |
+|                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
-|   3  GeForce RTX 208...  Off  | 00000000:3E:00.0 Off |                  N/A |
-| 16%   26C    P8     1W / 250W |     10MiB / 10989MiB |      0%      Default |
-+-------------------------------+----------------------+----------------------+
-|   4  GeForce RTX 208...  Off  | 00000000:88:00.0 Off |                  N/A |
-| 16%   23C    P8    16W / 250W |     10MiB / 10989MiB |      0%      Default |
-+-------------------------------+----------------------+----------------------+
-|   5  GeForce RTX 208...  Off  | 00000000:89:00.0 Off |                  N/A |
-| 33%   55C    P2   130W / 250W |    621MiB / 10989MiB |     62%      Default |
-+-------------------------------+----------------------+----------------------+
-|   6  GeForce RTX 208...  Off  | 00000000:B1:00.0 Off |                  N/A |
-| 16%   26C    P8    20W / 250W |     10MiB / 10989MiB |      0%      Default |
-+-------------------------------+----------------------+----------------------+
-|   7  GeForce RTX 208...  Off  | 00000000:B2:00.0 Off |                  N/A |
-| 17%   25C    P8    19W / 250W |     10MiB / 10989MiB |      0%      Default |
+|   3  Tesla V100-SXM2...  Off  | 00000000:8A:00.0 Off |                    0 |
+| N/A   43C    P0    47W / 300W |      3MiB / 32510MiB |      0%      Default |
+|                               |                      |                  N/A |
 +-------------------------------+----------------------+----------------------+
 
 +-----------------------------------------------------------------------------+
-| Processes:                                                       GPU Memory |
-|  GPU       PID   Type   Process name                             Usage      |
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
 |=============================================================================|
-|    5    205527      C   lmp                                          611MiB |
+|    1   N/A  N/A    127004      C   ...pps/deepmd/1.2/bin/python    31527MiB |
 +-----------------------------------------------------------------------------+
 ```
-表示目前该节点（ `g001` ）上5号卡正在被进程号为205527的进程 `lmp` 使用，占用显存为611 MB，GPU 利用率为62%。
+表示目前该节点（`c51-g001` ）上 1 号卡正在被进程号为 127004 的进程 `...pps/deepmd/1.2/bin/python` 使用，占用显存为 31527 MB，GPU 利用率为 62%。
 
 
-在 `210.34.15.205` 使用 deepmd 的提交脚本示例如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
+在 205 使用 deepmd 的提交脚本示例如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
 
 ```bash
 #!/bin/bash
@@ -103,14 +97,14 @@ dp train input.json > train.log
 
 #### 检测脚本
 
-目前51服务器上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
+目前 191 服务器上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
 
 可以使用检测脚本`/share/base/tools/export_visible_devices`来确定 `$CUDA_VISIBLE_DEVICES` 的值，示例如下：
 
 ```bash
 #!/bin/bash
 
-#BSUB -q large
+#BSUB -q gpu
 #BSUB -J train
 #BSUB -o %J.stdout
 #BSUB -e %J.stderr
@@ -204,7 +198,7 @@ Slurm 与 LSF 命令对照表如下所示：
     {
       "machine": {
         "machine_type": "lsf",
-        "hostname": "210.34.15.205",
+        "hostname": "xx.xxx.xxx.xxx",
         "port": 22,
         "username": "username",
         "password": "password",
@@ -243,7 +237,7 @@ Slurm 与 LSF 命令对照表如下所示：
     {
       "machine": {
         "machine_type": "slurm",
-        "hostname": "210.34.15.205",
+        "hostname": "xx.xxx.xxx.xxx",
         "port": 22,
         "username": "chenglab",
         "work_path": "/home/chenglab/ypliu/dprun/train"
@@ -276,7 +270,7 @@ Slurm 与 LSF 命令对照表如下所示：
     {
       "machine": {
         "machine_type": "slurm",
-        "hostname": "210.34.15.205",
+        "hostname": "xx.xxx.xxx.xxx",
         "port": 22,
         "username": "chenglab",
         "work_path": "/home/chenglab/ypliu/dprun/train"
