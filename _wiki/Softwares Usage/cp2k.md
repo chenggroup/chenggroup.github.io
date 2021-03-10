@@ -10,7 +10,7 @@ authors: Yongbin Zhuang
 
 - 设置CP2K环境变量
 - 书写CP2K的输入文件
-- 检查CP2K输入文件input.inp
+- 检查CP2K输入文件
 - 单点能计算
 - 结构优化
 - 分子动力学
@@ -19,7 +19,7 @@ authors: Yongbin Zhuang
 
 CP2K同时使用了平面波基组和高斯基组，因此可以在傅立叶空间里描述长程作用力和实空间里描述局域的波函数。使用CP2K进行分子动力学(MD)运算效率很高。CP2K使用了单k点的计算方式，又称为gamma approximation，因此在早期CP2K版本中没有K点的设置。近年仅在单点能中加入了k点的计算。
 
-## 设置环境变量
+## 设置CP2K环境变量
 
 ### 哪里获取Basis和PseudoPotential文件
 
@@ -115,4 +115,26 @@ cp2k.popt -c input.inp
 ```
 
 {% include alert.html type="warning" content="CP2K.popt -c 仅检查是否有语法错误，实际运行的错误不会检查出来" %}
+
+
+
+## 单点能计算
+
+参见官网的例子: [CP2K能量和力的计算](https://www.cp2k.org/howto:static_calculation)
+
+参见官网的例子: [CP2K中CUTOFF和REL_CUTOFF的测试](https://www.cp2k.org/howto:converging_cutoff)
+
+## 结构优化
+
+建设中
+
+
+
+## 分子动力学
+
+建设中
+
+## CP2K的一些常用工具
+
+[CP2K Vim input 插件](https://www.cp2k.org/tools:vim)
 
