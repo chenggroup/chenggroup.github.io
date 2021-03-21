@@ -85,7 +85,7 @@ DP-GEN的工作流是由以下三步组成的循环：
         195.08
     ], 
     "_comment": " atoms in your systems ",
-    "init_data_prefix": "/data/jxzhu/edl/pzc/hydroxide/ml_potential/pt-oh", 
+    "init_data_prefix": "/data/kmr/edl/pzc/hydroxide/ml_potential/pt-oh", 
     "init_data_sys": [
         "init/system-000","init/system-001"
     ], 
@@ -94,8 +94,8 @@ DP-GEN的工作流是由以下三步组成的循环：
         1,1
     ], 
     "sys_configs": [
-        ["/data/jxzhu/edl/pzc/hydroxide/ml_potential/pt-oh/init/configs/POSCAR_0[0-9]"],
-        ["/data/jxzhu/edl/pzc/hydroxide/ml_potential/pt-oh/init/configs/POSCAR_1[0-9]"]
+        ["/data/kmr/edl/pzc/hydroxide/ml_potential/pt-oh/init/configs/POSCAR_0[0-9]"],
+        ["/data/kmr/edl/pzc/hydroxide/ml_potential/pt-oh/init/configs/POSCAR_1[0-9]"]
     ], 
     "_comment": " path of initial structure for sampling ",
     "sys_batch_size": [
@@ -222,8 +222,8 @@ DP-GEN的工作流是由以下三步组成的循环：
     "fp_params": {
         "FORCE_EVAL":{
             "DFT":{
-                "BASIS_SET_FILE_NAME": "/data/jxzhu/BASIC_SET/BASIS_MOLOPT",
-                "POTENTIAL_FILE_NAME": "/data/jxzhu/BASIC_SET/GTH_POTENTIALS",
+                "BASIS_SET_FILE_NAME": "/data/kmr/BASIC_SET/BASIS_MOLOPT",
+                "POTENTIAL_FILE_NAME": "/data/kmr/BASIC_SET/GTH_POTENTIALS",
                 "MGRID":{
                     "CUTOFF": 400
                 },
@@ -260,7 +260,7 @@ DP-GEN的工作流是由以下三步组成的循环：
                                 "DISPERSION_FUNCTIONAL": "PAIR_POTENTIAL",
                                 "PAIR_POTENTIAL":{
                                         "TYPE": "DFTD3",
-                                        "PARAMETER_FILE_NAME": "/data/jxzhu/BASIC_SET/dftd3.dat",
+                                        "PARAMETER_FILE_NAME": "/data/kmr/BASIC_SET/dftd3.dat",
                                         "REFERENCE_FUNCTIONAL": "PBE"
                                 }
                         }
@@ -297,10 +297,10 @@ DP-GEN的工作流是由以下三步组成的循环：
     {
       "machine": {
         "machine_type": "lsf",
-        "hostname": "210.34.15.205",
+        "hostname": "123.45.67.89",
         "port": 22,
-        "username": "jxzhu",
-        "work_path": "/home/jxzhu/pt-oh/train"
+        "username": "kmr",
+        "work_path": "/home/kmr/pt-oh/train"
       },
       "resources": {
         "node_cpu": 4,
@@ -324,10 +324,10 @@ DP-GEN的工作流是由以下三步组成的循环：
     {
       "machine": {
         "machine_type": "lsf",
-        "hostname": "210.34.15.205",
+        "hostname": "123.45.67.89",
         "port": 22,
-        "username": "jxzhu",
-        "work_path": "/home/jxzhu/pt-oh/dpmd"
+        "username": "kmr",
+        "work_path": "/home/kmr/pt-oh/dpmd"
       },
       "resources": {
         "node_cpu": 2,
@@ -353,10 +353,10 @@ DP-GEN的工作流是由以下三步组成的循环：
     {
       "machine": {
         "machine_type": "lsf",
-        "hostname": "121.192.191.52",
+        "hostname": "123.45.67.90",
         "port": 6666,
-        "username": "jxzhu",
-        "work_path": "/data/jxzhu/edl/pzc/hydroxide/ml_potential/pt-oh/labelling"
+        "username": "kmr",
+        "work_path": "/data/kmr/edl/pzc/hydroxide/ml_potential/pt-oh/labelling"
       },
       "resources": {
         "cvasp": false,

@@ -8,6 +8,7 @@ priority: 1.3
 
 *此入门仅介绍一些作者认为必要且实用的功能，完善的帮助手册可以通过命令，`man ssh_config`, `man ssh`查看* 
 
+为便于说明，假设需要登陆的远程服务器IP为123.45.67.89，用户名为kmr。
 
 
 ## 学习目标
@@ -48,7 +49,7 @@ ssh-keygen
 ```bash
 ssh -i <path to your private key> -p <port number> username@server_ip
 #example here
-ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
+ssh -i ~/.ssh/id_rsa -p 6666 kmr@123.45.67.89
 ```
 
 ### 可选：优雅地的使用SSH
@@ -63,8 +64,8 @@ vim ~/.ssh/config
 
 ``` bash
 Host myserver # nickname for your cluster
-    User ch1_101 # replacement of username in ssh
-    Hostname 121.192.191.51 # replace of cluster_ip in ssh
+    User kmr # replacement of username in ssh
+    Hostname 123.45.67.89 # replace of cluster_ip in ssh
     Port 6666 # replacement of -p <port number> in ssh
     IdentityFile ~/.ssh/id_rsa # replace of -i <path to your private key> in ssh
 ```
@@ -73,9 +74,9 @@ Host myserver # nickname for your cluster
 
 ```bash
 ssh myserver
-# equivalent with
-ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ```
+
+此命令即相当于上文提到的`ssh -i ~/.ssh/id_rsa -p 6666 kmr@123.45.67.89`。
 
 ### 加深理解
 
@@ -112,18 +113,18 @@ ssh -p port_number -i key_file username@cluster51
 
 ### 在config文件中配置跳板机*
 
-打开 `~/.ssh/config`: 复制以下代码，
+打开 `~/.ssh/config`，复制以下代码（注意去掉注释，否则可能会报错）：
 
 ```bash
 Host proxy # nickname you set for your office computer
     User robinzhuang # username you set for login
     Hostname 10.24.3.xxx # IP address of your office computer, change the xxx to real one!
  
-Host chenglab51 # nickname for your cluster
-    User ch1_101 # username you set, change to real one!
-    Hostname 121.192.191.xx # IP for cluster, replace XX!
+Host myserver # nickname for your cluster
+    User kmr # username you set, change to real one!
+    Hostname 123.45.67.89 # IP for cluster, change to real one!
     IdentityFile ~/.ssh/id_rsa # the key file location used in login 
-    Port xx # specify the port number, replace xx with real port !
+    Port xx # specify the port number, replace xx with real port!
     ProxyJump proxy # use Host proxy as Jump Server
 ```
 
@@ -142,9 +143,9 @@ ssh chenglab51
 有时，我们在服务器上部署了 `jupyter notebook` 等服务时，需要把远程的某个端口 (以下例子中为 `8888` 端口) 转发到本地的某个端口 (以下例子中为 `9999` 端口)，使得在本地访问 `https://localhost:9999` 时也能访问远程的 `jupyter notebook` 服务。
 
 ```bash
-Host chenglab51 # nickname for your cluster
-    User ch1_101 # username you set, change to real one!
-    Hostname 121.192.191.xx # IP for cluster, replace XX!
+Host myserver # nickname for your cluster
+    User kmr # username you set, change to real one!
+    Hostname 123.45.67.89 # IP for cluster, change to real one!
     LocalForward 9999 localhost:8888 # fist IP is your local IP, second IP is remote IP you want to forward
 ```
 
@@ -153,7 +154,7 @@ Host chenglab51 # nickname for your cluster
 SCP实际上是SSH+FTP的结合，如果配置好了SSH命令，可以使用以下命令来进行文件传输：
 
 ```bash
-scp chenglab51:remote_file local_directory_path
+scp myserver:remote_file local_directory_path
 ```
 
 ### 在使用跳板机的情况下使用X11 Forwarding
@@ -182,22 +183,22 @@ Host *
 
 # set proxy
 Host nickname_proxy # nickname for your Jump Server
-    Hostname 10.24.3.142 # IP for Jump Server (REPlACE IT!)
+    Hostname 10.24.3.255 # IP for Jump Server (REPlACE IT!)
     User chenglab # your username for Jump Server (REPlACE IT!)
 
-# 51 and 52
-Host nickname_51 # nickname for your cluster
-    Hostname 121.192.191.51
-    User ch1_102 # your 51 username (REPlACE IT!)
+# Host1 and host2
+Host nickname_1 # nickname for your cluster
+    Hostname 123.45.67.89
+    User kmr1 # your host1 username (REPlACE IT!)
     LocalForward 8051 localhost:8888
 
-Host nickname52 # nickname for your cluster
-    Hostname 121.192.191.52
-    User ch2_102 # your 52 username (REPlACE IT!)
+Host nickname_2 # nickname for your cluster
+    Hostname 123.45.67.90
+    User kmr2 # your host2 username (REPlACE IT!)
     LocalForward 8052 localhost:8888
     
-# set same parts for 51 and 52
-Host nickname_51 nickname_52 # use your own nickname
+# set same parts for host1 and host2
+Host nickname_1 nickname_2 # use your own nickname
     Port 6666
     ProxyJump nickname_proxy # use your own nickname
 ```
@@ -256,4 +257,28 @@ This is because `ssh` can't find your xauth location. Usually, the location is i
 Host *
     XAuthLocation /opt/X11/bin/xauth
 ```
+
+### Remote host identification has changed!
+
+When the remote host was **just repaired**, the error like below might be raised.
+
+```bash
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the RSA key sent by the remote host is
+51:82:00:1c:7e:6f:ac:ac:de:f1:53:08:1c:7d:55:68.
+Please contact your system administrator.
+Add correct host key in /Users/isaacalves/.ssh/known_hosts to get rid of this message.
+Offending RSA key in /Users/isaacalves/.ssh/known_hosts:12
+RSA host key for 104.131.16.158 has changed and you have requested strict checking.
+Host key verification failed.
+```
+
+Take it easy, and just edit your `/Users/isaacalves/.ssh/known_hosts` file to remove the line with the IP address of the very remote host. For some users such as Ubuntu or Debian users, `ssh -R xxx` might be necessary, which would be shown in the error info.
+
+However, if not any repair or upgrade happened, **man-in-the-middle attack** might happen. Just stop logging in and contact manager of cluster at once to make sure.
 
