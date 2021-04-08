@@ -394,6 +394,34 @@ DP-GEN的工作流是由以下三步组成的循环：
 {% include alert.html type="info" title="提交任务" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[官方GitHub](http
 s://github.com/deepmodeling/dpgen)。" %}
 
+## 训练集收集
+
+DP-GEN代码迭代生成的训练集是分散储存的。可以用DP-GEN自带的collect函数进行数据收集。
+
+首先可以使用`dpgen collect -h` 查看使用说明
+
+常用用法是
+
+```bash
+dpgen collect JOB_DIR OUTPUT_DIR -p param.json
+```
+
+JOB_DIR就是DP-GEN的输出目录，包含有`iter.0000*`一系列的目录。OUTPUT_DIR就是收集的数据准备放到哪。param.json就是运行DP-GEN跑的param文件。
+
+例如：
+
+```bash
+dpgen collect ./ ./collect -p param-ruo2.json
+```
+
+以上命令会把当前文件夹的DP-GEN数据收集好放入collect目录里。
+
+```
+init.000  init.001  sys.000  sys.001
+```
+
+`init.*`是初始训练集，`sys.*`是后来DP-GEN生成的训练集，按照param的sys分类。
+
 ## Bonus！
 
 ### 常见报错问题（欢迎补充&修正）
