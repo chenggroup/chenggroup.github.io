@@ -256,6 +256,50 @@ dp train input.json --restart model.ckpt
 
 
 
+## 使用生成的势能函数进行分子动力学(MD)模拟
+
+当我们完成训练之后，我们需要根据节点文件(`model.ckpt*`)冻结(Freeze)出一个模型来。
+
+利用如下命令，可以冻结模型：
+
+```bash
+dp freeze
+```
+
+你将会得到一个`*.pb`文件。利用此文件可以使用`LAMMPS`, `ASE`等软件进行分子动力学模拟。
+
+## 利用压缩模型进行产出(Production)
+
+机器学习势能`*.pb`文件进行MD模拟虽然已经非常迅速了。但是还有提升的空间。首先我们需要用1.3版本的deepmd进行训练势能函数，并得到`*.pb`文件。利用1.2版本的deepmd训练得到势能函数也不用担心。可以利用以下命令对1.2版本的势能函数进行转换：
+
+```bash
+dp convert-to-1.3 -i 1.2-model.pb -o 1.3-model.pb
+```
+
+得到1.3版本的势能函数后，我们利用如下命令进行压缩：
+
+```bash
+module load deepmd/compress
+dp compress input.json -i 1.3-model.pb -o compressed-model.pb
+```
+
+### 压缩模型与原始模型对比
+
+测试2080Ti, 显存11G
+
+| 体系                 | 原子数 | 提速前 (ns/day) | 提速后(ns/day) | 提升倍率 |
+| -------------------- | ------ | --------------- | -------------- | -------- |
+| LIGePS               | 5000   | 0.806           | 3.569          | 4.42     |
+| SnO2/water interface | 6021   | 0.059           | 0.355          | 6.01     |
+| SnO2/water interface | 5352   | 0.067           | 0.382          | 5.70     |
+| SnO2/water interface | 2676   | 0.132           | 0.738          | 5.59     |
+| SnO2/water interface | 1338   | 0.261           | 1.367          | 5.23     |
+| SnO2/water interface | 669    | 0.501           | 2.236          | 4.46     |
+| LiGePS               | 400    | 7.461           | 23.992         | 3.21     |
+| Cu13                 | 13     | 51.268          | 65.944         | 1.28     |
+
+SnO2/water interface: 原始模型Maximum 6021 ——> 压缩模型Maximum 54189个原子
+
 ## Trouble Shooting
 
 ### warning: loc idx out of lower bound
