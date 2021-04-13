@@ -1,43 +1,49 @@
 ---
-Title: Jupyter Software Guide
-Authors: Yongbin Zhuang 
+Title: Jupyter 系列使用指南
+Authors: 庄永斌
 priority: 1.2
 ---
 
 
 
-# Jupyter Software Guides
+# Jupyter 系列使用指南
 
 ## Jupyter Notebook
 
-### Open Jupyter Notebook Remotely
-
-Jupyter notebook can open in your browser on your local computer. But if you want to use Jupyter Notebook in remote computer, this will be involved a little extra efforts. Why do we use Jupyter Notebook remotely? Because you don't want to download data (especially big data) from remote computer. You can directly operate those data in remote computer.
-
-Here is the instruction:
-
-- Open you jupyter notebook in your remote cluster by:
+### 转化Jupyter Notebook为Python脚本
 
 ```bash
-#this operation is done on the remote computer
-#<port number> is customized by yourself, for example 8898
+ipython nbconvert --to python *.ipynb
+```
+
+
+
+### 远程打开Jupyter Notebook
+
+Jupyter notebook可以通过本地电脑的浏览器打开。但如果你想在远程电脑上（如集群）打开，怎么办？远程打开Jupyter notebook的好处就是可以不用下载数据，直接远程处理。但是由于集群并没有显示/输出装置，你需要通过其他方法来打开Jupyter notebook。
+
+远程打开的方法
+
+- 使用如下命令在集群上打开你的 jupyter notebook：
+
+```bash
+# 在远程集群运行如下命令
+# <port number>由你自己决定，比如 9898
 jupyter notebook --no-browser --port=<port number>
 ```
 
-- In your local computer, type this into your command line:
+- 在你的本地的电脑使用如下命令：
 
 ```bash
-# make sure to change `username` to your real username in remote host
-# change `your_remote_host_name` to your address of your working station
-#<port number> is the same as above port number, for example 8898
+# <port number>由你自己决定，比如 9898，是跟远程打开的端口对应。
 ssh -N -f -L localhost:8888:localhost:<port number> username@your_remote_host_name
 ```
 
-It is notable that you need to add all the modification for ssh as you do usually, such as `-i` for keys and `-P` for ports.
 
-You can simplfy the command with the help of (this guide)[{{ site.baseurl }}/wiki/ssh_note].
 
-- Open your browser and type `localhost:8888` into the address. If you encounter the page which requires your to enter `password` or `token`, you can find `token` of your notebook by command:
+ssh 登陆的命令可以查看(这里)[{{ site.baseurl }}/wiki/ssh_note]进行简化.
+
+- 打开本地电脑的浏览器，输入`localhost:8888` 。然后会弹出输入 `password` 或 `token`的页面, 你可以在集群上输入如下命令来查看：
 
 ```bash
 #type this command in your remote computer, you can find token to enter remote notebook
