@@ -1,5 +1,5 @@
 ---
-title: CP2K: SCAN泛函
+title: CP2K:SCAN泛函
 authors: 庄永斌
 
 ---
