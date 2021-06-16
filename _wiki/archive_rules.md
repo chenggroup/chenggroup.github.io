@@ -1,5 +1,5 @@
 ---
-Title: 如何归档/整理项目文件
+Title: 如何整理项目文件
 Authors: 庄永斌
 priority: 1.2
 ---
