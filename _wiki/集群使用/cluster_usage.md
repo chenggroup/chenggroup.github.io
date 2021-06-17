@@ -9,7 +9,7 @@ priority: 1.01
 
 另暂时设有 Metal GPU集群，提供 40 张 GPU 加速卡供用户提交深度学习等任务。
 
-目前，所有CPU节点可以通过同一登陆节点进行提交，以下对集群使用的一些注意事项进行说明。关于GPU的使用，请参考[使用集群上的GPU]({% raw %}{{ site.baseurl }}/wiki/gpu_usage{% endraw %})。
+目前，所有CPU节点可以通过同一登陆节点进行提交，以下对集群使用的一些注意事项进行说明。关于GPU的使用，请参考[使用集群上的GPU](/wiki/集群使用/gpu_usage)。
 
 使用上述集群之前，你必须拥有一个账号才能进行任务提交。申请账号请联系集群管理员。
 
@@ -23,7 +23,7 @@ $ ssh -p <port> username@ip_address
 
 请将 `username` 和 `ip_address` 替换为管理员提供的账号和IP地址，`<port>`替换为端口号。
 
-集群均采用 Linux 系统，因此不熟悉 Linux 基本操作的用户（例如查看文件、编辑文本、复制数据等）可以参考[Linux快速基础入门]({% raw %}{{ site.baseurl }}/wiki/linux{% endraw %})，并熟悉这些操作。本文档假设用户有一定的 Linux 基础。
+集群均采用 Linux 系统，因此不熟悉 Linux 基本操作的用户（例如查看文件、编辑文本、复制数据等）可以参考[Linux快速基础入门](/wiki/集群使用/linux)，并熟悉这些操作。本文档假设用户有一定的 Linux 基础。
 
 ## Windows 用户
 
