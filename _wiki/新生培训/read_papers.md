@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: 如何阅读文献
-priority: 1.02
+priority: 1.22
 ---
 
 # 如何阅读文献

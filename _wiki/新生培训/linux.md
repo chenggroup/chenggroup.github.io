@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: Linux快速基础入门
-priority: 1.01
+priority: 1.21
 ---
 
 # Linux快速基础入门

@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: "自动化计算与工作流: AiiDA"
-priority: 1.09
+priority: 1.29
 ---
 
 # 自动化计算与工作流: AiiDA

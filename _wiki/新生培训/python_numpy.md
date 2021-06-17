@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: Python 和 Numpy
-priority: 1.04
+priority: 1.24
 ---
 
 # Python 和 Numpy
