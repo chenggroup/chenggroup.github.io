@@ -5,23 +5,55 @@ priority: 1.01
 
 # 计算集群使用说明
 
-目前，所有CPU节点可以通过同一登陆节点进行提交，以下对集群使用的一些注意事项进行说明。关于GPU的使用，请参考。
+本课题组使用 Zeus 计算集群提交计算任务进行计算模拟。Zeus 集群由两个登陆节点、一个管理节点、三个计算集群构成，每个计算集群包含多个计算节点（含一个GPU节点和一个大内存胖节点）。
+
+另暂时设有 Metal GPU集群，提供 40 张 GPU 加速卡供用户提交深度学习等任务。
+
+目前，所有CPU节点可以通过同一登陆节点进行提交，以下对集群使用的一些注意事项进行说明。关于GPU的使用，请参考[使用集群上的GPU]({% raw %}{{ site.baseurl }}/wiki/gpu_usage{% endraw %})。
+
+使用上述集群之前，你必须拥有一个账号才能进行任务提交。申请账号请联系集群管理员。
+
+# 获取账号
+
+集群只允许已经授权的用户进行登录。在从管理员处获得你的账号名和初始密码后， Linux 或 Mac 用户可直接从命令行登录我们的工作站，使用 `ssh` 命令即可。
+
+```bash
+$ ssh -p <port> username@ip_address
+```
+
+请将 `username` 和 `ip_address` 替换为管理员提供的账号和IP地址，`<port>`替换为端口号。
+
+集群均采用 Linux 系统，因此不熟悉 Linux 基本操作的用户（例如查看文件、编辑文本、复制数据等）可以参考[Linux快速基础入门]({% raw %}{{ site.baseurl }}/wiki/linux{% endraw %})，并熟悉这些操作。本文档假设用户有一定的 Linux 基础。
+
+## Windows 用户
+
+对 Windows 用户来说，可以使用以下方法登陆集群。
+
+1. (**Windows 10用户推荐**)使用 WSL(Windows Subsystem for Linux)。WSL 是 Windows 10 新版的特性，可使得用户在 Windows 系统下运行命令行模式的 Ubuntu 或 OpenSUSE 等子系统。使用 WSL 的用户可直接参考 Linux 的使用方法进行操作。具体安装方式可以参考[官方教程](https://docs.microsoft.com/zh-cn/windows/wsl/install-win10)。 对于大多数需求，WSL 1 即可满足，因此不一定需要将 WSL 1 升级到 WSL 2 。
+
+> 这种方法对于图形界面（VMD、gnuplot）等支持较差，尚需要额外的步骤配置图形界面转发，这里限于篇幅原因暂不进行介绍。
+> 目前最新预览版（21362以上，[请参考](https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps)）已经提供了对图形界面的直接支持，但需要使用 WSL 2。
+> 由于机制原因，WSL 2 无法直接使用桌面端的 Easy Connect，WSL 1 可以。
+
+2. 使用 Xshell、PuTTY 等 SSH 客户端，Windows 10 以下的用户可使用这种方式。这类 SSH 客户端可以提供较完整的 SSH 功能。关于Putty的使用[请参考](https://bicmr.pku.edu.cn/~wenzw/pages/login.html)。
+
+3. 使用虚拟机安装 Linux。若不想安装 Linux 双系统可以选择使用这种方式。正确配置的虚拟机和真正使用 Linux 几乎无差别。但虚拟机启动时间长，且完全启动时占用系统资源较多。
 
 ## 目录结构
 
-集群调整后具有如下的目录结构，为了保持统一性，请在`/data/username`（`user`请替换为自己的用户名）下做计算。
+Zeus 集群具有如下的目录结构，为了保持统一性，请在`/data/username`（`user`请替换为自己的用户名）下做计算。
 
 ```bash
 /data <--目前的数据盘（432TB大存储）
-├── 51-data <--51备份后的数据
+├── 51-data <--原51备份后的数据
 │   ├── ...
 │   ├── ...
 │   └── username
-├── 52-data <--52备份后的数据
+├── 52-data <--原52备份后的数据
 │   ├── ...
 │   ├── ...
 │   └── username
-├── home <--191登陆后的home文件夹
+├── home <--Zeus(191)登陆后的home文件夹
 │   ├── ...
 │   ├── ...
 │   └── username
@@ -34,7 +66,7 @@ priority: 1.01
 
 ### 计算节点、队列和脚本
 
-通过`bhosts -a`可以看到，目前的集群可以同时看到原来51/52/53上所有的节点，原51/52/53集群的节点分别用`c51-00x/c52-00x/c53-00x`。
+通过`bhosts -a`可以看到，目前的集群包括51/52/53三个类别，分别为51/52/53计算集群，51/52/53集群的计算节点分别对应编号为`c51-00x/c52-00x/c53-00x`。
 
 ```
 HOST_NAME          STATUS       JL/U    MAX  NJOBS    RUN  SSUSP  USUSP    RSV
@@ -52,7 +84,7 @@ c53-021            ok              -     32      0      0      0      0      0
 ...
 ```
 
-由于处理器核数不同，任务只能在具有相同核数的节点间并行，由此对节点按照队列进行了分组，队列前缀分别为`51-`/`52-`/`53-`，其对应每个节点上的核数分别为24/28/32。通过`bqueues`命令可以看到当前集群上的队列及其使用情况。
+由于处理器核数不同，任务只能在具有相同核数的节点间并行，由此对不同集群的节点按照队列进行了分组，队列前缀分别为`51-`/`52-`/`53-`，其对应每个节点上的核数分别为24/28/32。通过`bqueues`命令可以看到当前集群上的队列及其使用情况。
 
 ```
 QUEUE_NAME      PRIO STATUS          MAX JL/U JL/P JL/H NJOBS  PEND   RUN  SUSP
@@ -85,7 +117,7 @@ admin            50  Open:Active       -    -    -    -     0     0     0     0
 
 目前每个队列仍限制同时运行4个任务、队列内使用至多12个节点。新增全局任务限制，即三组队列总共使用核数不超过556，若超出此限制则任务会处于PEND状态。
 
-提交脚本示例放在`/data/share/base/scripts`里面，软件统一安装在`/data/share/apps`下，目前安装了VASP 5.4.4、CP2K 7.1、Gaussian 16、Lammps（*注意：不包含DeePMD组件*）等。
+提交脚本示例放在`/data/share/base/scripts`里面，软件统一安装在`/data/share/apps`下，目前安装了VASP 5.4.4、CP2K 7.1、Gaussian 16、Lammps、Gromacs、DeePMD-kit等。
 
 这里对作业提交脚本举例说明如下：
 
