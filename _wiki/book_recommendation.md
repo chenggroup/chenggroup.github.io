@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: 书籍推荐
-priority: 1.4
+priority: 1.5
 ---
 
 # 推荐书籍一览

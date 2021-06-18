@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: 密度泛函近似，基组与赝势
-priority: 1.06
+priority: 1.26
 ---
 
 # 密度泛函近似，基组与赝势

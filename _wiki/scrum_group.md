@@ -1,7 +1,7 @@
 ---
 title: Scrum Group 说明
 authors: 郭晓旭
-priority: 1.3
+priority: 1.4
 ---
 
 # Scrum Group 
