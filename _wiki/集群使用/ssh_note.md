@@ -1,7 +1,7 @@
 ---
 title: SSH 使用入门
 authors: 庄永斌
-priority: 1.3
+priority: 1.02
 ---
 
 # SSH 使用入门
@@ -108,7 +108,7 @@ Host <hostnickname>
 
 ```bash
 ssh username@proxy
-ssh -p port_number -i key_file username@cluster51
+ssh -p port_number -i key_file username@cluster191
 ```
 
 ### 在config文件中配置跳板机*
@@ -135,7 +135,7 @@ Host myserver # nickname for your cluster
 完成以上配置后可以使用如下命令直接配置：
 
 ```bash
-ssh chenglab51
+ssh myserver
 ```
 
 ### 在config文件中转发端口*

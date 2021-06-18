@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: 量子化学与密度泛函理论
-priority: 1.05
+priority: 1.25
 ---
 
 # 量子化学与密度泛函理论
