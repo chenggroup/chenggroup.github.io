@@ -4,9 +4,16 @@ title: Welcome to Chenglab Wiki
 permalink: /
 ---
 
-# Welcome to Chenglab Wiki
+#欢迎来到程组Wiki
 
-This is group wiki for chenglab which is personal academic group. Visitors are welcomed to have look in our wiki. It's better if you would like to post any suggestions for us.
+这是程俊课题组的组内wiki。我们欢迎其他访问者一起浏览和提升！如果有其他建议请在github issue提出。
+
+# Welcome to ChengGroup Wiki
+
+This is group wiki for chenggroup which is personal academic group. Visitors are welcomed to have look in our wiki. It's better if you would like to post any suggestions for us.
+
+1. [如果你是新生请看这里]({{ site.baseurl }}/wiki/新生培训/linux)
+2. [如果你想学集群使用请看这里]({{ site.baseurl }}/wiki/集群使用/cluster_usage)
 
 ## Sections
 
