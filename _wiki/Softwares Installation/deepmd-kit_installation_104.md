@@ -4,9 +4,9 @@ authors: Yunpei Liu
 priority: 2.9
 ---
 
-# DeepMD-kit安装实战2.0
+# DeepMD-kit安装实战：服务器篇（旧版）
 
-> 本部分写于2019年11月，基于国重账号环境进行安装，适用于Tensorflow版本低于1.13的情形。目前针对更高版本已经有[新版教程]({{ site.baseurl }}/wiki/softwares_installation/deepmd-kit_installation_51)，请移步。
+> 本部分写于2019年11月，基于国重服务器环境进行安装，适用于Tensorflow版本低于1.13的情形。目前针对更高版本已经有[新版教程]({{ site.baseurl }}/wiki/softwares_installation/deepmd-kit_installation_51)，请移步。
 
 ## 准备工作
 

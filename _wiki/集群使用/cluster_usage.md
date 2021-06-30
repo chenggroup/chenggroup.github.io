@@ -5,17 +5,17 @@ priority: 1.01
 
 # 计算集群使用说明
 
-本课题组使用 Zeus 计算集群提交计算任务进行计算模拟。Zeus 集群由两个登陆节点、一个管理节点、三个计算集群构成，每个计算集群包含多个计算节点（含一个GPU节点和一个大内存胖节点）。
+本课题组使用 Zeus 计算集群提交计算任务进行计算模拟。Zeus 集群由两个登陆节点、一个管理节点、三个计算集群构成，每个计算集群包含多个计算节点（含一个 GPU 节点和一个大内存胖节点）。
 
-另暂时设有 Metal GPU集群，提供 40 张 GPU 加速卡供用户提交深度学习等任务。
+另暂时设有 Metal GPU 集群，提供 40 张 GPU 加速卡供用户提交深度学习等任务（未来将择机整合到 Zeus 集群）。
 
-目前，所有CPU节点可以通过同一登陆节点进行提交，以下对集群使用的一些注意事项进行说明。关于GPU的使用，请参考[使用集群上的GPU](/wiki/集群使用/gpu_usage)。
+目前，所有 CPU 节点可以通过同一登陆节点进行提交，以下对集群使用的一些注意事项进行说明。关于 GPU 的使用，请参考[使用集群上的GPU](/wiki/集群使用/gpu_usage)。
 
 使用上述集群之前，你必须拥有一个账号才能进行任务提交。申请账号请联系集群管理员。
 
-# 获取账号
+## 获取账号
 
-集群只允许已经授权的用户进行登录。在从管理员处获得你的账号名和初始密码后， Linux 或 Mac 用户可直接从命令行登录我们的工作站，使用 `ssh` 命令即可。
+集群只允许已经授权的用户进行登录。在从管理员处获得你的账号名和初始密码后， Linux 或 Mac 用户可直接从命令行登录集群，使用 `ssh` 命令即可。
 
 ```bash
 $ ssh -p <port> username@ip_address
@@ -25,15 +25,17 @@ $ ssh -p <port> username@ip_address
 
 集群均采用 Linux 系统，因此不熟悉 Linux 基本操作的用户（例如查看文件、编辑文本、复制数据等）可以参考[Linux快速基础入门](/wiki/集群使用/linux)，并熟悉这些操作。本文档假设用户有一定的 Linux 基础。
 
-## Windows 用户
+### Windows 用户
 
 对 Windows 用户来说，可以使用以下方法登陆集群。
 
 1. (**Windows 10用户推荐**)使用 WSL(Windows Subsystem for Linux)。WSL 是 Windows 10 新版的特性，可使得用户在 Windows 系统下运行命令行模式的 Ubuntu 或 OpenSUSE 等子系统。使用 WSL 的用户可直接参考 Linux 的使用方法进行操作。具体安装方式可以参考[官方教程](https://docs.microsoft.com/zh-cn/windows/wsl/install-win10)。 对于大多数需求，WSL 1 即可满足，因此不一定需要将 WSL 1 升级到 WSL 2 。
 
-> 这种方法对于图形界面（VMD、gnuplot）等支持较差，尚需要额外的步骤配置图形界面转发，这里限于篇幅原因暂不进行介绍。
-> 目前最新预览版（21362以上，[请参考](https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps)）已经提供了对图形界面的直接支持，但需要使用 WSL 2。
-> 由于机制原因，WSL 2 无法直接使用桌面端的 Easy Connect，WSL 1 可以。
+> 1. 这种方法对于图形界面（VMD、gnuplot）等支持较差，尚需要额外的步骤配置图形界面转发，这里限于篇幅原因暂不进行介绍。
+>
+> 2. 目前最新预览版（需要21362以上版本，[请参考](https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps)）已经提供了对图形界面的直接支持，但需要使用 WSL 2。
+>
+> 3. 由于机制原因，WSL 2 无法直接使用桌面端的 Easy Connect，WSL 1 可以。
 
 2. 使用 Xshell、PuTTY 等 SSH 客户端，Windows 10 以下的用户可使用这种方式。这类 SSH 客户端可以提供较完整的 SSH 功能。关于Putty的使用[请参考](https://bicmr.pku.edu.cn/~wenzw/pages/login.html)。
 
@@ -41,7 +43,7 @@ $ ssh -p <port> username@ip_address
 
 ## 目录结构
 
-Zeus 集群具有如下的目录结构，为了保持统一性，请在`/data/username`（`user`请替换为自己的用户名）下做计算。
+Zeus 集群具有如下的目录结构，为了保持统一性，请在`/data/username`（`username`请替换为自己的用户名）下做计算。
 
 ```bash
 /data <--目前的数据盘（432TB大存储）
@@ -66,7 +68,7 @@ Zeus 集群具有如下的目录结构，为了保持统一性，请在`/data/us
 
 ### 计算节点、队列和脚本
 
-通过`bhosts -a`可以看到，目前的集群包括51/52/53三个类别，分别为51/52/53计算集群，51/52/53集群的计算节点分别对应编号为`c51-00x/c52-00x/c53-00x`。
+通过`bhosts -a`命令可以看到，目前的集群包括51/52/53三个类别，分别为51/52/53计算集群，51/52/53集群的计算节点分别对应编号为`c51-00x/c52-00x/c53-00x`。
 
 ```
 HOST_NAME          STATUS       JL/U    MAX  NJOBS    RUN  SSUSP  USUSP    RSV
@@ -148,7 +150,7 @@ mpiexec.hydra cp2k.popt input.inp >& output_$LSB_JOBID
 - `module load xxx `用于加载环境，保持`/data/share/base/scripts`示例中的写法即可。
 - `mpiexec.hydra cp2k.popt input.inp >& output_$LSB_JOBID`是实际执行任务的命令。
 
-可以看到，任务提交脚本实际上是一个具有特殊注释格式的 bash 脚本。因此在加载环境后，可以使用bash语法来设置环境变量、控制任务运行的路径、进行批处理等等。
+可以看到，任务提交脚本实际上是一个具有特殊注释格式的 bash 脚本。因此在加载环境后，可以使用 bash 语法来设置环境变量、控制任务运行的路径、进行批处理等等。
 
 ### 作业提交
 
