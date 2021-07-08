@@ -1,14 +1,14 @@
 ---
-title: DeePMD-kit安装教程2.0
+title: DeepMD-kit安装实战：服务器篇
 authors: 
   - Jiaxin Zhu
   - Yunpei Liu
-priority: 2.4
+priority: 2.41
 ---
 
-# DeepMD-kit安装实战2.0
+# DeepMD-kit安装实战：服务器篇
 
-背景：在51服务器安装DeepMD-kit用于LAMMPS某些功能调试。
+背景：以 Zeus 集群为例，在服务器安装DeepMD-kit和包含完整接口的LAMMPS。
 
 参考：
 
@@ -18,7 +18,7 @@ priority: 2.4
 
 ## 初始环境说明
 
-以下过程以51集群为例，操作系统及版本为CentOS 7，采用module作为环境管理。
+以下过程以 Zeus 集群为例，操作系统及版本为CentOS 7，采用module作为环境管理。
 
 - 通过yum安装：
   - Cmake 3.7
@@ -55,7 +55,7 @@ ln -s /share/cuda/10.0/lib64/stubs/libcuda.so /some/local/path/libcuda.so.1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/cuda/10.0/lib64/stubs:/some/local/path
 ```
 
-{% include alert.html type="tip" title="提示" content="若在51服务器上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量。" %}
+{% include alert.html type="tip" title="提示" content="若在 Zeus 集群上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量。" %}
 
 ## 安装Tensorflow的C++ 接口
 
