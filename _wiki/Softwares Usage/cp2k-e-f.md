@@ -1,5 +1,5 @@
 ---
-title: CP2K能量与力的计算
+title: CP2K:能量与力的计算
 authors: Yongbin Zhuang
 
 ---
@@ -132,7 +132,7 @@ Subsection`QS`包含了一些通用的控制参数。`EPS_DEFAULT`设置了所�
 
 
 
-Subsection `MGRID` 定义了如何使用`quickstep`中的积分网格。`quickstep`使用了多网格方法来表示高斯函数。比较窄和尖的高斯函数会被投影到更惊喜的网格，而宽和顺滑的高斯函数则相反。在这个例子中，我们告诉代码需要设置最精细的网格为400Ry，并且REL_CUTOFF为60Ry。关于CUTOFF和REL_CUTOFF方面请[阅读](https://www.cp2k.org/howto:converging_cutoff)
+Subsection `MGRID` 定义了如何使用`quickstep`中的积分网格。`quickstep`使用了多网格方法来表示高斯函数。比较窄和尖的高斯函数会被投影到更精细的网格，而宽和顺滑的高斯函数则相反。在这个例子中，我们告诉代码需要设置最精细的网格为400Ry，并且REL_CUTOFF为60Ry。关于CUTOFF和REL_CUTOFF方面请[阅读](https://www.cp2k.org/howto:converging_cutoff)
 
 Subsection `XC`
 
