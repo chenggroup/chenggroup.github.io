@@ -9,8 +9,8 @@ priority: 1.03
 
 目前课题组GPU有两个集群：
 
-- 205：包含 4 个节点（`mgt g001 g002 g003`），每个节点上有 8 张 2080 Ti。`mgt` 作为计算节点的同时作为管理节点。
-- 191：包含 1 个节点（`g001`），节点上有 4 张 Tesla V100。登陆到 191 上可以使用。
+- Metal 集群（205）：包含 4 个节点（`mgt g001 g002 g003`），每个节点上有 8 张 2080 Ti。`mgt` 作为计算节点的同时作为管理节点。
+-  Zeus 集群（191）：包含 1 个节点（`c51-g001`），节点上有 4 张 Tesla V100。
 
 两个节点均可联系管理员开通使用权限。
 
@@ -18,7 +18,9 @@ priority: 1.03
 
 ### LSF 作业管理系统
 
-目前 LSF 系统在 191 服务器上使用。
+#### 旧版
+
+目前 LSF 系统在 Zeus 集群上使用。
 
 在GPU节点上，需要通过指定 `CUDA_VISIBLE_DEVICES` 来对任务进行管理。
 
@@ -77,7 +79,7 @@ Wed Mar 10 12:59:01 2021
 表示目前该节点（`c51-g001` ）上 1 号卡正在被进程号为 127004 的进程 `...pps/deepmd/1.2/bin/python` 使用，占用显存为 31527 MB，GPU 利用率为 62%。
 
 
-在 205 使用 deepmd 的提交脚本示例如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
+在 Zeus 集群使用 deepmd 的提交脚本示例如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
 
 ```bash
 #!/bin/bash
@@ -95,9 +97,9 @@ export CUDA_VISIBLE_DEVICES=0
 dp train input.json > train.log
 ```
 
-#### 检测脚本
+##### 检测脚本
 
-目前 191 服务器上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
+Zeus 集群上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
 
 可以使用检测脚本`/share/base/tools/export_visible_devices`来确定 `$CUDA_VISIBLE_DEVICES` 的值，示例如下：
 
@@ -121,9 +123,82 @@ dp train input.json > train.log
 
 也可以使用检测脚本`/share/base/tools/avail_gpu.sh`来确定 `$CUDA_VISIBLE_DEVICES` 的值。`/share/base/tools/avail_gpu.sh` 可以使用flag `-t util` 控制显卡利用率可用上限，即使用显卡利用率若超过 `util` 的数值，则认为该卡被使用。目前脚本默认显卡利用率低于5%视为空卡，即可以向该卡提交任务。
 
+#### 新版
+
+目前 LSF Suite 10.2 已在 Metal 上部署测试，该版本包含了较新版的 LSF 作业管理系统，因而可对 GPU 提供支持。
+
+输入 `lslode -gpu` 即可查看集群当前可以使用的 GPU 数目：
+
+```
+HOST_NAME       status  ngpus  gpu_shared_avg_mut  gpu_shared_avg_ut  ngpus_physical
+g001                ok      8                 13%                70%               8
+g003                ok      8                  9%                60%               8
+mgt                 ok      8                 14%                82%               8
+g002                ok      8                 10%                56%               8
+```
+
+输入 `lslode -gpuload` 则可以对 GPU 负载情况进行统计：
+
+```
+HOST_NAME       gpuid   gpu_model   gpu_mode  gpu_temp   gpu_ecc  gpu_ut  gpu_mut gpu_mtotal gpu_mused   gpu_pstate   gpu_status   gpu_error
+g001                0 GeForceRTX2        0.0       55C       0.0     36%       7%      10.7G      542M            2           ok           -
+                    1 GeForceRTX2        0.0       55C       0.0     36%       7%      10.7G      542M            2           ok           -
+                    2 GeForceRTX2        0.0       51C       0.0     36%       7%      10.7G      542M            2           ok           -
+                    3 GeForceRTX2        0.0       70C       0.0     98%      24%      10.7G      1.3G            2           ok           -
+                    4 GeForceRTX2        0.0       69C       0.0     86%      12%      10.7G      1.3G            2           ok           -
+                    5 GeForceRTX2        0.0       57C       0.0     81%       9%      10.7G     10.1G            2           ok           -
+                    6 GeForceRTX2        0.0       61C       0.0     98%      25%      10.7G      1.3G            2           ok           -
+                    7 GeForceRTX2        0.0       68C       0.0     91%      19%      10.7G      878M            2           ok           -
+mgt                 0 GeForceRTX2        0.0       62C       0.0     76%      10%      10.7G      1.3G            2           ok           -
+                    1 GeForceRTX2        0.0       69C       0.0     76%      10%      10.7G      1.3G            2           ok           -
+                    2 GeForceRTX2        0.0       58C       0.0     78%      10%      10.7G      1.3G            2           ok           -
+                    3 GeForceRTX2        0.0       65C       0.0     78%      11%      10.7G      1.3G            2           ok           -
+                    4 GeForceRTX2        0.0       64C       0.0     86%      17%      10.7G      878M            2           ok           -
+                    5 GeForceRTX2        0.0       63C       0.0     86%      18%      10.7G      878M            2           ok           -
+                    6 GeForceRTX2        0.0       65C       0.0     85%      18%      10.7G      878M            2           ok           -
+                    7 GeForceRTX2        0.0       69C       0.0     84%      18%      10.7G      878M            2           ok           -
+g003                0 GeForceRTX2        0.0       65C       0.0     76%       8%      10.7G     10.1G            2           ok           -
+                    1 GeForceRTX2        0.0       64C       0.0     83%       9%      10.7G     10.1G            2           ok           -
+                    2 GeForceRTX2        0.0       55C       0.0     36%       7%      10.7G      542M            2           ok           -
+                    3 GeForceRTX2        0.0       58C       0.0     36%       7%      10.7G      542M            2           ok           -
+                    4 GeForceRTX2        0.0       54C       0.0     36%       7%      10.7G      542M            2           ok           -
+                    5 GeForceRTX2        0.0       71C       0.0     86%      12%      10.7G      1.3G            2           ok           -
+                    6 GeForceRTX2        0.0       56C       0.0     36%       7%      10.7G      542M            2           ok           -
+                    7 GeForceRTX2        0.0       66C       0.0     91%      19%      10.7G      878M            2           ok           -
+g002                0 GeForceRTX2        0.0       52C       0.0     37%       7%      10.7G      542M            2           ok           -
+                    1 GeForceRTX2        0.0       57C       0.0     37%       7%      10.7G      542M            2           ok           -
+                    2 GeForceRTX2        0.0       54C       0.0     37%       7%      10.7G      542M            2           ok           -
+                    3 GeForceRTX2        0.0       58C       0.0     37%       7%      10.7G      542M            2           ok           -
+                    4 GeForceRTX2        0.0       54C       0.0     37%       7%      10.7G      542M            2           ok           -
+                    5 GeForceRTX2        0.0       68C       0.0     87%      12%      10.7G      1.3G            2           ok           -
+                    6 GeForceRTX2        0.0       69C       0.0     90%      18%      10.7G     10.7G            2           ok           -
+                    7 GeForceRTX2        0.0       66C       0.0     90%      18%      10.7G     10.7G            2           ok           -
+```
+
+使用 GPU 资源时，需要对提交脚本进行相应修改，用 `-gpu` 命令申请 GPU 资源。
+
+```
+#!/bin/bash
+
+#BSUB -q large
+#BSUB -J train
+#BSUB -o %J.stdout
+#BSUB -e %J.stderr
+#BSUB -gpu "num=1:mode=shared:mps=no:j_exclusive=no"
+#BSUB -n 4
+#BSUB -R "span[ptile=32]"
+
+module add deepmd/2.0b1
+lmp_mpi -i input.lammps 1>> model_devi.log 2>> model_devi.log
+```
+
+其中 `num=1` 表示申请1张GPU卡，`j_exclusive=no` 表示允许和其他任务共存，`-n` 表示申请的CPU核数，在 Metal 集群上使用时，若希望任务独占1张卡，请设置为 4。否则，可能会出现多个任务使用同一张卡的情况。
+
+{% include alert.html type="tip" title="链接" content="若使用新版 LSF 提交任务，则不再需要引入检测脚本或<code>CUDA_VISIBLE_DEVICES</code>控制使用的GPU。" %}
+
 ### Slurm 管理系统
 
-目前本系统在 205 服务器测试中。
+目前本系统在 Metal 集群测试中。
 
 采用 Slurm 系统可以直接对 GPU 进行分配，因此不再需要上述的检测脚本。由于 GPU 任务在执行过程中仍需要少量 CPU 资源，请大家在使用时按照一个 GPU 任务对应该节点上 2 个 CPU 核的方式提交。其提交脚本示例如下：
 
@@ -155,7 +230,7 @@ Slurm 与 LSF 命令对照表如下所示：
 | `bhosts -l g001` | `scontrol show node g001` |查看节点名为 `g001`的节点状态。<br>若不指定节点则返回当前所有节点信息。|
 | `bpeek 123` | `speek 123` \* |查看 123 号任务的标准输出。|
 
-> \* `speek` 命令不是 Slurm 标准命令，仅适用 205 节点使用。
+> \* `speek` 命令不是 Slurm 标准命令，仅适用 Metal 集群使用。
 
 作业提交脚本对照表：
 
@@ -178,7 +253,7 @@ Slurm 与 LSF 命令对照表如下所示：
 
 #### 任务优先级设置（QoS）
 
-由于任务本身的优先级需求，即日起在205上试点采用QoS对任务进行管理。默认情况下提交的任务Qos设置为normal，如果任务比较紧急，可以向管理员申请使用emergency优先级，采用此优先级的任务默认排在队列顶。
+默认情况下提交的任务Qos设置为normal，即填充在整个队列的末尾。如果任务比较紧急，可以向管理员报备申请使用emergency优先级，采用此优先级的任务默认排在队列顶。
 
 使用方法如下，即在提交脚本中加入下行：
 
@@ -188,7 +263,7 @@ Slurm 与 LSF 命令对照表如下所示：
 
 ## dpgen 提交 GPU 任务参数设置
 
-### LSF 系统
+### LSF 系统（旧版）
 
 以训练步骤为例：
 
@@ -224,6 +299,41 @@ Slurm 与 LSF 命令对照表如下所示：
     }
   ],
   ......
+}
+```
+
+### LSF 系统（新版）
+
+以训练步骤为例：
+
+```json
+{
+  "train": [
+    {
+      "machine": {
+        "machine_type": "slurm",
+        "hostname": "xx.xxx.xxx.xxx",
+        "port": 22,
+        "username": "chenglab",
+        "work_path": "/home/chenglab/ypliu/dprun/train"
+      },
+      "resources": {
+        "numb_gpu": 1,
+        "numb_node": 1,
+        "task_per_node": 4,
+        "partition": "gpu",
+        "exclude_list": [],
+        "source_list": [],
+        "module_list": [
+            "deepmd/1.2"
+        ],
+        "time_limit": "96:0:0",
+        "sleep": 20
+      },
+      "python_path": "/share/apps/deepmd/1.2/bin/python3.6"
+    }
+  ],
+  ...
 }
 ```
 
