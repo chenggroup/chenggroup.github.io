@@ -293,7 +293,7 @@ Slurm 与 LSF 命令对照表如下所示：
             "deepmd/1.0"
                 ],
         "time_limit": "96:0:0",
-        "sleep": 20
+        "submit_wait_time": 20
       },
       "python_path": "/share/deepmd-1.0/bin/python3.6"
     }
@@ -304,6 +304,8 @@ Slurm 与 LSF 命令对照表如下所示：
 
 ### LSF 系统（新版）
 
+> 由于目前 DP-GEN 存在BUG，`numb_gpu` 和 `task_per_node` 的含义是相反的，并且对于 LSF 请务必指定 `node_cpu` 为每个节点的核数或与 `-n` 保持一致。 -- 2021/7/10
+
 以训练步骤为例：
 
 ```json
@@ -311,24 +313,24 @@ Slurm 与 LSF 命令对照表如下所示：
   "train": [
     {
       "machine": {
-        "machine_type": "slurm",
+        "machine_type": "lsf",
         "hostname": "xx.xxx.xxx.xxx",
         "port": 22,
         "username": "chenglab",
         "work_path": "/home/chenglab/ypliu/dprun/train"
       },
       "resources": {
-        "numb_gpu": 1,
+        "numb_gpu": 4,
+        "node_cpu": 32,
         "numb_node": 1,
-        "task_per_node": 4,
+        "task_per_node": 1,
         "partition": "gpu",
         "exclude_list": [],
         "source_list": [],
         "module_list": [
             "deepmd/1.2"
         ],
-        "time_limit": "96:0:0",
-        "sleep": 20
+        "time_limit": "96:0:0"
       },
       "python_path": "/share/apps/deepmd/1.2/bin/python3.6"
     }
