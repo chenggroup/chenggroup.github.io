@@ -194,6 +194,8 @@ lmp_mpi -i input.lammps 1>> model_devi.log 2>> model_devi.log
 
 其中 `num=1` 表示申请1张GPU卡，`j_exclusive=no` 表示允许和其他任务共存，`-n` 表示申请的CPU核数，在 Metal 集群上使用时，若希望任务独占1张卡，请设置为 4。否则，可能会出现多个任务使用同一张卡的情况。
 
+{% include alert.html type="tip" title="链接" content="若使用新版 LSF 提交任务，则不再需要引入检测脚本或<code>CUDA_VISIBLE_DEVICES</code>控制使用的GPU。" %}
+
 ### Slurm 管理系统
 
 目前本系统在 Metal 集群测试中。
