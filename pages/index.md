@@ -4,7 +4,7 @@ title: Welcome to Chenglab Wiki
 permalink: /
 ---
 
-#欢迎来到程组Wiki
+# 欢迎来到程组Wiki
 
 这是程俊课题组的组内wiki。我们欢迎其他访问者一起浏览和提升！如果有其他建议请在github issue提出。
 
