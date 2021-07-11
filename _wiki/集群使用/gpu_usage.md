@@ -16,9 +16,7 @@ priority: 1.03
 
 ## 提交任务至 GPU
 
-### LSF 作业管理系统
-
-#### 旧版
+### LSF 作业管理系统（旧版）
 
 目前 LSF 系统在 Zeus 集群上使用。
 
@@ -97,7 +95,7 @@ export CUDA_VISIBLE_DEVICES=0
 dp train input.json > train.log
 ```
 
-##### 检测脚本
+#### 检测脚本
 
 Zeus 集群上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
 
@@ -123,7 +121,7 @@ dp train input.json > train.log
 
 也可以使用检测脚本`/share/base/tools/avail_gpu.sh`来确定 `$CUDA_VISIBLE_DEVICES` 的值。`/share/base/tools/avail_gpu.sh` 可以使用flag `-t util` 控制显卡利用率可用上限，即使用显卡利用率若超过 `util` 的数值，则认为该卡被使用。目前脚本默认显卡利用率低于5%视为空卡，即可以向该卡提交任务。
 
-#### 新版
+### LSF 作业管理系统（新版）
 
 目前 LSF Suite 10.2 已在 Metal 上部署测试，该版本包含了较新版的 LSF 作业管理系统，因而可对 GPU 提供支持。
 
@@ -180,7 +178,8 @@ g002                0 GeForceRTX2        0.0       52C       0.0     37%       7
 ```
 #!/bin/bash
 
-#BSUB -q large
+#BSUB -q gpu
+#BSUB -W 24:00
 #BSUB -J train
 #BSUB -o %J.stdout
 #BSUB -e %J.stderr
