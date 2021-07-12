@@ -16,7 +16,7 @@ Deep Potential Generator (DP-GEN) 是一个将神经网络势能（machine learn
 - 参考文献：[Active learning of uniformly accurate interatomic potentials for materials simulation](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.3.023804)
 
 {% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对DeePMD-kit有一定了解。" %}
-指路：[DeePMD-kit]({{ site.baseurl }}/wiki/softwares_usage/DeePMD-kit)
+指路：[DeePMD-kit]({{ site.baseurl }}/wiki/Softwares Usage/DeePMD-kit)
 
 DP-GEN的工作流是由以下三步组成的循环：
 

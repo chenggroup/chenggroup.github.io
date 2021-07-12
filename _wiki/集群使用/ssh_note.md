@@ -1,5 +1,5 @@
 ---
-title: SSH 使用入门
+title: SSH 与 SCP 使用入门
 authors: 庄永斌
 priority: 1.02
 ---
@@ -50,6 +50,23 @@ ssh-keygen
 ssh -i <path to your private key> -p <port number> username@server_ip
 #example here
 ssh -i ~/.ssh/id_rsa -p 6666 kmr@123.45.67.89
+```
+
+## 使用SCP进行文件传输
+
+SCP实际上是SSH+FTP的结合，如果配置好了SSH命令，可以使用以下命令来进行文件传输：
+
+```bash
+scp myserver:remote_file local_directory_path
+```
+
+### 在使用跳板机的情况下使用X11 Forwarding
+
+只需要在 `~/.ssh/config` 中加入
+
+```bash
+Host *  # valid for all host
+    ForwardX11Trusted yes
 ```
 
 ### 可选：优雅地的使用SSH
@@ -147,23 +164,6 @@ Host myserver # nickname for your cluster
     User kmr # username you set, change to real one!
     Hostname 123.45.67.89 # IP for cluster, change to real one!
     LocalForward 9999 localhost:8888 # fist IP is your local IP, second IP is remote IP you want to forward
-```
-
-## 使用SCP进行文件传输
-
-SCP实际上是SSH+FTP的结合，如果配置好了SSH命令，可以使用以下命令来进行文件传输：
-
-```bash
-scp myserver:remote_file local_directory_path
-```
-
-### 在使用跳板机的情况下使用X11 Forwarding
-
-只需要在 `~/.ssh/config` 中加入
-
-```bash
-Host *  # valid for all host
-    ForwardX11Trusted yes
 ```
 
 ## 一份示例配置文件

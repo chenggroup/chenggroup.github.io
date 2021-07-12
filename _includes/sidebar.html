@@ -52,7 +52,7 @@
                 <ul class="md-nav__list">
                   <li class="md-nav__item">
                     {% for section in category.items %}
-                    <a class="md-nav__link pancakes-child" href="{{ section.url }}" title="{{ section.title }}">{{ section.title }}</a>
+                    <a class="md-nav__link pancakes-child" href="{{ section.url }}" title="{{ section.title }}" style="display:none">{{ section.title }}</a>
                     {% endfor %}
                   </li>
                 </ul>
