@@ -65,7 +65,7 @@ vim deepmd.lsf
 # ============================================
 
 # add modulefiles
-module add cuda/10.0 deepmd/1.0
+module add cuda/10.0 deepmd/1.2
 
 # automatic select the gpu
 source /share/base/script/find_gpu.sh
