@@ -36,10 +36,10 @@ git clone https://github.com/deepmodeling/deepmd-kit.git
 cd <deepmd repositoy>/examples/water/train/
 ```
 
-你会看到许多`json`为后缀的文件。这些都是DeePMD-kit使用的输入文件。我们只需要使用`water_se_a.json`文件作为例子。现在复制制`/share/base/script/deepmd.lsf`到当前文件夹，并且修改它。
+你会看到许多`json`为后缀的文件。这些都是DeePMD-kit使用的输入文件。我们只需要使用`water_se_a.json`文件作为例子。现在复制制`/data/share/base/script/deepmd.lsf`到当前文件夹，并且修改它。
 
 ```bash
-cp /share/base/script/deepmd.lsf ./
+cp /data/share/base/script/deepmd.lsf ./
 vim deepmd.lsf
 ```
 
