@@ -15,7 +15,7 @@ author: 毕睿豪
 
 CP2K官方手册：[Section MD](https://manual.cp2k.org/cp2k-8_2-branch/CP2K_INPUT/MOTION/MD.html) 
 
-CP2K官方练习：[AIMD of bulk liquid water](https://www.cp2ßk.org/exercises:2016_summer_school:aimd)
+CP2K官方练习：[AIMD of bulk liquid water](https://www.cp2k.org/exercises:2016_summer_school:aimd)
 
 ## CP2K MD Section 的输入文件
 
