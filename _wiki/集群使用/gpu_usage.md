@@ -197,7 +197,7 @@ lmp_mpi -i input.lammps 1>> model_devi.log 2>> model_devi.log
 
 ### Slurm 管理系统
 
-目前本系统在 Metal 集群测试中。
+> 2021年7月26日起，将 Metal 集群管理统一切换至新版 LSF 系统，请参考 wiki 的相关说明。
 
 采用 Slurm 系统可以直接对 GPU 进行分配，因此不再需要上述的检测脚本。由于 GPU 任务在执行过程中仍需要少量 CPU 资源，请大家在使用时按照一个 GPU 任务对应该节点上 2 个 CPU 核的方式提交。其提交脚本示例如下：
 
@@ -303,7 +303,9 @@ Slurm 与 LSF 命令对照表如下所示：
 
 ### LSF 系统（新版）
 
-> 由于目前 DP-GEN 存在BUG，`numb_gpu` 和 `task_per_node` 的含义是相反的，并且对于 LSF 请务必指定 `node_cpu` 为每个节点的核数或与 `-n` 保持一致。 -- 2021/7/10
+> 新版 DP-GEN 0.10.0 已经修复 BUG，且相关 BUG 对 DPDispatcher 无影响，因此下述两参数值不需要再交换。-- 2021/7/20
+> 
+> DP-GEN 0.9.2 及以前版本存在BUG，`numb_gpu` 和 `task_per_node` 的含义是相反的，并且对于 LSF 请务必指定 `node_cpu` 为每个节点的核数或与 `-n` 保持一致。 -- 2021/7/10
 
 以训练步骤为例：
 
