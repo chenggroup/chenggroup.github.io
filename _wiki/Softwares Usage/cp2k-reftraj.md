@@ -1,5 +1,5 @@
 ---
-title: CP2K: 根据已有 MD 轨迹计算
+title: CP2K:REFTRAJ根据已有MD轨迹计算
 author: 毕睿豪
 ---
 
@@ -34,7 +34,7 @@ CP2K 的输入文件由不同的 *SECTION* 组成，而每个 SECTION 下级有�
 &END SECTION
 ```
 
-而如果希望用CP2K进行 MD 计算，需要根据体系的需要，配置[CP2K:能量与力的计算]({{ site.baseurl }}/wiki/Softwares Usage/cp2k-e-f)中介绍的 `GLOBAL` 和 `FORCE_EVAL` 这两部分，并且将 SECTION `GLOBAL` 下的关键字 `RUN_TYPE` 改为`MD`。
+而如果希望用CP2K进行MD计算，需要根据体系的需要，配置[CP2K:能量与力的计算]({{ site.baseurl }}/wiki/Softwares Usage/cp2k-e-f)中介绍的 `GLOBAL` 和 `FORCE_EVAL` 这两部分，并且将 SECTION `GLOBAL` 下的关键字 `RUN_TYPE` 改为`MD`。
 
 ```
 &GLOBAL
