@@ -72,7 +72,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 - 基本参数设置
 
-```python
+  ```python
 { 
     "type_map": [        
         "O", 
@@ -104,10 +104,7 @@ DP-GEN的工作流是由以下三步组成的循环：
      
     ......
 }
-
-
-
-```
+  ```
 
 - 势函数训练（DPMD）
 
@@ -171,9 +168,6 @@ DP-GEN的工作流是由以下三步组成的循环：
       "_comment": "modify according your systems!", 
       ......
   }
-  
-  
-  
   ```
 
 - 采样和筛选（Lammps）
@@ -200,14 +194,11 @@ DP-GEN的工作流是由以下三步组成的循环：
       "_comment": "modify nsteps and sys_idx based on model deviation accuracy",
       ......
   }
-  
-  
-  
   ```
 
  - 标记（计算单点能，此处以CP2K为例，VASP的设置可在官方GitHub中查看）
 
-```python
+  ```python
 {
     ......
     "fp_style":		"cp2k",
@@ -276,10 +267,7 @@ DP-GEN的工作流是由以下三步组成的循环：
         }
     }
 }
-
-
-
-```
+  ```
 
 {% include alert.html type="tip" title="计算设置" content="CP2K的input中部分参数有默认设置写入，具体可参照cp2k.py。" %}
 
@@ -291,7 +279,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 `machine.json`示例
 
-```python
+  ```python
 {
   "train": [
     {
@@ -381,8 +369,8 @@ DP-GEN的工作流是由以下三步组成的循环：
     }
   ]
 }
+  ```
 
-```
 {% include alert.html type="info" title="登录设置" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
 
 {% include alert.html type="info" title="GPU调用设置" content="根据上述规则，在训练时通常使用4个CPU核作为标记，而采样（MD）时采用2个。在训练和采样中我们调用source_list关键词下的脚本自动检索占用显存少于特定值的GPU进行提交。对于训练任务，建议独占一张GPU，故可不设置<code>-t xxx</code> （默认为100）。对于采样步骤，可以采用上文中的设置，也可以调用同一目录下的avail_gpu.sh并设置<code>-t 50</code>（或一个更小的值），防止多任务挤兑。" %}
@@ -391,8 +379,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 `dpgen run param.json machine.json`
 
-{% include alert.html type="info" title="提交任务" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[官方GitHub](http
-s://github.com/deepmodeling/dpgen)。" %}
+{% include alert.html type="info" title="提交任务" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[官方GitHub](https://github.com/deepmodeling/dpgen)。" %}
 
 ## 训练集收集
 
@@ -402,23 +389,23 @@ DP-GEN代码迭代生成的训练集是分散储存的。可以用DP-GEN自带�
 
 常用用法是
 
-```bash
+  ```bash
 dpgen collect JOB_DIR OUTPUT_DIR -p param.json
-```
+  ```
 
 JOB_DIR就是DP-GEN的输出目录，包含有`iter.0000*`一系列的目录。OUTPUT_DIR就是收集的数据准备放到哪。param.json就是运行DP-GEN跑的param文件。
 
 例如：
 
-```bash
+  ```bash
 dpgen collect ./ ./collect -p param-ruo2.json
-```
+  ```
 
 以上命令会把当前文件夹的DP-GEN数据收集好放入collect目录里。
 
-```
+  ```
 init.000  init.001  sys.000  sys.001
-```
+  ```
 
 `init.*`是初始训练集，`sys.*`是后来DP-GEN生成的训练集，按照param的sys分类。
 
@@ -456,14 +443,21 @@ init.000  init.001  sys.000  sys.001
   for i in l[1:]:
       print(i)
       stc += dpdata.LabeledSystem(i+'/output',fmt='cp2k/output')
-
   ```
   
   其中`task.002.*`代表遍历002system中的被标记的结构。如果不同系统的原子数相同，也可以直接用`task.00*`一次性检查所有的结构。
   
+- 如果你发现进行 model deviation 从一开始就非常大，并且测试集的结构被打乱，有可能是在 param 文件中设置了`"shuffle_poscar": true`。该选项会随机打乱测试集原始 `POSCAR` 中的行，并用打乱后的结构进行 model deviation 测试。该选项主要用于打乱合金体系的结构，然而对于界面或者共价键连接的体系（如半导体），随机打乱原子的将会使界面结构或者半导体结构变成混乱的一锅粥，没有任何化学含义，因此我们用也不可以进行shuffle。请在 param 文件中设置
+  
+  ```python
+  ...
+  "shuffle_poscar": false
+  ...
+  ```
+
 ### script from xyz to POSCAR
 
-```python
+  ```python
 from ase.io import iread, write
 import ase.build
 
@@ -476,10 +470,11 @@ for j in range(2):
             atoms=ase.build.sort(atoms)
             ase.io.write('POSCAR_'+str(j)+'_'+str(int(i/20)-1), atoms, format='vasp',vasp5=True)
 
-```
+  ```
 或者调用`ase.io.vasp`里的`write`:
-```python
+
+  ```python
 def write_vasp(filename, atoms, label=None, direct=False, sort=None,
 symbol_count=None, long_format=True, vasp5=False,
 ignore_constraints=False):
-```
+  ```
