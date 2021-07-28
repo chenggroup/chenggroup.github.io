@@ -125,7 +125,7 @@ dp train input.json > train.log
 
 目前 LSF Suite 10.2 已在 Metal 上部署测试，该版本包含了较新版的 LSF 作业管理系统，因而可对 GPU 提供支持。
 
-输入 `lslode -gpu` 即可查看集群当前可以使用的 GPU 数目：
+输入 `lsload -gpu` 即可查看集群当前可以使用的 GPU 数目：
 
 ```
 HOST_NAME       status  ngpus  gpu_shared_avg_mut  gpu_shared_avg_ut  ngpus_physical
@@ -135,7 +135,7 @@ mgt                 ok      8                 14%                82%            
 g002                ok      8                 10%                56%               8
 ```
 
-输入 `lslode -gpuload` 则可以对 GPU 负载情况进行统计：
+输入 `lsload -gpuload` 则可以对 GPU 负载情况进行统计：
 
 ```
 HOST_NAME       gpuid   gpu_model   gpu_mode  gpu_temp   gpu_ecc  gpu_ut  gpu_mut gpu_mtotal gpu_mused   gpu_pstate   gpu_status   gpu_error
@@ -326,6 +326,8 @@ Slurm 与 LSF 命令对照表如下所示：
         "numb_node": 1,
         "task_per_node": 1,
         "partition": "gpu",
+        "new_lsf_gpu": true,
+        "exclusive": false,
         "exclude_list": [],
         "source_list": [],
         "module_list": [
@@ -339,6 +341,8 @@ Slurm 与 LSF 命令对照表如下所示：
   ...
 }
 ```
+
+注意上述设置中开启了 `new_lsf_gpu`，表示启用新的 GPU 语法，在 Metal 上请打开这一设置以免任务提交失败。这里未开启 `exclusive`，即当CPU核数未占满时即可提交GPU任务，默认提交到负载最低的卡。若希望一张卡只允许一个任务运行，也可设置 `exclusive` 为 `true`，此时若CPU还有空间但GPU全部占满时，开启了这一选项的卡不会被新的任务占用。
 
 ### Slurm 系统
 
