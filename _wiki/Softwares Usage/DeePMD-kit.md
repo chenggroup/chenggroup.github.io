@@ -309,20 +309,19 @@ Solution: https://github.com/deepmodeling/deepmd-kit/issues/21
 
 ### ValueError: NodeDef missing attr 'T' from ...
 
-This error commonly occurs when a model is trained in deepmd/1.2, but a higher version deepmd-kit (> v1.3) is used for a lammps run:
+当一个模型使用 deepmd/1.2 训练，但是用更高版本的 deepmd-kit (> v1.3) 进行 lammps 任务的时候经常会报这个错，例子：
 
 * [error: Not found: No attr named 'T' in NodeDef when running lammps](https://github.com/deepmodeling/deepmd-kit/discussions/417)
 
-However, identical error occurs when compressing an v1.3 model converted from v1.2 using 
+但是，现在发现这个报错在压缩 v1.3 版本模型的时候也会出现。使用下列命令：
 
 ```bash
 dp compress ${input} --checkpoint-folder ${ckpt} 1.3-model.pb -o compressed-model.pb -l compress.log
 ```
 
-, whrere `${input}` and `${ckpt}` are the original input file direcotory and checkpoint files directory. Instead of copying the entire workdir and then convert and compress, in the above case, only the model is copied to the compress workdir; `input.json` and checkpoint file folder are assigned according to `dp compress --help`. The cause for this error is unkown.
+其中`${input}`和`${ckpt}`分别是对应模型的输入脚本所在路径和检查点目录。在这个例子里，我们仅把需要压缩的模型复制到了工作文件夹下，输入脚本所在路径和检查点目录人工指认。至于为什么这样会报错 ‘ValueError’，目前还没有找到原因。
 
-In conclusion, we recommand backing up the training workdir, and then **compress the model in a copy of the original training directory** to avoid possible errors.
-
+因此，我们建议**备份之前的训练文件夹，在训练文件夹的一个 copy 下进行压缩任务 **。
 
 
 ## Extra Support
