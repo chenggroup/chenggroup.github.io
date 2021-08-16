@@ -273,14 +273,15 @@ dp freeze
 机器学习势能`*.pb`文件进行MD模拟虽然已经非常迅速了。但是还有提升的空间。首先我们需要用1.3版本的deepmd进行训练势能函数，并得到`*.pb`文件。利用1.2版本的deepmd训练得到势能函数也不用担心。可以利用以下命令对1.2版本的势能函数进行转换：
 
 ```bash
+module load deepmd/1.2	 # convert-to-1.3 是 1.2 版本的一个 subcommand
 dp convert-to-1.3 -i 1.2-model.pb -o 1.3-model.pb
 ```
 
-得到1.3版本的势能函数后，我们利用如下命令进行压缩：
+得到1.3版本的势能函数后，建议将原训练文件夹备份后复制，我们利用如下命令进行压缩（文件夹下应该含有对应的`input.json`文件和checkpoint文件）：
 
 ```bash
 module load deepmd/compress
-dp compress input.json -i 1.3-model.pb -o compressed-model.pb
+dp compress input.json -i 1.3-model.pb -o compressed-model.pb -l compress.log
 ```
 
 ### 压缩模型与原始模型对比
@@ -305,6 +306,23 @@ SnO2/water interface: 原始模型Maximum 6021 ——> 压缩模型Maximum 54189
 ### warning: loc idx out of lower bound
 
 Solution: https://github.com/deepmodeling/deepmd-kit/issues/21
+
+### ValueError: NodeDef missing attr 'T' from ...
+
+当一个模型使用 deepmd/1.2 训练，但是用更高版本的 deepmd-kit (> v1.3) 进行 lammps 任务的时候经常会报这个错，例子：
+
+* [error: Not found: No attr named 'T' in NodeDef when running lammps](https://github.com/deepmodeling/deepmd-kit/discussions/417)
+
+但是，现在发现这个报错在压缩 v1.3 版本模型的时候也会出现。使用下列命令：
+
+```bash
+dp compress ${input} --checkpoint-folder ${ckpt} 1.3-model.pb -o compressed-model.pb -l compress.log
+```
+
+其中`${input}`和`${ckpt}`分别是对应模型的输入脚本所在路径和检查点目录。在这个例子里，我们仅把需要压缩的模型复制到了工作文件夹下，输入脚本所在路径和检查点目录人工指认。至于为什么这样会报错 ‘ValueError’，目前还没有找到原因。
+
+因此，我们建议**备份之前的训练文件夹，在训练文件夹的一个 copy 下进行压缩任务 **。
+
 
 ## Extra Support
 

@@ -104,14 +104,11 @@ DP-GEN的工作流是由以下三步组成的循环：
      
     ......
 }
-
-
-
 ```
 
 - 势函数训练（DPMD）
 
-  ```python
+```python
   {
       ......
       "numb_models": 4, 
@@ -171,39 +168,32 @@ DP-GEN的工作流是由以下三步组成的循环：
       "_comment": "modify according your systems!", 
       ......
   }
-  
-  
-  
-  ```
+```
 
 - 采样和筛选（Lammps）
 
-  ```python
-  {  
-      
-      "model_devi_dt":            0.0005,
-      "_comment": "model_devi_dt: Timesteps for MD. Consistent with DFTMD!",
-      "model_devi_skip":          0,
-      "_comment": "model_devi_skip: the first x frames of the recorded frames",
-      "model_devi_f_trust_lo":    0.075,
-      "model_devi_f_trust_hi":    0.10,
-      "_comment": "modify according to the error distribution of system",
-      "model_devi_e_trust_lo":    1e10,
-      "model_devi_e_trust_hi":    1e10,
-      "model_devi_clean_traj":    false,
-      "model_devi_jobs": [
-      {"temps": [300,400],"sys_idx": [0,1],"trj_freq": 10,"nsteps":  2000,"ensemble": "nvt","_idx": 0},
-      {"temps": [300,400],"sys_idx": [0,1],"trj_freq": 10,"nsteps":  2000,"ensemble": "nvt","_idx": 1}
-      ],
-      "_comment": "sys_idx should correspond to sys_configs in the beginning",
-      "_comment": "add the _idx step by step",
-      "_comment": "modify nsteps and sys_idx based on model deviation accuracy",
-      ......
-  }
-  
-  
-  
-  ```
+```python
+{  
+    "model_devi_dt":            0.0005,
+    "_comment": "model_devi_dt: Timesteps for MD. Consistent with DFTMD!",
+    "model_devi_skip":          0,
+    "_comment": "model_devi_skip: the first x frames of the recorded frames",
+    "model_devi_f_trust_lo":    0.075,
+    "model_devi_f_trust_hi":    0.10,
+    "_comment": "modify according to the error distribution of system",
+    "model_devi_e_trust_lo":    1e10,
+    "model_devi_e_trust_hi":    1e10,
+    "model_devi_clean_traj":    false,
+    "model_devi_jobs": [
+    {"temps": [300,400],"sys_idx": [0,1],"trj_freq": 10,"nsteps":  2000,"ensemble": "nvt","_idx": 0},
+    {"temps": [300,400],"sys_idx": [0,1],"trj_freq": 10,"nsteps":  2000,"ensemble": "nvt","_idx": 1}
+    ],
+    "_comment": "sys_idx should correspond to sys_configs in the beginning",
+    "_comment": "add the _idx step by step",
+    "_comment": "modify nsteps and sys_idx based on model deviation accuracy",
+    ......
+}
+```
 
  - 标记（计算单点能，此处以CP2K为例，VASP的设置可在官方GitHub中查看）
 
@@ -276,9 +266,6 @@ DP-GEN的工作流是由以下三步组成的循环：
         }
     }
 }
-
-
-
 ```
 
 {% include alert.html type="tip" title="计算设置" content="CP2K的input中部分参数有默认设置写入，具体可参照cp2k.py。" %}
@@ -381,8 +368,8 @@ DP-GEN的工作流是由以下三步组成的循环：
     }
   ]
 }
-
 ```
+
 {% include alert.html type="info" title="登录设置" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
 
 {% include alert.html type="info" title="GPU调用设置" content="根据上述规则，在训练时通常使用4个CPU核作为标记，而采样（MD）时采用2个。在训练和采样中我们调用source_list关键词下的脚本自动检索占用显存少于特定值的GPU进行提交。对于训练任务，建议独占一张GPU，故可不设置<code>-t xxx</code> （默认为100）。对于采样步骤，可以采用上文中的设置，也可以调用同一目录下的avail_gpu.sh并设置<code>-t 50</code>（或一个更小的值），防止多任务挤兑。" %}
@@ -391,8 +378,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 `dpgen run param.json machine.json`
 
-{% include alert.html type="info" title="提交任务" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[官方GitHub](http
-s://github.com/deepmodeling/dpgen)。" %}
+{% include alert.html type="info" title="提交任务" content="如果在51/52提交，需要在服务器上自行安装dpgen。具体做法见[官方GitHub](https://github.com/deepmodeling/dpgen)。" %}
 
 ## 训练集收集
 
@@ -434,33 +420,38 @@ init.000  init.001  sys.000  sys.001
 
   可能是Lammps算model_devi的时候因为势函数太差导致有原子重合而报错。可以手动在对应的单条轨迹的input.lammps中加入
 
-  ```python
+```python
   thermo_modify   lost ignore flush yes
-  ```
+```
 
   然后在上一级文件夹下面手动提交任务
 
-  ```shell
+```shell
   bsub<*.sub
-  ```
+```
 - AssertionError
 
   某个单点能计算中断后重新开始，导致cp2k的output中有重叠。可以在02.fp文件夹下用以下脚本进行检查：
-  
-  ```python
-  import dpdata
-  import glob
-  l = glob.glob("task.002*")
-  l.sort()
-  stc = dpdata.LabeledSystem(l[0]+'/output',fmt='cp2k/output')
-  for i in l[1:]:
-      print(i)
-      stc += dpdata.LabeledSystem(i+'/output',fmt='cp2k/output')
+```python
+import dpdata
+import glob
+l = glob.glob("task.002*")
+l.sort()
+stc = dpdata.LabeledSystem(l[0]+'/output',fmt='cp2k/output')
+for i in l[1:]:
+    print(i)
+    stc += dpdata.LabeledSystem(i+'/output',fmt='cp2k/output')
+```
 
-  ```
-  
   其中`task.002.*`代表遍历002system中的被标记的结构。如果不同系统的原子数相同，也可以直接用`task.00*`一次性检查所有的结构。
-  
+
+- 如果你发现进行 model deviation 从一开始就非常大，并且测试集的结构被打乱，有可能是在 param 文件中设置了`"shuffle_poscar": true`。该选项会随机打乱测试集原始 `POSCAR` 中的行，并用打乱后的结构进行 model deviation 测试。该选项主要用于打乱合金体系的结构，然而对于界面或者共价键连接的体系（如半导体），随机打乱原子的将会使界面结构或者半导体结构变成混乱的一锅粥，没有任何化学含义，因此我们不用进行shuffle（也不可以）。请在 param 文件中设置:
+```python
+...
+"shuffle_poscar": false
+...
+```
+
 ### script from xyz to POSCAR
 
 ```python
@@ -478,6 +469,7 @@ for j in range(2):
 
 ```
 或者调用`ase.io.vasp`里的`write`:
+
 ```python
 def write_vasp(filename, atoms, label=None, direct=False, sort=None,
 symbol_count=None, long_format=True, vasp5=False,
