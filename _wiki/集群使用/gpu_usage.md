@@ -303,7 +303,7 @@ Slurm 与 LSF 命令对照表如下所示：
 
 ### LSF 系统（新版）
 
-> 新版 DP-GEN 0.10.0 已经修复 BUG，且相关 BUG 对 DPDispatcher 无影响，因此下述两参数值不需要再交换。-- 2021/7/20
+> 新版 DP-GEN 0.10.0 已经修复 BUG，且相关 BUG 对 DPDispatcher 无影响，因此下述两参数值不需要再交换。**以下例子中的写法是正确写法。**-- 2021/7/20
 > 
 > DP-GEN 0.9.2 及以前版本存在BUG，`numb_gpu` 和 `task_per_node` 的含义是相反的，并且对于 LSF 请务必指定 `node_cpu` 为每个节点的核数或与 `-n` 保持一致。 -- 2021/7/10
 
@@ -321,10 +321,10 @@ Slurm 与 LSF 命令对照表如下所示：
         "work_path": "/home/chenglab/ypliu/dprun/train"
       },
       "resources": {
-        "numb_gpu": 4,
+        "numb_gpu": 1,
         "node_cpu": 32,
         "numb_node": 1,
-        "task_per_node": 1,
+        "task_per_node": 4,
         "partition": "gpu",
         "new_lsf_gpu": true,
         "exclusive": false,
