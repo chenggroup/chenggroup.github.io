@@ -12,7 +12,7 @@ permalink: /
 
 This is group wiki for chenggroup which is personal academic group. Visitors are welcomed to have look in our wiki. It's better if you would like to post any suggestions for us.
 
-1. [如果你是新生请看这里]({{ site.baseurl }}/wiki/新生培训/linux)
+1. [如果你是新生请看这里]({{ site.baseurl }}/wiki/新生培训/toc)
 2. [如果你想学集群使用请看这里]({{ site.baseurl }}/wiki/集群使用/cluster_usage)
 
 ## Sections
