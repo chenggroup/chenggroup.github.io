@@ -8,7 +8,7 @@ priority: 1.02
 
 *此入门仅介绍一些作者认为必要且实用的功能，完善的帮助手册可以通过命令，`man ssh_config`, `man ssh`查看* 
 
-为便于说明，假设需要登陆的远程服务器IP为123.45.67.89，用户名为kmr。
+为便于说明，假设需要登陆的远程服务器IP为123.45.67.89，SSH 端口为 7696，用户名为kmr。
 
 
 ## 学习目标
@@ -46,13 +46,23 @@ ssh-keygen
 
 {% include alert.html type="warning" content="新人必学" %}
 
+若远程服务器已经放置了公钥，则可输入以下命令登陆服务器：
+
 ```bash
 ssh -i <path to your private key> -p <port number> username@server_ip
-#example here
-ssh -i ~/.ssh/id_rsa -p 6666 kmr@123.45.67.89
 ```
 
+示例，假设密钥在本地的路径为 `~/.ssh/id_rsa`：
+
+```bash
+ssh -i ~/.ssh/id_rsa -p 7696 kmr@123.45.67.89
+```
+
+`-p` 后指定的是端口。若省略不写，默认通过 22 端口与远程服务器进行连接。
+
 默认情况下，`id_rsa`和`id_rsa.pub`文件位于`~/.ssh`下，则`-i` 选项及其对应参数可以省略。
+
+{% include alert.html type="warning" content="计算集群只允许在校园网特定IP范围内直接登陆使用。" %}
 
 ## 使用SCP进行文件传输
 
@@ -67,22 +77,23 @@ scp local_directory_path myserver:remote_file
 则使用命令：
 
 ```bash
-scp -P 6666 kmr@123.45.67.89:/data/home/kmr/file /some/local/place
+scp -P 7696 kmr@123.45.67.89:/data/home/kmr/file /some/local/place
 ```
 
 从本地上传到远程则交换顺序：
 
 ```bash
-scp -P 6666 /some/local/place/file kmr@123.45.67.89:/data/home/kmr/
+scp -P 7696 /some/local/place/file kmr@123.45.67.89:/data/home/kmr/
 ```
+{% include alert.html type="warning" content="注意 scp 指定端口的命令是大写的<code>-P</code> 而非小写的 <code>-p</code>，这是不同于 ssh 命令的一点。" %}
 
 若所传文件为目录，则需要使用`-r`选项：
 
 ```bash
-scp -r -P 6666 kmr@123.45.67.89:/data/home/kmr/directory /some/local/place
+scp -r -P 7696 kmr@123.45.67.89:/data/home/kmr/directory /some/local/place
 ```
 
-对 zsh （如macOS >=10.15），不能直接使用正则表达式批量传输文件，需要用单引号括起。
+zsh下 （比如macOS >=10.15版本的默认终端），不能直接使用通配符`*`批量传输文件，需要将包含`*`的字符串用单引号括起。
 
 ## 可选：通过配置 config 优雅地的使用 SSH
 
@@ -98,7 +109,7 @@ vim ~/.ssh/config
 Host myserver # nickname for your cluster
     User kmr # replacement of username in ssh
     Hostname 123.45.67.89 # replace of cluster_ip in ssh
-    Port 6666 # replacement of -p <port number> in ssh
+    Port 7696 # replacement of -p <port number> in ssh
     IdentityFile ~/.ssh/id_rsa # replace of -i <path to your private key> in ssh
 ```
 
@@ -108,7 +119,7 @@ Host myserver # nickname for your cluster
 ssh myserver
 ```
 
-此命令即相当于上文提到的`ssh -i ~/.ssh/id_rsa -p 6666 kmr@123.45.67.89`。
+此命令即相当于上文提到的`ssh -i ~/.ssh/id_rsa -p 7696 kmr@123.45.67.89`。
 
 ### 加深理解
 
@@ -192,7 +203,7 @@ Host *  # valid for all host
 
 ## 一份示例配置文件（config）
 
-以下为 `~/.ssh/config` 的一个示例，需要时可在这份示例文件上进行修改，必要修改的部分已在注释中标出，`General config` 可以直接照抄: 
+以下为 `~/.ssh/config` 的一个示例，需要时可在这份示例文件上进行修改，必要修改的部分已在注释中标出，`General config` 可以直接照抄。注意须删掉文件中所有的注释。
 
 ```bash
 # General config
@@ -223,7 +234,7 @@ Host nickname_2 # nickname for your cluster
     
 # set same parts for host1 and host2
 Host nickname_1 nickname_2 # use your own nickname
-    Port 6666
+    Port 7696
     ProxyJump nickname_proxy # use your own nickname
 ```
 
