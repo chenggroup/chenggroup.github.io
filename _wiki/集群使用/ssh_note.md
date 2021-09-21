@@ -52,24 +52,39 @@ ssh -i <path to your private key> -p <port number> username@server_ip
 ssh -i ~/.ssh/id_rsa -p 6666 kmr@123.45.67.89
 ```
 
+默认情况下，`id_rsa`和`id_rsa.pub`文件位于`~/.ssh`下，则`-i` 选项及其对应参数可以省略。
+
 ## 使用SCP进行文件传输
 
 SCP实际上是SSH+FTP的结合，如果配置好了SSH命令，可以使用以下命令来进行文件传输：
 
 ```bash
 scp myserver:remote_file local_directory_path
+scp local_directory_path myserver:remote_file
 ```
 
-### 在使用跳板机的情况下使用X11 Forwarding
-
-只需要在 `~/.ssh/config` 中加入
+比如需要把上文提到的远程服务器的文件`/data/home/kmr/file`传到本地 `/some/local/place` 目录下，
+则使用命令：
 
 ```bash
-Host *  # valid for all host
-    ForwardX11Trusted yes
+scp -P 6666 kmr@123.45.67.89:/data/home/kmr/file /some/local/place
 ```
 
-### 可选：优雅地的使用SSH
+从本地上传到远程则交换顺序：
+
+```bash
+scp -P 6666 /some/local/place/file kmr@123.45.67.89:/data/home/kmr/
+```
+
+若所传文件为目录，则需要使用`-r`选项：
+
+```bash
+scp -r -P 6666 kmr@123.45.67.89:/data/home/kmr/directory /some/local/place
+```
+
+对 zsh （如macOS >=10.15），不能直接使用正则表达式批量传输文件，需要用单引号括起。
+
+## 可选：通过配置 config 优雅地的使用 SSH
 
 为了避免每次都输入一大串命令。 请使用vim编辑如下文件：
 
@@ -121,7 +136,7 @@ Host <hostnickname>
 
 本组的服务器限制了登录的ip，即你只能在学校ip范围内进行登录。同时由于登录需要密钥，而密钥保存在办公室电脑上，因此登录就必须使用办公室电脑。因此，人不在办公室时就很难登录服务器。
 
-解决方法就是，先通过SSH登录到办公室电脑（仅自己的用户名密码即可），再通过办公室电脑登录到服务器。此时办公室电脑是作为*跳板*来使用的：
+解决方法就是，先在校园网环境下通过SSH登录到办公室电脑（仅自己的用户名密码即可），再通过办公室电脑登录到服务器。此时办公室电脑是作为*跳板*来使用的：
 
 ```bash
 ssh username@proxy
@@ -166,7 +181,16 @@ Host myserver # nickname for your cluster
     LocalForward 9999 localhost:8888 # fist IP is your local IP, second IP is remote IP you want to forward
 ```
 
-## 一份示例配置文件
+### 在使用跳板机的情况下使用X11 Forwarding
+
+只需要在 `~/.ssh/config` 中加入
+
+```bash
+Host *  # valid for all host
+    ForwardX11Trusted yes
+```
+
+## 一份示例配置文件（config）
 
 以下为 `~/.ssh/config` 的一个示例，需要时可在这份示例文件上进行修改，必要修改的部分已在注释中标出，`General config` 可以直接照抄: 
 

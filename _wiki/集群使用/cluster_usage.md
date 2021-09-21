@@ -13,6 +13,27 @@ priority: 1.01
 
 使用上述集群之前，你必须拥有一个账号才能进行任务提交。申请账号请联系集群管理员。
 
+## 创建密钥对
+
+{% include alert.html type="warning" content="新人必学" %}
+
+`ssh` 是用来安全进行登录远程电脑的命令。使用后，有两种选择来验证登录
+
+1. 使用密码
+2. 使用密钥 
+
+第一种方法已经为大众所熟知，但是不安全，目前集群对新开账号原则上不提供登陆密码。因此我们采用密钥进行登录。
+
+使用如下命令生成密钥:
+
+```bash
+ssh-keygen
+```
+
+根据终端的提示进行操作（实际上你可能只需要不停按`enter`键）。默认情况下你会在`~/.ssh`目录中得到`id_rsa`和`id_rsa.pub`文件，他们分别是**私钥**和**公钥**。创建好了之后请把**公钥** `id_rsa.pub` 文件发给服务器管理员。
+
+{% include alert.html type="warning" content="私钥是登录集群的钥匙，请务必保管好这个文件，防止自己的电脑被入侵" %}
+
 ## 获取账号
 
 集群只允许已经授权的用户进行登录。在从管理员处获得你的账号名和初始密码后， Linux 或 Mac 用户可直接从命令行登录集群，使用 `ssh` 命令即可。
@@ -21,7 +42,7 @@ priority: 1.01
 $ ssh -p <port> username@ip_address
 ```
 
-请将 `username` 和 `ip_address` 替换为管理员提供的账号和IP地址，`<port>`替换为端口号。
+请将 `username` 和 `ip_address` 替换为管理员提供的账号和IP地址，`<port>` 替换为端口号。
 
 集群均采用 Linux 系统，因此不熟悉 Linux 基本操作的用户（例如查看文件、编辑文本、复制数据等）可以参考[Linux快速基础入门](/wiki/集群使用/linux)，并熟悉这些操作。本文档假设用户有一定的 Linux 基础。
 
@@ -31,11 +52,11 @@ $ ssh -p <port> username@ip_address
 
 1. (**Windows 10/11用户推荐**)使用 WSL(Windows Subsystem for Linux)。WSL 是 Windows 10 新版的特性，可使得用户在 Windows 系统下运行命令行模式的 Ubuntu 或 OpenSUSE 等子系统。使用 WSL 的用户可直接参考 Linux 的使用方法进行操作。具体安装方式可以参考[官方教程](https://docs.microsoft.com/zh-cn/windows/wsl/install-win10)。 对于使用集群的大多数需求，WSL 1 即可满足，因此不一定需要将 WSL 1 升级到 WSL 2 。
 
-> 1. 这种方法对于图形界面（VMD、gnuplot）等支持较差，尚需要额外的步骤配置图形界面转发，这里限于篇幅原因暂不进行介绍。
+> 1. 这种方法对于图形界面（VMD、gnuplot）等支持较差，尚需要额外的步骤配置图形界面转发，这里限于篇幅原因暂不进行介绍。如有需要请参考[这里](https://zhuanlan.zhihu.com/p/128507562)。
 >
-> 2. 目前最新预览版（需要Windows 10 21362以上版本或 Windows 11，[请参考](https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps)）已经提供了对图形界面的直接支持，但需要使用 WSL 2。
+> 2. 目前 Windows 11 已经提供了对图形界面的直接支持（[请参考](https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps)），但需要使用 WSL 2。
 >
-> 3. 由于代理机制原因，WSL 2 无法直接使用桌面端的 Easy Connect，WSL 1 可以。
+> 3. 注意：由于代理机制原因，WSL 2 无法直接使用桌面端的 Easy Connect，WSL 1 可以。
 
 2. 使用 Xshell、PuTTY 等 SSH 客户端，Windows 10 以下的用户可使用这种方式。这类 SSH 客户端可以提供较完整的 SSH 功能。关于Putty的使用[请参考](https://bicmr.pku.edu.cn/~wenzw/pages/login.html)。
 
