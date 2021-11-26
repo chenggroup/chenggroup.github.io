@@ -31,10 +31,10 @@ pip install .
 
 ## conda安装
 
-如果不需要对源码进行修改，可以利用[官方教程](https://deepmd.readthedocs.io/en/latest/install.html#easy-installation-methods) easy installation 中的 conda 安装
+如果不需要对源码进行修改，可以利用[官方教程](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/install/easy-install.md#install-with-conda) easy installation 中的 conda 安装
 
 ```bash
-conda install DeePMD-kit=*=*gpu lammps-dp=*=*gpu -c deepmodeling
+conda create -n deepmd deepmd-kit=*=*gpu libdeepmd=*=*gpu lammps-dp cudatoolkit=11.3 horovod -c https://conda.deepmodeling.org
 ```
 
 Conda 安装会一并安装 CUDA Toolkit，因此只要保证电脑的驱动支持即可。可通过以下指令查看驱动版本及其支持的cuda版本：
