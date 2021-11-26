@@ -28,20 +28,38 @@
 
           <!-- This navigation is completely for mobile -->
           {% assign sorted_wiki = site.wiki | sort:"priority","last" %}
-          {% for section in sorted_wiki %}<li class="md-nav__item mobile-nav" style="display:none">
-          <a class="md-nav__link" href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}" title="{{ section.title }}">{{ section.title }}</a>
+          {% for section in sorted_wiki %}
+          <li class="md-nav__item mobile-nav" style="display:none">
+            <a class="md-nav__link" href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}"
+               title="{{ section.title }}">{{ section.title }}</a>
           </li>
           {% endfor %}
 
           <!-- This navigation is completely for non mobile -->
-          {% assign sorted_wiki = site.wiki | sort:"priority","last" %}
-          {% for section in sorted_wiki %}
-          <li class="md-nav__item not-mobile-nav">
-            <a {% if page.url == section.url %}class="md-nav__link md-nav__link--active pancakes-parent"{% else %}class="md-nav__link pancakes-parent"{% endif %} {% if section.children %}href="#pancakes-{{ section.title | slugify }}"{% else %}href="{% if section.external_url %}{{ section.external_url }}{% else %}{{ section.url }}{% endif %}"{% endif %}
-                id="pancakes-{{ section.title | slugify }}" 
-                title="{{ section.title }}">{{ section.title }}</a>
-          </li>{% endfor %}
-
+          {% assign sorted_by_category = site.wiki | sort:"priority","last" | group_by_exp:"item", "item.path | split:'/' | slice: 1" %}
+          {% for category in sorted_by_category %}
+          {% assign section = category.items | first %}
+          {% assign path_len = section.path | split:'/' | size %}
+          {% if path_len==2 %}
+            <li class="md-nav__item not-mobile-nav">
+              {% assign section = category.items | first %}
+              <a class="md-nav__link" href="{{ section.url }}">{{ section.title }}</a>
+            </li>
+          {% else %}
+            <li class="md-nav__item md-nav__item--nested not-mobile-nav">
+              <a class="md-nav__link pancakes-parent">{{ category.name }}</a>
+              <nav class="md-nav">
+                <ul class="md-nav__list">
+                  <li class="md-nav__item">
+                    {% for section in category.items %}
+                    <a class="md-nav__link pancakes-child" href="{{ section.url }}" title="{{ section.title }}" style="display:none">{{ section.title }}</a>
+                    {% endfor %}
+                  </li>
+                </ul>
+              </nav>
+            </li>
+          {% endif %}
+          {% endfor %}
         </ul>
       </nav>
     </div>

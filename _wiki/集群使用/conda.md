@@ -1,7 +1,7 @@
 ---
 title: Anaconda
 authors: Yongbin Zhuang
-priority: 1.1
+priority: 1.08
 ---
 
 # Anaconda 使用指南
@@ -53,5 +53,27 @@ conda create -n <your env name> python
 
 conda activate <your env name>
 ```
+
+
+
+## 修饰你的终端前缀
+
+用上述方法创造的环境会在你的终端命令行前加上一长串路径，例：
+
+```bash
+(/Users/USER_NAME/research/data-science/PROJECT_NAME/envs) $
+```
+
+可以用以下命令缩短前缀
+
+```bash
+conda config --set env_prompt '({name})'
+```
+
+此命令会修改你的`.condarc`文件
+
+[参考文献](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
+
+
 
 没有了，愉快的用conda进行数据处理吧!

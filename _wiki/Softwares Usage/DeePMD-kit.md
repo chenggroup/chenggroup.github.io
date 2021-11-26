@@ -13,6 +13,7 @@ DeePMD-kit是一个训练神经网络势能(Machine Learning Potential)的代码
 以下为参考信息:
 
 - [官网](http://www.deepmd.org)
+- [官方文档](https://deepmd.readthedocs.io/en/latest/index.html)
 - 安装方法:  [Installation Guide]({{ site.baseurl }}/wiki/softwares#deepmd-installation-guide)
 
 {% include alert.html type="warning" content="此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者" %}
@@ -35,10 +36,10 @@ git clone https://github.com/deepmodeling/deepmd-kit.git
 cd <deepmd repositoy>/examples/water/train/
 ```
 
-你会看到许多`json`为后缀的文件。这些都是DeePMD-kit使用的输入文件。我们只需要使用`water_se_a.json`文件作为例子。现在复制制`/share/base/script/deepmd.lsf`到当前文件夹，并且修改它。
+你会看到许多`json`为后缀的文件。这些都是DeePMD-kit使用的输入文件。我们只需要使用`water_se_a.json`文件作为例子。现在复制制`/data/share/base/script/deepmd.lsf`到当前文件夹，并且修改它。
 
 ```bash
-cp /share/base/script/deepmd.lsf ./
+cp /data/share/base/script/deepmd.lsf ./
 vim deepmd.lsf
 ```
 
@@ -64,7 +65,7 @@ vim deepmd.lsf
 # ============================================
 
 # add modulefiles
-module add cuda/10.0 deepmd/1.0
+module add cuda/10.0 deepmd/1.2
 
 # automatic select the gpu
 source /share/base/script/find_gpu.sh
@@ -229,6 +230,7 @@ less lcurve.out
 
 - `"batch_size": 1`: 每个批次（batch）的大小，该数字代表结构数量。记住每一次迭代会放一个批次的结构进入训练。
 - `"numb_test": 10` : 每次迭代中，测试集的结构数量。注意测试集是随机从数据集里挑选的，如果有多个数据集或多个set，那么一般只会从最后一个目录里挑选。
+- 更多参数说明，请参考官方文档：[https://deepmd.readthedocs.io/en/latest/train-input.html](https://deepmd.readthedocs.io/en/latest/train-input.html)
 
 ### 开始你的训练
 
@@ -254,11 +256,73 @@ dp train input.json --restart model.ckpt
 
 
 
+## 使用生成的势能函数进行分子动力学(MD)模拟
+
+当我们完成训练之后，我们需要根据节点文件(`model.ckpt*`)冻结(Freeze)出一个模型来。
+
+利用如下命令，可以冻结模型：
+
+```bash
+dp freeze
+```
+
+你将会得到一个`*.pb`文件。利用此文件可以使用`LAMMPS`, `ASE`等软件进行分子动力学模拟。
+
+## 利用压缩模型进行产出(Production)
+
+机器学习势能`*.pb`文件进行MD模拟虽然已经非常迅速了。但是还有提升的空间。首先我们需要用1.3版本的deepmd进行训练势能函数，并得到`*.pb`文件。利用1.2版本的deepmd训练得到势能函数也不用担心。可以利用以下命令对1.2版本的势能函数进行转换：
+
+```bash
+module load deepmd/1.2	 # convert-to-1.3 是 1.2 版本的一个 subcommand
+dp convert-to-1.3 -i 1.2-model.pb -o 1.3-model.pb
+```
+
+得到1.3版本的势能函数后，建议将原训练文件夹备份后复制，我们利用如下命令进行压缩（文件夹下应该含有对应的`input.json`文件和checkpoint文件）：
+
+```bash
+module load deepmd/compress
+dp compress input.json -i 1.3-model.pb -o compressed-model.pb -l compress.log
+```
+
+### 压缩模型与原始模型对比
+
+测试2080Ti, 显存11G
+
+| 体系                 | 原子数 | 提速前 (ns/day) | 提速后(ns/day) | 提升倍率 |
+| -------------------- | ------ | --------------- | -------------- | -------- |
+| LIGePS               | 5000   | 0.806           | 3.569          | 4.42     |
+| SnO2/water interface | 6021   | 0.059           | 0.355          | 6.01     |
+| SnO2/water interface | 5352   | 0.067           | 0.382          | 5.70     |
+| SnO2/water interface | 2676   | 0.132           | 0.738          | 5.59     |
+| SnO2/water interface | 1338   | 0.261           | 1.367          | 5.23     |
+| SnO2/water interface | 669    | 0.501           | 2.236          | 4.46     |
+| LiGePS               | 400    | 7.461           | 23.992         | 3.21     |
+| Cu13                 | 13     | 51.268          | 65.944         | 1.28     |
+
+SnO2/water interface: 原始模型Maximum 6021 ——> 压缩模型Maximum 54189个原子
+
 ## Trouble Shooting
 
 ### warning: loc idx out of lower bound
 
 Solution: https://github.com/deepmodeling/deepmd-kit/issues/21
+
+### ValueError: NodeDef missing attr 'T' from ...
+
+当一个模型使用 deepmd/1.2 训练，但是用更高版本的 deepmd-kit (> v1.3) 进行 lammps 任务的时候经常会报这个错，例子：
+
+* [error: Not found: No attr named 'T' in NodeDef when running lammps](https://github.com/deepmodeling/deepmd-kit/discussions/417)
+
+但是，现在发现这个报错在压缩 v1.3 版本模型的时候也会出现。使用下列命令：
+
+```bash
+dp compress ${input} --checkpoint-folder ${ckpt} 1.3-model.pb -o compressed-model.pb -l compress.log
+```
+
+其中`${input}`和`${ckpt}`分别是对应模型的输入脚本所在路径和检查点目录。在这个例子里，我们仅把需要压缩的模型复制到了工作文件夹下，输入脚本所在路径和检查点目录人工指认。至于为什么这样会报错 ‘ValueError’，目前还没有找到原因。
+
+因此，我们建议**备份之前的训练文件夹，在训练文件夹的一个 copy 下进行压缩任务 **。
+
 
 ## Extra Support
 
@@ -368,3 +432,122 @@ type_raw(pos[0], type_path)
 
 ```
 
+## 升级到DeePMD-kit 2.0
+
+目前 DeePMD-kit 2.0 正式版已经发布，相比旧版已有众多提升，且压缩模型为正式版特性。目前我们集群上已安装 DeePMD-kit 2.0.3。
+
+### 输入文件
+
+DeePMD-kit 2.0 相比 1.x 在输入文件上做了一定改动，以下给出一个 DeePMD-kit 2.0 输入文件的例子：
+
+```json
+{
+    "_comment": " model parameters",
+    "model": {
+        "type_map": [
+            "O",
+            "H"
+        ],
+        "descriptor": {
+            "type": "se_e2_a",
+            "sel": [
+                46,
+                92
+            ],
+            "rcut_smth": 0.50,
+            "rcut": 6.00,
+            "neuron": [
+                25,
+                50,
+                100
+            ],
+            "resnet_dt": false,
+            "axis_neuron": 16,
+            "seed": 1,
+            "_comment": " that's all"
+        },
+        "fitting_net": {
+            "neuron": [
+                240,
+                240,
+                240
+            ],
+            "resnet_dt": true,
+            "seed": 1,
+            "_comment": " that's all"
+        },
+        "_comment": " that's all"
+    },
+    "learning_rate": {
+        "type": "exp",
+        "decay_steps": 5000,
+        "start_lr": 0.001,
+        "stop_lr": 3.51e-8,
+        "_comment": "that's all"
+    },
+    "loss": {
+        "type": "ener",
+        "start_pref_e": 0.02,
+        "limit_pref_e": 1,
+        "start_pref_f": 1000,
+        "limit_pref_f": 1,
+        "start_pref_v": 0,
+        "limit_pref_v": 0,
+        "_comment": " that's all"
+    },
+    "training": {
+        "training_data": {
+            "systems": [
+                "../data/data_0/",
+                "../data/data_1/",
+                "../data/data_2/"
+            ],
+            "batch_size": "auto",
+            "_comment": "that's all"
+        },
+        "validation_data": {
+            "systems": [
+                "../data/data_3"
+            ],
+            "batch_size": 1,
+            "numb_btch": 3,
+            "_comment": "that's all"
+        },
+        "numb_steps": 1000000,
+        "seed": 10,
+        "disp_file": "lcurve.out",
+        "disp_freq": 100,
+        "save_freq": 1000,
+        "_comment": "that's all"
+    },
+    "_comment": "that's all"
+}
+```
+
+DeePMD-kit 2.0 提供了对验证集（Validation Set）的支持，因而用户可指定某一数据集作为验证集，并输出模型在该数据集上的误差。
+相比旧版而言，新版输入文件参数的具体含义变化不大，除了对数据集的定义外，大部分参数含义保持一致。
+
+以下列出一些需要注意的事项：
+
+1. 训练数据集不再直接写在 `training` 下，而是写在 `training` 的子键 `training_data` 下，格式如下所示：
+   ```json
+   "training_data": {
+            "systems": [
+                "../data/data_0/",
+                "../data/data_1/",
+                "../data/data_2/"
+            ],
+            "batch_size": "auto"
+        }
+   ```
+   默认情况下，每一训练步骤中，DeePMD-kit随机从数据集中挑选结构加入本轮训练，这一步骤加入数据的多少取决于 `batch_size` 的大小，此时，各 system 中数据被使用的概率是均等的。
+   若希望控制各 system 数据的权重，可使用 `auto_prob` 来控制，其参数选项如下所示
+      - `prob_uniform`: 各 system 数据权重均等。
+      - `prob_sys_size`: 各 system 数据的权重取决于其各自的大小。
+      - `prob_sys_size`: 写法示例如下：`sidx_0:eidx_0:w_0; sidx_1:eidx_1:w_1;...`。 该参数中，`sidx_i` 和 `eidx_i` 表示第 `i` 组数据的起止点，规则同 Python 语法中的切片，`w_i` 则表示该组数据的权重。在同一组中，各 system 数据的权重取决于各自的大小。
+   `batch_size` 的值可手动设定，根据经验一般根据“乘以原子数≤32”的规则设定。新版则支持自动设定，若设定为`"auto"`则表示按照此规则自动设置，若设定为`"auto:N"`则根据“乘以原子数≤N”的规则设定。
+2. `save_ckpt`, `load_ckpt`, `decay_rate` 等为过时参数，若由 1.x 迁移，请删除这些参数，否则会导致报错。
+3. `n_neuron` 更名为 `neuron`， `stop_batch` 更名为 `numb_step`，请注意更改。对应地，decay rate 由 `start_lr` 和 `stop_lr` 决定。
+4. `lcurve.out` 中删除了测试数据的 RMSE 值，因此旧版作图脚本需要对应修改，减少列数（能量在第3列，力在第4列）。若指定了验证集，则会输出模型在验证集上的 RMSE。
+
+更多详细说明，请参见[官方文档](https://docs.deepmodeling.org/projects/deepmd/en/latest/)。

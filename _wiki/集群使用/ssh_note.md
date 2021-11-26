@@ -1,13 +1,14 @@
 ---
-title: SSH 使用入门
+title: SSH 与 SCP 使用入门
 authors: 庄永斌
-priority: 1.3
+priority: 1.02
 ---
 
 # SSH 使用入门
 
 *此入门仅介绍一些作者认为必要且实用的功能，完善的帮助手册可以通过命令，`man ssh_config`, `man ssh`查看* 
 
+为便于说明，假设需要登陆的远程服务器IP为123.45.67.89，SSH 端口为 7696，用户名为kmr。
 
 
 ## 学习目标
@@ -45,13 +46,56 @@ ssh-keygen
 
 {% include alert.html type="warning" content="新人必学" %}
 
+若远程服务器已经放置了公钥，则可输入以下命令登陆服务器：
+
 ```bash
 ssh -i <path to your private key> -p <port number> username@server_ip
-#example here
-ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ```
 
-### 可选：优雅地的使用SSH
+示例，假设密钥在本地的路径为 `~/.ssh/id_rsa`：
+
+```bash
+ssh -i ~/.ssh/id_rsa -p 7696 kmr@123.45.67.89
+```
+
+`-p` 后指定的是端口。若省略不写，默认通过 22 端口与远程服务器进行连接。
+
+默认情况下，`id_rsa`和`id_rsa.pub`文件位于`~/.ssh`下，则`-i` 选项及其对应参数可以省略。
+
+{% include alert.html type="warning" content="计算集群只允许在校园网特定IP范围内直接登陆使用。" %}
+
+## 使用SCP进行文件传输
+
+SCP实际上是SSH+FTP的结合，如果配置好了SSH命令，可以使用以下命令来进行文件传输：
+
+```bash
+scp myserver:remote_file local_directory_path
+scp local_directory_path myserver:remote_file
+```
+
+比如需要把上文提到的远程服务器的文件`/data/home/kmr/file`传到本地 `/some/local/place` 目录下，
+则使用命令：
+
+```bash
+scp -P 7696 kmr@123.45.67.89:/data/home/kmr/file /some/local/place
+```
+
+从本地上传到远程则交换顺序：
+
+```bash
+scp -P 7696 /some/local/place/file kmr@123.45.67.89:/data/home/kmr/
+```
+{% include alert.html type="warning" content="注意 scp 指定端口的命令是大写的<code>-P</code> 而非小写的 <code>-p</code>，这是不同于 ssh 命令的一点。" %}
+
+若所传文件为目录，则需要使用`-r`选项：
+
+```bash
+scp -r -P 7696 kmr@123.45.67.89:/data/home/kmr/directory /some/local/place
+```
+
+zsh下 （比如macOS >=10.15版本的默认终端），不能直接使用通配符`*`批量传输文件，需要将包含`*`的字符串用单引号括起。
+
+## 可选：通过配置 config 优雅地的使用 SSH
 
 为了避免每次都输入一大串命令。 请使用vim编辑如下文件：
 
@@ -63,9 +107,9 @@ vim ~/.ssh/config
 
 ``` bash
 Host myserver # nickname for your cluster
-    User ch1_101 # replacement of username in ssh
-    Hostname 121.192.191.51 # replace of cluster_ip in ssh
-    Port 6666 # replacement of -p <port number> in ssh
+    User kmr # replacement of username in ssh
+    Hostname 123.45.67.89 # replace of cluster_ip in ssh
+    Port 7696 # replacement of -p <port number> in ssh
     IdentityFile ~/.ssh/id_rsa # replace of -i <path to your private key> in ssh
 ```
 
@@ -73,9 +117,9 @@ Host myserver # nickname for your cluster
 
 ```bash
 ssh myserver
-# equivalent with
-ssh -i ~/.ssh/id_rsa -p 6666 ch1_101@121.192.191.51
 ```
+
+此命令即相当于上文提到的`ssh -i ~/.ssh/id_rsa -p 7696 kmr@123.45.67.89`。
 
 ### 加深理解
 
@@ -103,27 +147,27 @@ Host <hostnickname>
 
 本组的服务器限制了登录的ip，即你只能在学校ip范围内进行登录。同时由于登录需要密钥，而密钥保存在办公室电脑上，因此登录就必须使用办公室电脑。因此，人不在办公室时就很难登录服务器。
 
-解决方法就是，先通过SSH登录到办公室电脑（仅自己的用户名密码即可），再通过办公室电脑登录到服务器。此时办公室电脑是作为*跳板*来使用的：
+解决方法就是，先在校园网环境下通过SSH登录到办公室电脑（仅自己的用户名密码即可），再通过办公室电脑登录到服务器。此时办公室电脑是作为*跳板*来使用的：
 
 ```bash
 ssh username@proxy
-ssh -p port_number -i key_file username@cluster51
+ssh -p port_number -i key_file username@cluster191
 ```
 
 ### 在config文件中配置跳板机*
 
-打开 `~/.ssh/config`: 复制以下代码，
+打开 `~/.ssh/config`，复制以下代码（注意去掉注释，否则可能会报错）：
 
 ```bash
 Host proxy # nickname you set for your office computer
     User robinzhuang # username you set for login
     Hostname 10.24.3.xxx # IP address of your office computer, change the xxx to real one!
  
-Host chenglab51 # nickname for your cluster
-    User ch1_101 # username you set, change to real one!
-    Hostname 121.192.191.xx # IP for cluster, replace XX!
+Host myserver # nickname for your cluster
+    User kmr # username you set, change to real one!
+    Hostname 123.45.67.89 # IP for cluster, change to real one!
     IdentityFile ~/.ssh/id_rsa # the key file location used in login 
-    Port xx # specify the port number, replace xx with real port !
+    Port xx # specify the port number, replace xx with real port!
     ProxyJump proxy # use Host proxy as Jump Server
 ```
 
@@ -134,7 +178,7 @@ Host chenglab51 # nickname for your cluster
 完成以上配置后可以使用如下命令直接配置：
 
 ```bash
-ssh chenglab51
+ssh myserver
 ```
 
 ### 在config文件中转发端口*
@@ -142,18 +186,10 @@ ssh chenglab51
 有时，我们在服务器上部署了 `jupyter notebook` 等服务时，需要把远程的某个端口 (以下例子中为 `8888` 端口) 转发到本地的某个端口 (以下例子中为 `9999` 端口)，使得在本地访问 `https://localhost:9999` 时也能访问远程的 `jupyter notebook` 服务。
 
 ```bash
-Host chenglab51 # nickname for your cluster
-    User ch1_101 # username you set, change to real one!
-    Hostname 121.192.191.xx # IP for cluster, replace XX!
+Host myserver # nickname for your cluster
+    User kmr # username you set, change to real one!
+    Hostname 123.45.67.89 # IP for cluster, change to real one!
     LocalForward 9999 localhost:8888 # fist IP is your local IP, second IP is remote IP you want to forward
-```
-
-## 使用SCP进行文件传输
-
-SCP实际上是SSH+FTP的结合，如果配置好了SSH命令，可以使用以下命令来进行文件传输：
-
-```bash
-scp chenglab51:remote_file local_directory_path
 ```
 
 ### 在使用跳板机的情况下使用X11 Forwarding
@@ -165,9 +201,9 @@ Host *  # valid for all host
     ForwardX11Trusted yes
 ```
 
-## 一份示例配置文件
+## 一份示例配置文件（config）
 
-以下为 `~/.ssh/config` 的一个示例，需要时可在这份示例文件上进行修改，必要修改的部分已在注释中标出，`General config` 可以直接照抄: 
+以下为 `~/.ssh/config` 的一个示例，需要时可在这份示例文件上进行修改，必要修改的部分已在注释中标出，`General config` 可以直接照抄。注意须删掉文件中所有的注释。
 
 ```bash
 # General config
@@ -182,23 +218,23 @@ Host *
 
 # set proxy
 Host nickname_proxy # nickname for your Jump Server
-    Hostname 10.24.3.142 # IP for Jump Server (REPlACE IT!)
+    Hostname 10.24.3.255 # IP for Jump Server (REPlACE IT!)
     User chenglab # your username for Jump Server (REPlACE IT!)
 
-# 51 and 52
-Host nickname_51 # nickname for your cluster
-    Hostname 121.192.191.51
-    User ch1_102 # your 51 username (REPlACE IT!)
+# Host1 and host2
+Host nickname_1 # nickname for your cluster
+    Hostname 123.45.67.89
+    User kmr1 # your host1 username (REPlACE IT!)
     LocalForward 8051 localhost:8888
 
-Host nickname52 # nickname for your cluster
-    Hostname 121.192.191.52
-    User ch2_102 # your 52 username (REPlACE IT!)
+Host nickname_2 # nickname for your cluster
+    Hostname 123.45.67.90
+    User kmr2 # your host2 username (REPlACE IT!)
     LocalForward 8052 localhost:8888
     
-# set same parts for 51 and 52
-Host nickname_51 nickname_52 # use your own nickname
-    Port 6666
+# set same parts for host1 and host2
+Host nickname_1 nickname_2 # use your own nickname
+    Port 7696
     ProxyJump nickname_proxy # use your own nickname
 ```
 
@@ -256,4 +292,28 @@ This is because `ssh` can't find your xauth location. Usually, the location is i
 Host *
     XAuthLocation /opt/X11/bin/xauth
 ```
+
+### Remote host identification has changed!
+
+When the remote host was **just repaired**, the error like below might be raised.
+
+```bash
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the RSA key sent by the remote host is
+51:82:00:1c:7e:6f:ac:ac:de:f1:53:08:1c:7d:55:68.
+Please contact your system administrator.
+Add correct host key in /Users/isaacalves/.ssh/known_hosts to get rid of this message.
+Offending RSA key in /Users/isaacalves/.ssh/known_hosts:12
+RSA host key for 104.131.16.158 has changed and you have requested strict checking.
+Host key verification failed.
+```
+
+Take it easy, and just edit your `/Users/isaacalves/.ssh/known_hosts` file to remove the line with the IP address of the very remote host. For some users such as Ubuntu or Debian users, `ssh -R xxx` might be necessary, which would be shown in the error info.
+
+However, if not any repair or upgrade happened, **man-in-the-middle attack** might happen. Just stop logging in and contact manager of cluster at once to make sure.
 

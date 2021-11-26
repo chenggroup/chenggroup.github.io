@@ -74,7 +74,7 @@ wiki 书写使用 markdown 格式。本 wiki 使用 kramdown 作为 markdown 的
 
 需要把默认的无特殊操作改为通过 iPic 上传图片，不过在这之前需要 [下载 iPic](https://apps.apple.com/cn/app/ipic-markdown-图床-文件上传工具/id1101244278?mt=12) 。推荐在 iPic 偏好设置中开启压缩上传图片的选项，这样可以使 wiki 网页加载的速度更快。
 
-![Screen Shot 2019-11-08 at 21.24.02](https://tva1.sinaimg.cn/large/006y8mN6ly1g8qy8t2zh1j30im0dc0tn.jpg)
+![image-20210602152924699](https://cdn.jsdelivr.net/gh/xjf729/FigureBed@master/Imgs/image-20210602152924699.png)
 
 ### 通过 jekyll 服务*
 
