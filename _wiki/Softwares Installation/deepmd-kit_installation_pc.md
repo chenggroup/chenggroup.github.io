@@ -31,12 +31,14 @@ pip install .
 
 ## conda安装
 
-如果不需要对源码进行修改，可以利用[官方教程](https://deepmd.readthedocs.io/en/latest/install.html#easy-installation-methods) easy installation 中的 conda 安装
+如果不需要对源码进行修改，可以利用[官方教程](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/install/easy-install.md#install-with-conda) easy installation 中的 conda 安装
 
 ```bash
-conda install DeePMD-kit=*=*gpu lammps-dp=*=*gpu -c deepmodeling
+#(base)
+conda create -n deepmd deepmd-kit=*=*gpu libdeepmd=*=*gpu lammps-dp cudatoolkit=11.3 horovod -c https://conda.deepmodeling.org
 ```
 
+此命令新建了一个名为`deepmd`的虚拟环境，并将deepmd-kit安装在这个环境中。
 Conda 安装会一并安装 CUDA Toolkit，因此只要保证电脑的驱动支持即可。可通过以下指令查看驱动版本及其支持的cuda版本：
 
 ```bash
@@ -51,7 +53,7 @@ Conda安装包括了预编译的 TF/C++ 接口，可通过定义环境变量省�
 
 ## 手动编译
 
-上一节的 Conda 安装是在`deepmd`虚拟环境下安装的，手动安装时我们退出环境`deepmd`新建一个环境`dp-tf`：
+上一节的 Conda 安装是在`deepmd`虚拟环境下安装的，手动安装我们新建一个环境`dp-tf`：
 
 ```bash
 conda info -e
@@ -59,43 +61,71 @@ conda info -e
 conda deactivate
 # create a new environment
 conda create -n dp-tf
+# if you want to specify the version of python in dp-tf
+#conda create -n dp-tf python=3.9
 ```
+
+{% include alert.html type="tip" title="tip" content="建议在新建环境dp-tf 时设置python版本和deepmd保持一致，否则后续安装tensorflow时可能因为python版本不兼容报错No matching distribution found for tensorflow。" %}
 
 ### 下载源码&设置环境变量
 
 下载源码（注意一定要有`--recursive`，具体见[wiki]({{ site.baseurl }}/wiki/Softwares Installation/deepmd-kit_installation_51)）
 
 ```bash
+#(tf-dp)
 git clone --recursive https://github.com/deepmodeling/DeePMD-kit.git DeePMD-kit
 ```
 
 设置环境变量
 
 ```bash
+#(tf-dp)
 cd DeePMD-kit
 # set $deepmd_source_dir as the directory of the deepmd source code
-deepmd_source_dir=`pwd`
+deepmd_source_dir=$(pwd)
 # set $tensorflow_root as the directory of the TF/C++ interface
 # the dir of the environment with conda DP
-tensorflow_root=/dir/for/env/with/condaCP
+tensorflow_root=/dir/for/env/with/condaDP
 ```
 
-如果担心安装过程中需要退出，可以临时加到`~/.bashrc`文件中并`source ~/.bashrc`，注意此时`deepmd_source_dir`需要写出实际的绝对路径而非`` `pwd` ``。
+> 可以用`conda env list`指令查看环境deepmd的地址(`/dir/for/env/with/condaDP`)
+
+如果担心安装过程中需要退出，可以临时加到`~/.bashrc`文件中并`source ~/.bashrc`。
 
 ### TF/Python 接口
 
 首先可以更新一下pip，并安装新版TensorFlow：
 
 ```bash
+#(tf-dp)
 pip install --upgrade pip
-pip install --upgrade tensorflow==2.4.1
+pip install --upgrade tensorflow==2.5.0
 ```
 
-{% include alert.html type="tip" title="tip" content="利用conda便捷安装可以省去后面TF/C++接口的安装，所以这里的TF安装和conda安装中的TF保持一致。（可以在conda安装过DeePMD-kit的环境下用conda list查看已安装的TF-gpu版本。" %}
+{% include alert.html type="tip" title="tip" content="利用conda便捷安装可以省去后面TF/C++接口的安装，所以这里的TF安装和conda安装中的TF保持一致。（具体版本在conda安装过DeePMD-kit的环境(deepmd)下查看已安装的tensorflow-base版本。" %}
+
+例如：
+```bash
+# assume you have been in dp-tf env
+#(tf-dp)
+conda deactivate
+#(base)
+conda activate deepmd
+#(deepmd)
+conda list
+>>> tensorflow-base           2.5.0           gpu_py39h7c1560b_0    https://conda.deepmodeling.org
+#(deepmd)
+conda deactivate
+#(base)
+conda activate dp-tf
+#(tf-dp)
+pip install --upgrade tensorflow==2.5.0
+```
 
 ### DeePMD-kit/Python 接口
 
 ```bash
+#(tf-dp)
 cd $deepmd_source_dir
 DP_VARIANT=cuda
 pip install .
