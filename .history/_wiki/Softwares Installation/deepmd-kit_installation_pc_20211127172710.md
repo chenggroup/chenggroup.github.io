@@ -61,11 +61,7 @@ conda info -e
 conda deactivate
 # create a new environment
 conda create -n dp-tf
-# if you want to specify the version of python in dp-tf
-#conda create -n dp-tf python=3.9
 ```
-
-{% include alert.html type="tip" title="tip" content="建议在新建环境dp-tf 时设置python版本和deepmd保持一致，否则后续安装tensorflow时可能因为python版本不兼容报错No matching distribution found for tensorflow。" %}
 
 ### 下载源码&设置环境变量
 

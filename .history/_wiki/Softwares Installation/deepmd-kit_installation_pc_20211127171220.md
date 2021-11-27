@@ -34,7 +34,6 @@ pip install .
 如果不需要对源码进行修改，可以利用[官方教程](https://github.com/deepmodeling/deepmd-kit/blob/master/doc/install/easy-install.md#install-with-conda) easy installation 中的 conda 安装
 
 ```bash
-#(base)
 conda create -n deepmd deepmd-kit=*=*gpu libdeepmd=*=*gpu lammps-dp cudatoolkit=11.3 horovod -c https://conda.deepmodeling.org
 ```
 
@@ -56,30 +55,26 @@ Conda安装包括了预编译的 TF/C++ 接口，可通过定义环境变量省�
 上一节的 Conda 安装是在`deepmd`虚拟环境下安装的，手动安装我们新建一个环境`dp-tf`：
 
 ```bash
+#[(tf-dp)]
 conda info -e
 # if you have been in `deepmd`, deactivate first
 conda deactivate
 # create a new environment
 conda create -n dp-tf
-# if you want to specify the version of python in dp-tf
-#conda create -n dp-tf python=3.9
 ```
-
-{% include alert.html type="tip" title="tip" content="建议在新建环境dp-tf 时设置python版本和deepmd保持一致，否则后续安装tensorflow时可能因为python版本不兼容报错No matching distribution found for tensorflow。" %}
 
 ### 下载源码&设置环境变量
 
 下载源码（注意一定要有`--recursive`，具体见[wiki]({{ site.baseurl }}/wiki/Softwares Installation/deepmd-kit_installation_51)）
 
 ```bash
-#(tf-dp)
 git clone --recursive https://github.com/deepmodeling/DeePMD-kit.git DeePMD-kit
 ```
 
 设置环境变量
 
 ```bash
-#(tf-dp)
+#[(tf-dp)]
 cd DeePMD-kit
 # set $deepmd_source_dir as the directory of the deepmd source code
 deepmd_source_dir=$(pwd)
@@ -97,7 +92,7 @@ tensorflow_root=/dir/for/env/with/condaDP
 首先可以更新一下pip，并安装新版TensorFlow：
 
 ```bash
-#(tf-dp)
+#[(tf-dp)]
 pip install --upgrade pip
 pip install --upgrade tensorflow==2.5.0
 ```
@@ -107,25 +102,21 @@ pip install --upgrade tensorflow==2.5.0
 例如：
 ```bash
 # assume you have been in dp-tf env
-#(tf-dp)
 conda deactivate
-#(base)
+
 conda activate deepmd
-#(deepmd)
 conda list
+
 >>> tensorflow-base           2.5.0           gpu_py39h7c1560b_0    https://conda.deepmodeling.org
-#(deepmd)
+
 conda deactivate
-#(base)
 conda activate dp-tf
-#(tf-dp)
 pip install --upgrade tensorflow==2.5.0
 ```
 
 ### DeePMD-kit/Python 接口
 
 ```bash
-#(tf-dp)
 cd $deepmd_source_dir
 DP_VARIANT=cuda
 pip install .
