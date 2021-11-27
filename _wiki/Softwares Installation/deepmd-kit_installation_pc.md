@@ -74,13 +74,15 @@ git clone --recursive https://github.com/deepmodeling/DeePMD-kit.git DeePMD-kit
 ```bash
 cd DeePMD-kit
 # set $deepmd_source_dir as the directory of the deepmd source code
-deepmd_source_dir=`pwd`
+deepmd_source_dir=$(pwd)
 # set $tensorflow_root as the directory of the TF/C++ interface
 # the dir of the environment with conda DP
-tensorflow_root=/dir/for/env/with/condaCP
+tensorflow_root=/dir/for/env/with/condaDP
 ```
 
-如果担心安装过程中需要退出，可以临时加到`~/.bashrc`文件中并`source ~/.bashrc`，注意此时`deepmd_source_dir`需要写出实际的绝对路径而非`` `pwd` ``。
+> 可以用`conda env list`指令查看环境deepmd的地址(`/dir/for/env/with/condaDP`)
+
+如果担心安装过程中需要退出，可以临时加到`~/.bashrc`文件中并`source ~/.bashrc`。
 
 ### TF/Python 接口
 
@@ -88,10 +90,25 @@ tensorflow_root=/dir/for/env/with/condaCP
 
 ```bash
 pip install --upgrade pip
-pip install --upgrade tensorflow==2.4.1
+pip install --upgrade tensorflow==2.5.0
 ```
 
-{% include alert.html type="tip" title="tip" content="利用conda便捷安装可以省去后面TF/C++接口的安装，所以这里的TF安装和conda安装中的TF保持一致。（可以在conda安装过DeePMD-kit的环境下用conda list查看已安装的TF-gpu版本。" %}
+{% include alert.html type="tip" title="tip" content="利用conda便捷安装可以省去后面TF/C++接口的安装，所以这里的TF安装和conda安装中的TF保持一致。（具体版本在conda安装过DeePMD-kit的环境(deepmd)下查看已安装的tensorflow-base版本。" %}
+
+例如：
+```bash
+# assume you have been in dp-tf env
+conda deactivate
+
+conda activate deepmd
+conda list
+
+>>> tensorflow-base           2.5.0           gpu_py39h7c1560b_0    https://conda.deepmodeling.org
+
+conda deactivate
+conda activate dp-tf
+pip install --upgrade tensorflow==2.5.0
+```
 
 ### DeePMD-kit/Python 接口
 
