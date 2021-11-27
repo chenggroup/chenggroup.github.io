@@ -36,7 +36,6 @@ pip install .
 ```bash
 conda create -n deepmd deepmd-kit=*=*gpu libdeepmd=*=*gpu lammps-dp cudatoolkit=11.3 horovod -c https://conda.deepmodeling.org
 ```
-
 此命令新建了一个名为`deepmd`的虚拟环境，并将deepmd-kit安装在这个环境中。
 Conda 安装会一并安装 CUDA Toolkit，因此只要保证电脑的驱动支持即可。可通过以下指令查看驱动版本及其支持的cuda版本：
 
