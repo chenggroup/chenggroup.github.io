@@ -4,6 +4,5 @@ Gemfile.lock
 vendor
 .bundle
 .idea
-.gitignore
 update.sh
 .history
