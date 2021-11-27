@@ -6,3 +6,4 @@ vendor
 .idea
 .gitignore
 update.sh
+.history
