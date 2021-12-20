@@ -103,6 +103,7 @@ CP2K计算得到的Frequence是波长的倒数$\frac{1}{\lambda}$,单位为$cm^{
 
 ## Frequence计算注意事项
 (1) 由于PBC条件的限制，CP2K的Frequence计算结果中不包含平动频率，是否包含转动频率取决于体系的状态(CONSTRAINT),通常振动频率远大于转动频率。
+(2) 计算真空中一个分子的Frequence时，要去除盒子所有方向的周期性，通常可以用$20\times20\times20Å^3$的盒子进行测试。
 
 
 
