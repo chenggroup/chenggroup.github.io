@@ -97,7 +97,8 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 ```
 
 ## ZPE求解
-根据公式，CP2K计算得到的Frequence是波长的倒数$\frac{1}{\lambda}$,单位为$cm^{-1}$
+$ZPE=\Sum\frac{\hbar\omega_i}{2}$
+CP2K计算得到的Frequence是波长的倒数$\frac{1}{\lambda}$,单位为$cm^{-1}$,根据$\frac{1}{\omega}=\frac{\lambda}{c}$可以计算得到振动频率$\omega$,N对应计算的原子个数
 
 
 ## Frequence计算注意事项
