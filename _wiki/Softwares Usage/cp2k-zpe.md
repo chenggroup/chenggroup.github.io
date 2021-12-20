@@ -120,6 +120,7 @@ N对应计算的原子个数。
 (3) 使用CP2K计算一个稳定结构式的频率时，也常会出现多个虚频。这并非是几何优化出现了问题，而是CP2K计算使用GTH赝势时存在的一个问题。详细内容请参考(https://groups.google.com/forum/?fromgroups#!topic/cp2k/DVCV0epl7Wo)
 
 解决方案有四种：
+
 a. 使用NLCC赝势。http://arxiv.org/abs/1212.6011 不过，NLCC赝势很不完整，只有B-Cl的元素有，且只提供了PBE泛函的赝势。
 
 b. 增大CUTOFF，使用600 Ry以上的CUTOFF。
