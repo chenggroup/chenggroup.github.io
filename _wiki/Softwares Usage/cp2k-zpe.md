@@ -98,7 +98,7 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 
 ## ZPE求解
 根据公式，CP2K计算得到的Frequence是波长的倒数$1\/\lambda$,单位为$cm^{-1}$
-
+![1](http://latex.codecogs.com/svg.latex?\int_a^bf(x)\ dx)
 
 
 ## Frequence计算注意事项
