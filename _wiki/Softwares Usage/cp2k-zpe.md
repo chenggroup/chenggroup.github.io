@@ -128,5 +128,5 @@ b. 增大CUTOFF，使用600 Ry以上的CUTOFF。
 c. 在XC_GRID部分使用平滑参数SMOOTING，不推荐使用。
 
 d. 在XC_GRID部分使用USE_FINER_GRID。加上这个参数后，XC部分的格点的精度提高为4*CUTOFF。
-。
+
 
