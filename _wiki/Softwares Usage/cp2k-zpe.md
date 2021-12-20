@@ -14,7 +14,9 @@ authors: Jinyuanhu
 
 - CP2K Frequency计算结果检查
 
-- 单分子Frequence计算注意事项
+- ZPE求解
+
+- Frequence计算注意事项
 
   
 
@@ -94,9 +96,11 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
       ……
 ```
 
+## ZPE求解
+$ZPE = \sum_$
 
 
-## 单分子Frequence计算注意事项
+## Frequence计算注意事项
 
 如果我们想知道+U之后对应原子中，例如d轨道的电子，的占据情况。我们可以利用如下设置将其print在output中。
 
