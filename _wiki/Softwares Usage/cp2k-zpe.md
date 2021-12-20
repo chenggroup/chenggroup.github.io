@@ -68,13 +68,11 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 
 ## CP2K Frequency计算结果检查
 
-在[CP2K_INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [FORCE_EVAL](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL.html) / [DFT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/DFT.html)下
+正常计算结束会输出project-VIBRATIONS-1.mol文件,里面[FREQ]模块即为计算得到的frequence(unit:em^-1)输出
 
 ```cp2k
-PLUS_U_METHOD .TRUE.
-```
 
-在[CP2K_INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [FORCE_EVAL](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL.html) / [SUBSYS](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS.html) / [KIND](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS/KIND.html) / [DFT_PLUS_U](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS/KIND/DFT_PLUS_U.html)下
+```
 
 对想要+U的元素的对应KIND设置
 
