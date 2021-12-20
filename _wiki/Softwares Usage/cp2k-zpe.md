@@ -54,8 +54,20 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
   &END PRINT
 &END VIBRATIONAL_ANALYSIS
 ```
-其中NPROC_REP为计算使用的总核数，通常与提交作业的lsf文件中的核数一致(总核数=节点数*核数)。
-3. 
+其中NPROC_REP为计算使用的总核数，通常与提交作业cp2k.lsf文件中的核数一致(总核数=节点数*核数)。
+
+3. 在[CP2K INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [MOTION](https://manual.cp2k.org/cp2k-8_2-branch/CP2K_INPUT/MOTION.html)下
+
+```cp2k
+&MOTION
+  &CONSTRAINT
+    &FIXED_ATOMS
+      LIST 1..320
+    &END
+  &END
+&END MOTION
+```
+LIST是在计算时需要固定的原子对应的序号。
 
 
 
