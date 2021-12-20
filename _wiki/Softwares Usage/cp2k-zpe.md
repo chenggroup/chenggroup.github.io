@@ -76,7 +76,7 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 
 ## CP2K Frequency计算结果检查
 
-正常计算结束会输出project-VIBRATIONS-1.mol文件,里面[FREQ]模块即为计算得到的frequence(unit:$cm^-1$)
+正常计算结束会输出project-VIBRATIONS-1.mol文件,里面[FREQ]模块即为计算得到的frequence(unit:$cm^{-1}$)
 
 ```cp2k
 [FREQ]
