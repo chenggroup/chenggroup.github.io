@@ -16,13 +16,11 @@ authors: Jinyuanhu
 
 - ZPE求解
 
-- Frequence计算注意事项
+- 注意事项
 
   
 
 ## ZPE基本原理
-
-Dudarev, S. L., Manh, D. N., & Sutton, A. P. (1997). Effect of Mott-Hubbard correlations on the electronic structure and structural stability of uranium dioxide. *Philosophical Magazine B: Physics of Condensed Matter; Statistical Mechanics, Electronic, Optical and Magnetic Properties*, *75*(5), 613–628. https://doi.org/10.1080/13642819708202343
 
 Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P. (1998). Electron-energy-loss spectra and the structural stability of nickel oxide: An LSDA+U study. *Physical Review B*, *57*(3), 1505–1509. https://doi.org/10.1103/PhysRevB.57.1505
 
@@ -105,7 +103,7 @@ CP2K计算得到的Frequence是波长的倒数$\frac{1}{\lambda}$,单位为$cm^{
 N对应计算的原子个数。
 
 
-## Frequence计算注意事项
+## 注意事项
 
 (1) 由于PBC条件的限制，CP2K的Frequence计算结果中不包含平动频率，是否包含转动频率取决于体系的状态(CONSTRAINT)，通常振动频率远大于转动频率。
 
