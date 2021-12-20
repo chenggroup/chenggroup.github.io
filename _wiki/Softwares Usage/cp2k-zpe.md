@@ -4,7 +4,7 @@ authors: Jinyuanhu
 
 ---
 
-# CP2K: ZPE
+# CP2K: ZPE(Zero-point energy)
 
 ## 学习目标
 
