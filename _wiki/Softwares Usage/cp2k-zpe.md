@@ -28,6 +28,8 @@ authors: Jinyuanhu
 
 $ZPE=\sum_{i=0}^{3N}\frac{\hbar\omega}{2}$
 
+因此我们需借助CP2K计算得到振动频率$\omega$
+
 Boyer, T. H. Quantum Energy and Long-Range Forces. Ann. Phys 1970, 56, 474–503.
 
 Girod, M.; Grammaticos, B. The Zero-Point Energy Correction and Its Effect on Nuclear Dynamics. Nucl. Physics, Sect. A 1979, 330 (1), 40–52. https://doi.org/10.1016/0375-9474(79)90535-9.
