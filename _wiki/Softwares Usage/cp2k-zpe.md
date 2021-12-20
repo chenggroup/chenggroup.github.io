@@ -22,6 +22,8 @@ authors: Jinyuanhu
 
 ## ZPE基本原理
 
+零点能(ZPE)是量子力学系统可能具有的最低可能能量，此时系统所处的态称为基态；所有量子力学系统都有零点能。与经典力学不同，量子系统在Heisenberg不确定性原理所描述的最低能量状态下不断波动。
+
 Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P. (1998). Electron-energy-loss spectra and the structural stability of nickel oxide: An LSDA+U study. *Physical Review B*, *57*(3), 1505–1509. https://doi.org/10.1103/PhysRevB.57.1505
 
 
