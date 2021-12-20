@@ -4,7 +4,7 @@ authors: Jinyuanhu
 
 ---
 
-# CP2K: ZPE
+# CP2K: ZPE(Zero-point energy)
 
 ## 学习目标
 
@@ -117,8 +117,16 @@ N对应计算的原子个数。
 
 (2) 计算真空中一个分子的Frequence时，要去除盒子所有方向的周期性，通常可以用$20Å\times20Å\times20Å$的盒子进行测试。
 
-(3) 使用CP2K计算一个稳定结构式的频率时，也常会出现多个虚频。这并非是几何优化出现了问题，而是CP2K计算使用GTH赝势时存在的一个问题。详细内容请参考(https://groups.google.com/forum/?fromgroups#!topic/cp2k/DVCV0epl7Wo
-)
+(3) 使用CP2K计算一个稳定结构式的频率时，也常会出现多个虚频。这是CP2K计算使用GTH赝势时存在的一个问题。详细内容请参考(https://groups.google.com/forum/?fromgroups#!topic/cp2k/DVCV0epl7Wo)
 
+解决方案有四种：
+
+a. 使用NLCC赝势(http://arxiv.org/abs/1212.6011)。不过NLCC赝势很不完整，只有B-Cl的元素有，且只提供了PBE泛函的赝势。
+
+b. 增大CUTOFF，使用600 Ry以上的CUTOFF。
+
+c. 在XC_GRID部分使用平滑参数SMOOTING，不推荐使用。
+
+d. 在XC_GRID部分使用USE_FINER_GRID。加上这个参数后，XC部分的格点的精度提高为4*CUTOFF。
 
 
