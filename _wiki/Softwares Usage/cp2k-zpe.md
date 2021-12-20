@@ -102,8 +102,7 @@ CP2K计算得到的Frequence是波长的倒数$\frac{1}{\lambda}$,单位为$cm^{
 
 
 ## Frequence计算注意事项
-
-
+(1) CP2K的Frequence计算结果中
 
 
 
