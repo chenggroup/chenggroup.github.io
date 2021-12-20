@@ -28,7 +28,12 @@ Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P
 
 ## CP2K Frequence设置
 
-DFT对于电子的描述是偏向离域化的，因此DFT可以较好地描述金属态固体。对于过渡金属系列的氧化物，例如Fe2O3，CoO，Co3O4，NiO等。过渡金属中仍然含有d电子。在固体中，d电子较为局域，且局域在过渡金属离子周围。此时单单使用DFT并不能很好的描述局域化的电子。我们可以通过加大d电子之间的静电排斥(U)来达到目的。
+1. 设置[CP2K INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [GLOBAL](https://manual.cp2k.org/cp2k-8_2-branch/CP2K_INPUT/GLOBAL.html) / [RUN_TYPE](https://manual.cp2k.org/cp2k-8_2-branch/CP2K_INPUT/GLOBAL.html#list_RUN_TYPE)
+
+```cp2k
+RUN_TYPE  VIBRATIONAL_ANALYSIS
+```
+2. 
 
 
 
