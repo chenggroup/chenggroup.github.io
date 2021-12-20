@@ -28,11 +28,6 @@ Boyer, T. H. Quantum Energy and Long-Range Forces. Ann. Phys 1970, 56, 474–503
 
 Girod, M.; Grammaticos, B. The Zero-Point Energy Correction and Its Effect on Nuclear Dynamics. Nucl. Physics, Sect. A 1979, 330 (1), 40–52. https://doi.org/10.1016/0375-9474(79)90535-9.
 
-
-Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P. (1998). Electron-energy-loss spectra and the structural stability of nickel oxide: An LSDA+U study. *Physical Review B*, *57*(3), 1505–1509. https://doi.org/10.1103/PhysRevB.57.1505
-
-
-
 ## CP2K Frequence设置
 
 1. 设置[CP2K INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [GLOBAL](https://manual.cp2k.org/cp2k-8_2-branch/CP2K_INPUT/GLOBAL.html) / [RUN_TYPE](https://manual.cp2k.org/cp2k-8_2-branch/CP2K_INPUT/GLOBAL.html#list_RUN_TYPE)
