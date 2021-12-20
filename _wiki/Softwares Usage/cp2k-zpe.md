@@ -33,7 +33,29 @@ Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P
 ```cp2k
 RUN_TYPE  VIBRATIONAL_ANALYSIS
 ```
-2. 在[CP2K INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / []
+2. 在[CP2K INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [VIBRATIONAL_ANALYSIS](https://manual.cp2k.org/cp2k-8_2-branch/CP2K_INPUT/VIBRATIONAL_ANALYSIS.html)下
+
+```cp2k
+&VIBRATIONAL_ANALYSIS
+  NPROC_REP 192
+  DX 0.02
+  FULLY_PERIODIC
+  #  THERMOCHEMISTRY TRUE
+  &PRINT
+    &MOLDEN_VIB
+    &END
+    &CARTESIAN_EIGS
+    &END
+    &PROGRAM_RUN_INFO
+      &EACH
+        REPLICA_EVAL 1
+      &END
+    &END
+  &END PRINT
+&END VIBRATIONAL_ANALYSIS
+```
+其中NPROC_REP为计算使用的总核数，通常与提交作业的lsf文件中的核数一致(总核数=节点数*核数)。
+3. 
 
 
 
