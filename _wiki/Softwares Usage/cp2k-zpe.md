@@ -8,17 +8,17 @@ authors: Jinyuanhu
 
 ## 学习目标
 
-- 学习资料
-
 - ZPE基本原理
 
 - CP2K Frequence设置
 
-- CP2K 检查Frequency计算结果
+- CP2K Frequency计算结果检查
+
+- 单分子Frequence计算注意事项
 
   
 
-## 学习资料
+## ZPE基本原理
 
 Dudarev, S. L., Manh, D. N., & Sutton, A. P. (1997). Effect of Mott-Hubbard correlations on the electronic structure and structural stability of uranium dioxide. *Philosophical Magazine B: Physics of Condensed Matter; Statistical Mechanics, Electronic, Optical and Magnetic Properties*, *75*(5), 613–628. https://doi.org/10.1080/13642819708202343
 
@@ -26,13 +26,13 @@ Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P
 
 
 
-## DFT+U基本原理
+## CP2K Frequence设置
 
 DFT对于电子的描述是偏向离域化的，因此DFT可以较好地描述金属态固体。对于过渡金属系列的氧化物，例如Fe2O3，CoO，Co3O4，NiO等。过渡金属中仍然含有d电子。在固体中，d电子较为局域，且局域在过渡金属离子周围。此时单单使用DFT并不能很好的描述局域化的电子。我们可以通过加大d电子之间的静电排斥(U)来达到目的。
 
 
 
-## CP2K DFT+U设置
+## CP2K Frequency计算结果检查
 
 在[CP2K_INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [FORCE_EVAL](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL.html) / [DFT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/DFT.html)下
 
@@ -55,7 +55,7 @@ PLUS_U_METHOD .TRUE.
 
 
 
-## DFT+U  查看电子占据态
+## 单分子Frequence计算注意事项
 
 如果我们想知道+U之后对应原子中，例如d轨道的电子，的占据情况。我们可以利用如下设置将其print在output中。
 
