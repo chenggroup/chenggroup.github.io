@@ -68,7 +68,7 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 
 ## CP2K Frequency计算结果检查
 
-正常计算结束会输出project-VIBRATIONS-1.mol文件,里面[FREQ]模块即为计算得到的frequence(unit:cm^-1)输出
+正常计算结束会输出project-VIBRATIONS-1.mol文件,里面[FREQ]模块即为计算得到的frequence(unit:cm^-1)
 
 ```cp2k
 [FREQ]
@@ -80,15 +80,18 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
      3650.225071
 ```
 
-对想要+U的元素的对应KIND设置
+在CP2K计算NEB的过程中寻找过度态时，过渡态的Frequence中会有虚频，对应负值：
 
 ```cp2k
-&DFT_PLUS_U
-    # 轨道角动量 0 s轨道 1 p轨道 2 d轨道 3 f轨道
-    L 2 
-    # 有效U值，记得写[eV]，不然默认为原子单位
-    U_MINUS_J [eV]  3 
-&END DFT_PLUS_U
+[FREQ]
+     -150.004617
+       76.011787
+       90.652110
+      105.659737
+      114.363774
+      118.342870
+      125.738357
+      ……
 ```
 
 
