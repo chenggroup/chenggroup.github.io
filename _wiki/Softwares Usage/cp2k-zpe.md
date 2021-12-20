@@ -28,7 +28,7 @@ authors: Jinyuanhu
 
 $ZPE=\sum_{i=0}^{3N}\frac{\hbar\omega}{2}$
 
-因此我们需借助CP2K计算得到振动频率$\omega$
+因此我们需借助CP2K计算得到振动频率$\omega$。
 
 Boyer, T. H. Quantum Energy and Long-Range Forces. Ann. Phys 1970, 56, 474–503.
 
