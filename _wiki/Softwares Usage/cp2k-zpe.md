@@ -60,7 +60,7 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 &MOTION
   &CONSTRAINT
     &FIXED_ATOMS
-      LIST 1..320 # 计算时需要固定的原子对应的序号
+      LIST 1..320 # 计算时需要固定的无关原子对应的序号
     &END
   &END
 &END MOTION
