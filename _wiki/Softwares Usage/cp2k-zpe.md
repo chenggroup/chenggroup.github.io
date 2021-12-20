@@ -24,6 +24,10 @@ authors: Jinyuanhu
 
 零点能(ZPE)是量子力学系统可能具有的最低可能能量，此时系统所处的态称为基态；所有量子力学系统都有零点能。与经典力学不同，量子系统在Heisenberg不确定性原理所描述的最低能量状态下不断波动。
 
+零点振动能的计算公式为：
+
+$ZPE=\sum_{i=0}^{3N}\frac{\hbar\omega}{2}$
+
 Boyer, T. H. Quantum Energy and Long-Range Forces. Ann. Phys 1970, 56, 474–503.
 
 Girod, M.; Grammaticos, B. The Zero-Point Energy Correction and Its Effect on Nuclear Dynamics. Nucl. Physics, Sect. A 1979, 330 (1), 40–52. https://doi.org/10.1016/0375-9474(79)90535-9.
