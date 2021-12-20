@@ -37,10 +37,9 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 
 ```cp2k
 &VIBRATIONAL_ANALYSIS
-  NPROC_REP 192
+  NPROC_REP 192  # 总核数=节点数*核数（通常与提交作业cp2k.lsf文件中的核数一致）
   DX 0.02
   FULLY_PERIODIC
-  #  THERMOCHEMISTRY TRUE
   &PRINT
     &MOLDEN_VIB
     &END
@@ -54,7 +53,6 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
   &END PRINT
 &END VIBRATIONAL_ANALYSIS
 ```
-其中NPROC_REP为计算使用的总核数，通常与提交作业cp2k.lsf文件中的核数一致(总核数=节点数*核数)。
 
 3. 在[CP2K INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [MOTION](https://manual.cp2k.org/cp2k-8_2-branch/CP2K_INPUT/MOTION.html)下
 
@@ -62,14 +60,11 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 &MOTION
   &CONSTRAINT
     &FIXED_ATOMS
-      LIST 1..320
+      LIST 1..320 # 计算时需要固定的原子对应的序号
     &END
   &END
 &END MOTION
 ```
-LIST是在计算时需要固定的原子对应的序号。
-
-
 
 ## CP2K Frequency计算结果检查
 
