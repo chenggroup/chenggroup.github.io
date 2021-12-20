@@ -97,7 +97,8 @@ RUN_TYPE  VIBRATIONAL_ANALYSIS
 ```
 
 ## ZPE求解
-$ZPE = \sum_$
+根据公式
+
 
 
 ## Frequence计算注意事项
