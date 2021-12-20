@@ -33,7 +33,7 @@ Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P
 ```cp2k
 RUN_TYPE  VIBRATIONAL_ANALYSIS
 ```
-2. 
+2. 在[CP2K INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / []
 
 
 
