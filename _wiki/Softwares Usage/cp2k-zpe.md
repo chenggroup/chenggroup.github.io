@@ -121,7 +121,7 @@ N对应计算的原子个数。
 
 解决方案有四种：
 
-a. 使用NLCC赝势。http://arxiv.org/abs/1212.6011 不过，NLCC赝势很不完整，只有B-Cl的元素有，且只提供了PBE泛函的赝势。
+a. 使用NLCC赝势(http://arxiv.org/abs/1212.6011)。不过，NLCC赝势很不完整，只有B-Cl的元素有，且只提供了PBE泛函的赝势。
 
 b. 增大CUTOFF，使用600 Ry以上的CUTOFF。
 
