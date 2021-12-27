@@ -25,7 +25,7 @@ module load gcc/5.5.0
 ## 安装流程
 
 首先，在 [Release 页面](https://github.com/cp2k/cp2k/releases) 下载 CP2K 安装包，以 7.1 为例：
-   
+
 ```bash
 wget -c https://github.com/cp2k/cp2k/releases/download/v7.1.0/cp2k-7.1.tar.bz2
 ```
@@ -50,7 +50,6 @@ mv cp2k-7.1 7.1
 ```bash
 cd 7.1/tools/toolchain
 sed -i 's/check_command mpic++/check_command mpicxx/g' scripts/install_mpich.sh
-cd ..
 ```
 
 **（可选）** 为加速安装、防止超时报错，在中国大陆可将Github统一替换为镜像。但后续从cp2k官方网站下载的包也可能出现超时报错，可能需要借助其他平台下载相应的软件包并放到`build`目录下。
@@ -121,3 +120,22 @@ prepend-path    PATH            ${basedir}/bin
 ```
 ln -s .module 7.1
 ```
+
+## Q&A
+
+1. 如果所有标称为`https://www.cp2k.org`的压缩包均无法下载，且单独`wget`该压缩包时提示`Issued certificate has expired`，可以尝试更新证书服务，CentOS 7命令如下：
+
+   ```bash
+   yum install ca-certificates
+   ```
+
+2. 以上欺骗手段仅适用于Intel MPI <= 2018的版本，对高版本MPI推荐直接安装更高版本的CP2K，Toolchain可提供完整支持。
+
+3. 如果`make`过程中频繁报错，还可能是系统没有正确配置地区设置，请使用如下命令加载环境变量：
+
+   ```bash
+   export LANG=en_US.UTF-8
+   export LC_ALL=en_US.UTF-8
+   export LC_CTYPE="en_US.UTF-8"
+   ```
+
