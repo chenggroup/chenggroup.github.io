@@ -158,8 +158,10 @@ export CXX=`which g++`
 在build目录下运行：
 
 ```bash
-cmake -DTENSORFLOW_ROOT=$tensorflow_root -DCMAKE_INSTALL_PREFIX=$deepmd_root ..
+cmake -DLAMMPS_VERSION_NUMBER=<value> -DTENSORFLOW_ROOT=$tensorflow_root -DCMAKE_INSTALL_PREFIX=$deepmd_root ..
 ```
+
+请根据自己即将安装的Lammps版本指定`-DLAMMPS_VERSION_NUMBER`的值，目前最新版本的DeePMD-kit默认为`20210929`，如需安装`Lammps 29Oct2020`，请设定为`20201029`。
 
 若通过yum同时安装了Cmake 2和Cmake 3，请将以上的`cmake`切换为`cmake3`。
 
