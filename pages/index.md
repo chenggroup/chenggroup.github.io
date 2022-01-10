@@ -10,22 +10,21 @@ permalink: /
 
 # Welcome to ChengGroup Wiki
 
-This is group wiki for chenggroup which is personal academic group. Visitors are welcomed to have look in our wiki. It's better if you would like to post any suggestions for us.
+This is group wiki for chenggroup which is personal academic group. Visitors are welcomed to have look in our wiki. It's better if you would like to post any suggestions for us. This Wiki are mainly written in **Simplified Chinese**.
 
-1. [如果你是新生请看这里]({{ site.baseurl }}/wiki/新生培训/toc)
-2. [如果你想学集群使用请看这里]({{ site.baseurl }}/wiki/集群使用/cluster_usage)
 
-## Sections
 
-[Home]({{ site.baseurl }}): this page.
+## 本Wiki的使用方法
 
-[News]({{ site.baseurl }}/news): post some notifications or changelog.
+本Wiki储存大家所需要的技术性和原则性知识。技术性知识包括，基本知识的学习和代码知识的学习。原则性知识包括文章写作原则，学术研究原则等。以下列出一些常用的入门，供大家浏览和跳转。
 
-[About]({{ site.baseurl }}/about): relevant github repositories.
+1. [新生用: 组内安排和入门教程顺序]({{ site.baseurl }}/wiki/新生培训/toc)
+2. [组员用: 集群使用基础]({{ site.baseurl }}/wiki/集群使用/cluster_usage)
+3. [组员用: 集群GPU使用]({{ site.baseurl }}/wiki/集群使用/gpu_usage)
+4. [组员用: 如何修改与贡献Wiki]({{ site.baseurl }}/wiki/开始/howtodo)
+5. [集群管理人员用: 常用的软件安装]({{ site.baseurl }}/wiki/softwares)
 
-[Open an issue]({{ site.repo }}/issues)
+## 其他部分
 
-## Pratical Topics
-
-- [Installation Guide for Codes and Libraries]({{ site.baseurl }}/wiki/softwares)
+[在Github提问题(Open Issue in Github)]({{ site.repo }}/issues)
 
