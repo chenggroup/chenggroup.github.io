@@ -292,6 +292,8 @@ Slurm 与 LSF 命令对照表如下所示：
 无特殊说明，通常情况下使用以下方法设置 `machine.json` 的相关参数即可，这种方式针对的是旧版 DP-GEN 自带的 Dispatcher。
 #### LSF 系统（旧版）
 
+{% include alert.html type="danger" title="注意" content="Metal使用的是新版LSF，Zeus使用的是旧版LSF。" %}
+
 以训练步骤为例：
 
 ```json
@@ -457,7 +459,7 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
 
 以 LSF 为例，对 `machine.json` 的写法举例如下，请留意以下的注意事项。
 
-{% include alert.html type="danger" title="注意" content="<p><code>train</code> 部分使用了对新版 LSF 提供支持的写法，即同时指定 <code>gpu_usage</code> 和 <code>gpu_new_syntax</code> 为 <code>True</code>，从而可在提交脚本中使用新版 LSF 的语法。</p><p><code>model_devi</code>部分使用的是旧版语法，且未指定GPU，但导入了检测脚本。</p><p><code>fp</code> 部分使用的是针对CPU计算使用的语法。注意 <code>mpiexec.hydra</code> 需要写出。</p>" %}
+{% include alert.html type="danger" title="注意" content="<p><code>train</code> 部分使用了对新版 LSF 提供支持的写法，即同时指定 <code>gpu_usage</code> 和 <code>gpu_new_syntax</code> 为 <code>True</code>，从而可在提交脚本中使用新版 LSF 的语法。注意Metal使用的是新版LSF。</p><p><code>model_devi</code>部分使用的是旧版语法，且未指定GPU，但导入了检测脚本。注意Zeus使用的是旧版LSF。</p><p><code>fp</code> 部分使用的是针对CPU计算使用的语法。注意 <code>mpiexec.hydra</code> 需要写出。</p>" %}
 
 ```json
 {
