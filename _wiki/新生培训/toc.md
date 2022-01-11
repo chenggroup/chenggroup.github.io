@@ -10,17 +10,17 @@ priority: 1.20
 
 ## 个人座位
 
-每位入学新生将分到一个座位和一台iMac电脑用于日常的科研。请大家先注册一个Apple id, 然后寻找**程组的集群管理员**，为你开通iMac电脑的账号。
+每位入学新生将分到一个座位和一台iMac电脑用于日常的科研。请大家先注册一个Apple ID, 然后寻找**课题组的集群管理员**，为你开通iMac电脑的账号。
 
 ## 集群与集群账号
 
-程组配备有集群(超算)资源供科研使用，要登陆集群，同样需要集群账号，请寻找**程组的集群管理员**为你开通集群账号，登录集群**建议使用iMac的终端(terminal)**。
+课题组配备有集群(超算)资源供科研使用，要登陆集群，同样需要集群账号，请寻找**课题组的集群管理员**为你开通集群账号，登录集群**建议使用iMac的终端(terminal)**。
 
 为建立账号，需要生成[SSH密钥]({{ site.baseurl }}/wiki/集群使用/cluster_usage#创建密钥对)。登录集群需要使用[SSH]({{ site.baseurl }}/wiki/集群使用/ssh_note)操作。
 
 使用集群前，请大家熟悉集群的[基本知识]({{ site.baseurl }}/wiki/集群使用/cluster_usage)和操作。如果要使用GPU等资源，还需学习[如何使用集群上的GPU]({{ site.baseurl }}/wiki/集群使用/gpu_usage)。
 
-如果以上有任何难以理解的内容请立即汇报给**程组的集群管理员**
+如果以上有任何难以理解的内容请立即汇报给**课题组的集群管理员**
 
 ## 必学项目
 
@@ -46,9 +46,9 @@ priority: 1.20
 
 [(视频)深度势能生成器: DP-GEN]({{ site.baseurl }}/wiki/新生培训/dpgen)
 
-[DeePMD-kit 使用入门]({{ site.baseurl }}/wiki/Softwares%20Usage/DeePMD-kit)
+[DeePMD-kit 使用入门]({{ site.baseurl }}{% link _wiki/软件使用/DeePMD-kit.md %})
 
-[DP-GEN使用入门]({{ site.baseurl }}/wiki/Softwares%20Usage/DP-GEN)
+[DP-GEN使用入门]({{ site.baseurl }}{% link _wiki/软件使用/DP-GEN.md %})
 
 ### 工作流
 
