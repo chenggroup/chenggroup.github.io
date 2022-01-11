@@ -38,7 +38,11 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 {% include alert.html type='warning' content='<code>machine.json</code>只指定计算执行的地址，计算生成的数据存储在<code>param.json</code>和<code>machine.json</code>所在文件夹下,计算所需的训练集和结构文件在<code>param.json</code>中指定路径（位于<code>dpgen run</code>命令所在服务服务器上）。Metal上的计算执行地址和提交任务建议写在<code>\bigdata</code>文件夹下，Zeus建议在<code>\data</code>下。' %}
 
-{% include alert.html type='tip' content='在 Metal 和 Zeus 集群上配置 <code>machine.json</code>，请参阅<a href="{% link _wiki/软件使用/DP-GEN.md %}">GPU使用说明</a>' %}
+{% capture machine_note %}
+在 Metal 和 Zeus 集群上配置 <code>machine.json</code>，请参阅<a href="{% link _wiki/软件使用/DP-GEN.md %}">GPU使用说明</a>
+{% endcapture %}
+
+{% include alert.html type='tip' content=machine_note %}
 
 - 初始训练集数据
 
