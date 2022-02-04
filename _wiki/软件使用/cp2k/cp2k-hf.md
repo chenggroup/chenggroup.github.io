@@ -19,6 +19,15 @@ authors: Yongbin Zhuang
 
 [Slides: UCL DFT with Hybrid Functionals](https://www.cp2k.org/_media/events:2015_cecam_tutorial:ling_hybrids.pdf)
 
+[Slides: Hybrid Functional and ADMM](https://www.cp2k.org/_media/events:2018_summer_school:cp2k-uk-stfc-june-2018-sanliang-ling.pdf)
+
+
+
+[官方练习](https://www.cp2k.org/exercises:2017_uzh_cp2k-tutorial:hybrid)
+
+
+
+
 ## 杂化泛函基本原理
 
 **建设中**
@@ -162,4 +171,27 @@ authors: Yongbin Zhuang
 | Ba   | cFIT9    |
 | Na   | cFIT3    |
 | Ta   | cFIT10   |
+
+### 其他Warning处理
+
+其他的Warning在官方文档中有提过
+[杂化泛函计算Warning](https://www.cp2k.org/faq:hfx_eps_warning)
+
+Cutoff Radiis Warning
+```
+*** WARNING in hfx_types.F:1287 :: Periodic Hartree Fock calculation      ***
+ *** requested with use of a truncated or shortrange potential. The cutoff ***
+ *** radius is larger than half the minimal cell dimension. This may lead  ***
+ *** to unphysical total energies. Reduce the cutoff radius in order to    ***
+ *** avoid possible problems.                                              ***
+ ```
+
+ 这是由于在周期边界条件下, CP2K只取HF exchange短程部分，而长程部分则由DFT exchange来补充。因此需要短程的长度，即Cutoff Radiis。 对于该Warning有如下三种处理方式。
+
+ - 如果使用HSE06，请忽视，因为这个cutoff由omega确定。
+ - 减少CUTOFF_RADIUS，如果你用的是PBE0-TC
+ - 用更大周期边界盒子
+
+[参考](https://groups.google.com/d/msg/cp2k/g1sFck3SYF8/jkseHHuCGQAJ)
+
 
