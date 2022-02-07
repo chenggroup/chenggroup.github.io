@@ -37,8 +37,9 @@ DFT对于电子的描述是偏向离域化的，因此DFT可以较好地描述�
 在[CP2K_INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [FORCE_EVAL](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL.html) / [DFT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/DFT.html)下
 
 ```cp2k
-PLUS_U_METHOD .TRUE.
+PLUS_U_METHOD MULLIKEN
 ```
+其中`MULLIKEN_CHARGES`不推荐， `LOWDIN`方法好像更准但是不能够算FORCES，cp2k v8.2版本后可以算FORCES，(详细参考)[https://groups.google.com/g/cp2k/c/BuIOSWDqJTc/m/fSL89NZaAgAJ]
 
 在[CP2K_INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [FORCE_EVAL](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL.html) / [SUBSYS](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS.html) / [KIND](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS/KIND.html) / [DFT_PLUS_U](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS/KIND/DFT_PLUS_U.html)下
 
@@ -81,6 +82,8 @@ PLUS_U_METHOD .TRUE.
       38       2     0.009   0.007   0.011   0.009   0.008   0.044
            Total     1.073   1.109   1.058   1.097   1.094   5.432
 ```
+如果想看不加U的原子的占据情况，那可以给对应原子加一个非常小的U值，比如1e-20。
+
 
 
 
