@@ -10,7 +10,7 @@ authors: 庄永斌
 
 - 学习资料
 
-- SCAN基本原理
+- DFT+U基本原理
 
 - CP2K DFT+U设置
 
@@ -20,11 +20,11 @@ authors: 庄永斌
 
 ## 学习资料
 
-Dudarev, S. L., Manh, D. N., & Sutton, A. P. (1997). Effect of Mott-Hubbard correlations on the electronic structure and structural stability of uranium dioxide. *Philosophical Magazine B: Physics of Condensed Matter; Statistical Mechanics, Electronic, Optical and Magnetic Properties*, *75*(5), 613–628. https://doi.org/10.1080/13642819708202343
+Dudarev, S. L., Manh, D. N., & Sutton, A. P. (1997). Effect of Mott-Hubbard correlations on the electronic structure and structural stability of uranium dioxide. [*Philosophical Magazine B: Physics of Condensed Matter; Statistical Mechanics, Electronic, Optical and Magnetic Properties*, *75*(5), 613–628.](https://doi.org/10.1080/13642819708202343).
 
-Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P. (1998). Electron-energy-loss spectra and the structural stability of nickel oxide: An LSDA+U study. *Physical Review B*, *57*(3), 1505–1509. https://doi.org/10.1103/PhysRevB.57.1505
+Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P. (1998). Electron-energy-loss spectra and the structural stability of nickel oxide: An LSDA+U study. [*Physical Review B*, *57*(3), 1505–1509. ](https://doi.org/10.1103/PhysRevB.57.1505).
 
-
+Himmetoglu, B.; Floris, A.; de Gironcoli, S.; Cococcioni, M. Hubbard-Corrected DFT Energy Functionals: The LDA+U Description of Correlated Systems. [International Journal of Quantum Chemistry 2013, 114 (1), 14–49.](https://doi.org/10.1002/qua.24521).
 
 ## DFT+U基本原理
 
