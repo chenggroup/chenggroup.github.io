@@ -10,145 +10,15 @@ priority: 1.03
 目前课题组GPU有两个集群：
 
 - Metal 集群（205）：包含 4 个节点（`mgt g001 g002 g003`），每个节点上有 8 张 2080 Ti。`mgt` 作为计算节点的同时作为管理节点。
-- Zeus 集群（191）：包含 1 个节点（`c51-g001`），节点上有 4 张 Tesla V100。
+- Zeus 集群（191）：包含 2 个节点（`c51-g001 c51-g002`），节点上有 4 张 Tesla V100和 4 张 Tesla A100。
 
 两个节点均可联系管理员开通使用权限。
 
 ## 提交任务至 GPU
 
-### LSF 作业管理系统（旧版）
-
-目前旧版 LSF 系统（10.1.0.0）在 Zeus 集群上使用。
-
-在GPU节点上，需要通过指定 `CUDA_VISIBLE_DEVICES` 来对任务进行管理。
-
-```bash
-#!/bin/bash
-
-#BSUB -q gpu
-#BSUB -W 24:00
-#BSUB -J test
-#BSUB -o %J.stdout
-#BSUB -e %J.stderr
-#BSUB -n 4
-
-```
-
-> lsf 提交脚本中需要包含 `export CUDA_VISIBLE_DEVICES=X` ，其中 `X` 数值需要根据具体节点的卡的使用情况确定。
-
-使用者可以用 `ssh <host> nvidia-smi` 登陆到对应节点（节点名为 `<host>`）检查 GPU 使用情况。
-示例如下：
-
-```bash
-$ ssh c51-g001 nvidia-smi
-Wed Mar 10 12:59:01 2021
-+-----------------------------------------------------------------------------+
-| NVIDIA-SMI 460.32.03    Driver Version: 460.32.03    CUDA Version: 11.2     |
-|-------------------------------+----------------------+----------------------+
-| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
-| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
-|                               |                      |               MIG M. |
-|===============================+======================+======================|
-|   0  Tesla V100-SXM2...  Off  | 00000000:61:00.0 Off |                    0 |
-| N/A   42C    P0    42W / 300W |      3MiB / 32510MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-|   1  Tesla V100-SXM2...  Off  | 00000000:62:00.0 Off |                    0 |
-| N/A   43C    P0    44W / 300W |  31530MiB / 32510MiB |     62%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-|   2  Tesla V100-SXM2...  Off  | 00000000:89:00.0 Off |                    0 |
-| N/A   43C    P0    45W / 300W |      3MiB / 32510MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-|   3  Tesla V100-SXM2...  Off  | 00000000:8A:00.0 Off |                    0 |
-| N/A   43C    P0    47W / 300W |      3MiB / 32510MiB |      0%      Default |
-|                               |                      |                  N/A |
-+-------------------------------+----------------------+----------------------+
-
-+-----------------------------------------------------------------------------+
-| Processes:                                                                  |
-|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
-|        ID   ID                                                   Usage      |
-|=============================================================================|
-|    1   N/A  N/A    127004      C   ...pps/deepmd/1.2/bin/python    31527MiB |
-+-----------------------------------------------------------------------------+
-```
-表示目前该节点（`c51-g001` ）上 1 号卡正在被进程号为 127004 的进程 `...pps/deepmd/1.2/bin/python` 使用，占用显存为 31527 MB，GPU 利用率为 62%。
-
-
-在 Zeus 集群使用 deepmd 的提交脚本示例如下（目前 `large` 队列未对用户最大提交任务数设限制，Walltime 也无时间限制）：
-
-```bash
-#!/bin/bash
-
-#BSUB -q large
-#BSUB -J train
-#BSUB -o %J.stdout
-#BSUB -e %J.stderr
-#BSUB -n 4
-
-module add cuda/9.2
-module add deepmd/1.0
-export CUDA_VISIBLE_DEVICES=0
-# decided by the specific usage of gpus
-dp train input.json > train.log
-```
-
-#### 检测脚本
-
-Zeus 集群上预置了两个检测脚本，针对不同需要对卡的使用进行划分。
-
-可以使用检测脚本`/share/base/tools/export_visible_devices`来确定 `$CUDA_VISIBLE_DEVICES` 的值，示例如下：
-
-```bash
-#!/bin/bash
-
-#BSUB -q gpu
-#BSUB -J train
-#BSUB -o %J.stdout
-#BSUB -e %J.stderr
-#BSUB -n 4
-
-module add cuda/9.2
-module add deepmd/1.0
-source /share/base/scripts/export_visible_devices
-
-dp train input.json > train.log
-```
-
-`/share/base/tools/export_visible_devices` 可以使用flag `-t mem` 控制显存识别下限，即使用显存若不超过 `mem` 的数值，则认为该卡未被使用。根据实际使用情况和经验，默认100 MB以下视为空卡，即可以向该卡提交任务。
-
-也可以使用检测脚本`/share/base/tools/avail_gpu.sh`来确定 `$CUDA_VISIBLE_DEVICES` 的值。`/share/base/tools/avail_gpu.sh` 可以使用flag `-t util` 控制显卡利用率可用上限，即使用显卡利用率若超过 `util` 的数值，则认为该卡被使用。目前脚本默认显卡利用率低于5%视为空卡，即可以向该卡提交任务。
-
-#### 绑定CPU
-
-对某些作业类型（如VASP），当使用GPU时，会希望CPU进程尽可能独立运行在所分配的核上，此时可通过设置 CPU 亲和性来控制所用的核数。示例如下：
-
-```bash
-#!/bin/bash
-#
-#BSUB -q gpu
-#BSUB -W 12:00
-#BSUB -J vasp
-#BSUB -o vasp.%J.stdout
-#BSUB -e vasp.%J.stderr
-#BSUB -n 8
-#BSUB -R "span[ptile=32]"
-#BSUB -R "affinity[core(1,exclusive=(core,alljobs))]"
-
-# add modulefiles
-module load vasp/6.1.0-openacc
-mpirun -np 1 vasp_gam
-```
-
-其中，`core(1,exclusive=(core,alljobs))` 表示使用1个核且与其他作业不同。注意这里需要根据实际使用的核数指定，因为作业中`mpirun -np`的参数是1。
-
-新版、旧版LSF均可支持此设置。
-
 ### LSF 作业管理系统（新版）
 
-目前 LSF Suite 10.2 已在 Metal 上部署测试，该版本包含了新版的 LSF 作业管理系统，因而可对 GPU 提供支持。
+目前 LSF Suite 10.2 已在 Zeus 和 Metal 上部署测试，该版本包含了新版的 LSF 作业管理系统，因而可对 GPU 提供支持。
 
 输入 `lsload -gpu` 即可查看集群当前可以使用的 GPU 数目：
 
@@ -200,7 +70,7 @@ g002                0 GeForceRTX2        0.0       52C       0.0     37%       7
 
 使用 GPU 资源时，需要对提交脚本进行相应修改，用 `-gpu` 命令申请 GPU 资源。
 
-```
+```bash
 #!/bin/bash
 
 #BSUB -q gpu
@@ -220,57 +90,40 @@ lmp_mpi -i input.lammps 1>> model_devi.log 2>> model_devi.log
 
 {% include alert.html type="tip" title="链接" content="若使用新版 LSF 提交任务，则不再需要引入检测脚本或<code>CUDA_VISIBLE_DEVICES</code>控制使用的GPU。" %}
 
+### 绑定CPU
+
+对某些作业类型（如VASP），当使用GPU时，会希望CPU进程尽可能独立运行在所分配的核上，此时可通过设置 CPU 亲和性来控制所用的核数。示例如下：
+
+```bash
+#!/bin/bash
+#
+#BSUB -q gpu
+#BSUB -W 12:00
+#BSUB -J vasp
+#BSUB -o vasp.%J.stdout
+#BSUB -e vasp.%J.stderr
+#BSUB -n 8
+#BSUB -R "span[ptile=32]"
+#BSUB -gpu "num=1:mode=shared:mps=no:j_exclusive=no"
+#BSUB -R "affinity[core(1,exclusive=(core,alljobs))]"
+
+# add modulefiles
+module load vasp/6.1.0-openacc
+mpirun -np 1 vasp_gam
+```
+
+其中，`core(1,exclusive=(core,alljobs))` 表示使用1个核且与其他作业不同。注意这里需要根据实际使用的核数指定，因为作业中`mpirun -np`的参数是1。
+
 ## dpgen 提交 GPU 任务参数设置
 
 ### DP-GEN v0.x API
 
-无特殊说明，通常情况下使用以下方法设置 `machine.json` 的相关参数即可，这种方式针对的是旧版 DP-GEN 自带的 Dispatcher。
-#### LSF 系统（旧版）
-
-{% include alert.html type="danger" title="注意" content="Metal使用的是新版LSF，Zeus使用的是旧版LSF。" %}
-
-以训练步骤为例：
-
-```json
-{
-  "train": [
-    {
-      "machine": {
-        "machine_type": "lsf",
-        "hostname": "xx.xxx.xxx.xxx",
-        "port": 22,
-        "username": "username",
-        "password": "password",
-        "work_path": "/some/remote/path"
-      },
-      "resources": {
-        "node_cpu": 4,
-        "numb_node": 1,
-        "task_per_node": 4,
-        "partition": "large",
-        "exclude_list": [],
-        "source_list": [
-            "/share/base/scripts/export_visible_devices -t 100"
-        ],
-        "module_list": [
-            "cuda/9.2",
-            "deepmd/1.0"
-                ],
-        "time_limit": "96:0:0",
-        "submit_wait_time": 20
-      },
-      "python_path": "/share/deepmd-1.0/bin/python3.6"
-    }
-  ],
-  ......
-}
-```
-
+无特殊说明，通常情况下使用以下方法设置 `machine.json` 的相关参数即可，这种方式针对的是旧版 DP-GEN 自带的 `Dispatcher`。
 #### LSF 系统（新版）
 
-> 新版 DP-GEN 0.10.0 已经修复 BUG，且相关 BUG 对 DPDispatcher 无影响，因此下述两参数值不需要再交换。**以下例子中的写法是正确写法。**-- 2021/7/20
-> 
-> DP-GEN 0.9.2 及以前版本存在BUG，`numb_gpu` 和 `task_per_node` 的含义是相反的，并且对于 LSF 请务必指定 `node_cpu` 为每个节点的核数或与 `-n` 保持一致。 -- 2021/7/10
+> DP-GEN 0.9.2 及以前版本存在BUG，`numb_gpu` 和 `task_per_node` 的含义是相反的，并且对于 LSF 请务必指定 `node_cpu` 为每个节点的核数或与 `-n` 保持一致。
+>
+> DP-GEN >= 0.10.0 已经修复 BUG，且相关 BUG 对 DPDispatcher 无影响，因此下述两参数值不需要再交换。**以下例子中的写法是正确写法。**
 
 以训练步骤为例：
 
@@ -325,7 +178,7 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
 
 以 LSF 为例，对 `machine.json` 的写法举例如下，请留意以下的注意事项。
 
-{% include alert.html type="danger" title="注意" content="<p><code>train</code> 部分使用了对新版 LSF 提供支持的写法，即同时指定 <code>gpu_usage</code> 和 <code>gpu_new_syntax</code> 为 <code>True</code>，从而可在提交脚本中使用新版 LSF 的语法。注意Metal使用的是新版LSF。</p><p><code>model_devi</code>部分使用的是旧版语法，且未指定GPU，但导入了检测脚本。注意Zeus使用的是旧版LSF。</p><p><code>fp</code> 部分使用的是针对CPU计算使用的语法。注意 <code>mpiexec.hydra</code> 需要写出。</p>" %}
+{% include alert.html type="danger" title="注意" content="<p><code>train</code> 部分和<code>model_devi</code>部分使用了对新版 LSF 提供支持的写法，即同时指定 <code>gpu_usage</code> 和 <code>gpu_new_syntax</code> 为 <code>True</code>，从而可在提交脚本中使用新版 LSF 的语法。</p><p>`para_deg`表示在同一张卡上同时运行的任务数，通常可不写出，此时默认值为1。这里给出的例子表示在同一张卡上同时运行两个Lammps任务。</p><p><code>fp</code> 部分使用的是针对CPU计算使用的语法。注意 <code>mpiexec.hydra</code> 需要写出。</p>" %}
 
 ```json
 {
@@ -385,7 +238,9 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
         "queue_name": "gpu",
         "group_size": 5,
         "kwargs": {
-          "gpu_usage": false
+          "gpu_usage": true,
+          "gpu_new_syntax": true, 
+          "gpu_exclusive": false
         },
         "custom_flags": [
           "#BSUB -J md",
