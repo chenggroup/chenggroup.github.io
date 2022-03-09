@@ -70,11 +70,11 @@ $ ssh -p <port> username@ip_address
 
 1. (**Windows 10/11用户推荐**)使用 WSL(Windows Subsystem for Linux)。WSL 是 Windows 10 新版的特性，可使得用户在 Windows 系统下运行命令行模式的 Ubuntu 或 OpenSUSE 等子系统。使用 WSL 的用户可直接参考 Linux 的使用方法进行操作。具体安装方式可以参考[官方教程](https://docs.microsoft.com/zh-cn/windows/wsl/install-win10)。 对于使用集群的大多数需求，WSL 1 即可满足，因此不一定需要将 WSL 1 升级到 WSL 2 。
 
-  > 1. 这种方法对于图形界面（VMD、GNUPlot）等支持较差，尚需要额外的步骤配置图形界面转发，这里限于篇幅原因暂不进行介绍。如有需要请参考[这里](https://zhuanlan.zhihu.com/p/128507562)。
+  > - 这种方法对于图形界面（VMD、GNUPlot）等支持较差，尚需要额外的步骤配置图形界面转发，这里限于篇幅原因暂不进行介绍。如有需要请参考[这里](https://zhuanlan.zhihu.com/p/128507562)。
   >
-  > 2. 目前 Windows 11 已经提供了对图形界面的直接支持（[请参考](https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps)），但需要使用 WSL 2。
+  > - 目前 Windows 11 已经提供了对图形界面的直接支持（[请参考](https://docs.microsoft.com/en-us/windows/wsl/tutorials/gui-apps)），但需要使用 WSL 2。
   >
-  > 3. 注意：由于代理机制原因，WSL 2 无法直接使用桌面端的 Easy Connect VPN服务，须设法进行端口转发。WSL 1 可以。
+  > - 注意：由于代理机制原因，WSL 2 无法直接使用桌面端的 Easy Connect VPN服务，须设法进行端口转发。WSL 1 可以。
 
 2. 使用 Xshell、PuTTY 等 SSH 客户端，Windows 10 以下的用户可使用这种方式。这类 SSH 客户端可以提供较完整的 SSH 功能。关于Putty的使用[请参考](https://bicmr.pku.edu.cn/~wenzw/pages/login.html)。
 
