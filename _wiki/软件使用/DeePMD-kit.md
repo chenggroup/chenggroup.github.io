@@ -4,12 +4,12 @@ authors: 庄永斌
 priority: 2.2
 ---
 
-# DeePMD-kit 使用入门
+# DeePMD-kit 2.0 使用入门
 
 ## 简介
 
 DeePMD-kit是一个训练神经网络势能(Machine Learning Potential)的代码包。该包主要由张林峰（普林斯顿大学），王涵（北京应用物理与计算数学研究所）开发。黄剑兴和庄永斌曾经短时间参与开发。如有问题，可以向他们询问。
-
+{% include alert.html type="warning" content="我们已经舍弃了1.x版本的教程。" %}
 以下为参考信息:
 
 - [官网](http://www.deepmd.org)
@@ -33,10 +33,10 @@ git clone https://github.com/deepmodeling/deepmd-kit.git
 首先进入含有水模型的例子的目录
 
 ```bash 
-cd <deepmd repositoy>/examples/water/train/
+cd <deepmd repositoy>/examples/water/se_e2_a/
 ```
 
-你会看到许多`json`为后缀的文件。这些都是DeePMD-kit使用的输入文件。我们只需要使用`water_se_a.json`文件作为例子。现在复制制`/data/share/base/script/deepmd.lsf`到当前文件夹，并且修改它。
+你会看到`input.json`文件，这是DeePMD-kit使用的输入文件。现在复制`/data/share/base/script/deepmd.lsf`到当前文件夹，并且修改它。
 
 ```bash
 cp /data/share/base/script/deepmd.lsf ./
@@ -65,12 +65,12 @@ vim deepmd.lsf
 # ============================================
 
 # add modulefiles
-module add cuda/10.0 deepmd/1.2
+module add cuda/10.0 deepmd/2.0
 
 # automatic select the gpu
-source /share/base/script/find_gpu.sh
+source /data/share/base/script/find_gpu.sh
 
-dp train input.json 1>> train.log 2>> train.log 
+dp train input.json -l train.log
 ```
 
 使用如下命令提交任务：
@@ -130,23 +130,24 @@ less lcurve.out
 你将会看到：
 
 ```bash
-# batch      l2_tst    l2_trn    l2_e_tst  l2_e_trn    l2_f_tst  l2_f_trn         lr
-      0    3.25e+01  3.29e+01    1.03e+01  1.03e+01    8.08e-01  8.23e-01    1.0e-03
-    100    2.58e+01  2.54e+01    1.76e+00  1.77e+00    8.08e-01  7.94e-01    1.0e-03
-    200    2.55e+01  2.59e+01    2.18e-01  2.26e-01    8.05e-01  8.19e-01    1.0e-03
-    300    2.46e+01  2.51e+01    1.41e-01  1.45e-01    7.79e-01  7.94e-01    1.0e-03
-    400    2.21e+01  2.11e+01    1.63e-01  1.67e-01    7.00e-01  6.67e-01    1.0e-03
-    500    1.92e+01  1.91e+01    6.77e-03  2.49e-03    6.07e-01  6.04e-01    1.0e-03
-    600    1.62e+01  1.65e+01    1.18e-01  1.19e-01    5.13e-01  5.23e-01    1.0e-03
-    700    1.26e+01  1.21e+01    8.76e-02  8.19e-02    3.99e-01  3.82e-01    1.0e-03
-    800    1.39e+01  1.30e+01    5.62e-02  5.15e-02    4.41e-01  4.11e-01    1.0e-03
-    900    1.11e+01  1.13e+01    1.46e-01  1.44e-01    3.52e-01  3.57e-01    1.0e-03
-   1000    9.13e+00  8.58e+00    3.56e-02  3.83e-02    2.89e-01  2.71e-01    1.0e-03
-   1100    8.73e+00  8.32e+00    5.57e-02  6.26e-02    2.76e-01  2.63e-01    1.0e-03
-   1200    7.69e+00  7.71e+00    8.64e-02  8.69e-02    2.43e-01  2.44e-01    1.0e-03
+#  step      rmse_val    rmse_trn    rmse_e_val  rmse_e_trn    rmse_f_val  rmse_f_trn         lr
+      0      1.69e+01    1.58e+01      1.52e+00    5.69e-01      5.35e-01    5.00e-01    1.0e-03
+   1000      4.74e+00    4.68e+00      3.88e-02    4.02e-01      1.50e-01    1.48e-01    1.0e-03
+   2000      5.06e+00    3.93e+00      1.86e-01    1.54e-01      1.60e-01    1.24e-01    1.0e-03
+   3000      4.73e+00    4.34e+00      9.08e-02    3.90e-01      1.49e-01    1.37e-01    1.0e-03
+   4000      4.65e+00    6.09e+00      2.24e-01    1.92e-01      1.47e-01    1.93e-01    1.0e-03
+   5000      3.84e+00    3.25e+00      5.26e-02    2.40e-02      1.25e-01    1.06e-01    9.4e-04
+   6000      4.17e+00    2.78e+00      6.35e-02    3.89e-02      1.36e-01    9.03e-02    9.4e-04
+   7000      3.24e+00    3.00e+00      5.55e-02    8.58e-03      1.05e-01    9.76e-02    9.4e-04
+   8000      2.97e+00    2.83e+00      2.97e-02    2.46e-02      9.68e-02    9.22e-02    9.4e-04
+   9000      1.01e+01    6.92e+00      1.36e-01    1.89e-01      3.28e-01    2.25e-01    9.4e-04
+  10000      3.73e+00    3.39e+00      4.38e-02    3.23e-02      1.25e-01    1.14e-01    8.9e-04
+  11000      3.51e+00    2.76e+00      1.31e-01    3.47e-01      1.17e-01    8.98e-02    8.9e-04
+  12000      2.59e+00    2.89e+00      1.35e-01    1.18e-01      8.57e-02    9.65e-02    8.9e-04
+  13000      5.65e+00    4.68e+00      3.08e-01    3.28e-01      1.88e-01    1.55e-01    8.9e-04
 ```
 
-这些数字展示了当前机器学习模型对于数据预测的误差有多大。 `l2_e_tst` 意味着在测试集上使用机器学习模型预测的能量误差会有多大。 `l2_e_trn` 意味着在训练集上使用机器学习模型预测的能量误差会有多大。 `l2_f_tst` and `l2_f_trn` 表示相同意义，不过是对于力的预测. 你可以使用`Matplotlib` Python包进行作图。
+这些数字展示了当前机器学习模型对于数据预测的误差有多大。 `rmse_e_trn` 意味着在测试集上使用机器学习模型预测的能量误差会有多大。 `rmse_e_val` 意味着在训练集上使用机器学习模型预测的能量误差会有多大。 `rmse_f_tst` and `rmse_f_trn` 表示相同意义，不过是对于力的预测. 你可以使用`Matplotlib` Python包进行作图。
 
 ## 使用进阶
 
@@ -162,12 +163,20 @@ less lcurve.out
 
 代码块里的文件名为DeePMD-kit使用的命名。`npy`后缀为Python的numpy代码包生成的文件，请在此之前学习numpy。如果你使用`cp2k`得到数据，你会有 `*pos-1.xyz` 和 `*frc-1.xyz` 文件。你可以使用[帮助](#extra-support)的脚本转化成DeePMD-kit的数据集格式。
 
-现在我们来看看DeePMD-kit的训练数据格式。之前我们训练的水模型的数据集储存在 `<deepmd repository>/examples/water/data/`. 让我们来看看数据集的目录结构：
+现在我们来看看DeePMD-kit的训练数据格式。之前我们训练的水模型的数据集储存在 `<deepmd repository>/examples/water/data/data_0`. 让我们来看看数据集的目录结构：
 
 ```bash
 # directory structre for training data
 .
-├── data
+├── data_0
+│   ├── set.000
+│   │   ├── box.npy
+│   │   ├── coord.npy
+│   │   ├── energy.npy
+│   │   └── force.npy
+│   ├── type.raw
+│   └── type_map.raw
+├── data_1
 │   ├── set.000
 │   │   ├── box.npy
 │   │   ├── coord.npy
@@ -178,23 +187,30 @@ less lcurve.out
 │   │   ├── coord.npy
 │   │   ├── energy.npy
 │   │   └── force.npy
-│   ├── set.002
+│   ├── type.raw
+│   └── type_map.raw
+├── data_2
+│   ├── set.000
 │   │   ├── box.npy
 │   │   ├── coord.npy
 │   │   ├── energy.npy
 │   │   └── force.npy
-│   ├── set.003
-│   │   ├── box.npy
-│   │   ├── coord.npy
-│   │   ├── energy.npy
-│   │   └── force.npy
-│   └── type.raw
+│   ├── type.raw
+│   └── type_map.raw
+└── data_3
+    ├── set.000
+    │   ├── box.npy
+    │   ├── coord.npy
+    │   ├── energy.npy
+    │   └── force.npy
+    ├── type.raw
+    └── type_map.raw
 ```
 
 显然，我们会看到`type.raw`文件和一堆以`set`开头的目录。`type.raw`文件记录了体系的元素信息。如果你打开你会发现它仅仅记录了一堆数字。这些数字对应着你在`water_se_a.json`中`"type_map":["O","H"]`的信息。此时`0`代表`O`,`1`代表`H`。对应着`["O","H"]`中的位置，其中第一位为0。
 
 ```bash
-0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1   1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1   1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
 ```
 
 `box.npy`, `coord.npy`, `energy.npy` 和 `force.npy` 储存的信息在上文已经说过。唯一需要注意的是这些文件都储存着一个超大的矩阵。如果我们有Y个结构，每个结构有X个原子。`box.npy`, `coord.npy`, `energy.npy` 和 `force.npy` 对应的矩阵形状分别是 (Y, 9), (Y, X\*3), (Y, 1), (Y, X\*3)。
@@ -210,7 +226,7 @@ less lcurve.out
 "descriptor" :{
          "type":     "se_a",
          "sel":      [46, 92],
-         "rcut_smth":    5.80,
+         "rcut_smth":    0.50,
          "rcut":     6.00,
          "neuron":       [25, 50, 100],
          "resnet_dt":    false,
@@ -219,18 +235,24 @@ less lcurve.out
          "_comment":     " that's all"
      },
 ```
-
-- `"systems":  ["../data/"]`: 设置包含训练数据的目录。
-- `"set_prefix": "set"`: 上文中是不是有介绍一些以`set` 开头的目录。就是它们
+在"training"的"training_data"下
+- `"systems":  ["../data/data_0/", "../data/data_1/", "../data/data_2/"]`: 设置包含训练数据的目录。
+- `"batch_size": auto`, 这个会根据体系原子数进行分配，不过我们自己通常设置为1，因为体系原子数有400-800个左右。
 
 ```json
-     "systems":  ["../data/"]
-     "set_prefix":   "set",
+	"training_data": {
+	    "systems":		["../data/data_0/", "../data/data_1/", "../data/data_2/"],
+	    "batch_size":	"auto",
+	    "_comment":		"that's all"
+	}
 ```
-
-- `"batch_size": 1`: 每个批次（batch）的大小，该数字代表结构数量。记住每一次迭代会放一个批次的结构进入训练。
-- `"numb_test": 10` : 每次迭代中，测试集的结构数量。注意测试集是随机从数据集里挑选的，如果有多个数据集或多个set，那么一般只会从最后一个目录里挑选。
+在"training"的"validation_data"下
+- `"systems":  ["../data/data_3"]`: 设置包含测试数据的目录。
+- `"batch_size": 1`, 这个会根据体系原子数进行分配，不过我们自己通常设置为1，因为体系原子数有400-800个左右。
+- `"numb_btch": 3` , 每次迭代中，测试的结构数量为`batch_size`乘以`numb_btch`。
 - 更多参数说明，请参考官方文档：[https://deepmd.readthedocs.io/en/latest/train-input.html](https://deepmd.readthedocs.io/en/latest/train-input.html)
+
+{% include alert.html type="warning" content="记住在集群上训练，请使用lsf脚本。" %}
 
 ### 开始你的训练
 
@@ -270,18 +292,25 @@ dp freeze
 
 ## 利用压缩模型进行产出(Production)
 
-机器学习势能`*.pb`文件进行MD模拟虽然已经非常迅速了。但是还有提升的空间。首先我们需要用1.3版本的deepmd进行训练势能函数，并得到`*.pb`文件。利用1.2版本的deepmd训练得到势能函数也不用担心。可以利用以下命令对1.2版本的势能函数进行转换：
+机器学习势能`*.pb`文件进行MD模拟虽然已经非常迅速了。但是还有提升的空间。首先我们需要用1.3/2.0以上版本的deepmd进行训练势能函数，并得到`*.pb`文件。利用1.2版本的deepmd训练得到势能函数也不用担心。可以利用以下命令对1.2版本的势能函数进行转换：
 
 ```bash
 module load deepmd/1.2	 # convert-to-1.3 是 1.2 版本的一个 subcommand
 dp convert-to-1.3 -i 1.2-model.pb -o 1.3-model.pb
 ```
 
-得到1.3版本的势能函数后，建议将原训练文件夹备份后复制，我们利用如下命令进行压缩（文件夹下应该含有对应的`input.json`文件和checkpoint文件）：
-
+建议将原训练文件夹备份后复制，我们利用如下命令进行压缩（文件夹下应该含有对应的`input.json`文件和checkpoint文件）：
+如果你用的是`deepmd/compress module`，那么则是版本为1.3的model。
 ```bash
 module load deepmd/compress
-dp compress input.json -i 1.3-model.pb -o compressed-model.pb -l compress.log
+dp compress input.json -i normal-model.pb -o compressed-model.pb -l compress.log
+```
+
+如果你用的是`deepmd/2.0 module`，那么则是版本为2.0的model。
+
+```bash
+module load deepmd/2.0
+dp compress -i normal-model.pb -o compressed-model.pb -l compress.log
 ```
 
 ### 压缩模型与原始模型对比

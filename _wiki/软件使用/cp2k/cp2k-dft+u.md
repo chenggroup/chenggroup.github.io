@@ -10,7 +10,7 @@ authors: 庄永斌
 
 - 学习资料
 
-- SCAN基本原理
+- DFT+U基本原理
 
 - CP2K DFT+U设置
 
@@ -20,11 +20,11 @@ authors: 庄永斌
 
 ## 学习资料
 
-Dudarev, S. L., Manh, D. N., & Sutton, A. P. (1997). Effect of Mott-Hubbard correlations on the electronic structure and structural stability of uranium dioxide. *Philosophical Magazine B: Physics of Condensed Matter; Statistical Mechanics, Electronic, Optical and Magnetic Properties*, *75*(5), 613–628. https://doi.org/10.1080/13642819708202343
+Dudarev, S. L., Manh, D. N., & Sutton, A. P. (1997). Effect of Mott-Hubbard correlations on the electronic structure and structural stability of uranium dioxide. [*Philosophical Magazine B: Physics of Condensed Matter; Statistical Mechanics, Electronic, Optical and Magnetic Properties*, *75*(5), 613–628.](https://doi.org/10.1080/13642819708202343).
 
-Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P. (1998). Electron-energy-loss spectra and the structural stability of nickel oxide: An LSDA+U study. *Physical Review B*, *57*(3), 1505–1509. https://doi.org/10.1103/PhysRevB.57.1505
+Dudarev, S. L., Botton, G. A., Savrasov, S. Y., Humphreys, C. J., & Sutton, A. P. (1998). Electron-energy-loss spectra and the structural stability of nickel oxide: An LSDA+U study. [*Physical Review B*, *57*(3), 1505–1509. ](https://doi.org/10.1103/PhysRevB.57.1505).
 
-
+Himmetoglu, B.; Floris, A.; de Gironcoli, S.; Cococcioni, M. Hubbard-Corrected DFT Energy Functionals: The LDA+U Description of Correlated Systems. [International Journal of Quantum Chemistry 2013, 114 (1), 14–49.](https://doi.org/10.1002/qua.24521).
 
 ## DFT+U基本原理
 
@@ -37,8 +37,9 @@ DFT对于电子的描述是偏向离域化的，因此DFT可以较好地描述�
 在[CP2K_INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [FORCE_EVAL](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL.html) / [DFT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/DFT.html)下
 
 ```cp2k
-PLUS_U_METHOD .TRUE.
+PLUS_U_METHOD MULLIKEN
 ```
+其中`MULLIKEN_CHARGES`不推荐， `LOWDIN`方法好像更准但是不能够算FORCES，cp2k v8.2版本后可以算FORCES，(详细参考)[https://groups.google.com/g/cp2k/c/BuIOSWDqJTc/m/fSL89NZaAgAJ]
 
 在[CP2K_INPUT](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT.html) / [FORCE_EVAL](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL.html) / [SUBSYS](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS.html) / [KIND](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS/KIND.html) / [DFT_PLUS_U](https://manual.cp2k.org/cp2k-8_1-branch/CP2K_INPUT/FORCE_EVAL/SUBSYS/KIND/DFT_PLUS_U.html)下
 
@@ -81,6 +82,8 @@ PLUS_U_METHOD .TRUE.
       38       2     0.009   0.007   0.011   0.009   0.008   0.044
            Total     1.073   1.109   1.058   1.097   1.094   5.432
 ```
+如果想看不加U的原子的占据情况，那可以给对应原子加一个非常小的U值，比如1e-20。
+
 
 
 
