@@ -234,7 +234,7 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
       "resources": {
         "number_node": 1,
         "cpu_per_node": 8,
-        "gpu_per_node": 0,
+        "gpu_per_node": 1,
         "queue_name": "gpu",
         "group_size": 5,
         "kwargs": {
@@ -293,7 +293,6 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
     }
   ]
 }
-
 ```
 
 相关参数含义，详情请参阅官方文档
