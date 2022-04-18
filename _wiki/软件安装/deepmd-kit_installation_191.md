@@ -54,6 +54,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/cuda/10.0/lib64/stubs:/some/local
 
 以下安装，假设软件包下载路径均为`/some/workspace`， 以TensorFlow 2.3.0版本、DeePMD-kit 1.3.3 版本为例进行说明，其他版本的步骤请参照修改。
 
+> 本教程仅适用于 DeePMD-kit <= 2.0.3版本。新版依赖问题解决后会对应更新。
+
 首先进入虚拟环境：
 
 ```
@@ -63,7 +65,7 @@ conda activate deepmd
 搜索仓库，查找可用的TensorFlow的C++ 接口版本。
 
 ```bash
-conda search libtensorflow_cc 
+conda search libtensorflow_cc -c https://conda.deepmodeling.org
 ```
 
 结果如下：
@@ -82,8 +84,10 @@ libtensorflow_cc               2.4.1  gpu_cuda11.1_0  deepmodeling
 这里所希望安装的版本是2.3.0的GPU版本，CUDA版本为10.1，因此输入以下命令安装：
 
 ```bash
-conda install libtensorflow_cc=2.3.0=gpu_cuda10.1_0 -c deepmodeling
+conda install libtensorflow_cc=2.3.0=gpu_cuda10.1_0 -c https://conda.deepmodeling.org
 ```
+
+{% include alert.html type="tip" title="提示" content="注意A100仅支持TF 2.4.0以上、CUDA11.2以上，安装时请对应选择。" %}
 
 若成功安装，则定义环境变量：
 
@@ -95,6 +99,12 @@ export tensorflow_root=/data/user/conda/env/deepmd
 
 ## 安装DeePMD-kit的Python接口
 
+以防万一可以升级下pip的版本：
+
+```
+pip install --upgrade pip
+```
+
 接下来安装Tensorflow的Python接口
 
 ```bash
@@ -103,7 +113,7 @@ pip install tensorflow==2.3.0
 
  若提示已安装，请使用`--upgrade`选项进行覆盖安装。若提示权限不足，请使用`--user`选项在当前账号下安装。
 
-然后下载DeePMD-kit的源代码。
+然后下载DeePMD-kit的源代码（注意把v1.3.3替换为需要安装的版本）
 
 ```bash
 cd /some/workspace
@@ -122,6 +132,19 @@ git clone https://github.com/NVlabs/cub.git
 
 ```bash
 pip install cmake
+```
+
+修改环境变量以使得cmake正确指定编译器：
+
+```bash
+export CC=`which gcc`
+export CXX=`which g++`
+```
+
+若要启用CUDA编译，请导入环境变量：
+
+```bash
+export DP_VARIANT=cuda
 ```
 
 随后通过pip安装DeePMD-kit：
@@ -146,13 +169,6 @@ cd build
 
 ```bash
 export deepmd_root=/some/workspace/deepmd_root
-```
-
-修改环境变量以使得cmake正确指定编译器：
-
-```bash
-export CC=`which gcc`
-export CXX=`which g++`
 ```
 
 在build目录下运行：
