@@ -23,6 +23,8 @@ priority: 2.40
   - GCC >= 7.4.0
   - Intel MPI 2017 （暂未对其他版本进行测试）
 
+> 版本号仅供参考，实战安装可能会不一样，参考执行即可。
+
 ## 创建新的环境
 
 首先准备必要的依赖。
@@ -249,3 +251,25 @@ make mpi -j4
 
 经过以上过程，Lammps可执行文件`lmp_mpi`已经编译完成，用户可以执行该程序调用训练的势函数进行MD模拟。
 
+## DPCP2K 安装指引
+
+首先clone对应的安装包：
+
+```bash
+git clone https://github.com/Cloudac7/cp2k.git -b deepmd_latest --recursive --depth=1
+```
+
+然后运行相应的Toolchain脚本：
+
+```bash 
+cd tools/toolchain/
+./install_cp2k_toolchain.sh --enable-cuda=no --with-deepmd=/data/share/apps/deepmd/2.0-cuda11.3 --with-tfcc=/data/share/apps/deepmd/2.0-cuda11.3 --deepmd-mode=cuda --mpi-mode=no --with-libint=no --with-libxc=no --with-libxsmm=no
+```
+
+根据脚本运行结尾的提示复制arch文件并source所需的环境变量。最后回到主目录进行编译：
+
+```bash
+make -j 40 ARCH=local VERSION="ssmp sdbg"
+```
+
+安装完成后，将可执行文件复制到DeePMD的bin下即可。
