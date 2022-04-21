@@ -23,7 +23,7 @@ priority: 2.40
   - GCC >= 7.4.0
   - Intel MPI 2017 （暂未对其他版本进行测试）
 
-> 版本号仅供参考，实战安装可能会不一样，参考执行即可。
+> 版本号仅供参考，实际安装可能会不一样，参考执行即可。
 
 ## 创建新的环境
 
@@ -39,18 +39,20 @@ module add gcc/7.4.0
 
 注意这里导入的是GCC 7.4.0版本，如果采用低于4.9.4的版本（不导入GCC）则dp_ipi不会被编译。
 
-然后创建虚拟环境，步骤请参考[Anaconda 使用指南](https://chenggroup.github.io/wiki/softwares_usage/conda)。
+然后创建虚拟环境，步骤请参考<a href="{{ site.baseurl }}{% link _wiki/集群使用/conda.md %}">Anaconda 使用指南</a>。
 
 假设创建的虚拟环境名称是 `deepmd`，则请将步骤最后的 `<your env name>` 替换为 `deepmd`。若采用该步骤的设置，则虚拟环境将被创建在`/data/user/conda/env/deepmd`下（假设用户名为`user`）。
 
-由于GPU节点不能联网，故需要将所需的驱动程序库`libcuda.so`以`libcuda.so.1`的名称手动链接到某个具有权限的路径`/some/local/path`并分别加入环境变量。
+注意请务必为创建的虚拟环境安装所需的Python环境。通常不指定Python版本号的情况下（例如文中的步骤`conda create -n <your env name> python`）会安装conda推荐的最新版本，如需要替代请对应指定，如`conda create -n deepmd python=3.8`。
+
+由于Zeus的GPU节点不能联网，故需要将所需的驱动程序库`libcuda.so`以`libcuda.so.1`的名称手动链接到某个具有权限的路径`/some/local/path`并分别加入环境变量。
 
 ```bash
 ln -s /share/cuda/10.0/lib64/stubs/libcuda.so /some/local/path/libcuda.so.1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/cuda/10.0/lib64/stubs:/some/local/path
 ```
 
-{% include alert.html type="tip" title="提示" content="若在 Zeus 集群上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量。" %}
+{% include alert.html type="tip" title="提示" content="若在 Zeus 集群上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量，但仍需要驱动程序库的符号链接`libcuda.so`。若在Metal集群上，由于在管理节点上可以直接访问GPU驱动库，故不需要执行这一步骤。注意这一步骤执行后，实际运行时需要从环境变量中移除" %}
 
 ## 安装Tensorflow的C++ 接口
 
@@ -91,6 +93,8 @@ conda install libtensorflow_cc=2.3.0=gpu_cuda10.1_0 -c https://conda.deepmodelin
 
 {% include alert.html type="tip" title="提示" content="注意A100仅支持TF 2.4.0以上、CUDA11.2以上，安装时请对应选择。" %}
 
+{% include alert.html type="tip" title="提示" content="个别版本在后续编译时可能会提示需要<code>libiomp5.so</code>，请根据实际情况确定是否需要提前载入Intel环境（见下文Lammps编译部分）或者<code>conda install intel-openmp</code>。" %}
+
 若成功安装，则定义环境变量：
 
 ```bash
@@ -124,12 +128,19 @@ git clone --recursive https://github.com/deepmodeling/deepmd-kit.git deepmd-kit 
 
 在运行git clone时记得要`--recursive`，这样才可以将全部文件正确下载下来，否则在编译过程中会报错。
 
-{% include alert.html type="tip" title="提示" content="
-如果不慎漏了<code>--recursive</code>， 可以采取以下的补救方法，效果与直接 clone 一样：
+{% capture cub_note %}
 
+<p>如果不慎漏了<code>--recursive</code>， 可以采取以下的补救方法，效果与直接 clone 一样：</p>
 <pre><code>cd deepmd-kit/source/op/cuda/
 git clone https://github.com/NVlabs/cub.git
-</code></pre>" %}
+</code></pre>
+<p>由于DeePMD版本的不同，对应的目录树可能不同，请根据实际情况（以及报错信息等等）修改上面的路径。对Cuda>=11.1非必需依赖。注意<code>cub</code>在<code>cuda</code>下第一层，不需要额外创建名为<code>cub</code>的目录。</p>
+
+
+{% endcapture %}
+
+{% include alert.html type="tip" title="提示" content=cub_note%}
+
 若集群上 Cmake 3没有安装，可以用pip进行安装：
 
 ```bash
@@ -240,6 +251,8 @@ make no-ext                         # uninstall packages that require external l
 
 注意如Plumed、SMD、COLVARS等等需要提前配置或预先编译的插件如需安装请参考[Lammps官方文档](https://lammps.sandia.gov/doc/Build_package.html)，同时诸如 Intel、GPU等加速包如果不需要编译可能需要额外手动取消安装。
 
+> 目前官方文档改动较大，且未提供历史版本，因而仅适用于官方最新Release版本（目前仅适用于Lammps 29Sep2021以后的版本，但可能随着后续更新适用面进一步缩窄。），使用旧版请注意甄别。
+
 加载MPI环境，并采用MPI方式编译Lammps可执行文件：
 
 ```bash
@@ -251,7 +264,7 @@ make mpi -j4
 
 经过以上过程，Lammps可执行文件`lmp_mpi`已经编译完成，用户可以执行该程序调用训练的势函数进行MD模拟。
 
-## DPCP2K 安装指引
+## DP-CP2K 安装指引
 
 首先clone对应的安装包：
 
@@ -263,13 +276,19 @@ git clone https://github.com/Cloudac7/cp2k.git -b deepmd_latest --recursive --de
 
 ```bash 
 cd tools/toolchain/
-./install_cp2k_toolchain.sh --enable-cuda=no --with-deepmd=/data/share/apps/deepmd/2.0-cuda11.3 --with-tfcc=/data/share/apps/deepmd/2.0-cuda11.3 --deepmd-mode=cuda --mpi-mode=no --with-libint=no --with-libxc=no --with-libxsmm=no
+./install_cp2k_toolchain.sh --enable-cuda=no --with-deepmd=$deepmd_root --with-tfcc=$tensorflow_root --deepmd-mode=cuda --mpi-mode=no --with-libint=no --with-libxc=no --with-libxsmm=no
 ```
 
 根据脚本运行结尾的提示复制arch文件并source所需的环境变量。最后回到主目录进行编译：
 
 ```bash
-make -j 40 ARCH=local VERSION="ssmp sdbg"
+make -j 4 ARCH=local VERSION="ssmp sdbg"
 ```
 
-安装完成后，将可执行文件复制到DeePMD的bin下即可。
+编译正确完成后，可执行文件生成在`exe/`下，即`cp2k.sopt`。
+
+> 注意目前DP-CP2K暂未支持MPI，因而请单独编译此Serial版本。且CP2K由于IO问题，性能相比Lammps低50%以上，如非刚需还是建议使用Lammps进行MD模拟，后者可提供更多特性和加速的支持。
+>
+> 同时目前开发者遇到一些困难，故提交的PR尚未更新且由于沉默过久已被官方关闭。如读者有在CP2K实现共享状态的开发经验，请联系作者，谢谢。
+>
+> Now there is some difficulty in implemetion of shared state in CP2K run to decrease IO in each MD step. However, the developer has not find out a proper way as a solution, making the PR silent. If you could provide any experience, please contact me. Thanks!

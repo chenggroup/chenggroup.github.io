@@ -576,7 +576,7 @@ DeePMD-kit 2.0 提供了对验证集（Validation Set）的支持，因而用户
       - `prob_sys_size`: 写法示例如下：`sidx_0:eidx_0:w_0; sidx_1:eidx_1:w_1;...`。 该参数中，`sidx_i` 和 `eidx_i` 表示第 `i` 组数据的起止点，规则同 Python 语法中的切片，`w_i` 则表示该组数据的权重。在同一组中，各 system 数据的权重取决于各自的大小。
    `batch_size` 的值可手动设定，根据经验一般根据“乘以原子数≤32”的规则设定。新版则支持自动设定，若设定为`"auto"`则表示按照此规则自动设置，若设定为`"auto:N"`则根据“乘以原子数≤N”的规则设定。
 2. `save_ckpt`, `load_ckpt`, `decay_rate` 等为过时参数，若由 1.x 迁移，请删除这些参数，否则会导致报错。
-3. `n_neuron` 更名为 `neuron`， `stop_batch` 更名为 `numb_step`，请注意更改。对应地，decay rate 由 `start_lr` 和 `stop_lr` 决定。
+3. `n_neuron` 更名为 `neuron`， `stop_batch` 更名为 `numb_steps`，请注意更改。对应地，decay rate 由 `start_lr` 和 `stop_lr` 决定。
 4. `lcurve.out` 中删除了测试数据的 RMSE 值，因此旧版作图脚本需要对应修改，减少列数（能量在第3列，力在第4列）。若指定了验证集，则会输出模型在验证集上的 RMSE。
 
 更多详细说明，请参见[官方文档](https://docs.deepmodeling.org/projects/deepmd/en/latest/)。
