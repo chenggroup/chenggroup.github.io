@@ -130,11 +130,9 @@ git clone --recursive https://github.com/deepmodeling/deepmd-kit.git deepmd-kit 
 
 {% capture cub_note %}
 
-<p>如果不慎漏了<code>--recursive</code>， 可以采取以下的补救方法，效果与直接 clone 一样：</p>
-<pre><code>cd deepmd-kit/source/op/cuda/
-git clone https://github.com/NVlabs/cub.git
+<p>如果不慎漏了<code>--recursive</code>， 可以采取以下的补救方法：</p>
+<pre><code>git submodule update --init --recursive
 </code></pre>
-<p>由于DeePMD版本的不同，对应的目录树可能不同，请根据实际情况（以及报错信息等等）修改上面的路径。对Cuda>=11.1非必需依赖。注意<code>cub</code>在<code>cuda</code>下第一层，不需要额外创建名为<code>cub</code>的目录。</p>
 
 
 {% endcapture %}
