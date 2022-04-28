@@ -24,7 +24,20 @@ This is group wiki for chenggroup of XMU which is personal academic group. Visit
 4. [组员用: 如何修改与贡献Wiki]({{ site.baseurl }}/wiki/开始编辑/howtodo)
 5. [集群管理人员用: 常用的软件安装]({{ site.baseurl }}/wiki/软件安装/softwares)
 
-## 其他部分
+## 如有疑问
 
-[在Github提问题(Open Issue in Github)]({{ site.repo }}/issues)
+### 针对计算化学问题
 
+请首先阅读[在网上求助计算化学问题时的注意事项](http://sobereva.com/79)
+
+如果确实有需要作者帮助答疑的问题，请归纳清楚要点并通过邮件联系作者。
+
+> 可参阅：[为什么国外把邮件当微信一样发？](https://www.zhihu.com/question/327715169/answer/2318092465)
+
+### 针对代码方面问题
+
+请首先阅读[提问的智慧(How To Ask Questions The Smart Way)](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md) (作者: Eric Steven Raymond, 译者: [ryanhanwu](https://github.com/ryanhanwu))
+
+如果确实有需要作者答疑的问题，请归纳清楚要点并[在Github提问题(Open Issue in Github)]({{ site.repo }}/issues)，或通过邮件联系作者。
+
+Please read [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) (Written by Eric Steven Raymond) first. If there is problem in need of us, please [open issue in Github]({{ site.repo }}/issues) or write E-mail to contact us.
