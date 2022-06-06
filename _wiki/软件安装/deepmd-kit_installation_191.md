@@ -52,7 +52,7 @@ ln -s /share/cuda/10.0/lib64/stubs/libcuda.so /some/local/path/libcuda.so.1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/cuda/10.0/lib64/stubs:/some/local/path
 ```
 
-{% include alert.html type="tip" title="提示" content="若在 Zeus 集群上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量，但仍需要驱动程序库的符号链接`libcuda.so`。若在Metal集群上，由于在管理节点上可以直接访问GPU驱动库，故不需要执行这一步骤。注意这一步骤执行后，实际运行时需要从环境变量中移除" %}
+{% include alert.html type="tip" title="提示" content="若在 Zeus 集群上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量，但仍需要驱动程序库的符号链接`libcuda.so`。注意这一步骤执行后，实际运行时需要从环境变量中移除" %}
 
 ## 安装Tensorflow的C++ 接口
 

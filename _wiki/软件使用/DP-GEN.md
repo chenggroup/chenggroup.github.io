@@ -36,10 +36,10 @@ DP-GEN的工作流是由以下三步组成的循环：
 
   制定上述三个步骤分别在哪个服务器计算。
 
-{% include alert.html type='warning' content='<code>machine.json</code>只指定计算执行的地址，计算生成的数据存储在<code>param.json</code>和<code>machine.json</code>所在文件夹下,计算所需的训练集和结构文件在<code>param.json</code>中指定路径（位于<code>dpgen run</code>命令所在服务服务器上）。Metal上的计算执行地址和提交任务建议写在<code>\bigdata</code>文件夹下，Zeus建议在<code>\data</code>下。' %}
+{% include alert.html type='warning' content='<code>machine.json</code>只指定计算执行的地址，计算生成的数据存储在<code>param.json</code>和<code>machine.json</code>所在文件夹下,计算所需的训练集和结构文件在<code>param.json</code>中指定路径（位于<code>dpgen run</code>命令所在服务服务器上）。Zeus建议在<code>\data</code>下。' %}
 
 {% capture machine_note %}
-在 Metal 和 Zeus 集群上配置 <code>machine.json</code>，请参阅<a href="{{ site.baseurl }}{% link _wiki/集群使用/gpu_usage.md %}#dpgen-提交-GPU-任务参数设置">GPU使用说明</a>
+在 Zeus 集群上配置 <code>machine.json</code>，请参阅<a href="{{ site.baseurl }}{% link _wiki/集群使用/gpu_usage.md %}#dpgen-提交-GPU-任务参数设置">GPU使用说明</a>
 {% endcapture %}
 
 {% include alert.html type='tip' content=machine_note %}
@@ -379,6 +379,225 @@ DP-GEN的工作流是由以下三步组成的循环：
 {% include alert.html type="info" title="登录设置" content="如果服务器是密码登录，在username之后加上关键词password并写上密码。输入的内容要用引号括起！" %}
 
 {% include alert.html type="info" title="GPU调用设置" content="根据上述规则，在训练时通常使用4个CPU核作为标记，而采样（MD）时采用2个。在训练和采样中我们调用source_list关键词下的脚本自动检索占用显存少于特定值的GPU进行提交。对于训练任务，建议独占一张GPU，故可不设置<code>-t xxx</code> （默认为100）。对于采样步骤，可以采用上文中的设置，也可以调用同一目录下的avail_gpu.sh并设置<code>-t 50</code>（或一个更小的值），防止多任务挤兑。" %}
+
+## `machine.json`: GPU 参数设置
+
+### DP-GEN v1.x API
+
+从 DP-GEN 0.10.0 版本开始，官方引入了对 DPDispatcher 的支持，并计划将 `machine.json` 迁移到 DPDispatcher 上。
+DPDispatcher 相比原本 DP-GEN 自带的 Dispatcher，在接口和语法上有较大变化，需要额外指定 `api_version` 大于或等于 1.0。
+
+关于 DPDispatcher 项目的说明，请参阅[这里](https://github.com/deepmodeling/dpdispatcher)。
+
+DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交的任务，稳定性更优，且对作业管理系统的支持更加灵活多样，内置接口可支持多任务并行提交。
+但新版在操作习惯上有较大改变，需要适应和调整。
+
+以 LSF 为例，对 `machine.json` 的写法举例如下，请留意以下的注意事项。
+
+{% include alert.html type="danger" title="注意" content="<p><code>train</code> 部分和<code>model_devi</code>部分使用了对新版 LSF 提供支持的写法，即同时指定 <code>gpu_usage</code> 和 <code>gpu_new_syntax</code> 为 <code>True</code>，从而可在提交脚本中使用新版 LSF 的语法。</p><p>`para_deg`表示在同一张卡上同时运行的任务数，通常可不写出，此时默认值为1。这里给出的例子表示在同一张卡上同时运行两个Lammps任务。</p><p><code>fp</code> 部分使用的是针对CPU计算使用的语法。注意 <code>mpiexec.hydra</code> 需要写出。</p>" %}
+
+```json
+{
+  "api_version": "1.0",
+  "train": [
+    {
+      "command": "dp",
+      "machine": {
+        "batch_type": "LSF",
+        "context_type": "SSHContext",
+        "local_root": "./",
+        "remote_root": "/data/tom/dprun/train",
+        "remote_profile": {
+            "hostname": "123.45.67.89",
+            "username": "tom"
+        }
+      },
+      "resources": {
+        "number_node": 1,
+        "cpu_per_node": 4,
+        "gpu_per_node": 1,
+        "queue_name": "gpu",
+        "group_size": 1,
+        "kwargs": {
+          "gpu_usage": true,
+          "gpu_new_syntax": true, 
+          "gpu_exclusive": true
+        },
+        "custom_flags": [
+          "#BSUB -J train",
+          "#BSUB -W 24:00"
+        ],
+        "module_list": [
+          "deepmd/2.0"
+        ]
+      }
+    }
+  ],
+  "model_devi":[
+    {
+      "command": "lmp_mpi",
+      "machine":{
+        "batch_type": "LSF",
+        "context_type": "SSHContext",
+        "local_root": "./",
+        "remote_root": "/data/jerry/dprun/md",
+        "remote_profile": {
+          "hostname": "198.76.54.32",
+          "username": "jerry",
+          "port": 6666
+        }
+      },
+      "resources": {
+        "number_node": 1,
+        "cpu_per_node": 8,
+        "gpu_per_node": 1,
+        "queue_name": "gpu",
+        "group_size": 5,
+        "kwargs": {
+          "gpu_usage": true,
+          "gpu_new_syntax": true, 
+          "gpu_exclusive": false
+        },
+        "custom_flags": [
+          "#BSUB -J md",
+          "#BSUB -W 24:00"
+        ],
+        "strategy": {"if_cuda_multi_devices": false},
+        "para_deg": 2,
+        "module_list": [
+          "deepmd/2.0"
+        ],
+        "source_list": [
+          "/share/base/tools/avail_gpu.sh"
+        ]
+      }
+    }
+  ],
+  "fp":[
+    {
+      "command": "mpiexec.hydra -genvall vasp_gam",
+      "machine":{
+        "batch_type": "LSF",
+        "context_type": "SSHContext",
+        "local_root": "./",
+        "remote_root": "/data/jerry/dprun/fp",
+        "remote_profile": {
+          "hostname": "198.76.54.32",
+          "username": "jerry",
+          "port": 6666
+        }
+      },
+      "resources": {
+        "number_node": 2,
+        "cpu_per_node": 32,
+        "gpu_per_node": 0,
+        "kwargs": {
+          "gpu_usage": false
+        },
+        "custom_flags": [
+          "#BSUB -J label",
+          "#BSUB -W 12:00"
+        ],
+        "queue_name": "medium",
+        "group_size": 10,
+        "module_list": [
+          "intel/17.5.239",
+          "mpi/intel/2017.5.239",
+          "vasp/5.4.4"
+        ]
+      }
+    }
+  ]
+}
+```
+
+相关参数含义，详情请参阅官方文档
+[machine](https://docs.deepmodeling.org/projects/dpdispatcher/en/latest/machine.html) 和
+[resources](https://docs.deepmodeling.org/projects/dpdispatcher/en/latest/resources.html) 部分的说明。
+
+以下是部分参数含义：
+
+| 参数                   | 描述                                         |
+| :-------------------- | :------------------------------------------ |
+| `machine`             | 指定远程服务器的配置信息。 |
+| `batch_type`          | 提交作业系统的类型，可指定 `LSF`, `Slurm`, `Shell` 等。 |
+| `context_type`        | 连接到远程服务器的方式，常用可选参数`SSHContext`, `LocalContext`, `LazyLocalContext`等。详见官方文档说明。 |
+| `SSHContext`          | 通过SSH连接到远程主机，通常情况下从一个服务器提交到另一个时可使用。 |
+| `LocalContext`        | 若需要在当前服务器上提交任务，可选择此选项，则不必通过SSH连接。此时 `remote_profile` 部分可不写。 |
+| `remote_root`         | 任务在目标主机上提交的绝对路径。 |
+| `remote_profile`      | 远程主机设置，若`context_type`为`LocalContext`, `LazyLocalContext`可不写。 |
+| `hostname`            | 远程主机IP。 |
+| `username`            | 远程主机用户名。 |
+| `password`            | 远程主机密码。若通过密钥登陆可不写。 |
+| `port`                | SSH连接的端口，默认为22。
+| `key_filename`        | SSH密钥存放的路径。默认放在`~/.ssh`下，此时可不写。 |
+| `passphrase`          | 密钥安全口令，通常在创建密钥时设置。若为空可不写。 |
+| `resource`            | 作业提交相关配置信息。 |
+| `number_node`         | 作业使用的节点数。 |
+| `cpu_per_node`        | 每个节点上使用CPU核数。 |
+| `gpu_per_node`        | 每个节点上使用GPU卡数。 |
+| `kwargs`              | 可选参数，依据各作业系统支持的配置而定。详见官方文档。 |
+| `gpu_usage`           | **LSF专用。** 是否在作业脚本中使用GPU提交的语法。 |
+| `gpu_new_syntax`      | **LSF专用。** `gpu_usage`为`True`时使用，是否在作业脚本中使用GPU提交的新版语法。 |
+| `gpu_exclusive`       | **LSF专用。** `gpu_new_syntax`为`True`时使用，是否要求任务单独使用一张GPU卡。 |
+| `custom_gpu_line`     | 自定义GPU提交命令，可根据语法自定义。根据作业管理系统不同，以 `#BSUB` (LSF) 或 `#SBATCH` (Slurm) 开头。 |
+| `custom_flags`        | 其他需要使用的Flag，例如Walltime、作业名等设置。 |
+| `queue_name`          | 任务提交的队列名。 |
+| `group_size`          | 每个作业绑定的任务个数。 |
+| `if_cuda_multi_devices` | 是否允许任务运行在多卡上，默认为 `True`。在Zeus上建议写成 `False`。 |
+| `para_deg`            | 同一卡上同时运行的任务数。默认为1。 |
+| `module_list`         | 需要load的module。可不写。|
+| `module_unload_list`  | 需要unload的module。可不写。|
+| `source_list`         | 需要source的脚本路径。可不写。 |
+| `envs`                | 需要引入的环境变量。可不写。 |
+
+
+### DP-GEN v0.x API
+
+无特殊说明，通常情况下使用以下方法设置 `machine.json` 的相关参数即可，这种方式针对的是旧版 DP-GEN 自带的 `Dispatcher`。
+
+> DP-GEN 0.9.2 及以前版本存在BUG，`numb_gpu` 和 `task_per_node` 的含义是相反的，并且对于 LSF 请务必指定 `node_cpu` 为每个节点的核数或与 `-n` 保持一致。
+>
+> DP-GEN >= 0.10.0 已经修复 BUG，且相关 BUG 对 DPDispatcher 无影响，因此下述两参数值不需要再交换。**以下例子中的写法是正确写法。**
+
+以训练步骤为例：
+
+```json
+{
+  "train": [
+    {
+      "machine": {
+        "machine_type": "lsf",
+        "hostname": "xx.xxx.xxx.xxx",
+        "port": 22,
+        "username": "chenglab",
+        "work_path": "/data/ypliu/dprun/train"
+      },
+      "resources": {
+        "numb_gpu": 1,
+        "node_cpu": 32,
+        "numb_node": 1,
+        "task_per_node": 4,
+        "partition": "gpu",
+        "new_lsf_gpu": true,
+        "exclusive": false,
+        "exclude_list": [],
+        "source_list": [],
+        "module_list": [
+            "deepmd/1.2"
+        ],
+        "time_limit": "96:0:0"
+      },
+      "python_path": "/share/apps/deepmd/1.2/bin/python3.6"
+    }
+  ],
+  ...
+}
+```
+
+注意上述设置中开启了 `new_lsf_gpu`，表示启用新的 GPU 语法，请打开这一设置以免任务提交失败。
+这里未开启 `exclusive`，即当CPU核数未占满时即可提交GPU任务，默认提交到负载最低的卡。若希望一张卡只允许一个任务运行，
+也可设置 `exclusive` 为 `true`，此时若CPU还有空间但GPU全部占满时，开启了这一选项的卡不会被新的任务占用。
 
 准备好所有的输入文件后，就可以用以下指令提交dpgen任务啦！
 
