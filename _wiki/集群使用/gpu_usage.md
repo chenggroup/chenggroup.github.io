@@ -99,7 +99,7 @@ lmp_mpi -i input.lammps 1>> model_devi.log 2>> model_devi.log
 
 其中 `num=1` 表示申请1张GPU卡，`j_exclusive=no` 表示允许和其他任务共存，`-n` 表示申请的CPU核数。
 使用V100时，请设置为不超过8的整数；
-使用A100时，请设置为不超过8的整数，若为开启MIG的情况，请参考<a href="{{ site.baseurl }}{% link _wiki/集群使用/mig_usage.md %}">；
+使用A100时，请设置为不超过8的整数，若为开启MIG的情况，请参考<a href="{{ site.baseurl }}{% link _wiki/集群使用/mig_usage.md %}">A100拆分实例使用说明</a>；
 使用2080Ti时，请设置为不超过4的整数，否则均可能会出现资源空闲但无法使用的情况。如希望独占一张卡请使用`j_exclusive=yes`。
 
 {% include alert.html type="tip" title="链接" content="使用新版 LSF 提交任务，不需要引入检测脚本或<code>CUDA_VISIBLE_DEVICES</code>控制使用的GPU。" %}
@@ -134,4 +134,4 @@ mpirun -np 1 vasp_gam
 
 ### dpgen 提交 GPU 任务参数设置
 
-请参考<a href="{{ site.baseurl }}{% link _wiki/软件使用/DP-GEN.md %}#">。
+请参考<a href="{{ site.baseurl }}{% link _wiki/软件使用/DP-GEN.md %}#">DP-GEN使用说明</a>。

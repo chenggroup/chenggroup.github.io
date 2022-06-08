@@ -408,15 +408,16 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
         "local_root": "./",
         "remote_root": "/data/tom/dprun/train",
         "remote_profile": {
-            "hostname": "123.45.67.89",
-            "username": "tom"
+          "hostname": "198.76.54.32",
+          "username": "tom",
+          "port": 6666
         }
       },
       "resources": {
         "number_node": 1,
         "cpu_per_node": 4,
         "gpu_per_node": 1,
-        "queue_name": "gpu",
+        "queue_name": "gpu3",
         "group_size": 1,
         "kwargs": {
           "gpu_usage": true,
