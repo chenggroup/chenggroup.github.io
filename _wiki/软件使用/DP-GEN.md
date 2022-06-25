@@ -394,7 +394,10 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
 
 以 LSF 为例，对 `machine.json` 的写法举例如下，请留意以下的注意事项。
 
-{% include alert.html type="danger" title="注意" content="<p><code>train</code> 部分和<code>model_devi</code>部分使用了对新版 LSF 提供支持的写法，即同时指定 <code>gpu_usage</code> 和 <code>gpu_new_syntax</code> 为 <code>True</code>，从而可在提交脚本中使用新版 LSF 的语法。</p><p>`para_deg`表示在同一张卡上同时运行的任务数，通常可不写出，此时默认值为1。这里给出的例子表示在同一张卡上同时运行两个Lammps任务。</p><p><code>fp</code> 部分使用的是针对CPU计算使用的语法。注意 <code>mpiexec.hydra</code> 需要写出。</p>" %}
+{% include alert.html type="danger" title="注意" content="<p><code>train</code> 部分和<code>model_devi</code>部分使用了对新版 LSF 提供支持的写法，即同时指定 <code>gpu_usage</code> 和 <code>gpu_new_syntax</code> 为 <code>True</code>，从而可在提交脚本中使用新版 LSF 的语法。</p><p>`para_deg`表示在同一张卡上同时运行的任务数，通常可不写出，此时默认值为1。这里给出的例子表示在同一张卡上同时运行两个Lammps任务。</p><p><code>fp</code> 部分使用的是针对CPU计算使用的语法。</p>" %}
+
+{% include alert.html type="danger" title="注意" content="<p>注意在<code>fp</code>部分，<code>mpiexec.hydra</code>需要明确写出以确保任务是并行执行的，可参考以下例子中的写法：<code>mpiexec.hydra -genvall vasp_gam</code>。若你不知道这部分该如何书写，请参考集群上的提交脚本说明(`/data/share/base/scripts`)。</p>" %}
+
 
 ```json
 {
