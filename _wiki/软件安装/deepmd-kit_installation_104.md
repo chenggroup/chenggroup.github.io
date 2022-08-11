@@ -6,7 +6,7 @@ priority: 2.9
 
 # DeepMD-kit安装实战：服务器篇（旧版）
 
-> 本部分写于2019年11月，基于国重服务器环境进行安装，适用于Tensorflow版本低于1.13的情形。目前针对更高版本已经有[新版教程]({{ site.baseurl }}/wiki/softwares_installation/deepmd-kit_installation_51)，请移步。
+> 本部分写于2019年11月，基于国重服务器环境进行安装，适用于Tensorflow版本低于1.13的情形。目前针对更高版本已经有[新版教程]({{ site.baseurl }}/wiki/softwares_installation/deepmd-kit_installation_191)，请移步。
 
 ## 准备工作
 
@@ -118,10 +118,10 @@ Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]:
 ```
 
 > **注意**
->
+> 
 > 1. CUDA需要写清是9.2版本，否则可能会找不到小版本的依赖库。
->
->然后运行编译，但由于该节点的版本较为非主流，建议自行编译tf的python interface以避免兼容性问题。
+> 
+> 然后运行编译，但由于该节点的版本较为非主流，建议自行编译tf的python interface以避免兼容性问题。
 > 
 > ```
 > bazel build --config=opt --copt=-msse4.2 --copt=-mavx --copt=-mavx2 --copt=-mfma --local_resources 2048,.5,1.0 --config=cuda //tensorflow/tools/pip_package:build_pip_package --action_env="LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
@@ -233,6 +233,7 @@ pip install .
 ```
 
 > 如果遇到`no module named 'google'`或者`no module named 'absl'`的报错，则可能存在版本bug，需要重新安装依赖。
+> 
 > ```
 > pip install --update protobus
 > pip install --update absl-py
@@ -286,10 +287,10 @@ cp -r $deepmd_source_dir/source/build/USER-DEEPMD .
 
 打开deepmd module，并根据需要添加所需的模块，以`fep`为例：
 
- ```
+```
 make yes-user-deepmd
 make yes-user-fep 
- ```
+```
 
 载入需要的mpi库，并编译：
 
@@ -374,11 +375,11 @@ module-whatis "Miniconda, an alternative distirbution for python 3.6"
 
 # set environment variables
 
-    setenv		PYTHONROOT	/data/home/someuser/anaconda3/envs/deepmd
+    setenv        PYTHONROOT    /data/home/someuser/anaconda3/envs/deepmd
 
-    prepend-path	PATH		$env(PYTHONROOT)/bin
-    prepend-path	MANPATH		$env(PYTHONROOT)/share/man
-    prepend-path	PYTHONPATH	$env(PYTHONROOT)/lib/python3.6/site-packages
+    prepend-path    PATH        $env(PYTHONROOT)/bin
+    prepend-path    MANPATH        $env(PYTHONROOT)/share/man
+    prepend-path    PYTHONPATH    $env(PYTHONROOT)/lib/python3.6/site-packages
 ```
 
 注意修改`PYTHONROOT`为正确的虚拟环境路径（可用`conda env list`查看）,并且`python3.6`也要与实际使用的python版本一致。

@@ -7,7 +7,11 @@ priority: 2.40
 
 # DeepMD-kit快速编译安装
 
-背景：以 Zeus 集群为例，在服务器通过源代码编译安装DeepMD-kit和包含完整接口的LAMMPS。虽然官方已经提供了[通过 Conda 一键安装的方法](https://deepmd.readthedocs.io/en/master/install.html#easy-installation-methods)，但由于此法所安装的各个组件均为预编译版本，因而无法做更多拓展和改动，且通过 Conda 安装的 Protobuf 存在版本冲突，无法从这一版本进一步编译其他接口。这里介绍一种方法，通过 Conda 安装通常不需要较大改动的TensorFlow C++ Interface，其余部分仍手动编译。
+> 本部分主体写于2021年，截至目前（2022.08）仍适用，并且随版本升级仍在更新。
+> 
+> 教程中使用的尚且是CUDA 10.1，但对CUDA 11.x也适用。
+
+背景：以 Zeus 集群为例，在服务器通过源代码编译安装DeepMD-kit和包含完整接口的LAMMPS。虽然官方已经提供了[通过 Conda 一键安装的方法](https://deepmd.readthedocs.io/en/master/install.html#easy-installation-methods)，但由于此法所安装的各个组件均为预编译版本，因而无法做更多拓展和改动，且通过 Conda 安装的 Protobuf 存在版本冲突，无法进一步编译其他接口。这里介绍一种方法，通过 Conda 安装通常不需要较大改动的TensorFlow C++ Interface，其余部分仍手动编译。
 
 ## 初始环境说明
 
@@ -52,24 +56,23 @@ ln -s /share/cuda/10.0/lib64/stubs/libcuda.so /some/local/path/libcuda.so.1
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/share/cuda/10.0/lib64/stubs:/some/local/path
 ```
 
-{% include alert.html type="tip" title="提示" content="若在 Zeus 集群上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量，但仍需要驱动程序库的符号链接`libcuda.so`。注意这一步骤执行后，实际运行时需要从环境变量中移除" %}
+{% include alert.html type="tip" title="提示" content="若在Zeus 集群上安装，管理员已事先把<code>libcuda.so.1</code> 链接在<code>/share/cuda/10.0/lib64/stubs/</code>下，故无需额外创建软链接，同理<code>/some/local/path</code>也无需加入环境变量，但仍需要驱动程序库的符号链接`libcuda.so`。注意这一步骤执行后，实际运行时需要从环境变量中移除" %}
 
 ## 安装Tensorflow的C++ 接口
 
 以下安装，假设软件包下载路径均为`/some/workspace`， 以TensorFlow 2.3.0版本、DeePMD-kit 1.3.3 版本为例进行说明，其他版本的步骤请参照修改。
 
-> 本教程仅适用于 DeePMD-kit <= 2.0.3版本。新版依赖问题解决后会对应更新。
+首先创建并进入虚拟环境，这里假设命名为`deepmd`：
 
-首先进入虚拟环境：
-
-```
+```bash
+conda create -n deepmd python=3.8
 conda activate deepmd
 ```
 
 搜索仓库，查找可用的TensorFlow的C++ 接口版本。
 
 ```bash
-conda search libtensorflow_cc -c https://conda.deepmodeling.org
+conda search libtensorflow_cc -c https://conda.deepmodeling.com
 ```
 
 结果如下：
@@ -77,12 +80,28 @@ conda search libtensorflow_cc -c https://conda.deepmodeling.org
 ```
 Loading channels: done
 # Name                       Version           Build  Channel
-libtensorflow_cc               2.1.0  gpu_cuda10.0_0  deepmodeling
-libtensorflow_cc               2.1.0   gpu_cuda9.2_0  deepmodeling
-libtensorflow_cc               2.3.0  cpu_cudaNone_0  deepmodeling
-libtensorflow_cc               2.3.0  gpu_cuda10.1_0  deepmodeling
-libtensorflow_cc               2.4.1  gpu_cuda11.0_0  deepmodeling
-libtensorflow_cc               2.4.1  gpu_cuda11.1_0  deepmodeling
+libtensorflow_cc              1.14.0  cpu_h9a2eada_0
+libtensorflow_cc              1.14.0  gpu_he292aa2_0
+libtensorflow_cc               2.0.0  cpu_h9a2eada_0
+libtensorflow_cc               2.0.0  gpu_he292aa2_0
+libtensorflow_cc               2.1.0  cpu_cudaNone_0
+libtensorflow_cc               2.1.0  gpu_cuda10.0_0
+libtensorflow_cc               2.1.0  gpu_cuda10.1_0
+libtensorflow_cc               2.1.0   gpu_cuda9.2_0
+libtensorflow_cc               2.3.0  cpu_cudaNone_0
+libtensorflow_cc               2.3.0  gpu_cuda10.1_0
+libtensorflow_cc               2.4.1  gpu_cuda11.0_0
+libtensorflow_cc               2.4.1  gpu_cuda11.1_0
+libtensorflow_cc               2.5.0  cpu_cudaNone_0
+libtensorflow_cc               2.5.0  gpu_cuda10.1_0
+libtensorflow_cc               2.5.0  gpu_cuda11.3_0
+libtensorflow_cc               2.7.0  cpu_h6ddf1b9_0
+libtensorflow_cc               2.7.0 cuda101h50fd26c_0
+libtensorflow_cc               2.7.0 cuda113h3372e5c_0
+libtensorflow_cc               2.7.0 cuda113hbf71e95_1
+libtensorflow_cc               2.9.0  cpu_h681ccd4_0
+libtensorflow_cc               2.9.0 cuda102h929c028_0
+libtensorflow_cc               2.9.0 cuda116h4bf587c_0
 ```
 
 这里所希望安装的版本是2.3.0的GPU版本，CUDA版本为10.1，因此输入以下命令安装：
@@ -91,9 +110,19 @@ libtensorflow_cc               2.4.1  gpu_cuda11.1_0  deepmodeling
 conda install libtensorflow_cc=2.3.0=gpu_cuda10.1_0 -c https://conda.deepmodeling.org
 ```
 
+若所安装的环境没有实际的GPU驱动（比如集群的登录节点）或需要用到Conda安装CudaToolkit，可能需要参照[此处](https://conda-forge.org/docs/user/tipsandtricks.html#installing-cuda-enabled-packages-like-tensorflow-and-pytorch)说明强制指定GPU环境。比如：
+
+```bash
+CONDA_OVERRIDE_CUDA="11.3" conda install libtensorflow_cc=2.7.0=cuda113hbf71e95_1 -c https://conda.deepmodeling.com
+```
+
+请注意`CONDA_OVERRIDE_CUDA`的值需要与GPU支持以及希望用到的CUDA版本相匹配。
+
 {% include alert.html type="tip" title="提示" content="注意A100仅支持TF 2.4.0以上、CUDA11.2以上，安装时请对应选择。" %}
 
 {% include alert.html type="tip" title="提示" content="个别版本在后续编译时可能会提示需要<code>libiomp5.so</code>，请根据实际情况确定是否需要提前载入Intel环境（见下文Lammps编译部分）或者<code>conda install intel-openmp</code>。" %}
+
+{% include alert.html type="tip" title="提示" content="<code>conda</code>命令可能速度较慢，也可以考虑切换为<a href="https://mamba.readthedocs.io/en/latest/installation.html#existing-conda-install">mamba</a>，后者可大幅加速Conda的性能，且完全兼容。只需参照前述链接安装后将<code>conda</code>替换为<code>mamba</code>即可" %}
 
 若成功安装，则定义环境变量：
 
@@ -119,7 +148,7 @@ pip install tensorflow==2.3.0
 
  若提示已安装，请使用`--upgrade`选项进行覆盖安装。若提示权限不足，请使用`--user`选项在当前账号下安装。
 
-然后下载DeePMD-kit的源代码（注意把v1.3.3替换为需要安装的版本）
+然后下载DeePMD-kit的源代码（注意把v1.3.3替换为需要安装的版本，如`v2.0.3`等）
 
 ```bash
 cd /some/workspace
@@ -133,7 +162,6 @@ git clone --recursive https://github.com/deepmodeling/deepmd-kit.git deepmd-kit 
 <p>如果不慎漏了<code>--recursive</code>， 可以采取以下的补救方法：</p>
 <pre><code>git submodule update --init --recursive
 </code></pre>
-
 
 {% endcapture %}
 
@@ -150,6 +178,7 @@ pip install cmake
 ```bash
 export CC=`which gcc`
 export CXX=`which g++`
+export FC=`which gfortran`
 ```
 
 若要启用CUDA编译，请导入环境变量：
@@ -219,7 +248,7 @@ make lammps
 
 此时在`$deepmd_source_dir/source/build`下会出现`USER-DEEPMD`的LAMMPS拓展包。
 
-下载LAMMPS安装包，按照常规方法编译LAMMPS：
+下载LAMMPS安装包，并把接口代码复制到`src`目录下：
 
 ```bash
 cd /some/workspace
@@ -229,6 +258,8 @@ tar xf lammps-stable.tar.gz
 cd lammps-*/src/
 cp -r $deepmd_source_dir/source/build/USER-DEEPMD .
 ```
+
+### Make命令安装
 
 选择需要编译的包（若需要安装其他包，请参考[Lammps官方文档](https://lammps.sandia.gov/doc/Build_package.html)）：
 
@@ -262,6 +293,59 @@ make mpi -j4
 
 经过以上过程，Lammps可执行文件`lmp_mpi`已经编译完成，用户可以执行该程序调用训练的势函数进行MD模拟。
 
+### Cmake安装
+
+也可以直接使用Cmake进行编译，更加干净、快捷。
+
+如需要安装Plumed，请首先利用Conda安装GSL环境：
+
+```bash
+conda install gsl
+```
+
+然后请编辑`lammps-stable/cmake/CMakeLists.txt`，找到`set(STANDARD_PACKAGES`这一行，并在末尾括号内增加一项：`USER-DEEPMD`：
+
+```cmake
+set(STANDARD_PACKAGES
+  ...  
+  USER-DEEPMD)
+```
+
+然后在`lammps-stable`目录下，新建`build`目录：
+
+```bash
+cd lammps-stable
+mkdir build
+cd build
+```
+
+进行配置：
+
+```bash
+cmake -C ../cmake/presets/most.cmake -C ../cmake/presets/nolib.cmake \
+-D BUILD_MPI=yes -D BUILD_OMP=yes -D LAMMPS_MACHINE=mpi \
+-D WITH_JPEG=no -D WITH_PNG=no -D WITH_FFMPEG=no \
+-D PKG_PLUMED=yes -D PKG_COLVARS=yes -D PKG_USER-DEEPMD=ON \
+-D CMAKE_INSTALL_PREFIX=/data/user/conda/env/deepmd \
+-D CMAKE_CXX_FLAGS="-std=c++14 -DHIGH_PREC -DLAMMPS_VERSION_NUMBER=20220623 -I${deepmd_root}/include -I${tensorflow_root}/include -L${deepmd_root}/lib -L${tensorflow_root}/lib -Wl,--no-as-needed -ldeepmd_cc -ltensorflow_cc -ltensorflow_framework -Wl,-rpath=${deepmd_root}/lib -Wl,-rpath=${tensorflow_root}/lib" \
+../cmake
+```
+
+注意`CMAKE_INSTALL_PREFIX`指示的是安装路径，请根据实际情况修改。
+
+{% include alert.html type="warning" title="注意" content="这里额外关闭了图形输出模块（JPEG、PNG、FFMPEG），因为Conda自带的图形库会与系统有冲突，暂时没有解决，且使用`make`默认也不会安装。" %}
+
+{% include alert.html type="warning" title="注意" content="由于未知原因，有时候CMake会找不到Conda安装的GSL。但若提前编译好Plumed并采用Runtime方式载入，可不需要GSL：<code>-D PLUMED_MODE=runtime</code>" %}
+
+然后进行编译：
+
+```bash
+make -j 16
+make install
+```
+
+经过以上过程，Lammps可执行文件`lmp_mpi`已经编译完成，用户可以执行该程序调用训练的势函数进行MD模拟。
+
 ## DP-CP2K 安装指引
 
 首先clone对应的安装包：
@@ -272,7 +356,7 @@ git clone https://github.com/Cloudac7/cp2k.git -b deepmd_latest --recursive --de
 
 然后运行相应的Toolchain脚本：
 
-```bash 
+```bash
 cd tools/toolchain/
 ./install_cp2k_toolchain.sh --enable-cuda=no --with-deepmd=$deepmd_root --with-tfcc=$tensorflow_root --deepmd-mode=cuda --mpi-mode=no --with-libint=no --with-libxc=no --with-libxsmm=no
 ```
@@ -286,7 +370,7 @@ make -j 4 ARCH=local VERSION="ssmp sdbg"
 编译正确完成后，可执行文件生成在`exe/`下，即`cp2k.sopt`。
 
 > 注意目前DP-CP2K暂未支持MPI，因而请单独编译此Serial版本。且CP2K由于IO问题，性能相比Lammps低50%以上，如非刚需还是建议使用Lammps进行MD模拟，后者可提供更多特性和加速的支持。
->
+> 
 > 同时目前开发者遇到一些困难，故提交的PR尚未更新且由于沉默过久已被官方关闭。如读者有在CP2K实现共享状态的开发经验，请联系作者，谢谢。
->
+> 
 > Now there is some difficulty in implemetion of shared state in CP2K run to decrease IO in each MD step. However, the developer has not find out a proper way as a solution, making the PR silent. If you could provide any experience, please contact me. Thanks!
