@@ -8,6 +8,8 @@ priority: 2.41
 
 # DeepMD-kit安装实战：服务器篇
 
+> 本部分写于2020年，适用于DeePMD-kit 1.x 和 TensorFlow 1.14。对目前较新的版本可能不适用，请移步[快速安装教程]({{ site.baseurl }}/wiki/softwares_installation/deepmd-kit_installation_191)
+
 背景：以 Zeus 集群为例，在服务器安装DeepMD-kit和包含完整接口的LAMMPS。
 
 参考：
@@ -133,21 +135,21 @@ Would you like to interactively configure ./WORKSPACE for Android builds? [y/N]:
 Not configuring the WORKSPACE for Android builds.
 
 Preconfigured Bazel build configs. You can use any of the below by adding "--config=<>" to your build command. See .bazelrc for more details.
-	--config=mkl         	# Build with MKL support.
-	--config=monolithic  	# Config for mostly static monolithic build.
-	--config=gdr         	# Build with GDR support.
-	--config=verbs       	# Build with libverbs support.
-	--config=ngraph      	# Build with Intel nGraph support.
-	--config=numa        	# Build with NUMA support.
-	--config=dynamic_kernels	# (Experimental) Build kernels into separate shared objects.
-	--config=v2          	# Build TensorFlow 2.x instead of 1.x.
+    --config=mkl             # Build with MKL support.
+    --config=monolithic      # Config for mostly static monolithic build.
+    --config=gdr             # Build with GDR support.
+    --config=verbs           # Build with libverbs support.
+    --config=ngraph          # Build with Intel nGraph support.
+    --config=numa            # Build with NUMA support.
+    --config=dynamic_kernels    # (Experimental) Build kernels into separate shared objects.
+    --config=v2              # Build TensorFlow 2.x instead of 1.x.
 Preconfigured Bazel build configs to DISABLE default on features:
-	--config=noaws       	# Disable AWS S3 filesystem support.
-	--config=nogcp       	# Disable GCP support.
-	--config=nohdfs      	# Disable HDFS support.
-	--config=noignite    	# Disable Apache Ignite support.
-	--config=nokafka     	# Disable Apache Kafka support.
-	--config=nonccl      	# Disable NVIDIA NCCL support.
+    --config=noaws           # Disable AWS S3 filesystem support.
+    --config=nogcp           # Disable GCP support.
+    --config=nohdfs          # Disable HDFS support.
+    --config=noignite        # Disable Apache Ignite support.
+    --config=nokafka         # Disable Apache Kafka support.
+    --config=nonccl          # Disable NVIDIA NCCL support.
 Configuration finished
 ```
 
