@@ -29,9 +29,9 @@ author: 熊景放
 
 4. 复制机器人的 `webhook`
 
-### 205 服务器上设置推送
+### 服务器上设置推送
 
-在服务器提交脚本中加上 `module load calctool/scripts` ，并在最后加上 `dingtalk_notification WEBHOOK` 即可实现推送至钉钉。示例脚本如下
+在服务器提交脚本中加上 `module load notification` ，并在最后加上 `dingtalk_notification WEBHOOK` 即可实现推送至钉钉。示例脚本如下:
 
 ```bash
 #!/bin/bash
@@ -42,10 +42,40 @@ author: 熊景放
 #BSUB -n 2
 #BSUB -W 12:00
 
-module load calctool/scripts
+module load notification
 
 MPIRUN_COMMAND  # your command to run software
 
 dingtalk_notification https://oapi.dingtalk.com/robot/send?access_token=xxxx  # replace it by your webhook
+```
+
+其中 `notification` 的示例如下，请记得替换 `<YOUR_HPC_NAME>` 与 `<YOUR_IP>` 的值:
+
+```bash
+#%Module
+
+set-alias    dingtalk_notification {
+    curl $1 \
+        -H 'Content-Type: application/json' \
+        -d '{
+            "msgtype": "markdown",
+            "markdown": {
+                "title":"Job Info",
+                "text": "'"Job Info \\n
+\\n
+Job $LSB_JOBID is finished in **<YOUR_HPC_NAME>**! \\n
+\\n
+> Server ip: **<YOUR_IP>** \\n
+> \\n
+> Job id: **$LSB_JOBID** \\n
+> \\n
+> Job name: **$LSB_JOBNAME** \\n
+> \\n
+> Job queue: **$LSB_QUEUE** \\n
+> \\n
+> Job workdir: **$LS_EXECCWD** \\n"'"
+            }
+        }'
+}
 ```
 
