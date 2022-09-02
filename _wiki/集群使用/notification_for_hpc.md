@@ -49,7 +49,7 @@ MPIRUN_COMMAND  # your command to run software
 dingtalk_notification https://oapi.dingtalk.com/robot/send?access_token=xxxx  # replace it by your webhook
 ```
 
-其中 `notification` 的示例如下，请记得替换 `<YOUR_HPC_NAME>` 与 `<YOUR_IP>` 的值:
+其中 `notification` 的示例如下，请自行编辑`modulefile`文件（可参考[此处](https://zhuanlan.zhihu.com/p/50725572)），并替换 `<YOUR_HPC_NAME>` 与 `<YOUR_IP>` 的值:
 
 ```bash
 #%Module
