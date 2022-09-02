@@ -122,7 +122,7 @@ CONDA_OVERRIDE_CUDA="11.3" conda install libtensorflow_cc=2.7.0=cuda113hbf71e95_
 
 {% include alert.html type="tip" title="提示" content="个别版本在后续编译时可能会提示需要<code>libiomp5.so</code>，请根据实际情况确定是否需要提前载入Intel环境（见下文Lammps编译部分）或者<code>conda install intel-openmp</code>。" %}
 
-{% include alert.html type="tip" title="提示" content="<code>conda</code>命令可能速度较慢，也可以考虑切换为<a href="https://mamba.readthedocs.io/en/latest/installation.html#existing-conda-install">mamba</a>，后者可大幅加速Conda的性能，且完全兼容。只需参照前述链接安装后将<code>conda</code>替换为<code>mamba</code>即可" %}
+{% include alert.html type="tip" title="提示" content="<code>conda</code>命令可能速度较慢，也可以考虑切换为<a href='https://mamba.readthedocs.io/en/latest/installation.html#existing-conda-install'>mamba</a>，后者可大幅加速Conda的性能，且完全兼容。只需参照前述链接安装后将<code>conda</code>替换为<code>mamba</code>即可" %}
 
 若成功安装，则定义环境变量：
 
