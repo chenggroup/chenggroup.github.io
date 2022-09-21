@@ -19,7 +19,7 @@ CP2K官方练习：[AIMD of bulk liquid water](https://www.cp2k.org/exercises:20
 
 ## CP2K MD Section 的输入文件
 
-请先了解CP2K的输入文件语法，指路：[CP2K:能量与力的计算]({{ site.baseurl }}/wiki/Softwares Usage/cp2k-e-f)。
+请先了解CP2K的输入文件语法，指路：[CP2K:能量与力的计算](./cp2k-e-f.md)。
 
 CP2K 的输入文件由不同的 *SECTION* 组成，而每个 SECTION 下级有可以包含 *SUBSECTION* 和 *KEYWORDS*，这些不同等级的 SECTION 和 KEYWORD 都是大写英文单词。一份输入文件的语法如下：
 
@@ -34,7 +34,7 @@ CP2K 的输入文件由不同的 *SECTION* 组成，而每个 SECTION 下级有�
 &END SECTION
 ```
 
-而如果希望用CP2K进行MD计算，需要根据体系的需要，配置[CP2K:能量与力的计算]({{ site.baseurl }}/wiki/Softwares Usage/cp2k-e-f)中介绍的 `GLOBAL` 和 `FORCE_EVAL` 这两部分，并且将 SECTION `GLOBAL` 下的关键字 `RUN_TYPE` 改为`MD`。
+而如果希望用CP2K进行MD计算，需要根据体系的需要，配置[CP2K:能量与力的计算](./cp2k-e-f.md)中介绍的 `GLOBAL` 和 `FORCE_EVAL` 这两部分，并且将 SECTION `GLOBAL` 下的关键字 `RUN_TYPE` 改为`MD`。
 
 ```
 &GLOBAL

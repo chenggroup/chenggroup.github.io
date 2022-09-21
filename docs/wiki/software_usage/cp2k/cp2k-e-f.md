@@ -24,7 +24,7 @@ authors: Yongbin Zhuang
 
 原则上来说CP2K的输入文件只需要三个，一个是输入参数的设置文件`input.inp`，一个是赝势的参数文件`GTH_POTENTIALS`，一个是基组的参数文件`BASIS_SET`。
 
-在集群上，管理员已经把`GTH_POTENTIALS`和`BASIS_SET`放置在特定文件夹，并且使用[特殊的链接方法]({{ site.baseurl }}/wiki/Softwares%20Usage/cp2k#设置CP2K环境变量)可以让CP2K程序自动寻找到。因此在后文中涉及到赝势和基组的部分可以直接填写对应的文件名称。
+在集群上，管理员已经把`GTH_POTENTIALS`和`BASIS_SET`放置在特定文件夹，并且使用[特殊的链接方法](./cp2k.md#设置cp2k环境变量)可以让CP2K程序自动寻找到。因此在后文中涉及到赝势和基组的部分可以直接填写对应的文件名称。
 
 ## 认识CP2K输入文件的主要部分
 

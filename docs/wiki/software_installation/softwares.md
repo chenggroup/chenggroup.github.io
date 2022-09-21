@@ -388,9 +388,9 @@ git clone https://github.com/deepmodeling/deepmd-kit.git
 dp train water_se_a.json
 ```
 
-### Install Guide of DeePMD in 国重
+### Install Guide of DeePMD
 
-[国重安装实战记录]({{ site.baseurl }}/wiki/deepmd-kit_installation_104)
+[快速安装](./deepmd-kit_installation_191.md)
 
 ## n2p2 Installation Guide
 

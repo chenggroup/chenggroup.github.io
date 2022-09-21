@@ -1,10 +1,12 @@
 ---
 title: 如何发布 News
-authors: 熊景放
-priority: 0.2
+authors: 
+  - 熊景放
 ---
 
 # 如何发布 News (致管理员)
+
+因为迁移新的实现，暂不启用。
 
 服务器的一些信息或是其他零碎的信息可发布在 News 里。
 
@@ -12,7 +14,7 @@ priority: 0.2
 
 ### 文件的格式
 
-请上传 markdown 格式的文件，当然也支持一些 [markdown 的拓展功能]({{ site.baseurl }}/wiki/howtodo#markdown-语法) 。
+请上传 markdown 格式的文件，当然也支持一些 [markdown 的拓展功能](./howtodo.md#markdown-语法) 。
 
 ### 文件的命名
 
@@ -26,7 +28,7 @@ priority: 0.2
 
 ### 设置 News 的分类
 
-在 [YAML Front Matter]({{ site.baseurl }}/wiki/howtodo#yaml-front-matter) 处添加 `tags` 可更方便地按照某些标签来检索 News，`tags` 示例如下所示：
+在 [YAML Front Matter](howtodo.md#yaml-front-matter) 处添加 `tags` 可更方便地按照某些标签来检索 News，`tags` 示例如下所示：
 
 ```yaml
 ---
@@ -38,4 +40,4 @@ tags:
 
 ## 查看 News
 
-进入 <{{ site.url }}/{{ site.baseurl }}news> 可查看所有 News，<{{ site.url }}/{{ site.baseurl }}archive> 可查看按时间分类的 News。
+进入 <{{ config.site_url }}/news> 可查看所有 News，<{{ config.site_url }}/archive> 可查看按时间分类的 News。

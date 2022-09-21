@@ -15,7 +15,7 @@ DeePMD-kit是一个训练神经网络势能(Machine Learning Potential)的代码
 
 - [官网](http://www.deepmd.org)
 - [官方文档](https://deepmd.readthedocs.io/en/latest/index.html)
-- 安装方法:  [Installation Guide]({{ site.baseurl }}/wiki/softwares#deepmd-installation-guide)
+- 安装方法:  [Installation Guide](../software_installation/softwares.md#deepmd-installation-guide)
 
 !!! warning None
     此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者

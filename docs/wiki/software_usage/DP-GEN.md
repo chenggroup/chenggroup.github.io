@@ -17,7 +17,7 @@ Deep Potential Generator (DP-GEN) 是一个将神经网络势能（machine learn
 
 !!! warning None
     此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对DeePMD-kit有一定了解。
-指路：[DeePMD-kit]({{ site.baseurl }}/wiki/软件使用/DeePMD-kit)
+指路：[DeePMD-kit](./DP-GEN.md)
 
 DP-GEN的工作流是由以下三步组成的循环：
 
@@ -37,19 +37,12 @@ DP-GEN的工作流是由以下三步组成的循环：
 
   制定上述三个步骤分别在哪个服务器计算。
 
-!!! None None
-    None
-
-{% capture machine_note %}
-在 Zeus 集群上配置 <code>machine.json</code>，请参阅<a href="{{ site.baseurl }}{% link _wiki/集群使用/gpu_usage.md %}#dpgen-提交-GPU-任务参数设置">GPU使用说明</a>
-{% endcapture %}
-
-!!! None None
-    None
+!!! tip
+    在 Zeus 集群上配置 `machine.json`</code>`，请参阅[GPU使用说明](../cluster_usage/gpu_usage.md)</a>
 
 - 初始训练集数据
 
-  放在提交dpgen所在的服务器上，用于训练势函数，参照[DeePMD-kit]({{ site.baseurl }}/wiki/软件使用/DeePMD-kit)中方法生成。
+  放在提交dpgen所在的服务器上，用于训练势函数，参照[DeePMD-kit](./DeePMD-kit.md)中方法生成。
 
 - MD采样的初始结构
 
@@ -71,7 +64,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 - `nohup.out` 
 
-  这个并不是必要输出，但是建议使用[nohup命令]({{ site.baseurl }}/wiki/miscellaneous)把dpgen挂在后台运行。这个文件中输出的信息和`dpgen.log`的基本一致。
+  这个并不是必要输出，但是建议使用[nohup命令](../miscellaneous.md#run-process-when-you-logout-shell)把dpgen挂在后台运行。这个文件中输出的信息和`dpgen.log`的基本一致。
 
 ## 例子
 

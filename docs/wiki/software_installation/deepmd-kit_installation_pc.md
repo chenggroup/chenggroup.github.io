@@ -27,7 +27,7 @@ pip install .
 
 此时会基于已修改的代码生成新的可执行文件。
 
-如果想基于DeePMD-kit生成的模型和lammps/CP2K等软件的对接，需要另外安装C++接口。这部分可以[参考之前的教程]({{ site.baseurl }}/wiki/Softwares%20Installation/DeePMD-kit_installation_51)（编译/修改代码后重新编译）。
+如果想基于DeePMD-kit生成的模型和lammps/CP2K等软件的对接，需要另外安装C++接口。这部分可以[参考之前的教程](./deepmd-kit_installation_51.md)（编译/修改代码后重新编译）。
 
 ## conda安装
 
@@ -70,7 +70,7 @@ conda create -n dp-tf
 
 ### 下载源码&设置环境变量
 
-下载源码（注意一定要有`--recursive`，具体见[wiki]({{ site.baseurl }}/wiki/Softwares Installation/deepmd-kit_installation_51)）
+下载源码（注意一定要有`--recursive`，具体见[wiki](./deepmd-kit_installation_51.md）
 
 ```bash
 #(tf-dp)
@@ -205,5 +205,5 @@ pip install .
 
 ### 和其他计算软件（如lammps）的接口
 
-见[官方教程](https://deepmd.readthedocs.io/en/latest/install.html#install-lammps-s-DeePMD-kit-module)和[这里]({{ site.baseurl }}/wiki/Softwares%20Installation/DeePMD-kit_installation_51)。
+见[官方教程](https://deepmd.readthedocs.io/en/latest/install.html#install-lammps-s-DeePMD-kit-module)和[这里](./deepmd-kit_installation_51.md)。
 

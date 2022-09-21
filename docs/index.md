@@ -38,6 +38,6 @@ This is group wiki for chenggroup of XMU which is personal academic group. Visit
 
 请首先阅读[提问的智慧(How To Ask Questions The Smart Way)](https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way/blob/main/README-zh_CN.md) (作者: Eric Steven Raymond, 译者: [ryanhanwu](https://github.com/ryanhanwu))
 
-如果确实有需要作者答疑的问题，请归纳清楚要点并[在Github提问题(Open Issue in Github)]({{ site.repo }}/issues)，或通过邮件联系作者。
+如果确实有需要作者答疑的问题，请归纳清楚要点并[在Github提问题(Open Issue in Github)]({{ config.repo_url }}/issues)，或通过邮件联系作者。
 
-Please read [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) (Written by Eric Steven Raymond) first. If there is problem in need of us, please [open issue in Github]({{ site.repo }}/issues) or write E-mail to contact us.
+Please read [How To Ask Questions The Smart Way](http://www.catb.org/~esr/faqs/smart-questions.html) (Written by Eric Steven Raymond) first. If there is problem in need of us, please [open issue in Github]({{ config.repo_url }}/issues) or write E-mail to contact us.

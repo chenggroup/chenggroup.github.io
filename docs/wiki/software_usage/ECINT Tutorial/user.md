@@ -12,7 +12,7 @@ author: 熊景放
 
 ## 如何进入 hydrogen
 
-1. 联系 {{ page.author }} ，将你的公钥放到 hydrogen 上
+1. 联系集群管理员，将你的公钥放到 hydrogen 上
 
 2. 在海洋楼网络环境下，通过以下命令可进入 hydrogen
 

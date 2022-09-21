@@ -5,9 +5,12 @@ authors: 熊景放
 
 # 如何使用 Wiki
 
-wiki 书写使用 markdown 格式。本 wiki 使用 kramdown 作为 markdown 的解释器，支持一些 markdown 的扩展语法。在本地编辑 markdown 文件时，推荐使用 [typora](https://www.typora.io/ "轻量化md编辑工具")，不过要注意不要勾选 typora 设置中的 `Markdown` → `Markdown 扩展语法` → `上标`/`下标`，其与 kramdown 的语法有冲突。
+Wiki 书写使用 markdown 格式。本 wiki 使用 python-markdown 作为 markdown 的解释器，支持一些 markdown 的扩展语法。在本地编辑 markdown 文件时，推荐使用 [VSCode](https://code.visualstudio.com)。
 
-有任何问题可以在 <{{ site.repo }}/issues> 进行反馈。
+!!! warning
+    Typora正式版已经收费，且测试版在某些系统环境已不可用。
+
+有任何问题可以在 <{{ config.repo_url }}/issues> 进行反馈。
 
 > 文档中带有 `*` 的部分可以略过。
 
@@ -23,15 +26,15 @@ wiki 书写使用 markdown 格式。本 wiki 使用 kramdown 作为 markdown 的
 
 ## 如何上传 wiki
 
-如果还不会 markdown 语法，可以先看 [markdown 语法部分](#markdown-语法)，能被识别为 wiki 的 markdown 文件应在文件的开头插入 [YAML Front Matter](#yaml-front-matter)。把自己的 markdown 文档上传到 wiki 上可以有两种方案，本质都是在使用 github: 1. 上传文件至 github 仓库 (推荐)；2. 由 [wiki 网站](../../index.md) 导向编辑页面。
+如果还不会 markdown 语法，可以先看 [markdown 语法部分](#markdown-语法)，能被识别为 wiki 的 markdown 文件应在文件的开头插入 [YAML Front Matter](#yaml-front-matter)。把自己的 markdown 文档上传到 wiki 上可以有两种方案，本质都是在使用 Github: 1. 上传文件至 Github 仓库 (推荐)；2. 由 [wiki 网站](../../index.md) 导向编辑页面。
 
 ### 上传文件至 github 仓库 (推荐)
 
-推荐通过 pull requests 的方法来增加或修改 [wiki 网站]({{ site.baseurl }}) 上的 wiki。
+推荐通过 pull requests 的方法来增加或修改 [wiki 网站](../../index.md) 上的 wiki。
 
 #### 1. Fork wiki 文档所在仓库
 
-先 fork <{{ site.repo }}> ，然后进入 fork 成功后的仓库。
+先 fork <{{ config.repo_url }}> ，然后进入 fork 成功后的仓库。
 
 ![Screen Shot 2019-11-09 at 02.07.35](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6kit9pej311t0kxad7.jpg)
 
@@ -39,27 +42,26 @@ wiki 书写使用 markdown 格式。本 wiki 使用 kramdown 作为 markdown 的
 
 ![Screen Shot 2019-11-09 at 02.16.32](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6wiwgauj311t0kwjue.jpg)
 
-推荐在本地用 typora 等编辑器写好 markdown 后直接上传文件，文件请上传至 [_wiki]({{ site.repo }}/tree/master/_wiki) 目录 (master 分支)。也可以修改 fork 的仓库的 _wiki 下的文件，然后再提交 PR。
+推荐在本地用 typora 等编辑器写好 markdown 后直接上传文件，文件请上传至 [_wiki]({{ config.repo_url }}/tree/master/_wiki) 目录 (master 分支)。也可以修改 fork 的仓库的 _wiki 下的文件，然后再提交 PR。
 
 #### 3. 提交 PR
 
 ![Screen Shot 2019-11-09 at 02.31.25](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r757esxtj311t0kwad2.jpg)
 
-<!--
+
 ### 由 wiki 网站导向编辑页面*
 
-> :warning: 仅推荐 [{{ site.github_user }} 仓库的成员](https://github.com/orgs/{{ site.github_user }}/people) 通过这种方式编辑 wiki。  
+> :warning: 仅推荐 [chenggroup 仓库的成员](https://github.com/orgs/chenggroup/people) 通过这种方式编辑 wiki。  
 
-鼠标放在标题右侧的省略号上会显示出编辑页面以及提交问题的选项，点击 `Edit this page` 可进入相应的 github 仓库中的文件编辑页面。当然，推荐任何人使用 `Ask a Question` 。
--->
+点击标题右侧的笔的图标可进入相应的 github 仓库中的文件编辑页面。当然，推荐任何人使用 `Ask a Question` 。
 
 ## 如何预览 wiki
 
-预览 wiki 也有两种方案：1. 使用 typora 实时渲染；2. 在本地启动 jekyll 服务。
+预览 wiki 也有两种方案：1. 使用 typora 等实时渲染；2. 在本地启动 jekyll 服务。
 
-### 通过 typora (推荐)
+### 通过 typora (注意已经收费)
 
-使用 [typora](https://www.typora.io/ "轻量化md编辑工具") 编辑器可以很方便地实时渲染 markdown 文件。如果不使用本 wiki 中标注有 `*` 的 [wiki 扩展语法](#按钮) ，则可以大体上认为 typora 所渲染出的文档与直接查看 [wiki 网站]({{ site.baseurl }}) 的文档相差无几，基本仅存在显示风格上的差异。但要注意需更改 typora 的一些设置（见后文），避免和 wiki 所使用的 markdown 扩展功能发生冲突。
+使用 [typora](https://www.typora.io/ "轻量化md编辑工具") 编辑器可以很方便地实时渲染 markdown 文件。如果不使用本 wiki 中标注有 `*` 的 [wiki 扩展语法](#按钮) ，则可以大体上认为 typora 所渲染出的文档与直接查看 [wiki 网站](../../index.md) 的文档相差无几，基本仅存在显示风格上的差异。但要注意需更改 typora 的一些设置（见后文），避免和 wiki 所使用的 markdown 扩展功能发生冲突。
 
 #### 修改 markdown 拓展语法设置
 
@@ -79,40 +81,38 @@ wiki 书写使用 markdown 格式。本 wiki 使用 kramdown 作为 markdown 的
 
 ![image-20210602152924699](https://cdn.jsdelivr.net/gh/xjf729/FigureBed@master/Imgs/image-20210602152924699.png)
 
-### 通过 jekyll 服务*
+### 通过 Mkdocs 服务*
 
 #### 1. 下载网站源码至本地
 
 ```bash
-git clone https://github.com/{{ site.github_user }}/{{ site.github_repo }}.git
-cd {{ site.github_repo }}
+git clone {{ config.repo_url }}.git
+cd chenggroup.github.io
 ```
 
-#### 2. 用 Ruby Gem 安装 jekyll
+#### 2. 安装 [mkdocs-material](https://squidfunk.github.io/mkdocs-material/getting-started/) 和 必要的 mkdocs 插件
 
-可参考 [jekyll 官方安装指南](https://jekyllrb.com/docs/installation/)
-
-#### 3. 安装 jekyll 模版与插件
+可参考 [mkdocs-material 官方安装指南](https://squidfunk.github.io/mkdocs-material/getting-started/)
 
 ```bash
-bundle install --path vendor/bundle
+pip install mkdocs-material \
+    mkdocs-awesome-pages-plugin \
+    mkdocs-macros-plugin
 ```
 
-> 若安装很慢，则可以先配置一个国内镜像 <br>`bundle config mirror.https://rubygems.org https://gems.ruby-china.com`
-
-#### 4. 启动 jekyll 服务
+#### 4. 启动 Mkdocs 服务
 
 ```bash
-bundle exec jekyll serve
+mkdocs serve
 ```
 
 #### 5. 编辑 wiki
 
-把要预览的 wiki 移到 `{{ site.github_repo }}/_wiki/` 目录下，或是直接编辑 `_wiki` 目录下的 markdown 文件。
+把要预览的 wiki 移到 `docs/wiki/` 目录下，或是直接编辑 `docs/wiki/` 目录下的 markdown 文件。
 
 #### 6. 预览 wiki
 
-等待片刻，打开浏览器访问 <http://127.0.0.1:4000> 。
+等待片刻，打开浏览器访问 <http://127.0.0.1:8000> 。
 
 ## Markdown 语法
 
@@ -268,23 +268,21 @@ $$
     TLDR means too long, didn't read
 ```
 
-> <code>content</code> 中请使用纯文本，不建议在其中使用 <code>markdown</code> 的标记。
+改变 `tldr` 即可使用不同的提示类型，比如
 
-改变 `type` 就能使用不同的提示类型
-
-!!! tldr None
+!!! tldr "Use `tldr` for this."
     TLDR means too long, didn't read
-!!! tip None
+!!! tip "Use `tip` for this."
     This is a tip.
-!!! info None
+!!! info "Use `info` for this."
     This is a piece of information, or you can use todo.
-!!! question None
+!!! question "Use `question` for this."
     This is a question.
-!!! warning None
+!!! warning "Use `warning` for this."
     This is a warning
-!!! danger None
+!!! danger "Use `danger` for this."
     This alerts danger!
-!!! success None
+!!! success "Use `success` for this."
     This alerts success
 
 #### 流程图
@@ -311,55 +309,25 @@ graph LR
   B ---->|No| E[Yay!];
 ```
 
-<!--
-#### 测验*
-
-在 `_data/quizzes` 中添加有关测验的 `yaml` 格式文件 (`example-quiz` 是一个简单的例子)，然后在 wiki 中用如下方式引入：
-
-```
-{%raw%}{% include quiz.html file='example-quiz' %}{%endraw%}
-```
-
-{% include quiz.html file='example-quiz' %}
-
-## 在 wiki 中使用变量
-
-本网站利用 Mkdocs 搭建，因此可以无缝使用 [jekyll](https://jekyllrb.com/docs/variables/) 中的变量。在下文的情形中推荐使用变量，使用变量可以让 wiki 的迁移和更新更加便利。
-
 ### 引用本网站的其他 wiki
 
 使用
 
-```
-{% raw %}{{ site.baseurl }}/wiki/name-of-wiki{% endraw %}
+```markdown
+[title](relavent/path/to/file.md)
 ```
 
-即可在 wiki 中引用本网站的其他 wiki 。只需将 `name-of-wiki` 改成想要引用的 wiki 文件名，若不清楚文件名是什么，也可点开相应的 wiki，在搜索栏中可找到对应的名称。
+即可在 wiki 中引用本网站的其他 wiki 。只需将 `relavent/path/to/file.md` 改成想要引用的 wiki 相对此文档的 **相对路径**。
 
-比如，要想引用 `如何使用 wiki` 这篇 wiki，则只需把 `name-of-wiki` 换成 `howtodo` 。
+比如，要想引用 `如何使用 wiki` 这篇 wiki，则只需把 `relavent/path/to/file.md` 换成 `../how_to_edit/howtodo.md`。
 
 ![Screen Shot 2019-12-02 at 11.30.03](https://tva1.sinaimg.cn/large/006tNbRwgy1g9i81zy06ij313z071wft.jpg)
 
-> :warning: `name-of-wiki` 为对应 wiki 的文件名，而不是标题名；`name-of-wiki` 不要包含 `.md` 后缀
-
-### 使用自定义的变量
-
-在 [YAML Front Matter](#yaml-front-matter) 中可添加自定义变量，变量名称可随意取，然后通过 `{% raw %}{{ page.yourvariable }}{% endraw %}` 来引用。
-
-比如可通过 `{% raw %}{{ page.priority }}{% endraw %}` 来引用 `priority` 变量，其显示为 {{ page.priority }} 。
+!!! warning
+    注意这里推荐使用的是相对路径，可不改变同级目录结构。如需修改上级目录结构需要对应更改。
 
 ## 参考资料*
 
-要了解更多预设的变量，可参考 [jekyll](https://jekyllrb.com/docs/variables/#page-variables) 的变量部分。
+要使用更多功能，请参考[mkdocs-material官方文档](https://squidfunk.github.io/mkdocs-material)。
 
-要实现更多复杂的功能，比如条件语句，循环语句，过滤器等功能，可参考 [liquid](https://shopify.github.io/liquid/) 语法。
-
-当然，想要快速获得支持，也可以联系作者或者 [Open an issue]({{ site.repo }}/issues) 。
-
--->
-
-## 参考资料
-
-要使用更多功能，请参考[Mkdocs官方文档](https://squidfunk.github.io/mkdocs-material)。
-
-当然，想要快速获得支持，也可以联系作者或者 [Open an issue]({{ site.repo }}/issues) 。
+当然，想要快速获得支持，也可以联系作者或者 [Open an issue]({{ config.repo_url }}/issues) 。

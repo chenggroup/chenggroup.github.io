@@ -43,7 +43,7 @@ module add gcc/7.4.0
 
 注意这里导入的是GCC 7.4.0版本，如果采用低于4.9.4的版本（不导入GCC）则dp_ipi不会被编译。
 
-然后创建虚拟环境，步骤请参考<a href="{{ site.baseurl }}{% link _wiki/集群使用/conda.md %}">Anaconda 使用指南</a>。
+然后创建虚拟环境，步骤请参考[Anaconda 使用指南](../cluster_usage/conda.md)。
 
 假设创建的虚拟环境名称是 `deepmd`，则请将步骤最后的 `<your env name>` 替换为 `deepmd`。若采用该步骤的设置，则虚拟环境将被创建在`/data/user/conda/env/deepmd`下（假设用户名为`user`）。
 
@@ -161,16 +161,11 @@ git clone --recursive https://github.com/deepmodeling/deepmd-kit.git deepmd-kit 
 
 在运行git clone时记得要`--recursive`，这样才可以将全部文件正确下载下来，否则在编译过程中会报错。
 
-{% capture cub_note %}
-
-<p>如果不慎漏了<code>--recursive</code>， 可以采取以下的补救方法：</p>
-<pre><code>git submodule update --init --recursive
-</code></pre>
-
-{% endcapture %}
-
 !!! tip "提示"
-    None
+    如果不慎漏了`--recursive`， 可以采取以下的补救方法：
+    ```bash
+    git submodule update --init --recursive
+    ```
 
 若集群上 Cmake 3没有安装，可以用pip进行安装：
 

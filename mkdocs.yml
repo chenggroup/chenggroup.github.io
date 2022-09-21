@@ -17,6 +17,7 @@ extra:
 plugins:
   - search
   - awesome-pages
+  - macros
 
 theme:
   name: material
@@ -26,13 +27,13 @@ theme:
   palette:
     - scheme: default
       media: "(prefers-color-scheme: light)"
-      primary: cyan
+      primary: teal
       toggle:
         icon: material/lightbulb
         name: 切换至深色模式
     - scheme: slate 
       media: "(prefers-color-scheme: dark)"
-      primary: light blue
+      primary: blue
       toggle:
         icon: material/lightbulb-outline
         name: 切换至浅色模式

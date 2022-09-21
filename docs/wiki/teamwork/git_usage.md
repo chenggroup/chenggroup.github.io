@@ -96,7 +96,7 @@ test
 first commit
 ```
 
-如果尚不熟悉 Vim 的操作，请参考[Linux快速基础入门]({{ site.baseurl }}/wiki/新生培训/linux)。
+如果尚不熟悉 Vim 的操作，请参考[Linux快速基础入门](../new_comers/linux.md)。
 
 保存并退出，输入`git status`，可以看到已经监测到尚未提交的更改：
 
