@@ -48,7 +48,7 @@ DP 官方教程给出了在本地运行程序时的可视化，如果在服务�
    > `--port`指定 tensorboard 在服务器上运行的端口号（缺省默认为 6006）。
 
 2. 查看计算节点 ip 地址
-   做法类似(jupyter notebook 教程)[{{ site.baseurl }}/wiki/集群使用/jupyter] ，在登录节点命令行输入下面指令（将 `c51-m002`替换为实际运行的节点）。
+   做法类似[jupyter notebook 教程](./jupyter.md)，在登录节点命令行输入下面指令（将 `c51-m002`替换为实际运行的节点）。
 
    ```shell
    cat /etc/hosts | grep c51-m002
