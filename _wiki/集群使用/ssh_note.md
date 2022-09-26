@@ -103,6 +103,8 @@ zsh下 （比如macOS >=10.15版本的默认终端），不能直接使用通配
 vim ~/.ssh/config
 ```
 
+{% include alert.html type="danger" title="注意" content="请注意修改该文件权限为600(即<code>-rw-------</code>)，否则可能导致无法并行。" %}
+
 我们可以把SSH命令的参数都储存在这个文件里。以下是语法示例文件：
 
 ``` bash
