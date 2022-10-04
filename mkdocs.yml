@@ -1,0 +1,92 @@
+site_name: XMU Chenggroup Wiki
+site_url: https://wiki.cheng-group.net
+repo_name: chenggroup/chenggroup.github.io
+repo_url: https://github.com/chenggroup/chenggroup.github.io
+extra:
+  social:
+    - icon: material/web
+      link: https://www.cheng-group.net
+      name: 课题组网站
+    - icon: fontawesome/brands/github
+      link: https://github.com/chenggroup
+      name: 课题组Github
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:chengjun@xmu.edu.cn
+      name: 联系程俊老师
+
+plugins:
+  - search
+  - awesome-pages
+  - macros
+
+theme:
+  name: material
+  custom_dir: overrides
+  icon: 
+    logo: fontawesome/solid/graduation-cap
+    repo: fontawesome/brands/github
+  palette:
+    - scheme: default
+      media: "(prefers-color-scheme: light)"
+      primary: teal
+      toggle:
+        icon: material/lightbulb
+        name: 切换至深色模式
+    - scheme: slate 
+      media: "(prefers-color-scheme: dark)"
+      primary: blue
+      toggle:
+        icon: material/lightbulb-outline
+        name: 切换至浅色模式
+  favicon: images/favicon.png
+  language: zh
+  features:
+    - navigation.instant
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - content.tooltips
+
+markdown_extensions:
+
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
