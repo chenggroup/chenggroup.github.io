@@ -18,7 +18,7 @@ Wiki 书写使用 markdown 格式。本 wiki 使用 python-markdown 作为 markd
 
 ## 对某篇 wiki 内容有疑问
 
-请使用页面下方的评论区、登陆Github账号后进行评论。该部分基于giscus构建，可以自动创建一个discussion，从而提供方便的互动。
+请使用页面下方的评论区、登陆Github账号后进行评论。该部分基于[giscus](https://giscus.app/)构建，可以自动创建一个discussion，从而提供方便的互动。此功能需要创建页面的贡献者手动开启。
 
 ## 如何上传 wiki
 
@@ -182,7 +182,16 @@ authors:
 ---
 ```
 
-> 建议 `priority` 的值设成类似小数的形式，整数部分可以表示一系列你想排列在一起的 wiki，小数部分表示系列文章内部的排列顺序。
+##### 开启评论功能
+
+对创建页面的编辑者来说，通常情况下请开启评论功能、以便读者可以快速提交反馈或评论，即在 `YAML Front Matter` 部分增加一行：
+
+```yaml
+---
+...
+comments: true
+---
+```
 
 #### 数学公式
 
