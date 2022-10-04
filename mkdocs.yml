@@ -21,6 +21,7 @@ plugins:
 
 theme:
   name: material
+  custom_dir: overrides
   icon: 
     logo: fontawesome/solid/graduation-cap
     repo: fontawesome/brands/github

@@ -1,6 +1,7 @@
 ---
 Title: 集群TensorBoard使用指南
 Authors: 朱嘉欣
+comments: true
 ---
 
 # 集群 TensorBoard 使用指南
