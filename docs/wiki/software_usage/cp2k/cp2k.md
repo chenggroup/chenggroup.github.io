@@ -1,7 +1,7 @@
 ---
 title: CP2K入门
 authors: Yongbin Zhuang
-
+comments: true
 ---
 
 # CP2K 入门

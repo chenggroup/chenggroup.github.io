@@ -1,7 +1,7 @@
 ---
 title: 计算集群使用说明
 authors: Yunpei Liu, Yongbin Zhuang
-priority: 1.01
+comments: true
 ---
 
 # 计算集群使用说明

@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: "机器学习: 理论与DeePMD-kit"
-priority: 1.27
+comments: true
 ---
 
 # 机器学习: 理论与DeePMD-kit

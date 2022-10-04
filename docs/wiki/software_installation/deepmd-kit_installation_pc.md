@@ -2,7 +2,7 @@
 title: DeePMD-kit安装实战：PC篇
 authors: 
   - 朱嘉欣
-priority: 2.42
+comments: true
 ---
 
 # DeePMD-kit安装实战：PC篇

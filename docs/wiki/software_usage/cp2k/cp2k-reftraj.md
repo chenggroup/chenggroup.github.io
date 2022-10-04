@@ -1,6 +1,7 @@
 ---
 title: CP2K:REFTRAJ根据已有MD轨迹计算
 author: 毕睿豪
+comments: true
 ---
 
 #  根据已有轨迹运行CP2K分子动力学计算

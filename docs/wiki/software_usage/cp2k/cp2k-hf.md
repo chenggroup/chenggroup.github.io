@@ -1,7 +1,7 @@
 ---
 title: CP2K:杂化泛函
 authors: Yongbin Zhuang
-
+comments: true
 ---
 
 # CP2K: 杂化泛函

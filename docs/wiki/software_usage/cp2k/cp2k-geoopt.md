@@ -1,7 +1,7 @@
 ---
 title: CP2K:结构和晶胞优化
 authors: 庄永斌
-
+comments: true
 ---
 
 # CP2K: 结构和晶胞优化

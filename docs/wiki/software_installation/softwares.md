@@ -1,7 +1,7 @@
 ---
 title: Guidances for installation of codes
 authors: Yongbin Zhuang
-priority: 2.0
+comments: true
 ---
 
 # Installation Guide for Codes and Libraries

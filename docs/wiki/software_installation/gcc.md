@@ -1,6 +1,7 @@
 ---
 title: GCC 安装教程
 authors: Yunpei Liu
+comments: true
 ---
 
 # GCC 安装教程

@@ -1,7 +1,7 @@
 ---
 title: CP2K:ZPE
 authors: Jinyuanhu
-
+comments: true
 ---
 
 # CP2K: ZPE(Zero-point energy)

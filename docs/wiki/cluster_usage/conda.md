@@ -1,7 +1,7 @@
 ---
 title: Anaconda
 authors: Yongbin Zhuang
-priority: 1.08
+comments: true
 ---
 
 # Anaconda 使用指南

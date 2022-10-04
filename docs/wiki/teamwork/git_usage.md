@@ -1,7 +1,7 @@
 ---
 title: Git 基本使用教程
 authors: Yunpei Liu
-priority: 1.7
+comments: true
 ---
 
 # Git 基本使用教程

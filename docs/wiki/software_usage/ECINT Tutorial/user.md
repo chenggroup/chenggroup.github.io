@@ -2,6 +2,7 @@
 title: ECINT 的使用
 todo: update pbc section
 author: 熊景放
+comments: true
 ---
 
 # ECINT 的使用

@@ -1,7 +1,7 @@
 ---
 Title: Jupyter 系列使用指南
 Authors: 庄永斌
-priority: 1.09
+comments: true
 ---
 
 # Jupyter 系列使用指南

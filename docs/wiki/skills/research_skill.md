@@ -1,6 +1,7 @@
 ---
 title: 研究技能
 authors: 庄永斌
+comments: true
 ---
 
 # 研究技能入门

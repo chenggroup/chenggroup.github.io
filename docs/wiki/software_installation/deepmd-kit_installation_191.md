@@ -2,7 +2,7 @@
 title: DeepMD-kit快速安装
 authors: 
   - Yunpei Liu
-priority: 2.40
+comments: true
 ---
 
 # DeepMD-kit快速编译安装

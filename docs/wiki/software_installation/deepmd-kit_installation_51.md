@@ -3,7 +3,7 @@ title: DeepMD-kit安装实战：服务器篇
 authors: 
   - Jiaxin Zhu
   - Yunpei Liu
-priority: 2.41
+comments: true
 ---
 
 # DeepMD-kit安装实战：服务器篇

@@ -1,7 +1,7 @@
 ---
 title: CP2K 7.1 安装教程
 authors: Yunpei Liu
-priority: 2.50
+comments: true
 ---
 
 # CP2K 7.1 安装教程

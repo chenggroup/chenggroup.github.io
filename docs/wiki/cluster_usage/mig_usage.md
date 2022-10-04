@@ -1,6 +1,6 @@
 ---
 title: 使用A100切分的GPU实例
-priority: 1.03
+comments: true
 ---
 
 # 使用集群上的 GPU —— 使用A100切分的GPU实例

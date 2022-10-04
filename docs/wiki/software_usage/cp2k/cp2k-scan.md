@@ -1,7 +1,7 @@
 ---
 title: CP2K:SCAN泛函
 authors: 庄永斌
-
+comments: true
 ---
 
 # CP2K: SCAN泛函

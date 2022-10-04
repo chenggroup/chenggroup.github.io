@@ -1,6 +1,7 @@
 ---
 title: 计算任务的推送
 author: 熊景放
+comments: true
 ---
 
 # 计算任务的推送

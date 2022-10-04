@@ -1,7 +1,7 @@
 ---
 title: DP-GEN使用入门
 authors: 朱嘉欣，庄永斌
-priority: 2.3
+comments: true
 ---
 
 # DP-GEN使用入门

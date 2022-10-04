@@ -1,6 +1,7 @@
 ---
 title: 如何使用 Wiki
 authors: 熊景放
+comments: true
 ---
 
 # 如何使用 Wiki
@@ -14,15 +15,10 @@ Wiki 书写使用 markdown 格式。本 wiki 使用 python-markdown 作为 markd
 
 > 文档中带有 `*` 的部分可以略过。
 
-<!--
+
 ## 对某篇 wiki 内容有疑问
 
-若某篇 wiki 说得不明白或者有错误，可以使用 `Ask a Question` 的功能。
-
-鼠标移至页面上的省略号，点击 `Ask a Question` 即可跳转至反馈问题的页面 (不过这之前需要有一个 github 的账号): 
-
-![Screen Shot 2019-11-21 at 18.09.52](https://tva1.sinaimg.cn/large/006y8mN6gy1g95to97bj0j30zd07udhn.jpg)
--->
+请使用页面下方的评论区、登陆Github账号后进行评论。该部分基于giscus构建，可以自动创建一个discussion，从而提供方便的互动。
 
 ## 如何上传 wiki
 

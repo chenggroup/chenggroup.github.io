@@ -1,7 +1,7 @@
 ---
 title: vmd 使用说明 
 authors: Yongbin Zhuang
-
+comments: true
 ---
 
 # VMD 使用说明

@@ -1,7 +1,7 @@
 ---
 title: Tips for paper writing with LaTeX
 authors: 朱嘉欣
-priority: 3
+comments: true
 ---
 
 # Tips for paper writing with LaTeX

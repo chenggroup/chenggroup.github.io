@@ -1,6 +1,7 @@
 ---
 title: DPMD和DPGEN使用经验
 authors: 黄剑兴
+comments: true
 ---
 
 # DPMD和DPGEN使用经验

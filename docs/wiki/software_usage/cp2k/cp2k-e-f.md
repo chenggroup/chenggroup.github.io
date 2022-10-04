@@ -1,7 +1,7 @@
 ---
 title: CP2K:能量与力的计算
 authors: Yongbin Zhuang
-
+comments: true
 ---
 
 # CP2K能量与力的计算

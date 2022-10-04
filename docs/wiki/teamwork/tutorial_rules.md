@@ -1,7 +1,7 @@
 ---
 title: 如何组织培训
 Authors: Sylvia Wang
-priority: 1.9
+comments: true
 ---
 
 

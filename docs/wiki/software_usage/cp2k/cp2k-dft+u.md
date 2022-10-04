@@ -1,7 +1,7 @@
 ---
 title: CP2K:DFT+U
 authors: 庄永斌
-
+comments: true
 ---
 
 # CP2K: DFT+U

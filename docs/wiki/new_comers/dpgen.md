@@ -1,7 +1,7 @@
 ---
 authors: 庄永斌
 title: "深度势能生成器: DP-GEN"
-priority: 1.28
+comments: true
 ---
 
 # 深度势能生成器: DP-GEN
