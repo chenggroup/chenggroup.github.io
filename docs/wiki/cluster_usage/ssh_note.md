@@ -99,6 +99,9 @@ scp -P 7696 /some/local/place/file kmr@123.45.67.89:/data/home/kmr/
 scp -r -P 7696 kmr@123.45.67.89:/data/home/kmr/directory /some/local/place
 ```
 
+!!! tip
+    注意 `scp` 本身可以看作一个特殊的 `ssh` 命令，因此无论从远程还是本地传输文件都应在本地运行，只是参数的顺序决定了传输的方向。如果两个参数均写本地路径，则与 `cp` 命令的行为相近，但不可均写远程路径。
+
 zsh下 （比如macOS >=10.15版本的默认终端），不能直接使用通配符`*`批量传输文件，需要将包含`*`的字符串用单引号括起。
 
 ## 可选：通过配置 config 优雅地的使用 SSH
@@ -114,7 +117,7 @@ vim ~/.ssh/config
 
 我们可以把SSH命令的参数都储存在这个文件里。以下是语法示例文件：
 
-``` bash
+```bash
 Host myserver # nickname for your cluster
     User kmr # replacement of username in ssh
     Hostname 123.45.67.89 # replace of cluster_ip in ssh
