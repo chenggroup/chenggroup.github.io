@@ -15,7 +15,8 @@ extra:
       name: 联系程俊老师
 
 plugins:
-  - search
+  - search:
+      separator: '[\s\-\.]'
   - awesome-pages
   - macros
 
@@ -46,6 +47,7 @@ theme:
     - navigation.indexes
     - navigation.top
     - content.tooltips
+    - search.suggest
 
 markdown_extensions:
 
