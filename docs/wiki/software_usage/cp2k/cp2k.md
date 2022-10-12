@@ -99,7 +99,7 @@ CP2K的输入文件参数设置繁杂，往往我们是第一次从头到位写�
 
 ## 检查CP2K输入文件
 
-在服务器上，需要通过`module load CP2K/版本号` 来启动CP2K软件。Load后，可以使用`cp2k.popt`命令，这是CP2K软件的主要程序。
+在服务器上，需要通过`module load cp2k/版本号` 来启动CP2K软件。Load后，可以使用`cp2k.popt`命令，这是CP2K软件的主要程序。
 
 CP2K的计算运行是
 
@@ -116,7 +116,7 @@ cp2k.popt -c input.inp
 ```
 
 !!! warning None
-    CP2K.popt -c 仅检查是否有语法错误，实际运行的错误不会检查出来
+    cp2k.popt -c 仅检查是否有语法错误，实际运行的错误不会检查出来
 
 
 
