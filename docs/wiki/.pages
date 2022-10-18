@@ -8,3 +8,4 @@ nav:
     - "软件安装": software_installation
     - "研究技能": skills
     - "杂项(Miscellaneous)": miscellaneous.md
+    - "计算化学踩坑合集": question_under_carpet.md
