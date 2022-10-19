@@ -1,0 +1,12 @@
+nav: 
+    - "开始编辑": how_to_edit
+    - "集群使用": cluster_usage
+    - "新生培训": new_comers
+    - "书籍推荐": book_recommendation.md
+    - "合作协同": teamwork
+    - "软件使用": software_usage
+    - "软件安装": software_installation
+    - "研究技能": skills
+    - "疑难解答": faqs
+    - "隐患排查": question_under_carpet
+    - "杂项(Miscellaneous)": miscellaneous.md
