@@ -73,6 +73,30 @@ rm data.init
 !!! danger "danger"
     千万不要运行 'rm -rf data.init/*' ，你会删除掉原路径下的所有文件！！！'
 
+## 集群使用出错：/bin/sh^M: bad interpreter: No such file or directory
+
+### 错误情况
+
+/bin/sh^M: bad interpreter: No such file or directory
+
+在集群上使用bsub提交作业后正常显示：
+
+```
+Job <1360> is submitted to queue <53-large>
+```
+
+但是用bjobs查看不到这个作业，（可能先显示在排队PEND）显示No unfinished job found，这个时候使用ls命令会看见提交的.lsf作业的目录下会生成输出和报错文件：1360.stdout，1360.stderr，这说明作业已经运行结束（异常结束）。
+
+### 错误原因
+
+使用vim命令查看.stdout和.stderr这两个文件，会发现在作业的换行处出现很多^M符号，查询原因是windows的文件上传到linux系统时文件格式可能不一致
+
+### 错误处理
+
+方法一：参考[linux下运行脚本报读取或^M错误处理 - 知乎 (zhihu.com)](https://zhuanlan.zhihu.com/p/475980403)
+
+方法二：用vim命令在集群上新建一个作业，然后把作业内容复制上去，再bsub提交作业即可
+
 ## Slurm 管理系统
 
 > 2021年7月26日起，将 Metal 集群管理统一切换至新版 LSF 系统，请参考 wiki 的相关说明。
