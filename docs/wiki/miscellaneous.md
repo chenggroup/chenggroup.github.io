@@ -97,72 +97,121 @@ Job <1360> is submitted to queue <53-large>
 
 方法二：用vim命令在集群上新建一个作业，然后把作业内容复制上去，再bsub提交作业即可
 
-## Slurm 管理系统
+## LSF 作业管理系统（新版，作为归档）
 
-> 2021年7月26日起，将 Metal 集群管理统一切换至新版 LSF 系统，请参考 wiki 的相关说明。
-> 2022年6月2日起，取消 Metal 集群，并入 Zeus 管理。
+目前 LSF Suite 10.2 已在 Zeus 上部署测试，该版本包含了新版的 LSF 作业管理系统，因而可对 GPU 提供支持。
 
-采用 Slurm 系统可以直接对 GPU 进行分配，因此不再需要上述的检测脚本。由于 GPU 任务在执行过程中仍需要少量 CPU 资源，请在使用时按照一个 GPU 任务对应该节点上 2 个 CPU 核的方式提交。其提交脚本示例如下：
+输入 `lsload -gpu` 即可查看集群当前可以使用的 GPU 数目：
 
-```bash
-#!/bin/bash -l
-#SBATCH -N 1
-#SBATCH --ntasks-per-node=2
-#SBATCH -t 96:0:0
-#SBATCH --partition=gpu
-#SBATCH --gres=gpu:1
-
-module load deepmd/1.2
-
-dp train input.json 1>> train.log 2>> train.log
-dp freeze  1>> train.log 2>> train.log
+```
+HOST_NAME       status  ngpus  gpu_shared_avg_mut  gpu_shared_avg_ut  ngpus_physical
+c51-g001            ok      4                  1%                 6%               4
+c51-g002            ok      4                  0%                 6%               4
+c51-m002            ok      8                  9%                68%               8
+c51-m004            ok      8                 12%                89%               8
+c51-m003            ok      8                  9%                72%               8
+c51-m001            ok      8                 15%                72%               8
 ```
 
-Slurm 与 LSF 命令对照表如下所示：
+输入 `lsload -gpuload` 则可以对 GPU 负载情况进行统计：
 
-| LSF                  | Slurm                           | 描述                                                         |
-| :------------------- | :------------------------------ | :----------------------------------------------------------- |
-| `bsub < script_file` | `sbatch script_file`            | 提交任务，作业脚本名为`script_file`                          |
-| `bkill 123`          | `scancel 123`                   | 取消任务，作业 ID 号为 123                                   |
-| `bjobs`              | `squeue`                        | 浏览当前用户提交的作业任务                                   |
-| `bqueues`            | `sinfo`<br/>` sinfo -s`         | 浏览当前节点和队列信息，'-s'命令表示简易输出                 |
-| `bhosts`             | `sinfo -N`                      | 查看当前节点列表                                             |
-| `bjobs -l 123`       | `scontrol show job 123`         | 查看 123 号任务的详细信息。<br>若不指定任务号则输出当前所有任务信息 |
-| `bqueues -l queue`   | `scontrol show partition queue` | 查看队列名为`queue`的队列的详细信息。<br>若不指定队列则返回当前所有可用队列的详细信息。 |
-| `bhosts -l g001`     | `scontrol show node g001`       | 查看节点名为 `g001`的节点状态。<br>若不指定节点则返回当前所有节点信息。 |
-| `bpeek 123`          | `speek 123` \*                  | 查看 123 号任务的标准输出。                                  |
+```
+HOST_NAME       gpuid   gpu_model   gpu_mode  gpu_temp   gpu_ecc  gpu_ut  gpu_mut gpu_mtotal gpu_mused   gpu_pstate   gpu_status   gpu_error
+c51-g001            0 TeslaV100_S        0.0       48C       0.0     26%       7%      31.7G      1.1G            0           ok           -
+                    1 TeslaV100_S        0.0       38C       0.0      0%       0%      31.7G        0M            0           ok           -
+                    2 TeslaV100_S        0.0       36C       0.0      0%       0%      31.7G        0M            0           ok           -
+                    3 TeslaV100_S        0.0       37C       0.0      0%       0%      31.7G        0M            0           ok           -
+c51-g002            0 A10080GBPCI        0.0       44C       0.0      8%       0%      79.3G     1020M            0           ok           -
+                    1 A10080GBPCI        0.0       49C       0.0      8%       0%      79.3G     1020M            0           ok           -
+                    2 A10080GBPCI        0.0       47C       0.0      8%       0%      79.3G     1020M            0           ok           -
+                    3 A10080GBPCI        0.0       44C       0.0      0%       0%      79.3G      434M            0           ok           -
+c51-m004            0 NVIDIAGeFor        0.0       64C       0.0     91%      13%      10.7G      1.5G            2           ok           -
+                    1 NVIDIAGeFor        0.0       65C       0.0     89%      13%      10.7G      1.5G            2           ok           -
+                    2 NVIDIAGeFor        0.0       60C       0.0     88%      12%      10.7G      1.5G            2           ok           -
+                    3 NVIDIAGeFor        0.0       66C       0.0     89%      13%      10.7G      1.5G            2           ok           -
+                    4 NVIDIAGeFor        0.0       69C       0.0     87%      13%      10.7G      1.5G            2           ok           -
+                    5 NVIDIAGeFor        0.0       70C       0.0     91%      13%      10.7G      1.5G            2           ok           -
+                    6 NVIDIAGeFor        0.0       65C       0.0     85%      12%      10.7G      1.5G            2           ok           -
+                    7 NVIDIAGeFor        0.0       64C       0.0     87%      12%      10.7G      1.5G            2           ok           -
+c51-m002            0 NVIDIAGeFor        0.0       58C       0.0     92%      14%      10.7G      1.5G            2           ok           -
+                    1 NVIDIAGeFor        0.0       65C       0.0     86%      13%      10.7G      2.5G            2           ok           -
+                    2 NVIDIAGeFor        0.0       56C       0.0     86%      13%      10.7G      2.5G            2           ok           -
+                    3 NVIDIAGeFor        0.0       55C       0.0     63%       8%      10.7G      768M            2           ok           -
+                    4 NVIDIAGeFor        0.0       51C       0.0     63%       8%      10.7G      768M            2           ok           -
+                    5 NVIDIAGeFor        0.0       52C       0.0     68%       9%      10.7G      768M            2           ok           -
+                    6 NVIDIAGeFor        0.0       54C       0.0     66%       8%      10.7G      768M            2           ok           -
+                    7 NVIDIAGeFor        0.0       52C       0.0     39%       2%      10.7G      1.5G            2           ok           -
+c51-m003            0 NVIDIAGeFor        0.0       55C       0.0     62%       8%      10.7G      768M            2           ok           -
+                    1 NVIDIAGeFor        0.0       53C       0.0     64%       8%      10.7G      768M            2           ok           -
+                    2 NVIDIAGeFor        0.0       51C       0.0     64%       8%      10.7G      768M            2           ok           -
+                    3 NVIDIAGeFor        0.0       55C       0.0     62%       8%      10.7G      768M            2           ok           -
+                    4 NVIDIAGeFor        0.0       55C       0.0     79%      10%      10.7G      768M            2           ok           -
+                    5 NVIDIAGeFor        0.0       57C       0.0     79%      10%      10.7G      768M            2           ok           -
+                    6 NVIDIAGeFor        0.0       54C       0.0     80%      10%      10.7G      768M            2           ok           -
+                    7 NVIDIAGeFor        0.0       55C       0.0     80%      10%      10.7G      768M            2           ok           -
+c51-m001            0 NVIDIAGeFor        0.0       62C       0.0     98%      21%      10.7G      1.7G            2           ok           -
+                    1 NVIDIAGeFor        0.0       64C       0.0     98%      22%      10.7G      1.7G            2           ok           -
+                    2 NVIDIAGeFor        0.0       58C       0.0     97%      21%      10.7G      1.7G            2           ok           -
+                    3 NVIDIAGeFor        0.0       66C       0.0     93%      19%      10.7G      894M            2           ok           -
+                    4 NVIDIAGeFor        0.0       69C       0.0     98%      21%      10.7G      1.7G            2           ok           -
+                    5 NVIDIAGeFor        0.0       62C       0.0     98%      21%      10.7G      1.7G            2           ok           -
+                    6 NVIDIAGeFor        0.0       25C       0.0      0%       0%      10.7G        0M            8           ok           -
+                    7 NVIDIAGeFor        0.0       35C       0.0      0%       0%      10.7G        0M            8           ok           -
+```
 
-> \* `speek` 命令不是 Slurm 标准命令，仅适用原 Metal 集群使用。
+使用 GPU 资源时，需要对提交脚本进行相应修改，用 `-gpu` 命令申请 GPU 资源。
 
-作业提交脚本对照表：
+```bash
+#!/bin/bash
 
-| LSF                   | Slurm                                       | 描述                   |
-| :-------------------- | :------------------------------------------ | :--------------------- |
-| `#BSUB`               | `#SBATCH`                                   | 前缀                   |
-| `-q queue_name`       | `-p queue_name` 或 `--partition=queue_name` | 指定队列名称           |
-| `-n 64`               | `-n 64`                                     | 指定使用64个核         |
-| ---                   | `-N 1`                                      | 使用1个节点            |
-| `-W [hh:mm:ss]`       | `-t [minutes]` 或 `-t [days-hh:mm:ss]`      | 指定最大使用时间       |
-| `-o file_name`        | `-o file_name`                              | 指定标准输出文件名     |
-| `-e file_name`        | `-e file_name`                              | 指定报错信息文件名     |
-| `-J job_name`         | `--job-name=job_name`                       | 作业名                 |
-| `-M 128`              | `-mem-per-cpu=128M` 或 `--mem-per-cpu=1G`   | 限制内存使用量         |
-| `-R "span[ptile=16]"` | `--tasks-per-node=16`                       | 指定每个核使用的节点数 |
+#BSUB -q gpu
+#BSUB -W 24:00
+#BSUB -J train
+#BSUB -o %J.stdout
+#BSUB -e %J.stderr
+#BSUB -gpu "num=1:mode=shared:mps=no:j_exclusive=no"
+#BSUB -n 4
+#BSUB -R "span[ptile=32]"
 
-通过 `scontrol` 命令可以方便地修改任务的队列、截止时间、排除节点等信息，使用方法类似于 LSF 系统的 `bmod` 命令，但使用上更加简洁。
+module add deepmd/2.0b1
+lmp_mpi -i input.lammps 1>> model_devi.log 2>> model_devi.log
+```
+
+其中 `num=1` 表示申请1张GPU卡，`j_exclusive=no` 表示允许和其他任务共存，`-n` 表示申请的CPU核数。
+使用V100时，请设置为不超过8的整数；
+使用A100时，请设置为不超过8的整数，若为开启MIG的情况，请参考[A100拆分实例使用说明](./mig_usage.md)；
+使用2080Ti时，请设置为不超过4的整数，否则均可能会出现资源空闲但无法使用的情况。如希望独占一张卡请使用`j_exclusive=yes`。
 
 !!! tip "链接"
-    更多使用教程和说明请参考：<a href='http://hmli.ustc.edu.cn/doc/userguide/slurm-userguide.pdf'>Slurm作业调度系统使用指南</a>
+    使用新版 LSF 提交任务，不需要引入检测脚本或<code>CUDA_VISIBLE_DEVICES</code>控制使用的GPU。
 
-### 任务优先级设置（QoS）
+### A100特殊注意事项
 
-默认情况下提交的任务Qos设置为normal，即填充在整个队列的末尾。如果任务比较紧急，可以向管理员报备申请使用emergency优先级，采用此优先级的任务默认排在队列顶。
+请参考[A100拆分实例使用说明](./mig_usage.md)。
 
-使用方法如下，即在提交脚本中加入下行：
+### 绑定CPU
+
+对某些作业类型（如VASP），当使用GPU时，会希望CPU进程尽可能独立运行在所分配的核上，此时可通过设置 CPU 亲和性来控制所用的核数。示例如下：
 
 ```bash
-#SBATCH --qos emergency
+#!/bin/bash
+#
+#BSUB -q gpu
+#BSUB -W 12:00
+#BSUB -J vasp
+#BSUB -o vasp.%J.stdout
+#BSUB -e vasp.%J.stderr
+#BSUB -n 8
+#BSUB -R "span[ptile=32]"
+#BSUB -gpu "num=1:mode=shared:mps=no:j_exclusive=no"
+#BSUB -R "affinity[core(1,exclusive=(core,alljobs))]"
+
+# add modulefiles
+module load vasp/6.1.0-openacc
+mpirun -np 1 vasp_gam
 ```
+
+其中，`core(1,exclusive=(core,alljobs))` 表示使用1个核且与其他作业不同。注意这里需要根据实际使用的核数指定，因为作业中`mpirun -np`的参数是1。
 
 ### DP-GEN Slurm 系统提交方法
 
@@ -338,6 +387,16 @@ dp train input.json > train.log
 `/share/base/tools/export_visible_devices` 可以使用flag `-t mem` 控制显存识别下限，即使用显存若不超过 `mem` 的数值，则认为该卡未被使用。根据实际使用情况和经验，默认100 MB以下视为空卡，即可以向该卡提交任务。
 
 也可以使用检测脚本`/share/base/tools/avail_gpu.sh`来确定 `$CUDA_VISIBLE_DEVICES` 的值。`/share/base/tools/avail_gpu.sh` 可以使用flag `-t util` 控制显卡利用率可用上限，即使用显卡利用率若超过 `util` 的数值，则认为该卡被使用。目前脚本默认显卡利用率低于5%视为空卡，即可以向该卡提交任务。
+
+### 任务优先级设置（QoS）（不可用）
+
+默认情况下提交的任务Qos设置为normal，即填充在整个队列的末尾。如果任务比较紧急，可以向管理员报备申请使用emergency优先级，采用此优先级的任务默认排在队列顶。
+
+使用方法如下，即在提交脚本中加入下行：
+
+```bash
+#SBATCH --qos emergency
+```
 
 ### DP-GEN
 
