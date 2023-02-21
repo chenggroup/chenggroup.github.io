@@ -1,14 +1,14 @@
 ---
-title: DeepMD-kit安装实战：服务器篇
+title: DeepMD-kit安装：旧版
 authors: 
   - Jiaxin Zhu
   - Yunpei Liu
 comments: true
 ---
 
-# DeepMD-kit安装实战：服务器篇
+# DeepMD-kit安装：旧版
 
-> 本部分写于2020年，适用于DeePMD-kit 1.x 和 TensorFlow 1.14。对目前较新的版本可能不适用，请移步[快速安装教程](./deepmd-kit_installation_191.md)
+> 本部分写于2020年，适用于DeePMD-kit 1.x 和 TensorFlow 1.14。对目前较新的版本可能不适用，请移步[安装最佳实践](./deepmd-kit_installation_new.md)和[快速安装教程](./deepmd-kit_installation_191.md)
 
 背景：以 Zeus 集群为例，在服务器安装DeepMD-kit和包含完整接口的LAMMPS。
 

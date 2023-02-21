@@ -5,7 +5,9 @@ authors:
 comments: true
 ---
 
-# DeepMD-kit快速编译安装
+# DeepMD-kit快速安装
+
+为减少后续安装的困难，请优先参考[最佳实践](./deepmd-kit_installation_new.md)。本文介绍的方法成型时，DP尚未实现对Lammps的解耦，但仍然可用。
 
 > 本部分主体写于2021年，截至目前（2022.08）仍适用，并且随版本升级仍在更新。
 > 
