@@ -112,52 +112,38 @@ Zeus 集群具有如下的目录结构，为了保持统一性，请在`/data/us
 
 ### 计算节点、队列和脚本
 
-通过`sinfo -N`命令可以看到，目前的集群包括51/52/53三个类别，分别为51/52/53计算集群，51/52/53集群的计算节点分别对应编号为`c51-00x/c52-00x/c53-00x`。
+通过`sinfo`命令可以看到，目前的集群包括51/52/53三个类别，分别为51/52/53计算集群，51/52/53集群的计算节点分别对应编号为`c51-00x/c52-00x/c53-00x`。
 
 ```
-HOST_NAME          STATUS       JL/U    MAX  NJOBS    RUN  SSUSP  USUSP    RSV
-c51-001            closed          -     24     24     24      0      0      0
-......
-c51-034            closed          -     24     24     24      0      0      0
-c51-g001           ok              -     32      0      0      0      0      0
-c51-s001           ok              -     24      0      0      0      0      0
-c52-001            ok              -     28      0      0      0      0      0
-...
-c52-040            closed          -     28     28     28      0      0      0
-c53-001            ok              -     32      0      0      0      0      0
-...
-c53-021            ok              -     32      0      0      0      0      0
-...
+PARTITION   AVAIL  TIMELIMIT  NODES  STATE NODELIST
+gpu1           up   infinite      1   idle c51-g001
+gpu2           up   infinite      1   idle c51-g002
+gpu3           up   infinite      4   idle c51-m[001-004]
+c51-small      up      20:00     33   idle c51-[001-011,013-034]
+c51-medium     up   12:00:00     33   idle c51-[001-011,013-034]
+c51-large      up 1-00:00:00     33   idle c51-[001-011,013-034]
+c51-long       up 2-00:00:00     33   idle c51-[001-011,013-034]
+c51-xlong      up 3-00:00:00     33   idle c51-[001-011,013-034]
+c51-xlarge     up 1-00:00:00     33   idle c51-[001-011,013-034]
+c51-exlong     up 7-00:00:00     33   idle c51-[001-011,013-034]
+c52-small      up      20:00     40   idle c52-[001-040]
+c52-medium     up   12:00:00     40   idle c52-[001-040]
+c52-large      up 1-00:00:00     40   idle c52-[001-040]
+c52-long       up 2-00:00:00     40   idle c52-[001-040]
+c52-xlong      up 3-00:00:00     40   idle c52-[001-040]
+c52-xlarge     up 1-00:00:00     40   idle c52-[001-040]
+c52-exlong     up 7-00:00:00     40   idle c52-[001-040]
+c53-small      up      20:00     34   idle c53-[001-034]
+c53-medium     up   12:00:00     34   idle c53-[001-034]
+c53-large      up 1-00:00:00     34   idle c53-[001-034]
+c53-long       up 2-00:00:00     34   idle c53-[001-034]
+c53-xlong      up 3-00:00:00     34   idle c53-[001-034]
+c53-xlarge*    up 1-00:00:00     34   idle c53-[001-034]
 ```
 
 由于处理器核数不同，任务只能在具有相同核数的节点间并行，由此对不同集群的节点按照队列进行了分组，队列前缀分别为`51-`/`52-`/`53-`，其对应每个节点上的核数分别为24/28/32。通过`sinfo`命令可以看到当前集群上的队列及其使用情况。
 
-```
-QUEUE_NAME      PRIO STATUS          MAX JL/U JL/P JL/H NJOBS  PEND   RUN  SUSP
-51-small        100  Open:Active       -  288    -    -     0     0     0     0
-52-small        100  Open:Active       -  336    -    -     0     0     0     0
-53-small        100  Open:Active       -  384    -    -     0     0     0     0
-gpu              90  Open:Active       -    -    -    -     0     0     0     0
-fat              90  Open:Active       -    -    -    -    24     0    24     0
-51-medium        60  Open:Active       -  288    -    -   264   120   144     0
-52-medium        60  Open:Active       -  336    -    -   756    84   672     0
-53-medium        60  Open:Active       -  384    -    -   128   128     0     0
-admin            50  Open:Active       -    -    -    -     0     0     0     0
-51-large         40  Open:Active       -  288    -    -   648     0   648     0
-52-large         40  Open:Active       -  336    -    -   280     0   280     0
-53-large         40  Open:Active       -  384    -    -   928   320   608     0
-51-long          30  Open:Active       -  288    -    -    24     0    24     0
-52-long          30  Open:Active       -  336    -    -     0     0     0     0
-53-long          30  Open:Active       -  384    -    -     0     0     0     0
-51-xlong         25  Open:Active       -  288    -    -     0     0     0     0
-52-xlong         25  Open:Active       -  336    -    -     0     0     0     0
-53-xlong         25  Open:Active       -  384    -    -     0     0     0     0
-51-xlarge        20  Open:Active       -  288    -    -     0     0     0     0
-52-xlarge        20  Open:Active       -  336    -    -     0     0     0     0
-53-xlarge        20  Open:Active       -  384    -    -     0     0     0     0
-```
-
-现编号为`c51-00x` 的节点需通过队列`51-small`、`51-medium`、`51-large`等等来进行提交，并设置核数为24的倍数（24，48，72等）以确定节点数，`--task-per-node=24`。 **使用节点的数量通过总核数除以每个节点核数的值来确定。** 同理，若想使用编号为`c52-00x` 的节点，则队列名为`52-small`、`52-medium`、`52-large`等等，核数为28的倍数（28，56，84等），`--task-per-node=28`；若想使用编号为`c53-00x` 的节点，则队列名为`53-small`、`53-medium`、`53-large`等等，核数为32的倍数（32，64，96等），`--task-per-node=32`。
+现编号为`c51-00x` 的节点需通过队列`c51-small`、`c51-medium`、`c51-large`等等来进行提交，并设置核数为24的倍数（24，48，72等）以确定节点数，`--ntasks-per-node=24`。 **使用节点的数量通过总核数除以每个节点核数的值来确定。** 同理，若想使用编号为`c52-00x` 的节点，则队列名为`c52-small`、`c52-medium`、`c52-large`等等，核数为28的倍数（28，56，84等），`--ntasks-per-node=28`；若想使用编号为`c53-00x` 的节点，则队列名为`c53-small`、`c53-medium`、`c53-large`等等，核数为32的倍数（32，64，96等），`--ntasks-per-node=32`。
 
 > GPU（Tesla V100节点）和胖节点仍按照51进行编组，编号分别为`c51-g001`和`c51-s001`。
 
@@ -167,15 +153,19 @@ admin            50  Open:Active       -    -    -    -     0     0     0     0
 
 这里对作业提交脚本举例说明如下：
 
-```bash title="cp2k.sub"
+```bash title="cp2k.slurm"
 #!/bin/bash
-#SBATCH -p 51-large
-#SBATCH -N 72
-#SBATCH --ntasks-per-node=24
-#SBATCH --job-name=cp2k
-#SBATCH -t 24:00:00
+
+#SBATCH -J cp2k
+#SBATCH -o cp2k.out.%j
+#SBATCH -e cp2k.err.%j
+#SBATCH -p c53-large
+#SBATCH -N 2
+#SBATCH --ntasks-per-node=32
+#SBATCH --exclusive
 
 # add modulefiles
+ulimit -s unlimited
 module load intel/17.5.239 mpi/intel/2017.5.239
 module load gcc/5.5.0
 module load cp2k/7.1
@@ -196,10 +186,10 @@ mpiexec.hydra cp2k.popt input.inp >& output_$LSB_JOBID
 
 ### 作业提交
 
-若用户已经准备好相应计算的输入和提交脚本，则可以对任务进行提交。例如提交脚本文件名为`cp2k.sub`，则提交命令为：
+若用户已经准备好相应计算的输入和提交脚本，则可以对任务进行提交。例如提交脚本文件名为`cp2k.slurm`，则提交命令为：
 
 ```bash
-sbatch cp2k.sub
+sbatch cp2k.slurm
 ```
 
 若提交成功，可以看到以下提示：
