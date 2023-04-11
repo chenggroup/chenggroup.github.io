@@ -75,7 +75,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 ### 基本参数设置: `params.json`
 
-```python title="param.json"
+```json title="param.json"
 { 
     "type_map": [        
         "O", 
@@ -111,7 +111,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 - 势函数训练（DPMD）
 
-```python title="param.json"
+```json title="param.json"
   {
       ......
       "numb_models": 4, 
@@ -175,7 +175,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
 - 采样和筛选（Lammps）
 
-```python title="param.json"
+```json title="param.json"
 {  
     "model_devi_dt":            0.0005,
     "_comment": "model_devi_dt: Timesteps for MD. Consistent with DFTMD!",
@@ -200,7 +200,7 @@ DP-GEN的工作流是由以下三步组成的循环：
 
  - 标记（计算单点能，此处以CP2K为例，VASP的设置可在官方文档中查看）
 
-```python title="param.json"
+```json title="param.json"
 {
     ......
     "fp_style":		"cp2k",
@@ -443,7 +443,7 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
 
 为防止兼容性问题，这里仍保留了旧版的输入，请注意甄别。
 
-```python title="machine_old.json"
+```json title="machine_old.json"
 {
   "train": [
     {
