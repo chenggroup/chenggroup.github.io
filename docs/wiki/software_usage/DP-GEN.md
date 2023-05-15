@@ -343,7 +343,7 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
         "queue_name": "gpu2",
         "group_size": 5,
         "kwargs": {
-          "custom_flags": [
+          "custom_gpu_line": [
             "#SBATCH --gres=gpu:1g.10gb:1"
           ]
         },
@@ -360,7 +360,7 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
     {
       "command": "mpiexec.hydra -genvall cp2k.popt input.inp",
       "machine":{
-        "batch_type": "LSF",
+        "batch_type": "Slurm",
         "context_type": "SSHContext",
         "local_root": "./",
         "remote_root": "/data/jerry/dprun/fp",
@@ -374,19 +374,13 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
         "number_node": 2,
         "cpu_per_node": 32,
         "gpu_per_node": 0,
-        "kwargs": {
-          "gpu_usage": false
-        },
-        "custom_flags": [
-          "#BSUB -J label",
-          "#BSUB -W 12:00"
-        ],
-        "queue_name": "medium",
+        "queue_name": "c53-medium",
         "group_size": 10,
         "module_list": [
           "intel/17.5.239",
-          "mpi/intel/17.5.239",
-          "cp2k/6.1"
+          "mpi/intel/2017.5.239",
+          "gcc/5.5.0"
+          "cp2k/7.1"
         ]
       }
     }
@@ -440,93 +434,114 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
 
 !!! info "提交任务"
     如果在191提交，需要在服务器上自行安装dpgen。具体做法见[官方GitHub](https://github.com/deepmodeling/dpgen)。
+    一般来说运行如下命令即可：
 
-为防止兼容性问题，这里仍保留了旧版的输入，请注意甄别。
+    ```bash
+    pip install --user dpgen
+    ```
 
-```json title="machine_old.json"
-{
-  "train": [
+!!! info "Slurm获取状态异常问题的解决"
+    若遇到以下报错，很大可能是因为Slurm暂时无法获取任务状态。由于旧版本DPDispatcher对这类波动导致的报错没有充分考虑，会直接退出：
+
+    ```
+    RuntimeError: status command squeue fails to execute.job_id:13544 
+    error message:squeue: error: Invalid user for SlurmUser slurm, ignored
+    squeue: fatal: Unable to process configuration file
+    ```
+
+    新版这一部分已经做了调整，但由于之前的版本空文件夹复制过程存在严重bug，请务必保证DPDispatcher版本在0.5.6以上。
+
+    ```bash
+    pip install --upgrade --user dpgen
+    ```
+
+!!! danger "支持"
+    目前DP-GEN 0.11以上版本已经移除了旧版 `dispatcher` 的支持，推荐迁移到 DPDispatcher 上。为防止兼容性问题，这里仍保留了旧版的输入，请注意甄别。
+
+    ```json title="machine_old.json"
     {
-      "machine": {
-        "machine_type": "slurm",
-        "hostname": "123.45.67.89",
-        "port": 22,
-        "username": "kmr",
-        "work_path": "/home/kmr/pt-oh/train"
-      },
-      "resources": {
-        "node_gpu": 1,
-        "numb_node": 1,
-        "task_per_node": 1,
-        "partition": "large",
-        "exclude_list": [],
-        "source_list": [],
-        "module_list": [
-            "deepmd/2.1"
-		],
-        "time_limit": "23:0:0"
-      },
-      "python_path": "/share/apps/deepmd/2.1/bin/python"
+      "train": [
+        {
+          "machine": {
+            "machine_type": "slurm",
+            "hostname": "123.45.67.89",
+            "port": 22,
+            "username": "kmr",
+            "work_path": "/home/kmr/pt-oh/train"
+          },
+          "resources": {
+            "node_gpu": 1,
+            "numb_node": 1,
+            "task_per_node": 1,
+            "partition": "large",
+            "exclude_list": [],
+            "source_list": [],
+            "module_list": [
+                "deepmd/2.1"
+    		],
+            "time_limit": "23:0:0"
+          },
+          "python_path": "/share/apps/deepmd/2.1/bin/python"
+        }
+      ],
+      "model_devi": [
+        {
+          "machine": {
+            "machine_type": "slurm",
+            "hostname": "123.45.67.89",
+            "port": 22,
+            "username": "kmr",
+            "work_path": "/home/kmr/pt-oh/dpmd"
+          },
+          "resources": {
+            "node_gpu": 1,
+            "numb_node": 1,
+            "task_per_node": 1,
+            "partition": "large",
+            "exclude_list": [],
+            "source_list": [],
+            "module_list": [
+                "deepmd/2.1"
+    		],
+            "time_limit": "23:0:0"
+          },
+          "command": "lmp_mpi",
+          "group_size": 80
+        }
+      ],
+      "fp": [
+        {
+          "machine": {
+            "machine_type": "slurm",
+            "hostname": "123.45.67.90",
+            "port": 6666,
+            "username": "kmr",
+            "work_path": "/data/kmr/edl/pzc/hydroxide/ml_potential/pt-oh/labelling"
+          },
+          "resources": {
+            "cvasp": false,
+            "task_per_node": 28,
+            "numb_node": 1,
+            "node_cpu": 28,
+            "exclude_list": [],
+            "with_mpi": true,
+            "source_list": [
+            ],
+            "module_list": [
+                "intel/17.5.239",
+                "mpi/intel/17.5.239",
+                "cp2k/6.1"
+    	    ],
+            "time_limit": "12:00:00",
+            "partition": "medium",
+            "_comment": "that's Bel"
+          },
+          "command": "cp2k.popt input.inp",
+          "group_size": 50 
+        }
+      ]
     }
-  ],
-  "model_devi": [
-    {
-      "machine": {
-        "machine_type": "slurm",
-        "hostname": "123.45.67.89",
-        "port": 22,
-        "username": "kmr",
-        "work_path": "/home/kmr/pt-oh/dpmd"
-      },
-      "resources": {
-        "node_gpu": 1,
-        "numb_node": 1,
-        "task_per_node": 1,
-        "partition": "large",
-        "exclude_list": [],
-        "source_list": [],
-        "module_list": [
-            "deepmd/2.1"
-		],
-        "time_limit": "23:0:0"
-      },
-      "command": "lmp_mpi",
-      "group_size": 80
-    }
-  ],
-  "fp": [
-    {
-      "machine": {
-        "machine_type": "lsf",
-        "hostname": "123.45.67.90",
-        "port": 6666,
-        "username": "kmr",
-        "work_path": "/data/kmr/edl/pzc/hydroxide/ml_potential/pt-oh/labelling"
-      },
-      "resources": {
-        "cvasp": false,
-        "task_per_node": 28,
-        "numb_node": 1,
-        "node_cpu": 28,
-        "exclude_list": [],
-        "with_mpi": true,
-        "source_list": [
-        ],
-        "module_list": [
-            "intel/17.5.239",
-            "mpi/intel/17.5.239",
-            "cp2k/6.1"
-	    ],
-        "time_limit": "12:00:00",
-        "partition": "medium",
-        "_comment": "that's Bel"
-      },
-      "command": "cp2k.popt input.inp",
-      "group_size": 50 
-    }
-  ]
-}
-```
+    ```
 
 ## 训练集收集
 
