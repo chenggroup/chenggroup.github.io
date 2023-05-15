@@ -80,7 +80,7 @@ ssh -L <local_port>:123.45.67.89:<port> <username>@<ip_of_cluster>
 
 在本地浏览器输入：`localhost:<local_port>`即可访问这一远程 Jupyter 服务。
 
-此途径最大的好处是可以在 GPU 集群上运行，从而可以直接调用 GPU 卡。但请注意，需要在脚本中指定所需的 GPU 卡数，更多注意事项请参考[MIG 使用说明](./mig_usage.md)。
+此途径最大的好处是可以在 GPU 集群上运行，从而可以直接调用 GPU 卡。但请注意，需要在脚本中指定所需的 GPU 卡数。
 
 ```bash
 #!/bin/bash
