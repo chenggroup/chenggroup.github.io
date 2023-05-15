@@ -441,9 +441,16 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
     ```
 
 !!! info "Slurm获取状态异常问题的解决"
-    若遇到以下报错，很大可能是因为Slurm暂时无法获取任务状态。由于旧版本DPDispatcher对这类波动导致的报错没有充分考虑，会直接退出。
+    若遇到以下报错，很大可能是因为Slurm暂时无法获取任务状态。由于旧版本DPDispatcher对这类波动导致的报错没有充分考虑，会直接退出：
+
+    ```
+    RuntimeError: status command squeue fails to execute.job_id:13544 
+    error message:squeue: error: Invalid user for SlurmUser slurm, ignored
+    squeue: fatal: Unable to process configuration file
+    ```
+
     新版这一部分已经做了调整，但由于之前的版本空文件夹复制过程存在严重bug，请务必保证DPDispatcher版本在0.5.6以上。
-    
+
     ```bash
     pip install --upgrade --user dpgen
     ```
