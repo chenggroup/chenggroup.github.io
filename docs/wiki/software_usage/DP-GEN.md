@@ -452,7 +452,7 @@ DPDispatcher 相比旧版，基于配置字典而非文件Flag来管理所提交
     新版这一部分已经做了调整，但由于之前的版本空文件夹复制过程存在严重bug，请务必保证DPDispatcher版本在0.5.6以上。
 
     ```bash
-    pip install --upgrade --user dpgen
+    pip install --upgrade --user dpdispatcher
     ```
 
 !!! danger "支持"
