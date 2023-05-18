@@ -208,7 +208,7 @@ cmake  -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=g++ \
 
 `CMAKE_INSTALL_PREFIX` 可以根据安装实际路径修改，但这一方法得到的是共享库（ `*.so` ），所以包括Lammps源代码在内都不要移动。
 
-若开启对应插件，请注意在`../cmake`前插入对应选项，如：
+若开启对应插件，请注意在 `../cmake` 前插入对应选项，如：
 
 ```
 -D PKG_PLUMED=yes -D PLUMED_MODE=shared \
@@ -232,9 +232,11 @@ make install
 
 ## 编译DeePMD-kit Lammps Plugin
 
-## 安装Tensorflow的C++ 接口
+### 方法一：静态编译
 
-以下安装，假设软件包下载路径均为`/some/workspace`， 以 TensorFlow 2.7.0版本、DeePMD-kit 2.1.5 版本为例进行说明，其他版本的步骤请参照修改。注意为保证模型兼容性，版本号最好与 Python Interface对应。
+#### 安装Tensorflow的C++ 接口
+
+以下安装，假设软件包下载路径均为 `/some/workspace`， 以 TensorFlow 2.7.0版本、DeePMD-kit 2.1.5 版本为例进行说明，其他版本的步骤请参照修改。注意为保证模型兼容性，版本号最好与 Python Interface对应。
 
 本步骤需要使用 Conda，因此在[前文基础上](#安装deepmd-kit-python-interface)进行。
 
@@ -285,7 +287,7 @@ conda install libtensorflow_cc=2.7.0=cuda113hbf71e95_1 -c https://conda.deepmode
 CONDA_OVERRIDE_CUDA="11.3" conda install libtensorflow_cc=2.7.0=cuda113hbf71e95_1 -c https://conda.deepmodeling.com
 ```
 
-请注意`CONDA_OVERRIDE_CUDA`的值需要与GPU支持以及希望用到的CUDA版本相匹配。
+请注意 `CONDA_OVERRIDE_CUDA` 的值需要与GPU支持以及希望用到的CUDA版本相匹配。
 
 !!! tip "提示"
     注意A100仅支持TF 2.4.0以上、CUDA11.2以上，安装时请对应选择。
@@ -302,9 +304,9 @@ CONDA_OVERRIDE_CUDA="11.3" conda install libtensorflow_cc=2.7.0=cuda113hbf71e95_
 export tensorflow_root=/data/user/conda/env/deepmd
 ```
 
-即虚拟环境创建的路径。
+即虚拟环境创建的路径。后文将使用 `$tensorflow_root` 来指定该路径。
 
-### 安装DeePMD-kit的C++ 接口
+#### 安装DeePMD-kit的C++ 接口
 
 下面开始编译DeePMD-kit C++接口：
 
@@ -315,7 +317,7 @@ mkdir build
 cd build
 ```
 
-假设DeePMD-kit C++ 接口安装在`/some/workspace/deepmd_root`下，定义安装路径`deepmd_root`：
+假设DeePMD-kit C++ 接口安装在 `/some/workspace/deepmd_root` 下，定义安装路径 `deepmd_root`：
 
 ```bash
 export deepmd_root=/some/workspace/deepmd_root
@@ -329,7 +331,7 @@ cmake -DLAMMPS_SOURCE_ROOT=<lammps_source_code> \
 -DUSE_CUDA_TOOLKIT=TRUE ..
 ```
 
-注意这里的`<lammps_source_code>`对应[前文中](#安装lammps)Lammps的源码路径。
+注意这里的 `<lammps_source_code>` 对应[前文中](#安装lammps)Lammps的源码路径。
 
 最后编译并安装：
 
@@ -348,16 +350,52 @@ deepmd_lmp_low/       libdeepmd_cc.so       libdeepmd_ipi_low.so  libdeepmd_lmp_
 
 注意应当包含`deepmd_lmp/`和`libdeepmd_lmp.so`，后两者即为Lammps插件的位置。
 
-### 调用方法
+### 方法二：采用TensorFlow Python 版本的库
 
-使用前请加载好环境变量。注意若未定义`$deepmd_root`，请补全为完整路径。
+从 DeePMD-kit v2.2 起，`cmake` 支持设置 `-DUSE_TF_PYTHON_LIBS=TRUE`的方式，从而免去了安装 `libtensorflow_cc` 的麻烦。
 
 ```bash
-export LD_LIBRARY_PATH=$deepmd_root/lib:$LD_LIBRARY_PATH
+cmake -DLAMMPS_SOURCE_ROOT=<lammps_source_code> \
+-DUSE_TF_PYTHON_LIBS=TRUE -DUSE_CUDA_TOOLKIT=TRUE \
+-DCMAKE_INSTALL_PREFIX=$deepmd_root ..
+```
+
+!!! tip 提示
+    请注意，这种方法采用Python Wheel提供的 `libtensorflow_framework.so.2` 和 `_pywrap_tensorflow_internal.so` （作为 `libtensorflow_cc.so`的替代）进行编译。
+    后者依赖 Python 库 `libpython3.*.so.*`（因版本不同而异），请注意基于上述库的编译应保证后者路径也在 `LD_LIBRARY_PATH` 中。
+
+为使得编译好的库文件可以更容易找到上述依赖，请执行以下操作，建立一个伪 `tensorflow_root` 目录，假设该路径位于 `/some/workspace/tensorflow_root` 下，同时假设 Conda 环境仍位于 `/data/user/conda/env/deepmd` 下：
+
+```bash
+export tensorflow_root=/some/workspace/tensorflow_root
+mkdir -p $tensorflow_root/lib 
+cd $tensorflow
+ln -s /data/user/conda/env/deepmd/lib/python3.10/site-packages/tensorflow/include .
+cd lib
+ln -s /data/user/conda/env/deepmd/lib/python3.10/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so libtensorflow_cc.so
+ln -s /data/user/conda/env/deepmd/lib/python3.10/site-packages/tensorflow/libtensorflow_framework.so.2 .
+ln -s libtensorflow_framework.so.2 libtensorflow_framework.so
+```
+
+于是，我们便构建了一个伪 `tensorflow_root` 目录。注意后文的 `$tensorflow_root` 此时应指向该路径。
+
+### 调用方法
+
+使用前请加载好环境变量。注意若未定义 `$deepmd_root`、`$tensorflow_root`，请补全为完整路径。这里的 `/data/user/conda/env/deepmd` 仍是 Conda 环境的路径，请相应替换。
+
+```bash
+export LD_LIBRARY_PATH=$tensorflow_root/lib:$deepmd_root/lib:/data/user/conda/env/deepmd/lib:$LD_LIBRARY_PATH
 export LAMMPS_PLUGIN_PATH=$deepmd_root/lib/deepmd_lmp
 ```
 
-Lammps便会自动寻找插件并加载，从而可以实现DeePMD的支持。若未能自动找到，也可以手动在**输入文件**中加载，写在`pair_style`上一行即可，**注意`$deepmd_root`须替换为完整路径**。
+Lammps便会自动寻找插件并加载，从而可以实现DeePMD的支持。
+
+```
+pair_style      deepmd ../graph.pb
+pair_coeff      * *
+```
+
+若无法自动找到，也可以手动在 **输入文件** 中加载，写在 `pair_style` 上一行即可，**注意 `$deepmd_root`、`$tensorflow_root` 须替换为完整路径**。
 
 ```
 plugin load     $deepmd_root/lib/libdeepmd_lmp.so
@@ -365,7 +403,7 @@ pair_style      deepmd ../graph.pb
 pair_coeff      * *
 ```
 
-运行命令仍然是`lmp_mpi -i <input_file>`。
+运行命令仍然是 `lmp_mpi -i <input_file>`。
 
 ## DP-CP2K 安装指引
 
@@ -382,13 +420,22 @@ cd tools/toolchain/
 ./install_cp2k_toolchain.sh --enable-cuda=no --with-deepmd=$deepmd_root --with-tfcc=$tensorflow_root --deepmd-mode=cuda --mpi-mode=no --with-libint=no --with-libxc=no --with-libxsmm=no
 ```
 
-根据脚本运行结尾的提示复制arch文件并source所需的环境变量。最后回到主目录进行编译：
+根据脚本运行结尾的提示复制arch文件并source所需的环境变量。
+
+若上文中采用方法二编译了 DeePMD-kit 的 C++ Interface，请编辑 `arch/local.ssmp`，在 `LDFLAGS` 末尾增加如下字段：
+```
+-Wl,-rpath='/data/user/conda/env/deepmd/lib'
+```
+
+这里的目的是让编译时可以正确链接 `libpython3.*.so.*`，因而 `/data/user/conda/env/deepmd/` 仍旧是 Conda 环境路径。
+
+最后回到主目录进行编译：
 
 ```bash
 make -j 4 ARCH=local VERSION="ssmp sdbg"
 ```
 
-编译正确完成后，可执行文件生成在`exe/`下，即`cp2k.sopt`。
+编译正确完成后，可执行文件生成在 `exe/` 下，即 `cp2k.sopt`。
 
 > 注意目前DP-CP2K暂未支持MPI，因而请单独编译此Serial版本。且CP2K由于IO问题，性能相比Lammps低50%以上，如非刚需还是建议使用Lammps进行MD模拟，后者可提供更多特性和加速的支持。
 > 
