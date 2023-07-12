@@ -1,6 +1,6 @@
 # My Wiki
 
-This repo is generated from [vsoch/mkdocs-jekyll template](https://github.com/vsoch/mkdocs-jekyll), and can also active as a template.
+This repo is generated from [Material for MkDocs](https://github.com/squidfunk/mkdocs-material).
 
 It adds three main features:
 
@@ -21,23 +21,20 @@ cd chenggroup.github.io.git
 
 ### 2. Customize
 
-To edit configuration values, customize the [_config.yml](https://github.com/xjf729/mywiki/blob/master/_config.yml).
-To add wikis, write them into the [_wiki](https://github.com/xjf729/mywiki/tree/master/_wiki) folder. 
+To edit configuration values, customize the [mkdocs.yml](https://github.com/chenggroup/chenggroup.github.io/blob/master/mkdocs.yml).
+To add wikis, write them into the [wiki](https://github.com/chenggroup/chenggroup.github.io/tree/master/docs/wiki) folder. 
 
 ### 3. Options
 
-Most of the configuration values in the [_config.yml](https://github.com/xjf729/mywiki/blob/master/_config.yml) are self explanatory,
-and for more details, see the [jekyll configuration](https://jekyllrb.com/docs/configuration/)
-rendered on the site.
+Most of the configuration values in the [mkdocs.yml](https://github.com/chenggroup/chenggroup.github.io/blob/master/mkdocs.yml) are self explanatory,
+and for more details, see the [documentation](https://squidfunk.github.io/mkdocs-material/).
 
 ### 4. Serve
 
 Depending on how you installed jekyll:
 
 ```bash
-jekyll serve
-# or
-bundle exec jekyll serve
+mkdocs serve
 ```
 
-Look at [jekyll installation](https://jekyllrb.com/docs/) to get more information.
+Look at [getting started](https://squidfunk.github.io/mkdocs-material/getting-started/) to get more information.

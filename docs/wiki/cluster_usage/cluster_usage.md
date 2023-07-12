@@ -163,6 +163,7 @@ c53-xlarge*    up 1-00:00:00     34   idle c53-[001-034]
 #SBATCH -N 2
 #SBATCH --ntasks-per-node=32
 #SBATCH --exclusive
+#SBATCH --mem=8G
 
 # add modulefiles
 ulimit -s unlimited
@@ -179,6 +180,7 @@ mpiexec.hydra cp2k.popt input.inp >& output_$LSB_JOBID
 - `#SBATCH -t hh:mm:ss` 用于指定任务所需的时间（Walltime），若运行超过`hh:mm:ss`，则任务会被管理系统杀死。对于不同类型的队列，Walltime上限有所不同。对`small`队列要求在20分钟以内，对`medium`要求在12小时以内，对`large`和`xlarge`要求在24小时以内，对`long`要求在48小时以内，对`xlong`则在72小时以内。
 - `#SBATCH --job-name=cp2k`指定作业名称，一般按照实际计算来取名以方便查看完成情况。
 - `#SBATCH -N 2`指定作业提交的总节点数，`#SBATCH --ntasks-per-node=32`指定提交队列的每个节点上的CPU总核数，例如这里在53队列中选取2个节点进行并行计算，即使用了64个核。
+- `#SBATCH --mem=8G` 指定作业所需消耗的内存，例如这里限制作业占用内存为 8 GB。
 - `module load xxx `用于加载环境，保持`/data/share/base/scripts`示例中的写法即可。
 - `mpiexec.hydra cp2k.popt input.inp >& output_$LSB_JOBID`是实际执行任务的命令。
 
