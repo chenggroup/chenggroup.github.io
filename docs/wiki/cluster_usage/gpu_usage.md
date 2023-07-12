@@ -46,6 +46,7 @@ GPU节点调度采用Slurm调度系统进行管理。用户使用时，请在**1
 #SBATCH -t 96:00:00
 #SBATCH --partition=gpu3
 #SBATCH --gres=gpu:1
+#SBATCH --mem=8G
 
 # add modulefiles
 module add deepmd/2.0-cuda11.3
@@ -57,6 +58,13 @@ dp freeze  1>> train.log 2>> train.log
 其中 `-N 1`表示使用1个节点，`--ntasks-per-node=1` 表示每个节点上使用1个CPU核，`--partition=gpu3`即表示提交任务到`gpu3`队列上，`--gres=gpu:1`即分配其中的1张卡给任务。`gpu3`中每个节点有8张2080Ti卡，因而上述命令组合起来即表示分配1个节点上的1个CPU核以及1张2080Ti卡用于计算。
 
 若需要使用其他队列，只需将`--partition`的参数修改为对应的队列，即`gpu1`和`gpu3`。
+
+!!! info "关于内存用量的说明"
+    注意 `--mem=8G` 表示内存消耗为 8 GB。目前集群设置了默认值，即在不写的情况下，每分配 1 张GPU卡可使用 16 GB 物理内存。
+    若需要更多物理内存，请手动指定该值为更大的数值，以免任务由于超出默认内存限制或因为其他任务挤占、资源不足而被系统因 OOM (Out of Memory) 原因强制退出。
+    例如：`--mem=24G` 即可分配每个任务使用24GB内存。
+    目前 `gpu1` 和 `gpu2` 队列每个节点的总内存为 256 GB， `gpu3` 队列每个节点总内存为 128 GB，因而注意如果每个任务分配内存过大，可能会导致卡空置但没有足够的内存分配的问题。
+    因此请务必根据自己的实际需要指定该参数以保证公平使用！
 
 ### `gpu2`队列
 
@@ -74,6 +82,7 @@ MIG 实例（即俗称的A100分卡、小卡）的使用脚本放在`/data/share
 #SBATCH --partition gpu2
 #SBATCH --gres=gpu:1g.10gb:1
 #SBATCH --time=96:00:00
+#SBATCH --mem=4G
 
 module load deepmd/2.1
 cp2k.ssmp -i input.inp 1>>output 2>>err.log
