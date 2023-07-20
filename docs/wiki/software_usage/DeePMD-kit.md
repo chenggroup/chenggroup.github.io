@@ -267,7 +267,7 @@ dp train input.json
 ```
 
 !!! warning None
-    记住在集群上训练，请使用lsf脚本。
+    记住在集群上训练，请使用 Slurm 脚本。
 
 
 
@@ -280,7 +280,7 @@ dp train input.json --restart model.ckpt
 ```
 
 !!! warning None
-    记住在集群上训练，请使用lsf脚本。
+    记住在集群上训练，请使用 Slurm 脚本。
 
 
 
@@ -298,26 +298,30 @@ dp freeze
 
 ## 利用压缩模型进行产出(Production)
 
-机器学习势能`*.pb`文件进行MD模拟虽然已经非常迅速了。但是还有提升的空间。首先我们需要用1.3/2.0以上版本的deepmd进行训练势能函数，并得到`*.pb`文件。利用1.2版本的deepmd训练得到势能函数也不用担心。可以利用以下命令对1.2版本的势能函数进行转换：
+机器学习势能`*.pb`文件进行MD模拟虽然已经非常迅速了。但是还有提升的空间。首先我们需要用2.0以上版本的deepmd进行训练势能函数，并得到`*.pb`文件。利用1.2/1.3版本的deepmd训练得到势能函数也不用担心，可以利用以下命令对旧版本的势能函数进行转换。例如想要从1.2转换的话：
 
 ```bash
-module load deepmd/1.2	 # convert-to-1.3 是 1.2 版本的一个 subcommand
-dp convert-to-1.3 -i 1.2-model.pb -o 1.3-model.pb
+dp convert-from 1.2 -i old_frozen_model.pb -o new_frozen_model.pb
 ```
+
+!!! info "关于兼容性的说明"
+    关于目前势函数的兼容性，请参考[官方文档](https://docs.deepmodeling.com/projects/deepmd/en/master/troubleshooting/model-compatability.html)。
+    目前DeePMD-kit支持从 v0.12, v1.0, v1.1, v1.2, v1.3 版本到新版本的转换。
 
 建议将原训练文件夹备份后复制，我们利用如下命令进行压缩（文件夹下应该含有对应的`input.json`文件和checkpoint文件）：
-如果你用的是`deepmd/compress module`，那么则是版本为1.3的model。
-```bash
-module load deepmd/compress
-dp compress input.json -i normal-model.pb -o compressed-model.pb -l compress.log
-```
-
-如果你用的是`deepmd/2.0 module`，那么则是版本为2.0的model。
 
 ```bash
-module load deepmd/2.0
+module load deepmd/2.0-cuda11.3
 dp compress -i normal-model.pb -o compressed-model.pb -l compress.log
 ```
+
+!!! warning "适用范围"
+    注意模型压缩仅适用于部分模型，如 `se_e2_a`, `se_e3`, `se_e2_r` 和上述模型的 `Hybrid` 模型。
+
+    若使用其他模型，如 `se_attn` 模型 (DPA-1)，模型压缩尚未被支持，可能会报错。
+
+    另外请注意，压缩模型是通过使用 5 次多项式拟合 Embedding-net 从而换取性能提升，这一改动 **几乎** 不会对预测精度产生影响，但实际上部分牺牲了精度。
+    因而使用时请务必注意观察默认参数是否适用于当前体系的情况，如是否出现误差漂移，并针对修改参数，如拟合时采用的步数 `--step`。
 
 ### 压缩模型与原始模型对比
 
