@@ -33,7 +33,6 @@ comments: true
       --- 例： 
 
       1. 介绍工作流(10分钟)
-
       2. 介绍aiida和aiflow(20分钟)
       3. 练习工作流和可视化工作流(50分钟)
       4. 答疑(19分钟)
@@ -49,16 +48,24 @@ comments: true
 2. Follow the agenda format as below:
 
      a. Topic
+   
      b. Objective and benefit of training
+   
    	**—— e.g. 1. Understand workflow 2. Learn how to automate workflow 3. Learn how to visualize workflow via package'airflow'**
+   
      c. Participant's preparation
+   
    	—— State the desired background knowledge and provide induction — links, books, must-read papers etc.
+   
    	—— State the preparation that the participants need to complete before attending the training
+   
    	**—— e.g. 1. Install IDE PyCharm, Jupiter, python3.9 etc. 2. Install and validate required packages(airflow)**
+   
      d. Items with time slot
-   	**—— e.g.  **
+   
+   	**—— e.g.**
 
-   1. **Introduce workflow (10 minutes) **
+   1. **Introduce workflow (10 minutes)**
 
    2. **Introduce Aida and airflow (20 minutes)**
 
@@ -68,4 +75,4 @@ comments: true
 
       
 
-3. Make sure you send slides and agenda early and leave plenty of time for the participants to complete the preparation tasks.
+4. Make sure you send slides and agenda early and leave plenty of time for the participants to complete the preparation tasks.
