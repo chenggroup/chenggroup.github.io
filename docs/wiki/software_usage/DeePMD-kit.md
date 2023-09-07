@@ -360,7 +360,7 @@ dp compress ${input} --checkpoint-folder ${ckpt} 1.3-model.pb -o compressed-mode
 
 其中`${input}`和`${ckpt}`分别是对应模型的输入脚本所在路径和检查点目录。在这个例子里，我们仅把需要压缩的模型复制到了工作文件夹下，输入脚本所在路径和检查点目录人工指认。至于为什么这样会报错 ‘ValueError’，目前还没有找到原因。
 
-因此，我们建议**备份之前的训练文件夹，在训练文件夹的一个 copy 下进行压缩任务 **。
+因此，我们建议 **备份之前的训练文件夹，在训练文件夹的一个 copy 下进行压缩任务**。
 
 
 ## Extra Support
