@@ -39,39 +39,55 @@ cd /share/apps/cp2k/
 tar -jxf cp2k-7.1.tar.bz2
 ```
 
-更改目录名为7.1，为后续添加module文件作准备（本步骤可选，也可保留默认名称，后续环境配置时需要相应修改）：
+更改目录名为 7.1，为后续添加 module 文件作准备（本步骤可选，也可保留默认名称，后续环境配置时需要相应修改）：
 
 ```bash
 mv cp2k-7.1 7.1
 ```
 
-进入到toolchain目录下，并修改`install_mpich.sh`, 将其中的`check_command mpic++ "mpich"`改为`check_command mpicxx "mpich"`：
+进入到 toolchain 目录下，并修改`install_mpich.sh`, 将其中的`check_command mpic++ "mpich"`改为`check_command mpicxx "mpich"`：
 
 ```bash
 cd 7.1/tools/toolchain
 sed -i 's/check_command mpic++/check_command mpicxx/g' scripts/install_mpich.sh
 ```
 
-**（可选）** 为加速安装、防止超时报错，在中国大陆可将Github统一替换为镜像。但后续从cp2k官方网站下载的包也可能出现超时报错，可能需要借助其他平台下载相应的软件包并放到`build`目录下。
+**（可选）** 若需安装 ELPA 包，需要将静态库替换为动态库，否则会报错`undefined reference to ...`：
+
+```bash
+sed -i 's/a libmkl_core.a libmkl_sequential.a/so libmkl_sequential.so libmkl_core.so/g' scripts/install_mkl.sh
+sed -i 's/libmkl_gf_lp64.a/libmkl_gf_lp64.so/g' scripts/install_mkl.sh
+sed -i 's/libmkl_core.a/libmkl_sequential.so/g' scripts/install_mkl.sh
+sed -i 's/libmkl_scalapack_lp64.a/libmkl_scalapack_lp64.so/g' scripts/install_mkl.sh
+sed -i 's/libmkl_blacs_intelmpi_lp64.a/libmkl_blacs_intelmpi_lp64.so/g' scripts/install_mkl.sh
+sed -i 's/libmkl_blacs_openmpi_lp64.a/libmkl_blacs_openmpi_lp64.so/g' scripts/install_mkl.sh
+sed -i 's/libmkl_core.a/libmkl_sequential.so/g' scripts/install_mkl.sh
+```
+
+[ref 1](https://github.com/cp2k/cp2k/issues/376)
+[ref 2](https://github.com/cp2k/cp2k/commit/0d7f2f7a69c04ec0a38924968905da52c7391804)
+
+**（可选）** 为加速安装、防止超时报错，在中国大陆可将 Github 统一替换为镜像。但后续从 cp2k 官方网站下载的包也可能出现超时报错，可能需要借助其他平台下载相应的软件包并放到`build`目录下。
 
 ```bash
 sed -i 's/github.com/hub.fastgit.org/g' scripts/install_*.sh
 ```
 
-随后运行toolchain脚本安装依赖软件：
+随后运行 toolchain 脚本安装依赖软件：
 
 ```
 ./install_cp2k_toolchain.sh --gpu-ver=no   --enable-cuda=no  --with-mpich=system --with-sirius=no --with-openmpi=no  --with-spfft=no --with-hdf5=no
 ```
 
-过程中请注意输出信息和报错等，并相应地予以解决。如果一切顺利，会提示需要拷贝arch文件，并source所需的环境，按照提示操作即可。注意由于步骤不同这里的命令可能不同，仅供参考：
+过程中请注意输出信息和报错等，并相应地予以解决。如果一切顺利，会提示需要拷贝 arch 文件，并 source 所需的环境，按照提示操作即可。注意由于步骤不同这里的命令可能不同，仅供参考：
 
 ```bash
 cp install/arch/local* /share/apps/cp2k/7.1/arch/
 source /share/apps/cp2k/7.1/tools/toolchain/install/setup
 ```
 
-之后进行编译安装： 
+之后进行编译安装：
+
 ```bash
 cd /share/apps/cp2k/7.1/
 make -j 8 ARCH=local VERSION="popt psmp"
@@ -86,9 +102,9 @@ cp ./exe/local/* ./bin
 
 最后删除`bin`和`tools`之外的所有文件，并删除`tools/toolchain`里的`build`和`install`目录。
 
-## Module文件生成
+## Module 文件生成
 
-若集群使用module管理环境变量，请在modulefile目录下（取决于集群的设置）新建目录`cp2k`并创建文件`.module`：
+若集群使用 module 管理环境变量，请在 modulefile 目录下（取决于集群的设置）新建目录`cp2k`并创建文件`.module`：
 
 ```lua
 #%Module
@@ -117,19 +133,20 @@ prepend-path    PATH            ${basedir}/bin
 ```
 
 然后创建符号链接，提供相应版本号的环境：
+
 ```
 ln -s .module 7.1
 ```
 
 ## Q&A
 
-1. 如果所有标称为`https://www.cp2k.org`的压缩包均无法下载，且单独`wget`该压缩包时提示`Issued certificate has expired`，可以尝试更新证书服务，CentOS 7命令如下：
+1. 如果所有标称为`https://www.cp2k.org`的压缩包均无法下载，且单独`wget`该压缩包时提示`Issued certificate has expired`，可以尝试更新证书服务，CentOS 7 命令如下：
 
    ```bash
    yum install ca-certificates
    ```
 
-2. 以上欺骗手段仅适用于Intel MPI <= 2018的版本，对高版本MPI推荐直接安装更高版本的CP2K，Toolchain可提供完整支持。
+2. 以上欺骗手段仅适用于 Intel MPI <= 2018 的版本，对高版本 MPI 推荐直接安装更高版本的 CP2K，Toolchain 可提供完整支持。
 
 3. 如果`make`过程中频繁报错，还可能是系统没有正确配置地区设置，请使用如下命令加载环境变量：
 
@@ -138,4 +155,3 @@ ln -s .module 7.1
    export LC_ALL=en_US.UTF-8
    export LC_CTYPE="en_US.UTF-8"
    ```
-
