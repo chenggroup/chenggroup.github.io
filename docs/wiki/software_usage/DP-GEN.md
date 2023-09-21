@@ -10,14 +10,18 @@ comments: true
 
 Deep Potential Generator (DP-GEN) 是一个将神经网络势能（machine learning potential）和主动学习（active learing）结合起来的工作流。该包主要由张林峰（普林斯顿大学），王涵（北京应用物理与计算数学研究所）开发。如有问题，可以向他们询问。
 
+!!! info "提示"
+    考虑到 DP-GEN 在集群运行可能存在一定的性能问题，推荐尝试 [ai<sup>2</sup>-kit](https://github.com/chenggroup/ai2-kit) 运行势函数训练的 Close Loop Learning (CLL) 任务。
+
 以下为参考信息：
 
 - [GitHub](https://github.com/deepmodeling/dpgen)
 - 参考文献：[Active learning of uniformly accurate interatomic potentials for materials simulation](https://journals.aps.org/prmaterials/abstract/10.1103/PhysRevMaterials.3.023804)
 
 !!! warning None
-    此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对DeePMD-kit有一定了解。
-指路：[DeePMD-kit](./DP-GEN.md)
+    此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者。建议在阅读此篇前先对DeePMD-kit有一定了解。<br>
+    指路：[DeePMD-kit](./DeePMD-kit.md)
+
 
 DP-GEN的工作流是由以下三步组成的循环：
 
