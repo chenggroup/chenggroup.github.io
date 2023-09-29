@@ -23,14 +23,14 @@ comments: true
 
     ```bash
     # replace your own username here!
-    export ENVPATH=/public/home/username/.conda/envs/deepmd
-    mkdir -p $ENVPATH/etc/conda/activate.d
-    touch $ENVPATH/etc/conda/activate.d/activate.sh
-    mkdir -p $ENVPATH/etc/conda/deactivate.d
-    touch $ENVPATH/etc/conda/deactivate.d/deactivate.sh
+    mkdir -p $CONDA_PREFIX/etc/conda/activate.d
+    touch $CONDA_PREFIX/etc/conda/activate.d/activate.sh
+    mkdir -p $CONDA_PREFIX/etc/conda/deactivate.d
+    touch $CONDA_PREFIX/etc/conda/deactivate.d/deactivate.sh
+    conda env config vars set LD_LIBRARY_PATH=$tensorflow_root/lib:$deepmd_root/lib:$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
     ```
 
-    - `$ENVPATH/etc/conda/activate.d/activate.sh`
+    - `$CONDA_PREFIX/etc/conda/activate.d/activate.sh`
 
     ```bash
     module load intel/2018.3
@@ -43,17 +43,14 @@ comments: true
     export CXX=`which g++`
     export FC=`which gfortran`
 
-    # replace ENVPATH and deepmd_source_dir!!!
-    export ENVPATH=/public/home/username/.conda/envs/deepmd
+    # replace CONDA_PREFIX and deepmd_source_dir!!!
     export deepmd_source_dir=/public/home/username/apps/deepmd-2.2.0
     export tensorflow_root=$deepmd_source_dir/_skbuild/tensorflow_root
     export deepmd_root=$deepmd_source_dir/_skbuild/deepmd_root
-
-    export LD_LIBRARY_PATH=$tensorflow_root/lib:$deepmd_root/lib:$ENVPATH/lib:$LD_LIBRARY_PATH
     export LAMMPS_PLUGIN_PATH=$deepmd_root/lib/deepmd_lmp
     ```
 
-    - `$ENVPATH/etc/conda/activate.d/activate.sh`
+    - `$CONDA_PREFIX/etc/conda/activate.d/activate.sh`
 
     ```bash
     module unload intel/2018.3
@@ -62,7 +59,6 @@ comments: true
     module unload cuda/11.3
     module unload lammps/2022.6.23
 
-    unset ENVPATH
     unset deepmd_source_dir
     unset tensorflow_root
     unset deepmd_root
@@ -78,17 +74,17 @@ comments: true
     pip install protobuf==3.20
     cd $deepmd_source_dir
     export DP_VARIANT=cuda
-    python setup.py install
+    pip install .
     ```
 4. (可选)第三方接口安装
 
     ```bash
     mkdir -p $tensorflow_root/lib 
     cd $tensorflow_root
-    ln -s $ENVPATH/lib/python3.9/site-packages/tensorflow/include .
+    ln -s $CONDA_PREFIX/lib/python3.9/site-packages/tensorflow/include .
     cd lib
-    ln -s $ENVPATH/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so libtensorflow_cc.so
-    ln -s $ENVPATH/lib/python3.9/site-packages/tensorflow/libtensorflow_framework.so.2 .
+    ln -s $CONDA_PREFIX/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so libtensorflow_cc.so
+    ln -s $CONDA_PREFIX/lib/python3.9/site-packages/tensorflow/libtensorflow_framework.so.2 .
     ln -s libtensorflow_framework.so.2 libtensorflow_framework.so
 
     mkdir -p $deepmd_source_dir/source/build
@@ -106,7 +102,7 @@ comments: true
     ```bash
     cd $deepmd_source_dir
     export DP_VARIANT=cuda
-    python setup.py install
+    pip install .
     ```
 
 2. C++代码
