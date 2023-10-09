@@ -14,6 +14,9 @@ extra:
       link: mailto:chengjun@xmu.edu.cn
       name: 联系程俊老师
   alternate:
+    - name: 中文
+      link: /
+      lang: zh
     - name: English
       link: /en/
       lang: en
