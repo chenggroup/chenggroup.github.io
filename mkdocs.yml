@@ -24,8 +24,54 @@ extra:
 plugins:
   - search:
       separator: '[\s\-\.]'
-  - awesome-pages
   - macros
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: zh
+          default: true
+          name: 中文
+          build: true
+        - locale: en
+          name: English
+          build: true
+          nav_translations:
+            集群使用: Cluster Usage
+            开始编辑: How to Edit
+            新生培训: For New Comers
+            合作协同: Teamwork
+            软件安装: Software Installation
+            软件使用: Software Usage
+            研究技能: Research Skills
+            疑难解答: Troubleshooting
+            未完待续: To be continued
+            隐患排查: Question Under Carpet
+            杂项(Miscellaneous): Miscellaneous
+          extra:
+            social:
+              - icon: material/web
+                link: https://www.cheng-group.net
+                name: Group Website
+              - icon: fontawesome/brands/github
+                link: https://github.com/chenggroup
+                name: Group Github Organization
+              - icon: fontawesome/solid/paper-plane
+                link: mailto:chengjun@xmu.edu.cn
+                name: Contact Prof. Jun Cheng
+          theme:
+            palette:
+              - scheme: default
+                media: "(prefers-color-scheme: light)"
+                primary: teal
+                toggle:
+                  icon: material/lightbulb
+                  name: Switch to dark mode
+              - scheme: slate 
+                media: "(prefers-color-scheme: dark)"
+                primary: blue
+                toggle:
+                  icon: material/lightbulb-outline
+                  name: Switch to light mode
 
 theme:
   name: material
@@ -57,7 +103,6 @@ theme:
     - search.suggest
 
 markdown_extensions:
-
   # Python Markdown
   - abbr
   - admonition
@@ -101,3 +146,77 @@ extra_javascript:
   - javascripts/auto_scheme.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: index.md
+  - Wikis:
+      - 开始编辑: wiki/how_to_edit/howtodo.md
+      - 集群使用:
+          - wiki/cluster_usage/cluster_usage.md
+          - wiki/cluster_usage/ssh_note.md
+          - wiki/cluster_usage/gpu_usage.md
+          - wiki/cluster_usage/conda.md
+          - wiki/cluster_usage/jupyter.md
+          - wiki/cluster_usage/vscode_remote.md
+          - wiki/cluster_usage/notification_for_hpc.md
+          - wiki/cluster_usage/pack_backup.md
+          - wiki/cluster_usage/tensorboard.md
+      - 新生培训:
+          - wiki/new_comers/toc.md
+          - wiki/new_comers/linux.md
+          - wiki/new_comers/read_papers.md
+          - wiki/new_comers/presentation.md
+          - wiki/new_comers/python_numpy.md
+          - wiki/new_comers/qc_dft.md
+          - wiki/new_comers/basis_pps.md
+          - wiki/new_comers/dpmd.md
+          - wiki/new_comers/dpgen.md
+          - wiki/new_comers/workflow.md
+      - wiki/book_recommendation.md
+      - 合作协同:
+          - wiki/teamwork/archive_rules.md
+          - wiki/teamwork/git_usage.md
+          - wiki/teamwork/tutorial_rules.md
+      - 软件使用:
+          - wiki/software_usage/default_version.md
+          - wiki/software_usage/MDAnalysis.md
+          - wiki/software_usage/Tips_for_LaTeX.md
+          - CP2K:
+              - wiki/software_usage/cp2k/cp2k.md
+              - wiki/software_usage/cp2k/cp2k-e-f.md
+              - wiki/software_usage/cp2k/cp2k-geoopt.md
+              - wiki/software_usage/cp2k/cp2k-zpe.md 
+              - wiki/software_usage/cp2k/cp2k-neb.md
+              - wiki/software_usage/cp2k/cp2k-reftraj.md
+              - wiki/software_usage/cp2k/cp2k-dft+u.md
+              - wiki/software_usage/cp2k/cp2k-hf.md
+              - wiki/software_usage/cp2k/cp2k-scan.md
+              - wiki/software_usage/cp2k/cp2k-slab.md
+              - wiki/software_usage/cp2k/cp2k-tools.md
+          - wiki/software_usage/DP-GEN.md
+          - wiki/software_usage/DeePMD-kit.md
+          - wiki/software_usage/experience_of_dpmd_and_dpgen.md
+          - wiki/software_usage/i-pi.md
+          - wiki/software_usage/n2p2.md
+          - wiki/software_usage/vmd.md
+      - 软件安装:
+          - wiki/software_installation/softwares.md
+          - wiki/software_installation/install_from_src_in_conda.md
+          - wiki/software_installation/gcc.md
+          - DeePMD-kit:
+              - wiki/software_installation/deepmd-kit/deepmd-kit_installation_new.md
+              - wiki/software_installation/deepmd-kit/deepmd-kit_installation_ikkem.md
+              - wiki/software_installation/deepmd-kit/deepmd-kit_installation_191.md
+              - wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc.md
+              - wiki/software_installation/deepmd-kit/deepmd-kit_installation_51.md
+          - wiki/software_installation/cp2k-7.1.md
+      - 研究技能:
+          - wiki/skills/research_skill.md
+          - wiki/skills/QS4writing.md
+      - 疑难解答:
+          - 未完待续: https://github.com/chenggroup/chenggroup.github.io/issues/123
+      - 隐患排查:
+          - wiki/question_under_carpet/chemical_computing.md
+          - 未完待续: https://github.com/chenggroup/chenggroup.github.io/issues/131
+      - 杂项(Miscellaneous): wiki/miscellaneous.md
+  - ai2-kit: https://wiki.cheng-group.net/ai2-kit/

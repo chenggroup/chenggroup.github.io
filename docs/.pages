@@ -1,4 +1,4 @@
 nav:
-    - index.md
+    - ... | index*.md
     - "Wikis": wiki
     - ai2-kit: https://wiki.cheng-group.net/ai2-kit/
