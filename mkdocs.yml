@@ -13,6 +13,10 @@ extra:
     - icon: fontawesome/solid/paper-plane
       link: mailto:chengjun@xmu.edu.cn
       name: 联系程俊老师
+  alternate:
+    - name: English
+      link: /en/
+      lang: en
 
 plugins:
   - search:
