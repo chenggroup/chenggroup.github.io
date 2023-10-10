@@ -32,28 +32,46 @@ Wiki 书写使用 markdown 格式。本 wiki 使用 python-markdown 作为 markd
 
 先 fork <{{ config.repo_url }}> ，然后进入 fork 成功后的仓库。
 
-![Screen Shot 2019-11-09 at 02.07.35](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6kit9pej311t0kxad7.jpg)
+<!--![Screen Shot 2019-11-09 at 02.07.35](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6kit9pej311t0kxad7.jpg)-->
 
 #### 2. 创建新文件或上传本地文件
 
-![Screen Shot 2019-11-09 at 02.16.32](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6wiwgauj311t0kwjue.jpg)
+<!--![Screen Shot 2019-11-09 at 02.16.32](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6wiwgauj311t0kwjue.jpg)-->
 
-推荐在本地用 typora 等编辑器写好 markdown 后直接上传文件，文件请上传至 [_wiki]({{ config.repo_url }}/tree/master/_wiki) 目录 (master 分支)。也可以修改 fork 的仓库的 _wiki 下的文件，然后再提交 PR。
+推荐在本地用 typora 等编辑器写好 markdown 后直接上传文件，文件请上传至 [_wiki]({{ config.repo_url }}/tree/master/docs/wiki) 目录 (master 分支)。也可以修改 fork 的仓库的 `docs/wiki` 下的文件，然后再提交 PR。
 
-#### 3. 提交 PR
+#### 3. 设置导航
 
-![Screen Shot 2019-11-09 at 02.31.25](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r757esxtj311t0kwad2.jpg)
+!!! note
+    新增步骤
 
+在上传新的文档后，需要手动在仓库首级的 `mkdocs.yml` 中设置导航。
 
-### 由 wiki 网站导向编辑页面*
+例如在软件使用中增加 VASP 使用教程的话（假设放在 `docs/wiki/software_usage/vasp.md`），且希望放在 CP2K 和 DP-GEN 之间，请在 `nav` 中增加如下内容：
 
-> :warning: 仅推荐 [chenggroup 仓库的成员](https://github.com/orgs/chenggroup/people) 通过这种方式编辑 wiki。  
+```yaml
+nav:
+  ...
+  - Wikis:
+      ...
+      - 软件使用:
+          ...
+          - wiki/software_usage/Tips_for_LaTeX.md
+          - CP2K:
+              ...
+          - wiki/software_usage/vasp.md # 新增导航
+          - wiki/software_usage/DP-GEN.md
+          ...
+      ...
+```
 
-点击标题右侧的笔的图标可进入相应的 github 仓库中的文件编辑页面。当然，推荐任何人使用 `Ask a Question` 。
+#### 4. 提交 PR
+
+<!--![Screen Shot 2019-11-09 at 02.31.25](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r757esxtj311t0kwad2.jpg)-->
 
 ## 如何预览 wiki
 
-预览 wiki 也有两种方案：1. 使用 typora 等实时渲染；2. 在本地启动 jekyll 服务。
+预览 wiki 也有两种方案：1. 使用 typora 等实时渲染；2. 在本地启动 Mkdocs 服务。
 
 ### 通过 typora (注意已经收费)
 
@@ -92,8 +110,8 @@ cd chenggroup.github.io
 
 ```bash
 pip install mkdocs-material \
-    mkdocs-awesome-pages-plugin \
-    mkdocs-macros-plugin
+    mkdocs-macros-plugin \
+    mkdocs-static-i18n[material]
 ```
 
 #### 4. 启动 Mkdocs 服务
@@ -330,6 +348,36 @@ graph LR
 
 !!! warning
     注意这里推荐使用的是相对路径，可不改变同级目录结构。如需修改上级目录结构需要对应更改。
+
+### 文档英文翻译
+
+目前本 Wiki 采用 [mkdocs-static-i18n](https://ultrabug.github.io/mkdocs-static-i18n/) 实现多语言支持，因而若需要编写翻译版本，仅需要在同一目录下增加一个后缀为 `.en` 的markdown文件。例如中文文档为 `custom.md`，则英文文档为 `custom.en.md`。
+
+注意请将导言区的 `title` 内容翻译为英文。
+
+若涉及导航栏中自定义栏目的翻译，请在 `mkdocs.yml` 中增加。以下给出一个实例：
+
+```yaml
+nav:
+  - 主页: index.md
+  - 分类1: 
+      - topic1/index.md
+      - topic1/item1.md
+  - 分类2: topic2/index.md
+
+plugins:
+  - i18n:
+    languages:
+      - locale: en
+        default: true
+        name: English
+      - locale: fr
+        name: Français
+        nav_translations:
+          主页: Home
+          分类1: Topic 1
+          分类2: Topic 2
+```
 
 ## 参考资料*
 

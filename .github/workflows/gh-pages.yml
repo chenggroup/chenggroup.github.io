@@ -14,6 +14,6 @@ jobs:
           python-version: 3.x
       - run: pip install \
               mkdocs-material \
-              mkdocs-awesome-pages-plugin \
-              mkdocs-macros-plugin
+              mkdocs-macros-plugin \
+              mkdocs-static-i18n[material]
       - run: mkdocs gh-deploy --force

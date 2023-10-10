@@ -70,7 +70,7 @@ module add gcc/7.4.0
 
 注意这里导入的是GCC 7.4.0版本，如果采用低于4.9.4的版本（不导入GCC）则dp_ipi不会被编译。
 
-然后创建虚拟环境，步骤请参考[Anaconda 使用指南](../cluster_usage/conda.md)。
+然后创建虚拟环境，步骤请参考[Anaconda 使用指南](../../cluster_usage/conda.md)。
 
 假设创建的虚拟环境名称是 `deepmd`，则请将步骤最后的 `<your env name>` 替换为 `deepmd`。若采用该步骤的设置，则虚拟环境将被创建在`/data/user/conda/env/deepmd`下（假设用户名为`user`）。
 
