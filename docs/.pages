@@ -2,3 +2,4 @@ nav:
     - ... | index*.md
     - "Wikis": wiki
     - ai2-kit: https://wiki.cheng-group.net/ai2-kit/
+    - cp2kdata: https://wiki.cheng-group.net/cp2kdata/
