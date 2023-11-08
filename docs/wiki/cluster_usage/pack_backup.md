@@ -135,6 +135,42 @@ bqbtool compress postraj xxx.xyz xxx.bqb
 bqbtool compress voltraj xxx.cube xxx.bqb
 ```
 
+如果将某个文件夹及其子文件夹中的所有文件都压缩，可以结合使用`find`和`bqbtool compress`：
+
+```bash
+find . -name '*.cube' | while read line; do
+  bqbtool compress voltraj $line $line.bqb
+done
+```
+
+批量压缩效果：
+
+```bash
+.
+├── bqbtool.log
+├── run.sh
+├── test.000
+│   ├── cp2k-TOTAL_DENSITY-1_0.cube
+│   ├── cp2k-TOTAL_DENSITY-1_0.cube.bqb
+│   ├── cp2k-v_hartree-1_0.cube
+│   ├── cp2k-v_hartree-1_0.cube.bqb
+│   └── test.002
+│       ├── cp2k-TOTAL_DENSITY-1_0.cube
+│       ├── cp2k-TOTAL_DENSITY-1_0.cube.bqb
+│       ├── cp2k-v_hartree-1_0.cube
+│       └── cp2k-v_hartree-1_0.cube.bqb
+├── test.001
+│   ├── cp2k-TOTAL_DENSITY-1_0.cube
+│   ├── cp2k-TOTAL_DENSITY-1_0.cube.bqb
+│   ├── cp2k-v_hartree-1_0.cube
+│   └── cp2k-v_hartree-1_0.cube.bqb
+└── test.002
+    ├── cp2k-TOTAL_DENSITY-1_0.cube
+    ├── cp2k-TOTAL_DENSITY-1_0.cube.bqb
+    ├── cp2k-v_hartree-1_0.cube
+    └── cp2k-v_hartree-1_0.cube.bqb
+```
+
 ## 集群打包要点
 
 本次`51`和`52`将进行迁移，文件的数目将会影响迁移速度。因此尽可能地把原本目录压缩成几个文件，可以提升迁移速度，例如:
