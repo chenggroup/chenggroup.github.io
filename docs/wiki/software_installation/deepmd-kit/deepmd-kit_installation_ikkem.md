@@ -50,7 +50,7 @@ comments: true
     export LAMMPS_PLUGIN_PATH=$deepmd_root/lib/deepmd_lmp
     ```
 
-    - `$CONDA_PREFIX/etc/conda/activate.d/activate.sh`
+    - `$CONDA_PREFIX/etc/conda/deactivate.d/deactivate.sh`
 
     ```bash
     module unload intel/2018.3
