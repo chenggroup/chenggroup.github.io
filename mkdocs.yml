@@ -80,14 +80,19 @@ theme:
     logo: fontawesome/solid/graduation-cap
     repo: fontawesome/brands/github
   palette:
-    - scheme: default
-      media: "(prefers-color-scheme: light)"
+    # Palette toggle for automatic mode
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
       primary: teal
       toggle:
         icon: material/lightbulb
         name: 切换至深色模式
-    - scheme: slate 
-      media: "(prefers-color-scheme: dark)"
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate 
       primary: blue
       toggle:
         icon: material/lightbulb-outline
@@ -143,7 +148,6 @@ markdown_extensions:
 extra_javascript:
   - javascripts/analytic.js
   - javascripts/mathjax.js
-  - javascripts/auto_scheme.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
