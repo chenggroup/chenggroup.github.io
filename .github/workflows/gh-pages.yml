@@ -13,7 +13,7 @@ jobs:
         with:
           python-version: 3.x
       - run: pip install \
-              mkdocs-material \
+              mkdocs-material>=9.5.0 \
               mkdocs-macros-plugin \
               mkdocs-static-i18n[material]
       - run: mkdocs gh-deploy --force
