@@ -60,18 +60,22 @@ plugins:
                 name: Contact Prof. Jun Cheng
           theme:
             palette:
-              - scheme: default
-                media: "(prefers-color-scheme: light)"
+              - media: "(prefers-color-scheme)"
+                toggle:
+                  icon: material/brightness-auto
+                  name: Switch to light mode
+              - media: "(prefers-color-scheme: light)"
+                scheme: default
                 primary: teal
                 toggle:
                   icon: material/lightbulb
                   name: Switch to dark mode
-              - scheme: slate 
-                media: "(prefers-color-scheme: dark)"
+              - media: "(prefers-color-scheme: dark)"
+                scheme: slate 
                 primary: blue
                 toggle:
                   icon: material/lightbulb-outline
-                  name: Switch to light mode
+                  name: Switch to automatic mode
 
 theme:
   name: material
@@ -84,7 +88,7 @@ theme:
     - media: "(prefers-color-scheme)"
       toggle:
         icon: material/brightness-auto
-        name: Switch to light mode
+        name: 切换至浅色模式
     - media: "(prefers-color-scheme: light)"
       scheme: default
       primary: teal
@@ -96,7 +100,7 @@ theme:
       primary: blue
       toggle:
         icon: material/lightbulb-outline
-        name: 切换至浅色模式
+        name: 切换至自动模式
   favicon: images/favicon.png
   language: zh
   features:
