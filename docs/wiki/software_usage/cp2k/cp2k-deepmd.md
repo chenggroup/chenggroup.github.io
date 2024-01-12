@@ -25,7 +25,7 @@ Zeus集群上的 `cp2k/2024.2-dev` 和 `deepmd/2.2.7` （未编译MPI和DFT支�
 
 注意 `cp2k/2024.2-dev` 的作业脚本写法如下：
 
-```
+```bash
 module load gcc/9.3.0
 module load intel/17.5.239
 module load cuda/11.8
@@ -42,7 +42,7 @@ module load cp2k/2024.2-dev
 
 由于 MLMD 通常会需要纳秒甚至更长时间尺度的模拟，若未进行适当配置，可能会产生过长的输出文件，因此我们在 `GLOBAL` 下做以下调整:
 
-``` { .annotate }
+```bash
 &GLOBAL
    PROJECT pmf # (1)!
    RUN_TYPE MD
@@ -57,7 +57,7 @@ module load cp2k/2024.2-dev
 
 然后我们配置如下的力场参数：
 
-```
+```bash
 &FORCE_EVAL
    METHOD FIST
    &MM
@@ -86,7 +86,7 @@ module load cp2k/2024.2-dev
 
 通常 MLMD 轨迹文件不需要每步都输出，因而通过以下方式设置输出间隔：
 
-```
+```bash
 &MOTION
    ...
    &MD
@@ -138,7 +138,7 @@ PMF对反应坐标积分即反应自由能。MLMD 可实现高精度长时间尺
 
 首先定义 Collective Variable (CV)，这里我们选择两原子间距离进行控制：
 
-```
+```bash
 &FORCE_EVAL
    ...
    &SUBSYS
@@ -158,7 +158,7 @@ PMF对反应坐标积分即反应自由能。MLMD 可实现高精度长时间尺
 
 然后定义所需控制的键长：
 
-```
+```bash
 &MOTION
    &CONSTRAINT
       &COLLECTIVE
