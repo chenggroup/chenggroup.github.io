@@ -424,7 +424,7 @@ cd tools/toolchain/
 ./install_cp2k_toolchain.sh --with-gcc=system --mpi-mode=openmpi --with-deepmd=$deepmd_root
 ```
 
-<div>
+</div>
 
 1.  新版CP2K会自动检测 Intel MPI 且无视强制使用其他环境如 OpenMPI 的设定，旧版 Intel MPI不被兼容
 2.  由于 `--with-openmpi=install` 在 Zeus 上无法正确安装，这里预先安装好了 OpenMPI。
@@ -439,7 +439,7 @@ module unload mpi/intel/2017.5.239 (1)
 ./install_cp2k_toolchain.sh --with-deepmd=$deepmd_root --mpi-mode=no --with-libint=no --with-libxc=no --with-libxsmm=no
 ```
 
-<div>
+</div>
 
 1.  新版CP2K会自动检测 Intel MPI 且无视强制使用其他环境如 OpenMPI 的设定，旧版 Intel MPI不被兼容
 
@@ -455,7 +455,7 @@ module unload mpi/intel/2017.5.239 (1)
 make -j 4 ARCH=local VERSION="psmp pdbg ssmp sdbg" (1)
 ```
 
-<div>
+</div>
 
 1.  如不需要 MPI ，请移除掉 `psmp pdbg`。
 
