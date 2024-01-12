@@ -42,26 +42,20 @@ module load cp2k/2024.2-dev
 
 由于 MLMD 通常会需要纳秒甚至更长时间尺度的模拟，若未进行适当配置，可能会产生过长的输出文件，因此我们在 `GLOBAL` 下做以下调整:
 
-<div class="annotate" markdown>
-
-```
+``` { .annotate }
 &GLOBAL
-   PROJECT pmf (1)
+   PROJECT pmf # (1)!
    RUN_TYPE MD
-   PRINT_LEVEL SILENT (2)
-   WALLTIME 95:00:00 (3)
+   PRINT_LEVEL SILENT # (2)!
+   WALLTIME 95:00:00 # (3)!
 &END GLOBAL
 ```
-
-</div>
 
 1.  根据自己的项目名修改，决定输出文件的名称
 2.  如果跑DeePMD, 请务必设置为 **`SILENT`**
 3.  推荐稍短于作业的 Walltime 以免截断轨迹
 
 然后我们配置如下的力场参数：
-
-<div class="annotate" markdown>
 
 ```
 &FORCE_EVAL
@@ -87,14 +81,10 @@ module load cp2k/2024.2-dev
 &END FORCE_EVAL
 ```
 
-</div>
-
 1.  与元素列表对应，元素在 `type_map` 中的索引顺序
 2.  :warning: 请保留这一行以忽略未定义参数
 
 通常 MLMD 轨迹文件不需要每步都输出，因而通过以下方式设置输出间隔：
-
-<div class="annotate" markdown>
 
 ```
 &MOTION
@@ -134,8 +124,6 @@ module load cp2k/2024.2-dev
 &END MOTION
 ```
 
-</div>
-
 1.  此处修改ener的输出频率，通常与结构轨迹保持一致
 2.  此处修改晶胞参数的输出频率，注意如果晶胞参数不变可不写这一部分
 3.  此处修改力轨迹的输出频率，通常与结构轨迹保持一致
@@ -170,25 +158,21 @@ PMF对反应坐标积分即反应自由能。MLMD 可实现高精度长时间尺
 
 然后定义所需控制的键长：
 
-<div class="annotate" markdown>
-
 ```
 &MOTION
    &CONSTRAINT
       &COLLECTIVE
          COLVAR 1
          INTERMOLECULAR .TRUE.
-         TARGET 3.4015070391941524 (1)
+         TARGET 3.4015070391941524 # (1)!
       &END COLLECTIVE
       &LAGRANGE_MULTIPLIERS ON
-         COMMON_ITERATION_LEVELS 10000000 (2)
+         COMMON_ITERATION_LEVELS 10000000 # (2)!
       &END LAGRANGE_MULTIPLIERS
    &END CONSTRAINT
    ...
 &MOTION
 ```
-
-</div>
 
 1.  设置两原子距离的目标值，注意这里的单位是 a.u.
 2.  缺省值为1，为防止输出过长的日志文件，请设置为一个大于总步数的值

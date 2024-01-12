@@ -83,7 +83,6 @@ theme:
   icon: 
     logo: fontawesome/solid/graduation-cap
     repo: fontawesome/brands/github
-    annotation: material/arrow-right-circle
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
@@ -111,6 +110,7 @@ theme:
     - navigation.top
     - content.tooltips
     - search.suggest
+    - content.code.annotate
 
 markdown_extensions:
   # Python Markdown
@@ -202,6 +202,7 @@ nav:
               - wiki/software_usage/cp2k/cp2k-scan.md
               - wiki/software_usage/cp2k/cp2k-slab.md
               - wiki/software_usage/cp2k/cp2k-tools.md
+              - wiki/software_usage/cp2k/cp2k-deepmd.md
           - wiki/software_usage/DP-GEN.md
           - wiki/software_usage/DeePMD-kit.md
           - wiki/software_usage/experience_of_dpmd_and_dpgen.md
