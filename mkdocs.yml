@@ -83,6 +83,7 @@ theme:
   icon: 
     logo: fontawesome/solid/graduation-cap
     repo: fontawesome/brands/github
+    annotation: material/arrow-right-circle
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
