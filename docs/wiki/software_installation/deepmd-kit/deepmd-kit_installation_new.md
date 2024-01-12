@@ -410,35 +410,43 @@ pair_coeff      * *
 首先clone对应的安装包：
 
 ```bash
-git clone https://github.com/Cloudac7/cp2k.git -b deepmd_latest --recursive --depth=1
+git clone https://github.com/cp2k/cp2k.git --recursive --depth=1
 ```
 
 然后运行相应的Toolchain脚本：
 
 ```bash
+module unload mpi/intel/2017.5.239 # (1)!
+module load mpi/openmpi/4.1.6-gcc # (2)!
 cd tools/toolchain/
-./install_cp2k_toolchain.sh --enable-cuda=no --with-deepmd=$deepmd_root --with-tfcc=$tensorflow_root --deepmd-mode=cuda --mpi-mode=no --with-libint=no --with-libxc=no --with-libxsmm=no
+./install_cp2k_toolchain.sh --with-gcc=system --mpi-mode=openmpi --with-deepmd=$deepmd_root
 ```
+
+1.  新版CP2K会自动检测 Intel MPI 且无视强制使用其他环境如 OpenMPI 的设定，旧版 Intel MPI不被兼容
+2.  由于 `--with-openmpi=install` 在 Zeus 上无法正确安装，这里预先安装好了 OpenMPI。
+
+如不需要 MPI 和 DFT 相关功能，可以如下设置以减少步骤（注意后续编译移除掉 `psmp pdbg` 选项）：
+
+```bash
+cd tools/toolchain/
+module unload mpi/intel/2017.5.239 # (1)!
+./install_cp2k_toolchain.sh --with-deepmd=$deepmd_root --mpi-mode=no --with-libint=no --with-libxc=no --with-libxsmm=no
+```
+
+1.  新版CP2K会自动检测 Intel MPI 且无视强制使用其他环境如 OpenMPI 的设定，旧版 Intel MPI不被兼容
 
 根据脚本运行结尾的提示复制arch文件并source所需的环境变量。
-
-若上文中采用方法二编译了 DeePMD-kit 的 C++ Interface，请编辑 `arch/local.ssmp`，在 `LDFLAGS` 末尾增加如下字段：
-```
--Wl,-rpath='/data/user/conda/env/deepmd/lib'
-```
 
 这里的目的是让编译时可以正确链接 `libpython3.*.so.*`，因而 `/data/user/conda/env/deepmd/` 仍旧是 Conda 环境路径。
 
 最后回到主目录进行编译：
 
 ```bash
-make -j 4 ARCH=local VERSION="ssmp sdbg"
+make -j 4 ARCH=local VERSION="psmp pdbg ssmp sdbg" # (1)!
 ```
 
-编译正确完成后，可执行文件生成在 `exe/` 下，即 `cp2k.sopt`。
+1.  如不需要 MPI ，请移除掉 `psmp pdbg`。
 
-> 注意目前DP-CP2K暂未支持MPI，因而请单独编译此Serial版本。且CP2K由于IO问题，性能相比Lammps低50%以上，如非刚需还是建议使用Lammps进行MD模拟，后者可提供更多特性和加速的支持。
-> 
-> 同时目前开发者遇到一些困难，故提交的PR尚未更新且由于沉默过久已被官方关闭。如读者有在CP2K实现共享状态的开发经验，请联系作者，谢谢。
-> 
-> Now there is some difficulty in implemetion of shared state in CP2K run to decrease IO in each MD step. However, the developer has not find out a proper way as a solution, making the PR silent. If you could provide any experience, please contact me. Thanks!
+编译正确完成后，可执行文件生成在 `exe/` 下，即 `cp2k.ssmp` 或 `cp2k.psmp`。
+
+关于 DP-CP2K 的使用，请参考 [CP2K: DeePMD插件](../../software_usage/cp2k/cp2k-deepmd.md)。

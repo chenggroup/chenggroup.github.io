@@ -4,13 +4,15 @@ authors: 庄永斌
 comments: true
 ---
 
-# DeePMD-kit 2.0 使用入门
+# DeePMD-kit 2.x 使用入门
 
 ## 简介
 
 DeePMD-kit是一个训练神经网络势能(Machine Learning Potential)的代码包。该包主要由张林峰（普林斯顿大学），王涵（北京应用物理与计算数学研究所）开发。黄剑兴和庄永斌曾经短时间参与开发。如有问题，可以向他们询问。
-!!! warning None
+
+!!! danger None
     我们已经舍弃了1.x版本的教程。
+
 以下为参考信息:
 
 - [官网](http://www.deepmd.org)
@@ -24,9 +26,9 @@ DeePMD-kit是一个训练神经网络势能(Machine Learning Potential)的代码
 
 ### 运行第一次机器学习
 
-如果你正在使用chenglab51集群，请使用`lsf`脚本来提交deepmd任务。
+如果你正在使用 Zeus 集群，请使用 `slurm` 脚本来提交 DeePMD-kit 任务。
 
-请从github下载DeePMD-kit的代码，我们将会使用里面的水模型做为例子。
+请从 Github 下载 DeePMD-kit 的代码，我们将会使用里面的水模型做为例子。
 
 ```bash
 git clone https://github.com/deepmodeling/deepmd-kit.git
@@ -48,7 +50,7 @@ vim deepmd.lsf
 !!! warning None
     如果调用的是1.0的版本，需要在learning_rate下加入decay_rate关键词，一般设为0.95.
 
-你现在仅需要修改`lsf`脚本中的输入文件名称即可。把脚本中的`input.json`替换成`water_se_a.json`。
+你现在仅需要修改 `slurm` 脚本中的输入文件名称即可。把脚本中的`input.json`替换成`water_se_a.json`。
 
 ```bash
 #!/bin/bash
@@ -68,7 +70,7 @@ vim deepmd.lsf
 # ============================================
 
 # add modulefiles
-module add cuda/10.0 deepmd/2.0
+module add deepmd/2.2.7
 
 # automatic select the gpu
 source /data/share/base/script/find_gpu.sh
@@ -294,7 +296,7 @@ dp train input.json --restart model.ckpt
 dp freeze
 ```
 
-你将会得到一个`*.pb`文件。利用此文件可以使用`LAMMPS`, `ASE`等软件进行分子动力学模拟。
+你将会得到一个`*.pb`文件。利用此文件可以使用`LAMMPS`, `ASE`, `CP2K` 等软件进行分子动力学模拟。
 
 ## 利用压缩模型进行产出(Production)
 
@@ -327,7 +329,7 @@ dp compress -i normal-model.pb -o compressed-model.pb -l compress.log
 
 测试2080Ti, 显存11G
 
-| 体系                 | 原子数 | 提速前 (ns/day) | 提速后(ns/day) | 提升倍率 |
+| 体系                  | 原子数  | 提速前 (ns/day)  | 提速后(ns/day)  | 提升倍率  |
 | -------------------- | ------ | --------------- | -------------- | -------- |
 | LIGePS               | 5000   | 0.806           | 3.569          | 4.42     |
 | SnO2/water interface | 6021   | 0.059           | 0.355          | 6.01     |
