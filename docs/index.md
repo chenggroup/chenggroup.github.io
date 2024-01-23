@@ -24,6 +24,9 @@ This is group wiki for chenggroup of XMU which is personal academic group. Visit
 4. [组员用: 如何修改与贡献Wiki](wiki/how_to_edit/howtodo.md)
 5. [集群管理人员用: 常用的软件安装](wiki/software_installation/softwares.md)
 
+## 软件入门与使用经验
+1. [CP2K入门](wiki/software_usage/cp2k/cp2k.md)
+
 ## 如有疑问
 
 ### 针对计算化学问题
