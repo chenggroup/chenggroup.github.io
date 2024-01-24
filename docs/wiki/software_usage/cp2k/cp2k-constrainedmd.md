@@ -1,5 +1,5 @@
 ---
-title: CP2K:Constrained MD
+title: CP2K:ConstrainedMD
 authors: 刘云霈, 庄永斌
 comments: true
 ---
