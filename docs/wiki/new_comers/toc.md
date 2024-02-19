@@ -70,3 +70,30 @@ Python是一种非常方便的编程语言，可以帮助我们处理计算数�
 ### 工作流
 
 [(视频)自动化计算与工作流: AiiDA](./workflow.md)
+
+### 生成模型
+[(视频)Diffusion and Score-Based Generative Models](https://www.youtube.com/watch?v=wMmqCMwuM2Q) 
+
+[(视频)Dr. Yang Song — Advancements in Diffusion Models for Generative AI](https://www.youtube.com/watch?v=y8q3gh61OY0) 
+
+[(博客)Generative Modeling by Estimating Gradients of the Data Distribution](http://yang-song.net/blog/2021/score/) 
+
+[(博客)A Pedagogical Introduction to Score Models](https://ericmjl.github.io/score-models/) 
+
+[(视频)通用分子结构模型Graphormer简介 - 郑书新博士](https://www.bilibili.com/video/BV1eF411A76S/?spm_id_from=333.337.search-card.all.click&vd_source=4b5c9edbc7203322daab34ea479c2688) 
+
+[(视频)Beyond AlphaFold2: 从结构预测到分布预测 | 郑书新博士 | 微软研究院 | Distributional Graphormer (DiG)](https://www.bilibili.com/video/BV1kV41137ud/?spm_id_from=333.337.search-card.all.click&vd_source=4b5c9edbc7203322daab34ea479c2688) 
+
+[(视频)Materials Project Seminars – Tian Xie "MatterGen: a generative model for inorganic materials design"](https://www.youtube.com/watch?v=Smz1go6_Spo) 
+
+### 统计力学
+
+[(博客)Introduction to Statistical Mechanics](https://web.stanford.edu/~peastman/statmech/#contents) 
+
+[(博客)David Tong at DAMTP, Cambridge: Lectures on Theoretical Physics](http://www.damtp.cam.ac.uk/user/tong/teaching.html) 
+
+[(博客)Lectures on Statistical Physics](https://www.damtp.cam.ac.uk/user/tong/statphys.html) 
+
+[(博客)Lectures on Quantum Mechanics](http://www.damtp.cam.ac.uk/user/tong/quantum.html) 
+
+[(博客)Lectures on Solid State Physics](http://www.damtp.cam.ac.uk/user/tong/solidstate.html) 
