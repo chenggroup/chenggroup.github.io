@@ -57,6 +57,10 @@ Python是一种非常方便的编程语言，可以帮助我们处理计算数�
 
 [(视频)Deep Learning Lecture by Frank Noe](https://www.youtube.com/playlist?list=PLqPI2gxxYgMKN5AVcTajQ79BTV4BiFN_0) *需要科学上网
 
+[(书籍)Pattern Recognition and Machine Learning](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf) 
+
+[(书籍)Deep Learning（花书）](http://alvarestech.com/temp/deep/Deep%20Learning%20by%20Ian%20Goodfellow,%20Yoshua%20Bengio,%20Aaron%20Courville%20(z-lib.org).pdf) 
+
 [(视频)Machine Learning for Physics and the Physics of Learning 2019](https://www.youtube.com/playlist?list=PLHyI3Fbmv0SfQfS1rknFsr_UaaWpJ1EKA) *需要科学上网
 
 [(视频)机器学习: 理论与DeePMD-kit](./dpmd.md)
