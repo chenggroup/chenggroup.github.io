@@ -113,17 +113,23 @@ vim ~/.ssh/config
 ```
 
 !!! danger "注意"
-    请注意修改该文件权限为600(即`-rw-------`)，否则可能导致无法并行。
+    请注意修改该文件权限为 `600` (即 `-rw-------` )，否则可能导致无法并行。
+    类似地，如发现自己的任务交上去只能在一个节点上运行，也请检查 `~/.ssh` 下各个文件的权限，注意只有公钥是 `644` 权限。
 
 我们可以把SSH命令的参数都储存在这个文件里。以下是语法示例文件：
 
 ```bash
-Host myserver # nickname for your cluster
-    User kmr # replacement of username in ssh
-    Hostname 123.45.67.89 # replace of cluster_ip in ssh
-    Port 7696 # replacement of -p <port number> in ssh
-    IdentityFile ~/.ssh/id_rsa # replace of -i <path to your private key> in ssh
+Host myserver # (1)!
+    User kmr # (2)!
+    Hostname 123.45.67.89 # (3)!
+    Port 7696 # (4)!
+    IdentityFile ~/.ssh/id_rsa # (5)!
 ```
+1. nickname for your cluster
+2. replacement of username in ssh
+3. replace of cluster_ip in ssh
+4. replacement of `-p <port number>` in ssh
+5. replace of `-i <path to your private key>` in ssh
 
 保存上述文件，你就可以简单地使用如下命令登录:
 
@@ -152,9 +158,11 @@ ssh -X -i <para.> -p <para.> username@server_ip
 
 ```bash
 Host <hostnickname>
-    ForwardX11 yes  # equivalent to -X
-    ForwardX11Trusted yes # equivalent to -Y (This option valid only if your ForwardX11 is set to yes!)
+    ForwardX11 yes  # (1)!
+    ForwardX11Trusted yes # (2)!
 ```
+1. equivalent to `-X`
+2. equivalent to `-Y` (This option valid only if your ForwardX11 is set to yes!)
 
 ## 使用跳板机/代理进行远程登录
 
@@ -172,16 +180,25 @@ ssh -p port_number -i key_file username@cluster191
 打开 `~/.ssh/config`，复制以下代码（注意去掉注释，否则可能会报错）：
 
 ```bash
-Host proxy # nickname you set for your office computer
-    User robinzhuang # username you set for login
-    Hostname 10.24.3.xxx # IP address of your office computer, change the xxx to real one!
- 
-Host myserver # nickname for your cluster
-    User kmr # username you set, change to real one!
-    Hostname 123.45.67.89 # IP for cluster, change to real one!
-    IdentityFile ~/.ssh/id_rsa # the key file location used in login 
-    Port xx # specify the port number, replace xx with real port!
-    ProxyJump proxy # use Host proxy as Jump Server
+# nickname you set for your office computer
+Host proxy
+    # username you set for login
+    User robinzhuang
+    # IP address of your office computer, change the xxx to real one!
+    Hostname 10.24.3.xxx
+
+# nickname for your cluster
+Host myserver
+    # username you set, change to real one!
+    User kmr
+    # IP for cluster, change to real one!
+    Hostname 123.45.67.89
+    # the key file location used in login 
+    IdentityFile ~/.ssh/id_rsa
+    # specify the port number, replace xx with real port!
+    Port xx
+    # use Host proxy as Jump Server
+    ProxyJump proxy
 ```
 
 我们可以发现其实是直接登录课题组服务器的一些改进，我们首先配置了从这台电脑登录到跳板机的命令，然后再配置利用跳板机到服务器的命令。
@@ -199,20 +216,25 @@ ssh myserver
 有时，我们在服务器上部署了 `jupyter notebook` 等服务时，需要把远程的某个端口 (以下例子中为 `8888` 端口) 转发到本地的某个端口 (以下例子中为 `9999` 端口)，使得在本地访问 `https://localhost:9999` 时也能访问远程的 `jupyter notebook` 服务。
 
 ```bash
-Host myserver # nickname for your cluster
-    User kmr # username you set, change to real one!
-    Hostname 123.45.67.89 # IP for cluster, change to real one!
-    LocalForward 9999 localhost:8888 # fist IP is your local IP, second IP is remote IP you want to forward
+Host myserver # (1)!
+    User kmr # (2)!
+    Hostname 123.45.67.89 # (3)!
+    LocalForward 9999 localhost:8888 # (4)!
 ```
+1. 为你的服务器取一个任意的昵称
+2. 请修改为真实的用户名
+3. 请修改为真实的IP
+4. `localhost:8888` 是相对于远端服务器的真实IP和端口，若不是 `localhost`，请替换为对应的IP和端口号
 
 ### 在使用跳板机的情况下使用X11 Forwarding
 
 只需要在 `~/.ssh/config` 中加入
 
 ```bash
-Host *  # valid for all host
+Host * # (1)!
     ForwardX11Trusted yes
 ```
+1. 对任意配置生效
 
 ## 一份示例配置文件（config）
 
@@ -230,25 +252,33 @@ Host *
     ControlPath /tmp/%r@%h:%p
 
 # set proxy
-Host nickname_proxy # nickname for your Jump Server
-    Hostname 10.24.3.255 # IP for Jump Server (REPlACE IT!)
-    User chenglab # your username for Jump Server (REPlACE IT!)
+# nickname for your Jump Server
+Host nickname_proxy
+    # IP for Jump Server (REPlACE IT!)
+    Hostname 10.24.3.255
+    # your username for Jump Server (REPlACE IT!)
+    User chenglab
 
 # Host1 and host2
-Host nickname_1 # nickname for your cluster
+# nickname for your cluster
+Host nickname_1
     Hostname 123.45.67.89
-    User kmr1 # your host1 username (REPlACE IT!)
+    # your host1 username (REPlACE IT!)
+    User kmr1 
     LocalForward 8051 localhost:8888
-
-Host nickname_2 # nickname for your cluster
+# nickname for your cluster
+Host nickname_2
     Hostname 123.45.67.90
-    User kmr2 # your host2 username (REPlACE IT!)
+    # your host2 username (REPlACE IT!)
+    User kmr2
     LocalForward 8052 localhost:8888
     
 # set same parts for host1 and host2
-Host nickname_1 nickname_2 # use your own nickname
+# use your own nickname
+Host nickname_1 nickname_2
     Port 7696
-    ProxyJump nickname_proxy # use your own nickname
+    # use your own nickname
+    ProxyJump nickname_proxy
 ```
 
 ## 超纲的部分​​*
@@ -261,9 +291,11 @@ Host nickname_1 nickname_2 # use your own nickname
 Host elements
     User chenglab
     Match host elements exec "nc -G 4 -z 10.24.3.144 %p"
-        Hostname 10.24.3.144 # Private net IP
+        # Private net IP
+        Hostname 10.24.3.144
     Match host elements
-        Hostname xxx.xxx.xxx.xxx # Public net IP
+        # Public net IP
+        Hostname xxx.xxx.xxx.xxx
         Port 6000
 ```
 

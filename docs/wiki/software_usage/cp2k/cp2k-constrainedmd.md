@@ -8,12 +8,8 @@ comments: true
 
 ## 学习目标
 
-- 学习资料
-
 - CP2K Constrained MD 设置
-
-
-  
+- Potential of Mean Force 方法计算反应自由能
 
 ## 学习资料
 
@@ -23,7 +19,7 @@ Sun, JJ., Cheng, J. Solid-to-liquid phase transitions of sub-nanometer clusters 
 
 
 
-## CP2K DFT+U设置
+## CP2K Constrained MD 设置
 
 
 CP2K 提供了将施加 Constraint 过程中的拉格朗日乘子输出的能力，其统计平均即该反应坐标下的Potential of Mean Force (PMF)。
@@ -72,7 +68,6 @@ PMF对反应坐标积分即反应自由能。MLMD 可实现高精度长时间尺
 2.  缺省值为1，为防止输出过长的日志文件，请设置为一个大于总步数的值
 
 注意这里 `TARGET` 的单位是 a.u.，请把常用的单位（如 Å）转换为原子单位。
-```
 
 ## 附录：物理常数和单位换算
 
@@ -120,4 +115,3 @@ PMF对反应坐标积分即反应自由能。MLMD 可实现高精度长时间尺
  [a.u.] -> [1/cm] (wave numbers)                            2.19474631370540E+05
  [a.u./Bohr**2] -> [1/cm]                                   5.14048714338585E+03
 ```
-
