@@ -125,6 +125,7 @@ Host myserver # (1)!
     Port 7696 # (4)!
     IdentityFile ~/.ssh/id_rsa # (5)!
 ```
+
 1. nickname for your cluster
 2. replacement of username in ssh
 3. replace of cluster_ip in ssh
@@ -161,6 +162,7 @@ Host <hostnickname>
     ForwardX11 yes  # (1)!
     ForwardX11Trusted yes # (2)!
 ```
+
 1. equivalent to `-X`
 2. equivalent to `-Y` (This option valid only if your ForwardX11 is set to yes!)
 
@@ -221,6 +223,7 @@ Host myserver # (1)!
     Hostname 123.45.67.89 # (3)!
     LocalForward 9999 localhost:8888 # (4)!
 ```
+
 1. 为你的服务器取一个任意的昵称
 2. 请修改为真实的用户名
 3. 请修改为真实的IP
@@ -234,6 +237,7 @@ Host myserver # (1)!
 Host * # (1)!
     ForwardX11Trusted yes
 ```
+
 1. 对任意配置生效
 
 ## 一份示例配置文件（config）
