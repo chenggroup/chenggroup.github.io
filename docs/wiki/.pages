@@ -6,6 +6,7 @@ nav:
     - "合作协同": teamwork
     - "软件使用": software_usage
     - "软件安装": software_installation
+    - "软件开发": software_development
     - "研究技能": skills
     - "疑难解答": faqs
     - "隐患排查": question_under_carpet
