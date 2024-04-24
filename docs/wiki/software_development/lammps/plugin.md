@@ -32,12 +32,10 @@ comments: true
 
 编译后可以得到多个动态库文件`.so`。可以通过两种方式调用插件：
 
-1. 在lammps的input中，通过`plugin load`命令加载插件，即可使用插件中的功能。
-    
+1. 在lammps的input中，通过`plugin load`命令加载插件，即可使用插件中的功能。  
     ```bash
     plugin load morse2plugin.so
     ```
-
 2. 将动态库所在路径加入`LAMMPS_PLUGIN_PATH`，程序会自动加载搜索到的所有插件。
 
 注意：如果移动`examples/plugins`中例子所在路径，需要修改编译设置。如果采用`make`编译，需要修改`Makefile`中的`CXXFLAGS`
