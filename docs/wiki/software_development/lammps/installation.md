@@ -5,7 +5,9 @@ authors:
 comments: true
 ---
 
-# Zeus 集群
+# 在集群安装LAMMPS
+
+## Zeus 集群
 
 ```bash
 # Load the necessary modules
@@ -38,7 +40,7 @@ make install
 
 对于个人用户，可以将可执行文件所在路径（如`/data/jxzhu/apps/lammps/lammps-23Jun2022/build`）写入某个虚拟环境的环境变量，以实现版本控制。
 
-# IKKEM 集群
+## IKKEM 集群
 
 ```bash
 module load intel/2021.1

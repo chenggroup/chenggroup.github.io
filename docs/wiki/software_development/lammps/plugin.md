@@ -5,6 +5,8 @@ authors:
 comments: true
 ---
 
+# 基于插件模式开发LAMMPS
+
 - 插件功能介绍：[LAMMPS Plugin](https://docs.lammps.org/plugin.html)
 - 插件开发指南：[LAMMPS Plugin Developer Guide](https://docs.lammps.org/Developer_plugins.html)
 
