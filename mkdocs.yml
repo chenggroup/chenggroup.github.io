@@ -42,6 +42,7 @@ plugins:
             合作协同: Teamwork
             软件安装: Software Installation
             软件使用: Software Usage
+            软件开发: Software Development
             研究技能: Research Skills
             疑难解答: Troubleshooting
             未完待续: To be continued
@@ -221,6 +222,12 @@ nav:
               - wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc.md
               - wiki/software_installation/deepmd-kit/deepmd-kit_installation_51.md
           - wiki/software_installation/cp2k-7.1.md
+      - 软件开发:
+          - wiki/teamwork/git_usage.md
+          - Lammps:
+              - wiki/software_development/lammps/quick_start.md
+              - wiki/software_development/lammps/installation.md
+              - wiki/software_development/lammps/plugin.md
       - 研究技能:
           - wiki/skills/research_skill.md
           - wiki/skills/QS4writing.md

@@ -1,6 +1,0 @@
-nav:
-    - ... | index*.md
-    - "Wikis": wiki
-    - ai2-kit: https://wiki.cheng-group.net/ai2-kit/
-    - cp2kdata: https://robinzyb.github.io/cp2kdata/
-    - ECToolkits: https://robinzyb.github.io/ECToolkits/
