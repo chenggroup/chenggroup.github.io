@@ -1,0 +1,3697 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://wiki.cheng-group.net/wiki/software_usage/DeePMD-kit/">
+      
+      
+        <link rel="prev" href="../DP-GEN/">
+      
+      
+        <link rel="next" href="../experience_of_dpmd_and_dpgen/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>DeePMD-kit 使用入门 - XMU Chenggroup Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#deepmd-kit-2x" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="XMU Chenggroup Wiki" class="md-header__button md-logo" aria-label="XMU Chenggroup Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9V320c0 28.4-10.8 57.7-22.3 80.8-6.5 13-13.9 25.8-22.5 37.6-3.2 4.3-4.1 9.9-2.3 15s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7.3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7-3.2-14.2-7.5-28.7-13.5-42v-24.6c0-30.2 10.2-58.7 27.9-81.5 12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5.8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1l280.6-101c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1c-7.6-2.7-15.6-4.1-23.7-4.1zM128 408c0 35.3 86 72 192 72s192-36.7 192-72l-15.3-145.4L354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6l-142.2-51.4L128 408z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XMU Chenggroup Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              DeePMD-kit 使用入门
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="切换至浅色模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换至浅色模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="切换至深色模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换至深色模式" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="切换至自动模式"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="切换至自动模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../en/wiki/software_usage/DeePMD-kit/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/chenggroup/chenggroup.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    chenggroup/chenggroup.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="XMU Chenggroup Wiki" class="md-nav__button md-logo" aria-label="XMU Chenggroup Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9V320c0 28.4-10.8 57.7-22.3 80.8-6.5 13-13.9 25.8-22.5 37.6-3.2 4.3-4.1 9.9-2.3 15s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7.3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7-3.2-14.2-7.5-28.7-13.5-42v-24.6c0-30.2 10.2-58.7 27.9-81.5 12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5.8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1l280.6-101c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1c-7.6-2.7-15.6-4.1-23.7-4.1zM128 408c0 35.3 86 72 192 72s192-36.7 192-72l-15.3-145.4L354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6l-142.2-51.4L128 408z"/></svg>
+
+    </a>
+    XMU Chenggroup Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/chenggroup/chenggroup.github.io" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    chenggroup/chenggroup.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Wikis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wikis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to_edit/howtodo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    开始编辑
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    集群使用
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            集群使用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/cluster_usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算集群使用说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/ssh_note/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH 与 SCP 使用入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/gpu_usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用集群上的 GPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/conda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anaconda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/jupyter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter 系列使用指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/vscode_remote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在非登陆节点上使用VSCode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/notification_for_hpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算任务的推送
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/pack_backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文件整理与备份攻略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/tensorboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集群 TensorBoard 使用指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    新生培训
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            新生培训
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/toc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    导览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux快速基础入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/read_papers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何阅读文献
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/presentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何进行展示/Presentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/python_numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python 和 Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/qc_dft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    量子化学与密度泛函理论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/basis_pps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    密度泛函近似，基组与赝势
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/dpmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习: 理论与DeePMD-kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/dpgen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深度势能生成器: DP-GEN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自动化计算与工作流: AiiDA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book_recommendation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    书籍推荐
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    合作协同
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            合作协同
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teamwork/archive_rules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何整理项目文件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teamwork/git_usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teamwork/tutorial_rules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何组织培训
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    软件使用
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            软件使用
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../default_version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    软件默认版本推荐
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../MDAnalysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MDAnalysis 软件包的使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Tips_for_LaTeX/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips for paper writing with LaTeX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_4" id="__nav_2_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CP2K
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            CP2K
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-e-f/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:能量与力的计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-geoopt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:结构和晶胞优化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-zpe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:ZPE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-neb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:NEB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-reftraj/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:REFTRAJ根据已有MD轨迹计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-dft%2Bu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:DFT+U
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-hf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:杂化泛函
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-scan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:SCAN泛函
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-slab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:Slab计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-deepmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:DeePMD-kit插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k/cp2k-constrainedmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:ConstrainedMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DP-GEN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DP-GEN使用入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    DeePMD-kit 使用入门
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    DeePMD-kit 使用入门
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一次尝试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一次尝试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行第一次机器学习
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      浏览输出文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用进阶
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用进阶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      准备训练数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      设置你的输入文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      开始你的训练
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      重启你的训练
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#md" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用生成的势能函数进行分子动力学(MD)模拟
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production" class="md-nav__link">
+    <span class="md-ellipsis">
+      利用压缩模型进行产出(Production)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利用压缩模型进行产出(Production)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      压缩模型与原始模型对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trouble-shooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trouble Shooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trouble Shooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warning-loc-idx-out-of-lower-bound" class="md-nav__link">
+    <span class="md-ellipsis">
+      warning: loc idx out of lower bound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valueerror-nodedef-missing-attr-t-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      ValueError: NodeDef missing attr 'T' from ...
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extra Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extra Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-for-convertion-from-cp2k-xyz-to-numpy-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Script for convertion from cp2k xyz to numpy set
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deepmd-kit-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      升级到DeePMD-kit 2.0
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="升级到DeePMD-kit 2.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../experience_of_dpmd_and_dpgen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPMD和DPGEN使用经验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../i-pi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I pi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../n2p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    n2p2 Usage Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vmd 使用说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    软件安装
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            软件安装
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/softwares/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guidances for installation of codes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/install_from_src_in_conda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    虚拟环境下源码安装教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/gcc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GCC 安装教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_4" id="__nav_2_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DeePMD-kit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            DeePMD-kit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/deepmd-kit/deepmd-kit_installation_new/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepMD-kit安装最佳实践
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/deepmd-kit/deepmd-kit_installation_ikkem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeePMD-kit安装实战：嘉庚超算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/deepmd-kit/deepmd-kit_installation_191/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepMD-kit快速安装
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/deepmd-kit/deepmd-kit_installation_pc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeePMD-kit安装实战：PC篇
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/deepmd-kit/deepmd-kit_installation_51/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepMD-kit安装：旧版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_installation/cp2k-7.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K 7.1 安装教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    软件开发
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            软件开发
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teamwork/git_usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git 基本使用教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_2" id="__nav_2_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lammps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lammps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_development/lammps/quick_start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAMMPS开发准备
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_development/lammps/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在集群安装LAMMPS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_development/lammps/plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于插件模式开发LAMMPS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    研究技能
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            研究技能
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/research_skill/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    研究技能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/QS4writing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quick Start for Paper Writing（科研写作急速上手）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    疑难解答
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            疑难解答
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/chenggroup/chenggroup.github.io/issues/123" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    未完待续
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    隐患排查
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            隐患排查
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../question_under_carpet/chemical_computing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算化学踩坑合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/chenggroup/chenggroup.github.io/issues/131" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    未完待续
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    杂项(Miscellaneous)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://wiki.cheng-group.net/ai2-kit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ai2-kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://robinzyb.github.io/cp2kdata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cp2kdata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://robinzyb.github.io/ECToolkits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECToolkits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      简介
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      第一次尝试
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="第一次尝试">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      运行第一次机器学习
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      浏览输出文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用进阶
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用进阶">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      准备训练数据
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      设置你的输入文件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      开始你的训练
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      重启你的训练
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#md" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用生成的势能函数进行分子动力学(MD)模拟
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production" class="md-nav__link">
+    <span class="md-ellipsis">
+      利用压缩模型进行产出(Production)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="利用压缩模型进行产出(Production)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      压缩模型与原始模型对比
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#trouble-shooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trouble Shooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trouble Shooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#warning-loc-idx-out-of-lower-bound" class="md-nav__link">
+    <span class="md-ellipsis">
+      warning: loc idx out of lower bound
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#valueerror-nodedef-missing-attr-t-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      ValueError: NodeDef missing attr 'T' from ...
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extra-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extra Support
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Extra Support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#script-for-convertion-from-cp2k-xyz-to-numpy-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      Script for convertion from cp2k xyz to numpy set
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deepmd-kit-20" class="md-nav__link">
+    <span class="md-ellipsis">
+      升级到DeePMD-kit 2.0
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="升级到DeePMD-kit 2.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      输入文件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="deepmd-kit-2x">DeePMD-kit 2.x 使用入门<a class="headerlink" href="#deepmd-kit-2x" title="Permanent link">&para;</a></h1>
+<h2 id="_1">简介<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>DeePMD-kit是一个训练神经网络势能(Machine Learning Potential)的代码包。该包主要由张林峰（普林斯顿大学），王涵（北京应用物理与计算数学研究所）开发。黄剑兴和庄永斌曾经短时间参与开发。如有问题，可以向他们询问。</p>
+<div class="admonition danger none">
+<p class="admonition-title">Danger</p>
+<p>我们已经舍弃了1.x版本的教程。</p>
+</div>
+<p>以下为参考信息:</p>
+<ul>
+<li><a href="http://www.deepmd.org">官网</a></li>
+<li><a href="https://deepmd.readthedocs.io/en/latest/index.html">官方文档</a></li>
+<li>安装方法:  <a href="../../software_installation/softwares/#deepmd-installation-guide">Installation Guide</a></li>
+</ul>
+<div class="admonition warning none">
+<p class="admonition-title">Warning</p>
+<p>此页面仅限提供贡献者对于该软件的理解，如有任何问题请联系贡献者</p>
+</div>
+<h2 id="_2">第一次尝试<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<h3 id="_3">运行第一次机器学习<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>如果你正在使用 Zeus 集群，请使用 <code>slurm</code> 脚本来提交 DeePMD-kit 任务。</p>
+<p>请从 Github 下载 DeePMD-kit 的代码，我们将会使用里面的水模型做为例子。</p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/deepmodeling/deepmd-kit.git
+</code></pre></div>
+<p>首先进入含有水模型的例子的目录</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>&lt;deepmd<span class="w"> </span>repositoy&gt;/examples/water/se_e2_a/
+</code></pre></div>
+<p>你会看到<code>input.json</code>文件，这是DeePMD-kit使用的输入文件。现在复制<code>/data/share/base/script/deepmd.lsf</code>到当前文件夹，并且修改它。</p>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>/data/share/base/script/deepmd.lsf<span class="w"> </span>./
+vim<span class="w"> </span>deepmd.lsf
+</code></pre></div>
+<div class="admonition warning none">
+<p class="admonition-title">Warning</p>
+<p>如果调用的是1.0的版本，需要在learning_rate下加入decay_rate关键词，一般设为0.95.</p>
+</div>
+<p>你现在仅需要修改 <code>slurm</code> 脚本中的输入文件名称即可。把脚本中的<code>input.json</code>替换成<code>water_se_a.json</code>。</p>
+<div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
+
+<span class="c1">#BSUB -q gpu</span>
+<span class="c1">#BSUB -W 24:00</span>
+<span class="c1">#BSUB -J train</span>
+<span class="c1">#BSUB -o %J.stdout</span>
+<span class="c1">#BSUB -e %J.stderr</span>
+<span class="c1">#BSUB -n 8</span>
+<span class="c1">#BSUB -R &quot;span[ptile=8]&quot;</span>
+<span class="c1"># ============================================</span>
+<span class="c1"># modify the number of cores to use</span>
+<span class="c1"># according to the number of GPU you select</span>
+<span class="c1"># for example, 8 cores for one GPU card</span>
+<span class="c1"># while there are 32 cores in total</span>
+<span class="c1"># ============================================</span>
+
+<span class="c1"># add modulefiles</span>
+module<span class="w"> </span>add<span class="w"> </span>deepmd/2.2.7
+
+<span class="c1"># automatic select the gpu</span>
+<span class="nb">source</span><span class="w"> </span>/data/share/base/script/find_gpu.sh
+
+dp<span class="w"> </span>train<span class="w"> </span>input.json<span class="w"> </span>-l<span class="w"> </span>train.log
+</code></pre></div>
+<p>使用如下命令提交任务：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#submit your job</span>
+bsub<span class="w"> </span>&lt;<span class="w"> </span>deepmd.lsf
+<span class="c1">#check your job by</span>
+bjobs<span class="w"> </span>
+</code></pre></div>
+<p>当任务执行中，当前目录会生成以下文件：</p>
+<ul>
+<li><code>train.log</code>: 训练的记录文件</li>
+<li><code>lcurve.out</code>: 机器学习的学习曲线</li>
+<li><code>model.ckpt.data-00000-of-00001</code>, <code>model.ckpt.index</code>, <code>checkpoint</code>, <code>model.ckpt.meta</code>: 以上三个为训练存档点</li>
+</ul>
+<p>非常好！已经成功开始第一次机器学习训练了！</p>
+<h3 id="_4">浏览输出文件<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>使用 <code>less</code> 命令来浏览输出文件</p>
+<div class="highlight"><pre><span></span><code>less<span class="w"> </span>train.log
+</code></pre></div>
+<p>你将会看到如下内容</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># DEEPMD: initialize model from scratch</span>
+<span class="c1"># DEEPMD: start training at lr 1.00e-03 (== 1.00e-03), final lr will be 3.51e-08</span>
+<span class="m">2019</span>-12-07<span class="w"> </span><span class="m">00</span>:03:49.659876:<span class="w"> </span>I<span class="w"> </span>tensorflow/stream_executor/platform/default/dso_loader.cc:42<span class="o">]</span><span class="w"> </span>Successfully<span class="w"> </span>opened<span class="w"> </span>dynamic<span class="w"> </span>library<span class="w"> </span>libcublas.so.10.0
+<span class="c1"># DEEPMD: batch     100 training time 5.95 s, testing time 0.18 s</span>
+<span class="c1"># DEEPMD: batch     200 training time 4.58 s, testing time 0.20 s</span>
+<span class="c1"># DEEPMD: batch     300 training time 4.56 s, testing time 0.14 s</span>
+<span class="c1"># DEEPMD: batch     400 training time 4.49 s, testing time 0.13 s</span>
+<span class="c1"># DEEPMD: batch     500 training time 4.60 s, testing time 0.14 s</span>
+<span class="c1"># DEEPMD: batch     600 training time 4.61 s, testing time 0.15 s</span>
+<span class="c1"># DEEPMD: batch     700 training time 4.43 s, testing time 0.18 s</span>
+<span class="c1"># DEEPMD: batch     800 training time 4.59 s, testing time 0.13 s</span>
+<span class="c1"># DEEPMD: batch     900 training time 4.41 s, testing time 0.17 s</span>
+<span class="c1"># DEEPMD: batch    1000 training time 4.66 s, testing time 0.11 s</span>
+<span class="c1"># DEEPMD: saved checkpoint model.ckpt</span>
+<span class="c1"># DEEPMD: batch    1100 training time 4.45 s, testing time 0.15 s</span>
+<span class="c1"># DEEPMD: batch    1200 training time 4.37 s, testing time 0.14 s</span>
+</code></pre></div>
+<p>在<code>batch</code>后面的数字表明程序已经放入了多少数据进行训练。这个数字的显示间隔，即100，是在输入文件的<code>"disp_freq":  100</code> 设置的。</p>
+<p>现在来看看你的学习曲线 <code>lcurve.out</code></p>
+<div class="highlight"><pre><span></span><code>less<span class="w"> </span>lcurve.out
+</code></pre></div>
+<p>你将会看到：</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#  step      rmse_val    rmse_trn    rmse_e_val  rmse_e_trn    rmse_f_val  rmse_f_trn         lr</span>
+<span class="w">      </span><span class="m">0</span><span class="w">      </span><span class="m">1</span>.69e+01<span class="w">    </span><span class="m">1</span>.58e+01<span class="w">      </span><span class="m">1</span>.52e+00<span class="w">    </span><span class="m">5</span>.69e-01<span class="w">      </span><span class="m">5</span>.35e-01<span class="w">    </span><span class="m">5</span>.00e-01<span class="w">    </span><span class="m">1</span>.0e-03
+<span class="w">   </span><span class="m">1000</span><span class="w">      </span><span class="m">4</span>.74e+00<span class="w">    </span><span class="m">4</span>.68e+00<span class="w">      </span><span class="m">3</span>.88e-02<span class="w">    </span><span class="m">4</span>.02e-01<span class="w">      </span><span class="m">1</span>.50e-01<span class="w">    </span><span class="m">1</span>.48e-01<span class="w">    </span><span class="m">1</span>.0e-03
+<span class="w">   </span><span class="m">2000</span><span class="w">      </span><span class="m">5</span>.06e+00<span class="w">    </span><span class="m">3</span>.93e+00<span class="w">      </span><span class="m">1</span>.86e-01<span class="w">    </span><span class="m">1</span>.54e-01<span class="w">      </span><span class="m">1</span>.60e-01<span class="w">    </span><span class="m">1</span>.24e-01<span class="w">    </span><span class="m">1</span>.0e-03
+<span class="w">   </span><span class="m">3000</span><span class="w">      </span><span class="m">4</span>.73e+00<span class="w">    </span><span class="m">4</span>.34e+00<span class="w">      </span><span class="m">9</span>.08e-02<span class="w">    </span><span class="m">3</span>.90e-01<span class="w">      </span><span class="m">1</span>.49e-01<span class="w">    </span><span class="m">1</span>.37e-01<span class="w">    </span><span class="m">1</span>.0e-03
+<span class="w">   </span><span class="m">4000</span><span class="w">      </span><span class="m">4</span>.65e+00<span class="w">    </span><span class="m">6</span>.09e+00<span class="w">      </span><span class="m">2</span>.24e-01<span class="w">    </span><span class="m">1</span>.92e-01<span class="w">      </span><span class="m">1</span>.47e-01<span class="w">    </span><span class="m">1</span>.93e-01<span class="w">    </span><span class="m">1</span>.0e-03
+<span class="w">   </span><span class="m">5000</span><span class="w">      </span><span class="m">3</span>.84e+00<span class="w">    </span><span class="m">3</span>.25e+00<span class="w">      </span><span class="m">5</span>.26e-02<span class="w">    </span><span class="m">2</span>.40e-02<span class="w">      </span><span class="m">1</span>.25e-01<span class="w">    </span><span class="m">1</span>.06e-01<span class="w">    </span><span class="m">9</span>.4e-04
+<span class="w">   </span><span class="m">6000</span><span class="w">      </span><span class="m">4</span>.17e+00<span class="w">    </span><span class="m">2</span>.78e+00<span class="w">      </span><span class="m">6</span>.35e-02<span class="w">    </span><span class="m">3</span>.89e-02<span class="w">      </span><span class="m">1</span>.36e-01<span class="w">    </span><span class="m">9</span>.03e-02<span class="w">    </span><span class="m">9</span>.4e-04
+<span class="w">   </span><span class="m">7000</span><span class="w">      </span><span class="m">3</span>.24e+00<span class="w">    </span><span class="m">3</span>.00e+00<span class="w">      </span><span class="m">5</span>.55e-02<span class="w">    </span><span class="m">8</span>.58e-03<span class="w">      </span><span class="m">1</span>.05e-01<span class="w">    </span><span class="m">9</span>.76e-02<span class="w">    </span><span class="m">9</span>.4e-04
+<span class="w">   </span><span class="m">8000</span><span class="w">      </span><span class="m">2</span>.97e+00<span class="w">    </span><span class="m">2</span>.83e+00<span class="w">      </span><span class="m">2</span>.97e-02<span class="w">    </span><span class="m">2</span>.46e-02<span class="w">      </span><span class="m">9</span>.68e-02<span class="w">    </span><span class="m">9</span>.22e-02<span class="w">    </span><span class="m">9</span>.4e-04
+<span class="w">   </span><span class="m">9000</span><span class="w">      </span><span class="m">1</span>.01e+01<span class="w">    </span><span class="m">6</span>.92e+00<span class="w">      </span><span class="m">1</span>.36e-01<span class="w">    </span><span class="m">1</span>.89e-01<span class="w">      </span><span class="m">3</span>.28e-01<span class="w">    </span><span class="m">2</span>.25e-01<span class="w">    </span><span class="m">9</span>.4e-04
+<span class="w">  </span><span class="m">10000</span><span class="w">      </span><span class="m">3</span>.73e+00<span class="w">    </span><span class="m">3</span>.39e+00<span class="w">      </span><span class="m">4</span>.38e-02<span class="w">    </span><span class="m">3</span>.23e-02<span class="w">      </span><span class="m">1</span>.25e-01<span class="w">    </span><span class="m">1</span>.14e-01<span class="w">    </span><span class="m">8</span>.9e-04
+<span class="w">  </span><span class="m">11000</span><span class="w">      </span><span class="m">3</span>.51e+00<span class="w">    </span><span class="m">2</span>.76e+00<span class="w">      </span><span class="m">1</span>.31e-01<span class="w">    </span><span class="m">3</span>.47e-01<span class="w">      </span><span class="m">1</span>.17e-01<span class="w">    </span><span class="m">8</span>.98e-02<span class="w">    </span><span class="m">8</span>.9e-04
+<span class="w">  </span><span class="m">12000</span><span class="w">      </span><span class="m">2</span>.59e+00<span class="w">    </span><span class="m">2</span>.89e+00<span class="w">      </span><span class="m">1</span>.35e-01<span class="w">    </span><span class="m">1</span>.18e-01<span class="w">      </span><span class="m">8</span>.57e-02<span class="w">    </span><span class="m">9</span>.65e-02<span class="w">    </span><span class="m">8</span>.9e-04
+<span class="w">  </span><span class="m">13000</span><span class="w">      </span><span class="m">5</span>.65e+00<span class="w">    </span><span class="m">4</span>.68e+00<span class="w">      </span><span class="m">3</span>.08e-01<span class="w">    </span><span class="m">3</span>.28e-01<span class="w">      </span><span class="m">1</span>.88e-01<span class="w">    </span><span class="m">1</span>.55e-01<span class="w">    </span><span class="m">8</span>.9e-04
+</code></pre></div>
+<p>这些数字展示了当前机器学习模型对于数据预测的误差有多大。 <code>rmse_e_trn</code> 意味着在测试集上使用机器学习模型预测的能量误差会有多大。 <code>rmse_e_val</code> 意味着在训练集上使用机器学习模型预测的能量误差会有多大。 <code>rmse_f_tst</code> and <code>rmse_f_trn</code> 表示相同意义，不过是对于力的预测. 你可以使用<code>Matplotlib</code> Python包进行作图。</p>
+<h2 id="_5">使用进阶<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">准备训练数据<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>前半部分仅仅是让你运行DeePMD-kit进行训练。为了训练一个针对你的体系的模型，你需要自己来准备数据。这些数据都是第一性原理计算得到的数据。这些数据可以是单点能计算得到的数据，或者是分子动力学模拟得到的数据。作为数据集需要的数据有：</p>
+<ul>
+<li>体系的结构文件：<code>coord.npy</code></li>
+<li>体系的结构文件对应的元素标记：<code>type.raw</code></li>
+<li>体系的结构文件对应的能量：<code>energy.npy</code></li>
+<li>体系的结构文件对应的力：<code>force.npy</code></li>
+<li>体系的结构文件对应的晶胞大小，如果是非周期性体系，请在训练文件里准备一个超大周期边界条件：<code>box.npy</code></li>
+</ul>
+<p>代码块里的文件名为DeePMD-kit使用的命名。<code>npy</code>后缀为Python的numpy代码包生成的文件，请在此之前学习numpy。如果你使用<code>cp2k</code>得到数据，你会有 <code>*pos-1.xyz</code> 和 <code>*frc-1.xyz</code> 文件。你可以使用<a href="#extra-support">帮助</a>的脚本转化成DeePMD-kit的数据集格式。</p>
+<p>现在我们来看看DeePMD-kit的训练数据格式。之前我们训练的水模型的数据集储存在 <code>&lt;deepmd repository&gt;/examples/water/data/data_0</code>. 让我们来看看数据集的目录结构：</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># directory structre for training data</span>
+.
+├──<span class="w"> </span>data_0
+│<span class="w">   </span>├──<span class="w"> </span>set.000
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>box.npy
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>coord.npy
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>energy.npy
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>force.npy
+│<span class="w">   </span>├──<span class="w"> </span>type.raw
+│<span class="w">   </span>└──<span class="w"> </span>type_map.raw
+├──<span class="w"> </span>data_1
+│<span class="w">   </span>├──<span class="w"> </span>set.000
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>box.npy
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>coord.npy
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>energy.npy
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>force.npy
+│<span class="w">   </span>├──<span class="w"> </span>set.001
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>box.npy
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>coord.npy
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>energy.npy
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>force.npy
+│<span class="w">   </span>├──<span class="w"> </span>type.raw
+│<span class="w">   </span>└──<span class="w"> </span>type_map.raw
+├──<span class="w"> </span>data_2
+│<span class="w">   </span>├──<span class="w"> </span>set.000
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>box.npy
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>coord.npy
+│<span class="w">   </span>│<span class="w">   </span>├──<span class="w"> </span>energy.npy
+│<span class="w">   </span>│<span class="w">   </span>└──<span class="w"> </span>force.npy
+│<span class="w">   </span>├──<span class="w"> </span>type.raw
+│<span class="w">   </span>└──<span class="w"> </span>type_map.raw
+└──<span class="w"> </span>data_3
+<span class="w">    </span>├──<span class="w"> </span>set.000
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>box.npy
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>coord.npy
+<span class="w">    </span>│<span class="w">   </span>├──<span class="w"> </span>energy.npy
+<span class="w">    </span>│<span class="w">   </span>└──<span class="w"> </span>force.npy
+<span class="w">    </span>├──<span class="w"> </span>type.raw
+<span class="w">    </span>└──<span class="w"> </span>type_map.raw
+</code></pre></div>
+<p>显然，我们会看到<code>type.raw</code>文件和一堆以<code>set</code>开头的目录。<code>type.raw</code>文件记录了体系的元素信息。如果你打开你会发现它仅仅记录了一堆数字。这些数字对应着你在<code>water_se_a.json</code>中<code>"type_map":["O","H"]</code>的信息。此时<code>0</code>代表<code>O</code>,<code>1</code>代表<code>H</code>。对应着<code>["O","H"]</code>中的位置，其中第一位为0。</p>
+<div class="highlight"><pre><span></span><code><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<p><code>box.npy</code>, <code>coord.npy</code>, <code>energy.npy</code> 和 <code>force.npy</code> 储存的信息在上文已经说过。唯一需要注意的是这些文件都储存着一个超大的矩阵。如果我们有Y个结构，每个结构有X个原子。<code>box.npy</code>, <code>coord.npy</code>, <code>energy.npy</code> 和 <code>force.npy</code> 对应的矩阵形状分别是 (Y, 9), (Y, X*3), (Y, 1), (Y, X*3)。</p>
+<h3 id="_7">设置你的输入文件<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>输入文件是<code>json</code>文件。你可以使用之前我们的<code>json</code>文件进行细微改动就投入到自己体系的训练中。这些需要修改的关键词如下：</p>
+<ul>
+<li><code>type": "se_a"</code>: 设置描述符（descriptor）类型。一般使用<code>se_a</code>。</li>
+<li><code>"sel": [46, 92]</code>: 设置每个原子的截断半径内所拥有的最大原子数。注意这里的两个数字46，92分别对应的是<code>O</code>原子和<code>H</code>原子。与你在<code>type_map</code>里设置的元素类型是相对应的。</li>
+</ul>
+<p><div class="highlight"><pre><span></span><code><span class="nt">&quot;descriptor&quot;</span><span class="w"> </span><span class="p">:{</span>
+<span class="w">         </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w">     </span><span class="s2">&quot;se_a&quot;</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;sel&quot;</span><span class="p">:</span><span class="w">      </span><span class="p">[</span><span class="mi">46</span><span class="p">,</span><span class="w"> </span><span class="mi">92</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;rcut_smth&quot;</span><span class="p">:</span><span class="w">    </span><span class="mf">0.50</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;rcut&quot;</span><span class="p">:</span><span class="w">     </span><span class="mf">6.00</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;neuron&quot;</span><span class="p">:</span><span class="w">       </span><span class="p">[</span><span class="mi">25</span><span class="p">,</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span><span class="w"> </span><span class="mi">100</span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;resnet_dt&quot;</span><span class="p">:</span><span class="w">    </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;axis_neuron&quot;</span><span class="p">:</span><span class="w">  </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w">     </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">         </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w">     </span><span class="s2">&quot; that&#39;s all&quot;</span>
+<span class="w">     </span><span class="p">},</span>
+</code></pre></div>
+在"training"的"training_data"下
+- <code>"systems":  ["../data/data_0/", "../data/data_1/", "../data/data_2/"]</code>: 设置包含训练数据的目录。
+- <code>"batch_size": auto</code>, 这个会根据体系原子数进行分配，不过我们自己通常设置为1，因为体系原子数有400-800个左右。</p>
+<p><div class="highlight"><pre><span></span><code><span class="w">    </span><span class="nt">&quot;training_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;systems&quot;</span><span class="p">:</span><span class="w">      </span><span class="p">[</span><span class="s2">&quot;../data/data_0/&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;../data/data_1/&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;../data/data_2/&quot;</span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;batch_size&quot;</span><span class="p">:</span><span class="w">   </span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w">     </span><span class="s2">&quot;that&#39;s all&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+</code></pre></div>
+在"training"的"validation_data"下
+- <code>"systems":  ["../data/data_3"]</code>: 设置包含测试数据的目录。
+- <code>"batch_size": 1</code>, 这个会根据体系原子数进行分配，不过我们自己通常设置为1，因为体系原子数有400-800个左右。
+- <code>"numb_btch": 3</code> , 每次迭代中，测试的结构数量为<code>batch_size</code>乘以<code>numb_btch</code>。
+- 更多参数说明，请参考官方文档：<a href="https://deepmd.readthedocs.io/en/latest/train-input.html">https://deepmd.readthedocs.io/en/latest/train-input.html</a></p>
+<div class="admonition warning none">
+<p class="admonition-title">Warning</p>
+<p>记住在集群上训练，请使用lsf脚本。</p>
+</div>
+<h3 id="_8">开始你的训练<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>使用如下命令开始:</p>
+<div class="highlight"><pre><span></span><code>dp<span class="w"> </span>train<span class="w"> </span>input.json
+</code></pre></div>
+<div class="admonition warning none">
+<p class="admonition-title">Warning</p>
+<p>记住在集群上训练，请使用 Slurm 脚本。</p>
+</div>
+<h3 id="_9">重启你的训练<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>使用以下命令重启:</p>
+<div class="highlight"><pre><span></span><code>dp<span class="w"> </span>train<span class="w"> </span>input.json<span class="w"> </span>--restart<span class="w"> </span>model.ckpt
+</code></pre></div>
+<div class="admonition warning none">
+<p class="admonition-title">Warning</p>
+<p>记住在集群上训练，请使用 Slurm 脚本。</p>
+</div>
+<h2 id="md">使用生成的势能函数进行分子动力学(MD)模拟<a class="headerlink" href="#md" title="Permanent link">&para;</a></h2>
+<p>当我们完成训练之后，我们需要根据节点文件(<code>model.ckpt*</code>)冻结(Freeze)出一个模型来。</p>
+<p>利用如下命令，可以冻结模型：</p>
+<div class="highlight"><pre><span></span><code>dp<span class="w"> </span>freeze
+</code></pre></div>
+<p>你将会得到一个<code>*.pb</code>文件。利用此文件可以使用<code>LAMMPS</code>, <code>ASE</code>, <code>CP2K</code> 等软件进行分子动力学模拟。</p>
+<h2 id="production">利用压缩模型进行产出(Production)<a class="headerlink" href="#production" title="Permanent link">&para;</a></h2>
+<p>机器学习势能<code>*.pb</code>文件进行MD模拟虽然已经非常迅速了。但是还有提升的空间。首先我们需要用2.0以上版本的deepmd进行训练势能函数，并得到<code>*.pb</code>文件。利用1.2/1.3版本的deepmd训练得到势能函数也不用担心，可以利用以下命令对旧版本的势能函数进行转换。例如想要从1.2转换的话：</p>
+<div class="highlight"><pre><span></span><code>dp<span class="w"> </span>convert-from<span class="w"> </span><span class="m">1</span>.2<span class="w"> </span>-i<span class="w"> </span>old_frozen_model.pb<span class="w"> </span>-o<span class="w"> </span>new_frozen_model.pb
+</code></pre></div>
+<div class="admonition info">
+<p class="admonition-title">关于兼容性的说明</p>
+<p>关于目前势函数的兼容性，请参考<a href="https://docs.deepmodeling.com/projects/deepmd/en/master/troubleshooting/model-compatability.html">官方文档</a>。
+目前DeePMD-kit支持从 v0.12, v1.0, v1.1, v1.2, v1.3 版本到新版本的转换。</p>
+</div>
+<p>建议将原训练文件夹备份后复制，我们利用如下命令进行压缩（文件夹下应该含有对应的<code>input.json</code>文件和checkpoint文件）：</p>
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>deepmd/2.0-cuda11.3
+dp<span class="w"> </span>compress<span class="w"> </span>-i<span class="w"> </span>normal-model.pb<span class="w"> </span>-o<span class="w"> </span>compressed-model.pb<span class="w"> </span>-l<span class="w"> </span>compress.log
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">适用范围</p>
+<p>注意模型压缩仅适用于部分模型，如 <code>se_e2_a</code>, <code>se_e3</code>, <code>se_e2_r</code> 和上述模型的 <code>Hybrid</code> 模型。</p>
+<p>若使用其他模型，如 <code>se_attn</code> 模型 (DPA-1)，模型压缩尚未被支持，可能会报错。</p>
+<p>另外请注意，压缩模型是通过使用 5 次多项式拟合 Embedding-net 从而换取性能提升，这一改动 <strong>几乎</strong> 不会对预测精度产生影响，但实际上部分牺牲了精度。
+因而使用时请务必注意观察默认参数是否适用于当前体系的情况，如是否出现误差漂移，并针对修改参数，如拟合时采用的步数 <code>--step</code>。</p>
+</div>
+<h3 id="_10">压缩模型与原始模型对比<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>测试2080Ti, 显存11G</p>
+<table>
+<thead>
+<tr>
+<th>体系</th>
+<th>原子数</th>
+<th>提速前 (ns/day)</th>
+<th>提速后(ns/day)</th>
+<th>提升倍率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LIGePS</td>
+<td>5000</td>
+<td>0.806</td>
+<td>3.569</td>
+<td>4.42</td>
+</tr>
+<tr>
+<td>SnO2/water interface</td>
+<td>6021</td>
+<td>0.059</td>
+<td>0.355</td>
+<td>6.01</td>
+</tr>
+<tr>
+<td>SnO2/water interface</td>
+<td>5352</td>
+<td>0.067</td>
+<td>0.382</td>
+<td>5.70</td>
+</tr>
+<tr>
+<td>SnO2/water interface</td>
+<td>2676</td>
+<td>0.132</td>
+<td>0.738</td>
+<td>5.59</td>
+</tr>
+<tr>
+<td>SnO2/water interface</td>
+<td>1338</td>
+<td>0.261</td>
+<td>1.367</td>
+<td>5.23</td>
+</tr>
+<tr>
+<td>SnO2/water interface</td>
+<td>669</td>
+<td>0.501</td>
+<td>2.236</td>
+<td>4.46</td>
+</tr>
+<tr>
+<td>LiGePS</td>
+<td>400</td>
+<td>7.461</td>
+<td>23.992</td>
+<td>3.21</td>
+</tr>
+<tr>
+<td>Cu13</td>
+<td>13</td>
+<td>51.268</td>
+<td>65.944</td>
+<td>1.28</td>
+</tr>
+</tbody>
+</table>
+<p>SnO2/water interface: 原始模型Maximum 6021 ——&gt; 压缩模型Maximum 54189个原子</p>
+<h2 id="trouble-shooting">Trouble Shooting<a class="headerlink" href="#trouble-shooting" title="Permanent link">&para;</a></h2>
+<h3 id="warning-loc-idx-out-of-lower-bound">warning: loc idx out of lower bound<a class="headerlink" href="#warning-loc-idx-out-of-lower-bound" title="Permanent link">&para;</a></h3>
+<p>Solution: https://github.com/deepmodeling/deepmd-kit/issues/21</p>
+<h3 id="valueerror-nodedef-missing-attr-t-from">ValueError: NodeDef missing attr 'T' from ...<a class="headerlink" href="#valueerror-nodedef-missing-attr-t-from" title="Permanent link">&para;</a></h3>
+<p>当一个模型使用 deepmd/1.2 训练，但是用更高版本的 deepmd-kit (&gt; v1.3) 进行 lammps 任务的时候经常会报这个错，例子：</p>
+<ul>
+<li><a href="https://github.com/deepmodeling/deepmd-kit/discussions/417">error: Not found: No attr named 'T' in NodeDef when running lammps</a></li>
+</ul>
+<p>但是，现在发现这个报错在压缩 v1.3 版本模型的时候也会出现。使用下列命令：</p>
+<div class="highlight"><pre><span></span><code>dp<span class="w"> </span>compress<span class="w"> </span><span class="si">${</span><span class="nv">input</span><span class="si">}</span><span class="w"> </span>--checkpoint-folder<span class="w"> </span><span class="si">${</span><span class="nv">ckpt</span><span class="si">}</span><span class="w"> </span><span class="m">1</span>.3-model.pb<span class="w"> </span>-o<span class="w"> </span>compressed-model.pb<span class="w"> </span>-l<span class="w"> </span>compress.log
+</code></pre></div>
+<p>其中<code>${input}</code>和<code>${ckpt}</code>分别是对应模型的输入脚本所在路径和检查点目录。在这个例子里，我们仅把需要压缩的模型复制到了工作文件夹下，输入脚本所在路径和检查点目录人工指认。至于为什么这样会报错 ‘ValueError’，目前还没有找到原因。</p>
+<p>因此，我们建议 <strong>备份之前的训练文件夹，在训练文件夹的一个 copy 下进行压缩任务</strong>。</p>
+<h2 id="extra-support">Extra Support<a class="headerlink" href="#extra-support" title="Permanent link">&para;</a></h2>
+<h3 id="script-for-convertion-from-cp2k-xyz-to-numpy-set">Script for convertion from cp2k xyz to numpy set<a class="headerlink" href="#script-for-convertion-from-cp2k-xyz-to-numpy-set" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">ase.io</span> <span class="kn">import</span> <span class="n">read</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">glob</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+
+
+<span class="c1">#############################</span>
+<span class="c1"># USER INPUT PARAMETER HERE #</span>
+<span class="c1">#############################</span>
+
+<span class="c1"># input data path here, string, this directory should contains</span>
+<span class="c1">#   ./data/*frc-1.xyz ./data/*pos-1.xyz</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;./data&quot;</span>
+
+<span class="c1">#input the number of atom in system</span>
+<span class="n">atom_num</span> <span class="o">=</span> <span class="mi">189</span>
+
+<span class="c1">#input cell paramter here</span>
+<span class="n">cell</span> <span class="o">=</span> <span class="p">[[</span><span class="mf">10.0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">,</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mf">10.0</span><span class="p">]]</span>
+
+<span class="c1"># conversion unit here, modify if you need</span>
+<span class="n">au2eV</span> <span class="o">=</span> <span class="mf">2.72113838565563E+01</span>
+<span class="n">au2A</span> <span class="o">=</span> <span class="mf">5.29177208590000E-01</span>
+
+
+<span class="c1">####################</span>
+<span class="c1"># START OF PROGRAM #</span>
+<span class="c1">####################</span>
+
+<span class="k">def</span> <span class="nf">xyz2npy</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">atom_num</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">unit_convertion</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">atom_num</span><span class="o">*</span><span class="mi">3</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">single_pos</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+        <span class="n">tmp</span><span class="o">=</span><span class="n">single_pos</span><span class="o">.</span><span class="n">get_positions</span><span class="p">()</span>
+        <span class="n">tmp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tmp</span><span class="p">,(</span><span class="mi">1</span><span class="p">,</span><span class="n">atom_num</span><span class="o">*</span><span class="mi">3</span><span class="p">))</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">total</span><span class="p">,</span><span class="n">tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">unit_convertion</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">total</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">energy2npy</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">unit_convertion</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+     <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">),</span> <span class="nb">float</span><span class="p">)</span>
+     <span class="k">for</span> <span class="n">single_pos</span> <span class="ow">in</span> <span class="n">pos</span><span class="p">:</span>
+         <span class="n">tmp</span><span class="o">=</span><span class="n">single_pos</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s1">&#39;E&#39;</span><span class="p">)</span>
+         <span class="n">tmp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+         <span class="n">tmp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">tmp</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+         <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">total</span><span class="p">,</span><span class="n">tmp</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+     <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">unit_convertion</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="n">total</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">cell2npy</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">output</span><span class="p">,</span> <span class="n">cell</span><span class="p">,</span> <span class="n">unit_convertion</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">empty</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">),</span><span class="nb">float</span><span class="p">)</span>
+    <span class="n">frame_num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s2">&quot;float&quot;</span><span class="p">)</span>
+    <span class="n">cell</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">9</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">frame_num</span><span class="p">):</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">total</span><span class="p">,</span><span class="n">cell</span><span class="p">),</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="n">total</span> <span class="o">*</span> <span class="n">unit_convertion</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">output</span><span class="p">,</span><span class="n">total</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">type_raw</span><span class="p">(</span><span class="n">single_pos</span><span class="p">,</span> <span class="n">output</span><span class="p">):</span>
+    <span class="n">element</span> <span class="o">=</span> <span class="n">single_pos</span><span class="o">.</span><span class="n">get_chemical_symbols</span><span class="p">()</span>
+    <span class="n">element</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+    <span class="n">tmp</span><span class="p">,</span> <span class="n">indice</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">element</span><span class="p">,</span> <span class="n">return_inverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="n">output</span><span class="p">,</span> <span class="n">indice</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%s</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">newline</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+
+
+<span class="c1"># read the pos and frc</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">data_path</span><span class="p">)</span>
+<span class="n">pos_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;*pos-1.xyz&quot;</span><span class="p">)</span>
+<span class="n">frc_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;*frc-1.xyz&quot;</span><span class="p">)</span>
+<span class="c1">#print(data_path)</span>
+<span class="n">pos_path</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pos_path</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">frc_path</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">frc_path</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="c1">#print(pos_path)</span>
+<span class="c1">#print(frc_path)</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">pos_path</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span> <span class="p">)</span>
+<span class="n">frc</span> <span class="o">=</span> <span class="n">read</span><span class="p">(</span><span class="n">frc_path</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="s2">&quot;:&quot;</span> <span class="p">)</span>
+
+<span class="c1"># numpy path</span>
+<span class="n">set_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;set.000&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">set_path</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;detect directory exists</span><span class="se">\n</span><span class="s2"> now remove it&quot;</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">rmtree</span><span class="p">(</span><span class="n">set_path</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">set_path</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;detect directory doesn&#39;t exist</span><span class="se">\n</span><span class="s2"> now create it&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">set_path</span><span class="p">)</span>
+<span class="n">type_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="s2">&quot;type.raw&quot;</span><span class="p">)</span>
+<span class="n">coord_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">set_path</span><span class="p">,</span> <span class="s2">&quot;coord.npy&quot;</span><span class="p">)</span>
+<span class="n">force_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">set_path</span><span class="p">,</span> <span class="s2">&quot;force.npy&quot;</span><span class="p">)</span>
+<span class="n">box_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">set_path</span><span class="p">,</span> <span class="s2">&quot;box.npy&quot;</span><span class="p">)</span>
+<span class="n">energy_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">set_path</span><span class="p">,</span> <span class="s2">&quot;energy.npy&quot;</span><span class="p">)</span>
+
+
+<span class="c1">#tranforrmation</span>
+<span class="n">xyz2npy</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">atom_num</span><span class="p">,</span> <span class="n">coord_path</span><span class="p">)</span>
+<span class="n">xyz2npy</span><span class="p">(</span><span class="n">frc</span><span class="p">,</span> <span class="n">atom_num</span><span class="p">,</span> <span class="n">force_path</span><span class="p">,</span> <span class="n">au2eV</span><span class="o">/</span><span class="n">au2A</span><span class="p">)</span>
+<span class="n">energy2npy</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">energy_path</span><span class="p">,</span> <span class="n">au2eV</span><span class="p">)</span>
+<span class="n">cell2npy</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">box_path</span><span class="p">,</span> <span class="n">cell</span><span class="p">)</span>
+<span class="n">type_raw</span><span class="p">(</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">type_path</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="deepmd-kit-20">升级到DeePMD-kit 2.0<a class="headerlink" href="#deepmd-kit-20" title="Permanent link">&para;</a></h2>
+<p>目前 DeePMD-kit 2.0 正式版已经发布，相比旧版已有众多提升，且压缩模型为正式版特性。目前我们集群上已安装 DeePMD-kit 2.0.3。</p>
+<h3 id="_11">输入文件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>DeePMD-kit 2.0 相比 1.x 在输入文件上做了一定改动，以下给出一个 DeePMD-kit 2.0 输入文件的例子：</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; model parameters&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;model&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type_map&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">            </span><span class="s2">&quot;O&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="s2">&quot;H&quot;</span>
+<span class="w">        </span><span class="p">],</span>
+<span class="w">        </span><span class="nt">&quot;descriptor&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;se_e2_a&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;sel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">46</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">92</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;rcut_smth&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.50</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;rcut&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">6.00</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;neuron&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">25</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">100</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;resnet_dt&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;axis_neuron&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">16</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; that&#39;s all&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;fitting_net&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;neuron&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="mi">240</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">240</span><span class="p">,</span>
+<span class="w">                </span><span class="mi">240</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;resnet_dt&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; that&#39;s all&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; that&#39;s all&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;learning_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;exp&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;decay_steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;start_lr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.001</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;stop_lr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.51e-8</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;that&#39;s all&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;loss&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ener&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;start_pref_e&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;limit_pref_e&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;start_pref_f&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;limit_pref_f&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;start_pref_v&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;limit_pref_v&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot; that&#39;s all&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;training&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;training_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;systems&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;../data/data_0/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;../data/data_1/&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="s2">&quot;../data/data_2/&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;batch_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;that&#39;s all&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;validation_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;systems&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="s2">&quot;../data/data_3&quot;</span>
+<span class="w">            </span><span class="p">],</span>
+<span class="w">            </span><span class="nt">&quot;batch_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;numb_btch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;that&#39;s all&quot;</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="nt">&quot;numb_steps&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;disp_file&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;lcurve.out&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;disp_freq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;save_freq&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1000</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;that&#39;s all&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;_comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;that&#39;s all&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>DeePMD-kit 2.0 提供了对验证集（Validation Set）的支持，因而用户可指定某一数据集作为验证集，并输出模型在该数据集上的误差。
+相比旧版而言，新版输入文件参数的具体含义变化不大，除了对数据集的定义外，大部分参数含义保持一致。</p>
+<p>以下列出一些需要注意的事项：</p>
+<ol>
+<li>训练数据集不再直接写在 <code>training</code> 下，而是写在 <code>training</code> 的子键 <code>training_data</code> 下，格式如下所示：
+   <div class="highlight"><pre><span></span><code><span class="nt">&quot;training_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">         </span><span class="nt">&quot;systems&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">             </span><span class="s2">&quot;../data/data_0/&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="s2">&quot;../data/data_1/&quot;</span><span class="p">,</span>
+<span class="w">             </span><span class="s2">&quot;../data/data_2/&quot;</span>
+<span class="w">         </span><span class="p">],</span>
+<span class="w">         </span><span class="nt">&quot;batch_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;auto&quot;</span>
+<span class="w">     </span><span class="p">}</span>
+</code></pre></div>
+   默认情况下，每一训练步骤中，DeePMD-kit随机从数据集中挑选结构加入本轮训练，这一步骤加入数据的多少取决于 <code>batch_size</code> 的大小，此时，各 system 中数据被使用的概率是均等的。
+   若希望控制各 system 数据的权重，可使用 <code>auto_prob</code> 来控制，其参数选项如下所示<ul>
+<li><code>prob_uniform</code>: 各 system 数据权重均等。</li>
+<li><code>prob_sys_size</code>: 各 system 数据的权重取决于其各自的大小。</li>
+<li><code>prob_sys_size</code>: 写法示例如下：<code>sidx_0:eidx_0:w_0; sidx_1:eidx_1:w_1;...</code>。 该参数中，<code>sidx_i</code> 和 <code>eidx_i</code> 表示第 <code>i</code> 组数据的起止点，规则同 Python 语法中的切片，<code>w_i</code> 则表示该组数据的权重。在同一组中，各 system 数据的权重取决于各自的大小。
+   <code>batch_size</code> 的值可手动设定，根据经验一般根据“乘以原子数≤32”的规则设定。新版则支持自动设定，若设定为<code>"auto"</code>则表示按照此规则自动设置，若设定为<code>"auto:N"</code>则根据“乘以原子数≤N”的规则设定。</li>
+</ul>
+</li>
+<li><code>save_ckpt</code>, <code>load_ckpt</code>, <code>decay_rate</code> 等为过时参数，若由 1.x 迁移，请删除这些参数，否则会导致报错。</li>
+<li><code>n_neuron</code> 更名为 <code>neuron</code>， <code>stop_batch</code> 更名为 <code>numb_steps</code>，请注意更改。对应地，decay rate 由 <code>start_lr</code> 和 <code>stop_lr</code> 决定。</li>
+<li><code>lcurve.out</code> 中删除了测试数据的 RMSE 值，因此旧版作图脚本需要对应修改，减少列数（能量在第3列，力在第4列）。若指定了验证集，则会输出模型在验证集上的 RMSE。</li>
+</ol>
+<p>更多详细说明，请参见<a href="https://docs.deepmodeling.org/projects/deepmd/en/latest/">官方文档</a>。</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+  <h2 id="__comments">评论</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+          data-repo="chenggroup/chenggroup.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyMTg3NzgwODc="
+          data-category="Announcements"
+          data-category-id="DIC_kwDODQpJ584CRx90"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.cheng-group.net" target="_blank" rel="noopener" title="课题组网站" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2 0-.68.06-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.923 7.923 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8.008 8.008 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.65 15.65 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/chenggroup" target="_blank" rel="noopener" title="课题组Github" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:chengjun@xmu.edu.cn" target="_blank" rel="noopener" title="联系程俊老师" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.sections", "navigation.indexes", "navigation.top", "content.tooltips", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+        <script src="../../../javascripts/analytic.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

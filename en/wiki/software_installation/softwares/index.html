@@ -1,0 +1,4430 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://wiki.cheng-group.net/en/wiki/software_installation/softwares/">
+      
+      
+        <link rel="prev" href="../../software_usage/vmd/">
+      
+      
+        <link rel="next" href="../install_from_src_in_conda/">
+      
+      
+      <link rel="icon" href="../../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.18">
+    
+    
+      
+        <title>Guidances for installation of codes - XMU Chenggroup Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#installation-guide-for-codes-and-libraries" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../" title="XMU Chenggroup Wiki" class="md-header__button md-logo" aria-label="XMU Chenggroup Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9V320c0 28.4-10.8 57.7-22.3 80.8-6.5 13-13.9 25.8-22.5 37.6-3.2 4.3-4.1 9.9-2.3 15s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7.3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7-3.2-14.2-7.5-28.7-13.5-42v-24.6c0-30.2 10.2-58.7 27.9-81.5 12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5.8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1l280.6-101c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1c-7.6-2.7-15.6-4.1-23.7-4.1zM128 408c0 35.3 86 72 192 72s192-36.7 192-72l-15.3-145.4L354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6l-142.2-51.4L128 408z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            XMU Chenggroup Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Guidances for installation of codes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to automatic mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to automatic mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../wiki/software_installation/softwares/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/chenggroup/chenggroup.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    chenggroup/chenggroup.github.io
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../" title="XMU Chenggroup Wiki" class="md-nav__button md-logo" aria-label="XMU Chenggroup Wiki" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M320 32c-8.1 0-16.1 1.4-23.7 4.1L15.8 137.4C6.3 140.9 0 149.9 0 160s6.3 19.1 15.8 22.6l57.9 20.9C57.3 229.3 48 259.8 48 291.9V320c0 28.4-10.8 57.7-22.3 80.8-6.5 13-13.9 25.8-22.5 37.6-3.2 4.3-4.1 9.9-2.3 15s6 8.9 11.2 10.2l64 16c4.2 1.1 8.7.3 12.4-2s6.3-6.1 7.1-10.4c8.6-42.8 4.3-81.2-2.1-108.7-3.2-14.2-7.5-28.7-13.5-42v-24.6c0-30.2 10.2-58.7 27.9-81.5 12.9-15.5 29.6-28 49.2-35.7l157-61.7c8.2-3.2 17.5.8 20.7 9s-.8 17.5-9 20.7l-157 61.7c-12.4 4.9-23.3 12.4-32.2 21.6l159.6 57.6c7.6 2.7 15.6 4.1 23.7 4.1s16.1-1.4 23.7-4.1l280.6-101c9.5-3.4 15.8-12.5 15.8-22.6s-6.3-19.1-15.8-22.6L343.7 36.1c-7.6-2.7-15.6-4.1-23.7-4.1zM128 408c0 35.3 86 72 192 72s192-36.7 192-72l-15.3-145.4L354.5 314c-11.1 4-22.8 6-34.5 6s-23.5-2-34.5-6l-142.2-51.4L128 408z"/></svg>
+
+    </a>
+    XMU Chenggroup Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/chenggroup/chenggroup.github.io" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    chenggroup/chenggroup.github.io
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Wikis
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Wikis
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how_to_edit/howtodo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How to Edit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cluster Usage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cluster Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/cluster_usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算集群使用说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/ssh_note/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SSH 与 SCP 使用入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/gpu_usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    使用集群上的 GPU
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/conda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Anaconda
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/jupyter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Jupyter 系列使用指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/vscode_remote/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在非登陆节点上使用VSCode
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/notification_for_hpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算任务的推送
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/pack_backup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    文件整理与备份攻略
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cluster_usage/tensorboard/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    集群 TensorBoard 使用指南
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    For New Comers
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            For New Comers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/toc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    导览
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/linux/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linux快速基础入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/read_papers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何阅读文献
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/presentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何进行展示/Presentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/python_numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Python 和 Numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/qc_dft/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    量子化学与密度泛函理论
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/basis_pps/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    密度泛函近似，基组与赝势
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/dpmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    机器学习: 理论与DeePMD-kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/dpgen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    深度势能生成器: DP-GEN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../new_comers/workflow/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    自动化计算与工作流: AiiDA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../book_recommendation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Book Recommendation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Teamwork
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            Teamwork
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teamwork/archive_rules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何整理项目文件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teamwork/git_usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    None
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teamwork/tutorial_rules/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    如何组织培训
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6" id="__nav_2_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software Usage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6">
+            <span class="md-nav__icon md-icon"></span>
+            Software Usage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/default_version/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    软件默认版本推荐
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/MDAnalysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    MDAnalysis 软件包的使用
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/Tips_for_LaTeX/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tips for paper writing with LaTeX
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_6_4" id="__nav_2_6_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CP2K
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            CP2K
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-e-f/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:能量与力的计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-geoopt/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:结构和晶胞优化
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-zpe/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:ZPE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-neb/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:NEB
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-reftraj/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:REFTRAJ根据已有MD轨迹计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-dft%2Bu/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:DFT+U
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-hf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:杂化泛函
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-scan/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:SCAN泛函
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-slab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:Slab计算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-tools/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-deepmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:DeePMD-kit插件
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/cp2k/cp2k-constrainedmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K:ConstrainedMD
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/DP-GEN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DP-GEN使用入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/DeePMD-kit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeePMD-kit 使用入门
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/experience_of_dpmd_and_dpgen/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DPMD和DPGEN使用经验
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/i-pi/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    I pi
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/n2p2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    n2p2 Usage Guide
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_usage/vmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vmd 使用说明
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_7" id="__nav_2_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software Installation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_7">
+            <span class="md-nav__icon md-icon"></span>
+            Software Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Guidances for installation of codes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Guidances for installation of codes
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#first-of-all-load-the-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      First of all! Load the environments!
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="First of all! Load the environments!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-protocal-for-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Protocal for Installation:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to Install?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-in-writing-module-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard in Writing Module file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-in-writing-lsf-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard in Writing lsf file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anaconda-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anaconda Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anaconda Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quip-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      QUIP Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QUIP Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-quip-and-quippy-in-cluster-51" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use QUIP and quippy in cluster 51
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-and-extra-interfaces-of-quip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages and Extra Interfaces of QUIP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packages and Extra Interfaces of QUIP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-gap-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add GAP Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-quippy-a-quip-python-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build QUIPPY, A QUIP Python Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trouble-shooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trouble Shooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trouble Shooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importerror-dynamic-module-does-not-define-module-export-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ImportError: dynamic module does not define module export function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      VASP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VASP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wannier90" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wannier90
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compilation-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compilation optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#todo-in-the-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      TODO in the future
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lammps-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      LAMMPS Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LAMMPS Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-and-extra-interfaces-of-lammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages and Extra Interfaces of LAMMPS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packages and Extra Interfaces of LAMMPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-for-installing-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      General for Installing Package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-user-atc-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building USER-ATC Package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-inteface-with-n2p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Inteface with n2p2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-with-plumed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building with Plumed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deepmd-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeePMD Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeePMD Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide-of-deepmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide of DeePMD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#n2p2-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      n2p2 Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="n2p2 Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plumed-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plumed Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plumed Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eigen-library-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigen Library Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eigen Library Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gsl-library-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      GSL Library Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GSL Library Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libxc-library-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libxc Library Installation Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fftw-library-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      FFTW Library Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FFTW Library Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cp2k-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      CP2K Installation Guide
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install_from_src_in_conda/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    虚拟环境下源码安装教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gcc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GCC 安装教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_7_4" id="__nav_2_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DeePMD-kit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            DeePMD-kit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deepmd-kit/deepmd-kit_installation_new/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepMD-kit安装最佳实践
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deepmd-kit/deepmd-kit_installation_ikkem/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeePMD-kit安装实战：嘉庚超算
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deepmd-kit/deepmd-kit_installation_191/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepMD-kit快速安装
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deepmd-kit/deepmd-kit_installation_pc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeePMD-kit安装实战：PC篇
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deepmd-kit/deepmd-kit_installation_51/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DeepMD-kit安装：旧版
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cp2k-7.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CP2K 7.1 安装教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8" id="__nav_2_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Software Development
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            Software Development
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../teamwork/git_usage/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Git 基本使用教程
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_8_2" id="__nav_2_8_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Lammps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Lammps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_development/lammps/quick_start/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LAMMPS开发准备
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_development/lammps/installation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    在集群安装LAMMPS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../software_development/lammps/plugin/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    基于插件模式开发LAMMPS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_9" id="__nav_2_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Research Skills
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_9">
+            <span class="md-nav__icon md-icon"></span>
+            Research Skills
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/research_skill/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    研究技能
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/QS4writing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quick Start for Paper Writing（科研写作急速上手）
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_10" id="__nav_2_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_10">
+            <span class="md-nav__icon md-icon"></span>
+            Troubleshooting
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/chenggroup/chenggroup.github.io/issues/123" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    To be continued
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_11" id="__nav_2_11_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Question Under Carpet
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_11">
+            <span class="md-nav__icon md-icon"></span>
+            Question Under Carpet
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../question_under_carpet/chemical_computing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    计算化学踩坑合集
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/chenggroup/chenggroup.github.io/issues/131" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    To be continued
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../miscellaneous/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Miscellaneous
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://wiki.cheng-group.net/ai2-kit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ai2-kit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://robinzyb.github.io/cp2kdata/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cp2kdata
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://robinzyb.github.io/ECToolkits/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ECToolkits
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#first-of-all-load-the-environments" class="md-nav__link">
+    <span class="md-ellipsis">
+      First of all! Load the environments!
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="First of all! Load the environments!">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-protocal-for-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      General Protocal for Installation:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-to-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      Where to Install?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-in-writing-module-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard in Writing Module file
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#standard-in-writing-lsf-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Standard in Writing lsf file
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#anaconda-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Anaconda Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Anaconda Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Installation Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quip-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      QUIP Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="QUIP Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-quip-and-quippy-in-cluster-51" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use QUIP and quippy in cluster 51
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-and-extra-interfaces-of-quip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages and Extra Interfaces of QUIP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packages and Extra Interfaces of QUIP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#add-gap-packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Add GAP Packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-quippy-a-quip-python-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Build QUIPPY, A QUIP Python Interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trouble-shooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trouble Shooting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Trouble Shooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#importerror-dynamic-module-does-not-define-module-export-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      ImportError: dynamic module does not define module export function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vasp" class="md-nav__link">
+    <span class="md-ellipsis">
+      VASP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="VASP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plugins
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plugins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#wannier90" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wannier90
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compilation-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compilation optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#todo-in-the-future" class="md-nav__link">
+    <span class="md-ellipsis">
+      TODO in the future
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lammps-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      LAMMPS Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="LAMMPS Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages-and-extra-interfaces-of-lammps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages and Extra Interfaces of LAMMPS
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packages and Extra Interfaces of LAMMPS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#general-for-installing-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      General for Installing Package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-user-atc-package" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building USER-ATC Package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-inteface-with-n2p2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building Inteface with n2p2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#building-with-plumed" class="md-nav__link">
+    <span class="md-ellipsis">
+      Building with Plumed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deepmd-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      DeePMD Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="DeePMD Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide-of-deepmd" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide of DeePMD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#n2p2-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      n2p2 Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="n2p2 Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#plumed-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plumed Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Plumed Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#eigen-library-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Eigen Library Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Eigen Library Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gsl-library-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      GSL Library Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="GSL Library Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#libxc-library-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libxc Library Installation Guide
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fftw-library-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      FFTW Library Installation Guide
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="FFTW Library Installation Guide">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#short-introduction_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      Short Introduction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-guide_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      Install Guide
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cp2k-installation-guide" class="md-nav__link">
+    <span class="md-ellipsis">
+      CP2K Installation Guide
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="installation-guide-for-codes-and-libraries">Installation Guide for Codes and Libraries<a class="headerlink" href="#installation-guide-for-codes-and-libraries" title="Permanent link">&para;</a></h1>
+<h2 id="first-of-all-load-the-environments">First of all! Load the environments!<a class="headerlink" href="#first-of-all-load-the-environments" title="Permanent link">&para;</a></h2>
+<p>Before you install anything, especially when you need to compile codes, make sure the type of compiler and the version of compiler you have. Usually, in your personal computer, you can use compiler command directly, for instance, <code>gcc</code>, <code>gfortran</code>, <code>ifort</code>,<code>mpic++</code>. In remote cluster(High Performance Cluster), the compiler is managed by <code>module</code>. You cannnot use it unless you load it in advance. Therefore, make sure which compiler you have in <code>module</code>, and use command such as <code>module load gcc/4.9.4</code> to load required compilers.</p>
+<h3 id="general-protocal-for-installation">General Protocal for Installation:<a class="headerlink" href="#general-protocal-for-installation" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Compile the Code</li>
+<li>Quick test the code at server node</li>
+<li>Write module files to code (we recommend to manage codes by module)</li>
+<li>Test the code in the client node</li>
+<li>write example lsf file in <code>/share/base/scripts</code></li>
+</ol>
+<h3 id="where-to-install">Where to Install?<a class="headerlink" href="#where-to-install" title="Permanent link">&para;</a></h3>
+<p>Install in the <code>/share/</code> directory. <code>/share/</code> directory is the one synchronized to all the nodes by nfs. </p>
+<ol>
+<li>Libraries: <code>/share/apps/lib/&lt;library name&gt;/&lt;version&gt;</code></li>
+<li>Codes, Pacakges, Softwares: <code>/share/apps/&lt;packages name&gt;/&lt;version&gt;</code></li>
+</ol>
+<h3 id="standard-in-writing-module-file">Standard in Writing Module file<a class="headerlink" href="#standard-in-writing-module-file" title="Permanent link">&para;</a></h3>
+<ol>
+<li>module name: <code>&lt;package name&gt;/&lt;version&gt;</code>, like <code>cp2k/6.1</code></li>
+</ol>
+<h3 id="standard-in-writing-lsf-file">Standard in Writing lsf file<a class="headerlink" href="#standard-in-writing-lsf-file" title="Permanent link">&para;</a></h3>
+<ol>
+<li>export necessary environmental variable</li>
+<li>load prerequisite module</li>
+</ol>
+<h2 id="anaconda-installation-guide">Anaconda Installation Guide<a class="headerlink" href="#anaconda-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction">Short Introduction<a class="headerlink" href="#short-introduction" title="Permanent link">&para;</a></h3>
+<p>The open-source Anaconda Distribution is the easiest way to perform Python/R data science and machine learning on Linux, Windows, and Mac OS X. Choose the one suitable for you usage. If you'd like to use Anaconda in Cluster, ask cluster administrator if Anaconda have been installed, which avoid storage waste in your cluster's storage.</p>
+<div class="admonition tip none">
+<p class="admonition-title">Tip</p>
+<p>A minimum version of Conda is install in cluster51 by Yunpei Liu. Use it by module command</p>
+</div>
+<h3 id="installation-guide">Installation Guide<a class="headerlink" href="#installation-guide" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Go to <a href="https://www.anaconda.com/distribution/">this website</a>, choose the right version for you. Personally, I recommend command line Installer for Linux and Mac OS System, while the Graphical Installer for Windows System</li>
+<li>Follow the instruction in <a href="https://docs.anaconda.com/anaconda/install/">this page</a></li>
+</ul>
+<h2 id="quip-installation-guide">QUIP Installation Guide<a class="headerlink" href="#quip-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_1">Short Introduction<a class="headerlink" href="#short-introduction_1" title="Permanent link">&para;</a></h3>
+<p>The <code>QUIP</code> package is a collection of software tools to carry out molecular dynamics simulations. It implements a variety of interatomic potentials and tight binding quantum mechanics, and is also able to call external packages, and serve as plugins to other software such as <a href="http://lammps.sandia.gov/">LAMMPS</a>, <a href="http://www.cp2k.org/">CP2K</a> and also the python framework <a href="https://wiki.fysik.dtu.dk/ase">ASE</a>. Various hybrid combinations are also supported in the style of QM/MM, with a particular focus on materials systems such as metals and semiconductors.</p>
+<div class="admonition tip none">
+<p class="admonition-title">Tip</p>
+<p>The tested compiler version: <gcc 6.3.0> and <openmpi 3.0.0> for your information.</p>
+</div>
+<h3 id="use-quip-and-quippy-in-cluster-51">Use QUIP and quippy in cluster 51<a class="headerlink" href="#use-quip-and-quippy-in-cluster-51" title="Permanent link">&para;</a></h3>
+<p>If you need use QUIP/GAP in cluster 51, please used command: </p>
+<div class="highlight"><pre><span></span><code>module load gcc/6.3.0 mpi/openmpi/3.0.0
+module load QUIP/GAP
+</code></pre></div>
+<p>If you want to use quippy:</p>
+<div class="highlight"><pre><span></span><code>module load miniconda/3
+source activate /share/apps/QUIP/quippy-py3/
+</code></pre></div>
+<h3 id="install-guide">Install Guide<a class="headerlink" href="#install-guide" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Git clone from repository</li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>--recursive<span class="w"> </span>https://github.com/libAtoms/QUIP.git
+</code></pre></div>
+<ul>
+<li>Go to the package root and export variable</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">QUIP_ARCH</span><span class="o">=</span>linux_x86_64_gfortran
+</code></pre></div>
+<ul>
+<li>Make configuration</li>
+</ul>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>config
+<span class="c1">#if everything fine</span>
+make
+</code></pre></div>
+<h3 id="packages-and-extra-interfaces-of-quip">Packages and Extra Interfaces of QUIP<a class="headerlink" href="#packages-and-extra-interfaces-of-quip" title="Permanent link">&para;</a></h3>
+<h4 id="add-gap-packages">Add GAP Packages<a class="headerlink" href="#add-gap-packages" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Download GAP file from <a href="#http://www.libatoms.org/gap/gap_download.html">here</a>, then you obtain a tar file named <code>GAP.tar</code>, unzip it</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xvf<span class="w"> </span>GAP.tar
+</code></pre></div>
+<ul>
+<li>You will obtain a directory named <code>GAP/</code>, copy this directory into QUIP root/src.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>-r<span class="w"> </span>GAP<span class="w"> </span>&lt;QUIP<span class="w"> </span>root&gt;/src/
+</code></pre></div>
+<ul>
+<li>Reconfig your make by choose <code>install GAP</code> as <code>y</code> </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#recompile this code again</span>
+make
+</code></pre></div>
+<h4 id="build-quippy-a-quip-python-interface">Build QUIPPY, A QUIP Python Interface<a class="headerlink" href="#build-quippy-a-quip-python-interface" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Export another environmental variable</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#install for your self</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QUIPPY_INSTALL_OPTS</span><span class="o">=</span>--user
+<span class="c1">#choose the location for installation of quippy</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">QUIPPY_INSTALL_OPTS</span><span class="o">=</span>--prefix<span class="o">=</span>&lt;directory&gt;
+</code></pre></div>
+<ul>
+<li>Go to <code>&lt;QUIP root&gt;/src/f90wrap</code>, and install f90wrap by:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>.
+</code></pre></div>
+<ul>
+<li>Back to <code>&lt;QUIP root&gt;</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>install-quippy
+</code></pre></div>
+<ul>
+<li>Test whether installed successfully.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span><span class="nb">test</span>
+</code></pre></div>
+<h4 id="trouble-shooting">Trouble Shooting<a class="headerlink" href="#trouble-shooting" title="Permanent link">&para;</a></h4>
+<h5 id="importerror-dynamic-module-does-not-define-module-export-function">ImportError: dynamic module does not define module export function<a class="headerlink" href="#importerror-dynamic-module-does-not-define-module-export-function" title="Permanent link">&para;</a></h5>
+<div class="highlight"><pre><span></span><code>Example:
+Traceback (most recent call last):
+  File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;/share/apps/QUIP/quippy-py3/lib/python3.8/site-packages/quippy-https_github.com_libAtoms_QUIP.git_ec1ed34_dirty-py3.8-linux-x86_64.egg/quippy/__init__.py&quot;, line 2, in &lt;module&gt;
+    import _quippy
+ImportError: dynamic module does not define module export function (PyInit__quippy)
+</code></pre></div>
+<p>Solution: add <QUIP_root>/build/${QUIP_ARCH} into your Python PATH</p>
+<h2 id="vasp">VASP<a class="headerlink" href="#vasp" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_2">Short Introduction<a class="headerlink" href="#short-introduction_2" title="Permanent link">&para;</a></h3>
+<p>(TODO)</p>
+<h3 id="install-guide_1">Install Guide<a class="headerlink" href="#install-guide_1" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>Get the VASP source code and pseudopotentials.</p>
+</li>
+<li>
+<p>Load environment
+<div class="highlight"><pre><span></span><code>module<span class="w"> </span>load<span class="w"> </span>intel
+</code></pre></div></p>
+</li>
+<li>
+<p>Choose <code>makefile.include</code> according to the platform and make
+<div class="highlight"><pre><span></span><code>cd vasp.5.4.4
+make std
+make gam
+</code></pre></div></p>
+</li>
+<li>
+<p>If everything is right, you will find <code>vasp_std</code> in <code>vasp.5.4.4/build/std</code> and you can run it with <code>mpirun -np 24 vasp_std</code>.</p>
+</li>
+</ol>
+<h3 id="plugins">Plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h3>
+<h4 id="wannier90">Wannier90<a class="headerlink" href="#wannier90" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>Download Wannier90 from http://www.wannier.org/download/ . <em>Notice: currently VASP only support Wannier90-1.2</em></p>
+</li>
+<li>
+<p>Modify compile file for Wannier90  <code>make.sys.intel</code>. Here we use the MKL.
+<div class="highlight"><pre><span></span><code><span class="c1">#LIBDIR = /opt/intel/mkl721/lib/32</span>
+<span class="c1">#LIBS = -L$(LIBDIR) -lmkl_lapack -lmkl_ia32 -lguide -lpthread</span>
+<span class="nv">LIBDIR</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">$(</span>MKLROOT<span class="k">)</span>/lib/intel64
+<span class="nv">LIBS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-L<span class="k">$(</span>LIBDIR<span class="k">)</span><span class="w"> </span>-mkl<span class="w"> </span>-lpthread
+</code></pre></div></p>
+</li>
+<li>
+<p>Compile and test
+<div class="highlight"><pre><span></span><code>cp<span class="w"> </span>./config/make.inc.ifort<span class="w"> </span>make.inc
+make<span class="w"> </span>
+make<span class="w"> </span>lib<span class="w"> </span><span class="c1"># compile to get the libary: libwannier.a </span>
+make<span class="w"> </span>tests<span class="w"> </span><span class="c1"># test whether the compilation is success</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Copy the <code>libwannier.a</code> libary file to VASP libary path and modify VASP <code>makefile.include</code>.</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="c1">#Precompiler options</span>
+<span class="nv">CPP_OPTIONS</span><span class="o">=</span><span class="w"> </span>-DHOST<span class="o">=</span><span class="se">\&quot;</span>LinuxIFC<span class="se">\&quot;\</span>
+<span class="w">             </span>-DMPI<span class="w"> </span>-DMPI_BLOCK<span class="o">=</span><span class="m">8000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-Duse_collective<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-DscaLAPACK<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-DCACHE_SIZE<span class="o">=</span><span class="m">4000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-Davoidalloc<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-Duse_bse_te<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-Dtbdyn<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-Duse_shmem<span class="w"> </span><span class="se">\</span>
+<span class="w">             </span>-DVASP2WANNIER90<span class="w">   </span><span class="c1">## modify this line for Wannier90</span>
+
+<span class="nv">LLIBS</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>../../libwannier.a<span class="w">  </span><span class="c1">## change here to the location of libwannier.a</span>
+</code></pre></div>
+<h3 id="compilation-optimization">Compilation optimization<a class="headerlink" href="#compilation-optimization" title="Permanent link">&para;</a></h3>
+<p>If you use <code>Intel Xeon Silver/Gold/Platium</code> CPU, using the following compilation parameters will get a 2✖ speedup! (Already test on 205 server)
+<div class="highlight"><pre><span></span><code><span class="nv">OFLAG</span><span class="w">      </span><span class="o">=</span><span class="w"> </span>-O3<span class="w"> </span>-xCORE-AVX512
+</code></pre></div></p>
+<h3 id="todo-in-the-future">TODO in the future<a class="headerlink" href="#todo-in-the-future" title="Permanent link">&para;</a></h3>
+<ol>
+<li>Install vasp_gpu version</li>
+<li>Benchmark different libary (FFTW/MKL)</li>
+<li>other plugins: VASP-neb, vasp-beef</li>
+<li>vasp6</li>
+</ol>
+<h2 id="lammps-installation-guide">LAMMPS Installation Guide<a class="headerlink" href="#lammps-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_3">Short Introduction<a class="headerlink" href="#short-introduction_3" title="Permanent link">&para;</a></h3>
+<p>LAMMPS is a classical molecular dynamics code with a focus on materials modeling. It's an acronym for Large-scale Atomic/Molecular Massively Parallel Simulator.</p>
+<div class="admonition tip none">
+<p class="admonition-title">Tip</p>
+<p>I have installed one in cluster51, in directory /share/apps/lammps-7Aug19/. The compiler version: <gcc 6.3.0> and <openmpi 3.0.0> for your information.</p>
+</div>
+<h3 id="install-guide_2">Install Guide<a class="headerlink" href="#install-guide_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Git clone or download package from <a href="https://lammps.sandia.gov/download.html">website</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># command for git</span>
+git<span class="w"> </span>clone<span class="w"> </span>-b<span class="w"> </span>stable<span class="w"> </span>https://github.com/lammps/lammps.git<span class="w"> </span>mylammps
+</code></pre></div>
+<ul>
+<li>We assume you the package path is <lammps-root></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>&lt;lammps-root&gt;/src
+<span class="c1">#choose one of the following or both</span>
+<span class="c1"># build a serial LAMMPS executable</span>
+make<span class="w"> </span>serial<span class="w"> </span>
+<span class="c1"># build a parallel LAMMPS executable with MPI</span>
+make<span class="w"> </span>mpi<span class="w">        </span>
+</code></pre></div>
+<ul>
+<li>You will see the executable binary in <code>src/lmp_serial</code> or <code>src/lmp_mpi</code></li>
+</ul>
+<h3 id="packages-and-extra-interfaces-of-lammps">Packages and Extra Interfaces of LAMMPS<a class="headerlink" href="#packages-and-extra-interfaces-of-lammps" title="Permanent link">&para;</a></h3>
+<div class="admonition tip none">
+<p class="admonition-title">Tip</p>
+<p>Contact Cluster Administrator if you need any uninstalled packages</p>
+</div>
+<h4 id="general-for-installing-package">General for Installing Package<a class="headerlink" href="#general-for-installing-package" title="Permanent link">&para;</a></h4>
+<ul>
+<li>To install package of LAMMPS, just type <code>make yes-&lt;package name&gt;</code> for example, <code>make yes-user-intel</code></li>
+</ul>
+<h4 id="building-user-atc-package">Building USER-ATC Package<a class="headerlink" href="#building-user-atc-package" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before you install this package by <code>make yes-user-atc</code>, you should install <code>lib-atc</code> which is a library for atc package</li>
+<li>Go to the directory <code>&lt;LAMMPS root&gt;/lib/atc</code>, you can follow the instruction in the <code>README</code>. Remember to load module <code>gcc</code> and <code>open mpi</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>&lt;LAMMPS<span class="w"> </span>root&gt;/lib/atc
+</code></pre></div>
+<ul>
+<li><code>lib-atc</code> need library <code>lapack</code> and <code>blas</code> installed. Check whether this library installed or not by command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#check for lapack library</span>
+ldconfig<span class="w"> </span>-p<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>lapack
+<span class="c1">#check for blas library</span>
+ldconfig<span class="w"> </span>-p<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>blas
+</code></pre></div>
+<ul>
+<li>If <code>lapack</code> and <code>blas</code> are installed. Change the value of  <code>EXTRAMAKE</code> variable to <code>Makefile.lammps.installed</code> in the file <code>Makefile.mpi</code>.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nv">EXTRAMAKE</span><span class="o">=</span><span class="w"> </span>Makefile.lammps.installed
+</code></pre></div>
+<ul>
+<li>Make library by following command</li>
+</ul>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>-f<span class="w"> </span>Makefile.mpi
+</code></pre></div>
+<ul>
+<li>Make sure you have <code>libatc.a</code> and <code>Makefile.lammps</code> in your current directory</li>
+<li>Back to directory <code>&lt;LAMMPS root&gt;/src/</code> and type <code>make mpi</code> to compile mpi version of LAMMPS</li>
+</ul>
+<h4 id="building-inteface-with-n2p2">Building Inteface with n2p2<a class="headerlink" href="#building-inteface-with-n2p2" title="Permanent link">&para;</a></h4>
+<ul>
+<li>make sure you have shared library <code>libnnpif-shared</code> in your <code>&lt;path to n2p2&gt;/lib/</code></li>
+<li>export the following in your environmental variable(optional)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#export this if you use shared library, skip if you are using static library</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>&lt;path<span class="w"> </span>to<span class="w"> </span>n2p2&gt;/lib:<span class="si">${</span><span class="nv">LD_LIBRARY_PATH</span><span class="si">}</span>
+</code></pre></div>
+<ul>
+<li>Go to LAMMPS root</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>&lt;LAMMPS<span class="w"> </span>root&gt;/
+ln<span class="w"> </span>-s<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>n2p2&gt;<span class="w"> </span>lib/nnp
+cp<span class="w"> </span>-r<span class="w"> </span>&lt;path<span class="w"> </span>to<span class="w"> </span>n2p2&gt;/src/interface/LAMMPS/src/USER-NNP<span class="w"> </span>&lt;LAMMPS<span class="w"> </span>root&gt;/src
+<span class="nb">cd</span><span class="w"> </span>&lt;LAMMPS<span class="w"> </span>root&gt;/src
+make<span class="w"> </span>yes-user-nnp
+make<span class="w"> </span>mpi
+</code></pre></div>
+<h4 id="building-with-plumed">Building with Plumed<a class="headerlink" href="#building-with-plumed" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Before you install, make sure the Plumed has installed</li>
+<li>To directory <code>&lt;LAMMPS root&gt;/src/</code> </li>
+</ul>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>lib-plumed<span class="w"> </span><span class="nv">args</span><span class="o">=</span><span class="s2">&quot;-p &lt;path to plumed directory&gt;&quot;</span>
+make<span class="w"> </span>yes-user-plumed
+make<span class="w"> </span>mpi
+</code></pre></div>
+<h2 id="deepmd-installation-guide">DeePMD Installation Guide<a class="headerlink" href="#deepmd-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_4">Short Introduction<a class="headerlink" href="#short-introduction_4" title="Permanent link">&para;</a></h3>
+<p>DeePMD-kit is a package written in Python/C++, designed to minimize the effort required to build deep learning based model of interatomic potential energy and force field and to perform molecular dynamics (MD). This brings new hopes to addressing the accuracy-versus-efficiency dilemma in molecular simulations. Applications of DeePMD-kit span from finite molecules to extended systems and from metallic systems to chemically bonded systems. <a href="https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.120.143001">Ref. Paper</a></p>
+<h3 id="install-guide_3">Install Guide<a class="headerlink" href="#install-guide_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Here, we display the most easiest way to install DeePMD Code.</li>
+<li>Make sure you have <code>GPU</code> install in your computer. Usually, you can check with the drive of <code>GPU</code></li>
+<li>Install the <code>anaconda3</code> from website. After you installed anaconda3, you can use <code>conda</code> command.</li>
+<li>Install DeePMD with cpu or gpu version. Installation by this way will install lammps as well.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#install of cpu version</span>
+conda<span class="w"> </span>install<span class="w"> </span>deepmd-kit<span class="o">=</span>*<span class="o">=</span>*cpu<span class="w"> </span>lammps-dp<span class="o">=</span>*<span class="o">=</span>*cpu<span class="w"> </span>-c<span class="w"> </span>deepmodeling
+<span class="c1">#install of gpu version</span>
+conda<span class="w"> </span>install<span class="w"> </span>deepmd-kit<span class="o">=</span>*<span class="o">=</span>*gpu<span class="w"> </span>lammps-dp<span class="o">=</span>*<span class="o">=</span>*gpu<span class="w"> </span>-c<span class="w"> </span>deepmodeling
+</code></pre></div>
+<ul>
+<li>That's all for installation. Check the install package use command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>deep
+</code></pre></div>
+<ul>
+<li>You will find four packages related with DeePMD code. You can now directly use command <code>dp</code> , <code>lmp</code>.</li>
+<li>To test DeePMD Code. Download DeePMD code from github by:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/deepmodeling/deepmd-kit.git
+</code></pre></div>
+<ul>
+<li>Go to the directory <code>examples/water/train/</code></li>
+<li>Test training by</li>
+</ul>
+<div class="highlight"><pre><span></span><code>dp<span class="w"> </span>train<span class="w"> </span>water_se_a.json
+</code></pre></div>
+<h3 id="install-guide-of-deepmd">Install Guide of DeePMD<a class="headerlink" href="#install-guide-of-deepmd" title="Permanent link">&para;</a></h3>
+<p><a href="../deepmd-kit/deepmd-kit_installation_191/">快速安装</a></p>
+<h2 id="n2p2-installation-guide">n2p2 Installation Guide<a class="headerlink" href="#n2p2-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_5">Short Introduction<a class="headerlink" href="#short-introduction_5" title="Permanent link">&para;</a></h3>
+<p>n2p2 is a machine learning code to training a machine learning potential. It original paper is from <a href="https://doi.org/10.1103/PhysRevLett.98.146401">J. Behler and M. Parrinello, Phys. Rev. Lett. 98, 146401 (2007)</a></p>
+<h3 id="install-guide_4">Install Guide<a class="headerlink" href="#install-guide_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Before Installation, make sure you have installed the <a href="#Eigen Library Installation Guide">Eigen Library</a> and the <a href="#GSL Library Installation Guide">GSL Library</a>.</li>
+<li>Make sure you have <code>gcc</code> compiler (including <code>gfortran</code>), I haven't successfully compiled by <code>intel</code> compiler. Make sure you have open MPI(i. e. for <code>mpic++</code> command).</li>
+<li>Download the n2p2 code from github: https://github.com/CompPhysVienna/n2p2. For example, using the following command.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/CompPhysVienna/n2p2.git
+</code></pre></div>
+<ul>
+<li>You can see a directory named <code>n2p2</code>, now go into that by:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>n2p2/src
+</code></pre></div>
+<ul>
+<li>Modify the configure file <code>makefile.gnu</code> </li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c">#modify this file, I just pick out the part you need to modify</span>
+<span class="c"># Enter here paths to GSL or EIGEN if they are not in your standard include</span>
+<span class="c"># path. DO NOT completely remove the entry, leave at least &quot;./&quot;.</span>
+<span class="nv">PROJECT_GSL</span><span class="o">=</span>&lt;path<span class="w"> </span>to<span class="w"> </span>gsllib&gt;/gsl/include/<span class="w"> </span><span class="c1"># substitute &lt;path&gt; with real path</span>
+<span class="nv">PROJECT_EIGEN</span><span class="o">=</span>&lt;path<span class="w"> </span>to<span class="w"> </span>eigen&gt;/eigen-eigen-323c052e1731<span class="w"> </span><span class="c1"># substitute &lt;path&gt; with real path</span>
+
+<span class="c"> ###############################################################################</span>
+<span class="c"> # COMPILERS AND FLAGS</span>
+<span class="c"> ###############################################################################</span>
+<span class="nv">PROJECT_CFLAGS</span><span class="o">=</span>-O3<span class="w"> </span>-march<span class="o">=</span>native<span class="w"> </span>-std<span class="o">=</span>c++11<span class="w"> </span>-fopenmp<span class="w"> </span>-L&lt;pato<span class="w"> </span>to<span class="w"> </span>gsllib&gt;gsl/lib
+<span class="nv">PROJECT_LDFLAGS_BLAS</span><span class="o">=</span>-lblas<span class="w"> </span>-lgslcblas
+</code></pre></div>
+<ul>
+<li>Save and quit this file, use the following command to compile code:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1">#choose one of the following command</span>
+make<span class="w"> </span><span class="nv">MODE</span><span class="o">=</span>shared<span class="w"> </span><span class="c1"># compile a binary with shared library</span>
+make<span class="w"> </span><span class="nv">MODE</span><span class="o">=</span>static<span class="w"> </span><span class="c1"># compile a binary with static library, I use this one</span>
+</code></pre></div>
+<ul>
+<li>After you compiled successfully, you will have all the excutable binary at <code>n2p2/bin/</code> directory</li>
+<li>Add <code>n2p2/bin/</code> to your <code>PATH</code> environmental variable, you can easily use this. The most important binary is <code>nnp-train</code>, this is used for training.</li>
+<li>Add n2p2 library to your <code>LD_LIBRARY_PATH</code> in <code>.bashrc</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>&lt;Path<span class="w"> </span>to<span class="w"> </span>n2p2&gt;/lib/:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre></div>
+<h2 id="plumed-installation-guide">Plumed Installation Guide<a class="headerlink" href="#plumed-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_6">Short Introduction<a class="headerlink" href="#short-introduction_6" title="Permanent link">&para;</a></h3>
+<p>PLUMED is an open-source, community-developed library that provides a wide range of different methods, which include:</p>
+<ul>
+<li>enhanced-sampling algorithms</li>
+<li>free-energy methods</li>
+<li>tools to analyze the vast amounts of data produced by molecular dynamics (MD) simulations.</li>
+</ul>
+<p>These techniques can be used in combination with a large toolbox of collective variables that describe complex processes in physics, chemistry, material science, and biology.</p>
+<div class="admonition tip none">
+<p class="admonition-title">Tip</p>
+<p>I have installed one in cluster51. Use module load plumed/2.6.0 to use this library. The compiler version: <gcc 6.3.0> <openmpi/3.0.0> for your information</p>
+</div>
+<h3 id="install-guide_5">Install Guide<a class="headerlink" href="#install-guide_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Download package from <a href="https://www.plumed.org//download.html">here.</a></li>
+<li>Basic Configure</li>
+</ul>
+<div class="highlight"><pre><span></span><code>./configure<span class="w"> </span>--prefix<span class="o">=</span>&lt;path<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>install&gt;<span class="w"> </span><span class="nv">LDFLAGS</span><span class="o">=</span>-L<span class="s1">&#39;/share/apps/lib/fftw/3.3.8/lib&#39;</span><span class="w"> </span><span class="nv">CPPFLAGS</span><span class="o">=</span>-I<span class="s1">&#39;/share/apps/lib/fftw/3.3.8/lib &#39;</span>
+</code></pre></div>
+<ul>
+<li>Compile</li>
+</ul>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>-j<span class="w"> </span><span class="m">32</span>
+make<span class="w"> </span>install
+</code></pre></div>
+<h2 id="eigen-library-installation-guide">Eigen Library Installation Guide<a class="headerlink" href="#eigen-library-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_7">Short Introduction<a class="headerlink" href="#short-introduction_7" title="Permanent link">&para;</a></h3>
+<p>Eigen is a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms.</p>
+<h3 id="install-guide_6">Install Guide<a class="headerlink" href="#install-guide_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Download the package from wiki:http://eigen.tuxfamily.org/index.php?title=Main_Page#Overview. For me, I choose the Eigen 3.3.7 released version.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>http://bitbucket.org/eigen/eigen/get/3.3.7.tar.bz2
+</code></pre></div>
+<ul>
+<li>Unpack this tar file by </li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-zxvf<span class="w"> </span><span class="m">3</span>.3.7.tar.gz
+</code></pre></div>
+<ul>
+<li>You will have <code>eigen-eigen-*</code> directory in your computer</li>
+<li>These are all steps you need to install <code>eigen library</code></li>
+</ul>
+<h2 id="gsl-library-installation-guide">GSL Library Installation Guide<a class="headerlink" href="#gsl-library-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_8">Short Introduction<a class="headerlink" href="#short-introduction_8" title="Permanent link">&para;</a></h3>
+<p>The GNU Scientific Library (GSL) is a numerical library for C and C++ programmers. It is a free open source library under the GNU General Public License. </p>
+<p>This guide is from: <a href="https://coral.ise.lehigh.edu/jild13/2016/07/11/hello/">website tutorial</a></p>
+<div class="admonition tip none">
+<p class="admonition-title">Tip</p>
+<p>I have installed one in cluster51, in directory /share/apps/lib/gsl-2.6. The compiler version: <gcc 6.3.0> for your information</p>
+</div>
+<h3 id="install-guide_7">Install Guide<a class="headerlink" href="#install-guide_7" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Download the latest version of gsl library.
+  For reference: <a href="https://www.gnu.org/software/gsl/"><strong>ftp://ftp.gnu.org/gnu/gsl/</strong></a></li>
+</ul>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>ftp://ftp.gnu.org/gnu/gsl/gsl-latest.tar.gz
+</code></pre></div>
+<ul>
+<li>Place the file in whatever directory you want to install and unpack the file with the following command:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-zxvf<span class="w"> </span>gsl-latest.tar.gz
+</code></pre></div>
+<ul>
+<li>This will create a directory called gsl-*.* in your home directory. Change to this directory.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>gsl-*.*
+</code></pre></div>
+<ul>
+<li>The next step is to configure the installation and tell the system where to install the files. Create a directory to install your gsl package, say <code>&lt;Path to libgsl&gt;/gsl</code> with the following command</li>
+</ul>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>&lt;Path<span class="w"> </span>to<span class="w"> </span>libgsl&gt;/gsl
+</code></pre></div>
+<ul>
+<li>Now configure the installation and tell it to use your new directory. This step may take a few minutes.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>./configure<span class="w"> </span>--prefix<span class="o">=</span>&lt;Path<span class="w"> </span>to<span class="w"> </span>libgsl&gt;/gsl
+</code></pre></div>
+<ul>
+<li>If there are no errors, compile the library. This step will take several minutes.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>make
+</code></pre></div>
+<ul>
+<li>Now it is necessary to check and test the library before actually installing it. This step will take some time.</li>
+</ul>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>check
+</code></pre></div>
+<ul>
+<li>If there are no errors, go ahead and install the library with:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span>install
+</code></pre></div>
+<ul>
+<li>Now we can write a test program to see if the library works. Create the following program and name it example.c</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;gsl/gsl_sf_bessel.h&gt;</span>
+
+<span class="kt">int</span>
+<span class="nf">main</span><span class="w"> </span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">15.0</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">gsl_sf_bessel_J0</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">);</span>
+<span class="w">    </span><span class="n">printf</span><span class="w"> </span><span class="p">(</span><span class="s">&quot;J0(%g) = %.18e/n&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<ul>
+<li>Compile and link the program with the following commands (but use the correct path for your username):</li>
+</ul>
+<div class="highlight"><pre><span></span><code>gcc<span class="w"> </span>-Wall<span class="w"> </span>-I&lt;Path<span class="w"> </span>to<span class="w"> </span>libgsl&gt;/gsl/include<span class="w"> </span>-c<span class="w"> </span>example.c
+gcc<span class="w"> </span>-L&lt;Path<span class="w"> </span>to<span class="w"> </span>libgsl&gt;/gsl/lib<span class="w"> </span>example.o<span class="w"> </span>-lgsl<span class="w"> </span>-lgslcblas<span class="w"> </span>-lm
+</code></pre></div>
+<ul>
+<li>Now run your program!</li>
+</ul>
+<div class="highlight"><pre><span></span><code>./a.out
+</code></pre></div>
+<ul>
+<li>If it is succesfully installed, it will print a  number in your screen.</li>
+<li>add libray path to LD_LIBRARY_PATH in <code>.bashrc</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>&lt;path<span class="w"> </span>to<span class="w"> </span>libgsl&gt;/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+</code></pre></div>
+<h2 id="libxc-library-installation-guide">Libxc Library Installation Guide<a class="headerlink" href="#libxc-library-installation-guide" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Download the latest stable version of libxc from official website:</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>http://www.tddft.org/programs/libxc/down.php?file<span class="o">=</span><span class="m">4</span>.3.4/libxc-4.3.4.tar.gz
+</code></pre></div>
+<h2 id="fftw-library-installation-guide">FFTW Library Installation Guide<a class="headerlink" href="#fftw-library-installation-guide" title="Permanent link">&para;</a></h2>
+<h3 id="short-introduction_9">Short Introduction<a class="headerlink" href="#short-introduction_9" title="Permanent link">&para;</a></h3>
+<p>FFTW is a C subroutine library for computing the discrete Fourier transform (DFT) in one or more dimensions, of arbitrary input size, and of both real and complex data (as well as of even/odd data, i.e. the discrete cosine/sine transforms or DCT/DST).</p>
+<div class="admonition tip none">
+<p class="admonition-title">Tip</p>
+<p>I have installed one in cluster51, in directory /share/apps/lib/fftw/3.3.8. Use module load fftw/3.3.8 to use this library. The compiler version: <gcc 6.3.0> for your information</p>
+</div>
+<h3 id="install-guide_8">Install Guide<a class="headerlink" href="#install-guide_8" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Download the release version from official website using wget</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>http://www.fftw.org/fftw-3.3.8.tar.gz
+</code></pre></div>
+<ul>
+<li>Unzi the package</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xvf<span class="w"> </span>fftw-3.3.8.tar.gz
+</code></pre></div>
+<ul>
+<li>Go to the directory <code>fftw-3.3.8</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code>./configure<span class="w"> </span>--prefix<span class="o">=</span>&lt;path<span class="w"> </span>to<span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>install&gt;<span class="w">    </span><span class="se">\</span>
+<span class="w">            </span>--enable-shared<span class="w">  </span><span class="se">\</span>
+<span class="w">            </span>--enable-threads<span class="w"> </span><span class="se">\</span>
+<span class="w">            </span>--enable-sse2<span class="w">    </span><span class="se">\</span>
+<span class="w">            </span>--enable-avx<span class="w">     </span>
+</code></pre></div>
+<ul>
+<li>If configure is finished</li>
+</ul>
+<div class="highlight"><pre><span></span><code>make
+<span class="c1">#check if you install finished</span>
+make<span class="w"> </span>check
+<span class="c1">#install to the final directory which you have set in --prefix</span>
+make<span class="w"> </span>install
+</code></pre></div>
+<h2 id="cp2k-installation-guide">CP2K Installation Guide<a class="headerlink" href="#cp2k-installation-guide" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Download the release version from official website using wget like</li>
+</ul>
+<div class="highlight"><pre><span></span><code>wget<span class="w"> </span>https://github.com/cp2k/cp2k/releases/download/v6.1.0/cp2k-6.1.tar.bz2
+</code></pre></div>
+<ul>
+<li>Unzip the cp2k package</li>
+</ul>
+<div class="highlight"><pre><span></span><code>tar<span class="w"> </span>-xvf<span class="w"> </span>cp2k-6.1.tar.bz2
+</code></pre></div>
+<ul>
+<li>Go into directory cp2k-6.1/tools/toolchains/</li>
+<li>Stop here! you should check you compiler version, if you are in the High Performance Cluster, Please load the module for compiler and MPI/Open MPI</li>
+<li>Note: for gcc version, gcc &lt;= 7.4.0</li>
+<li>Execute the following script to see the help message</li>
+</ul>
+<div class="highlight"><pre><span></span><code>./install_cp2k_toolchain.sh -h
+</code></pre></div>
+<ul>
+<li>Choose which package you want to install before cp2k.</li>
+</ul>
+<p><strong>Some packages are essential for cp2k, please check this in the official web site</strong></p>
+<ul>
+<li>the minimum required is <code>with-openblas=install</code>, if you want to compile successfully.</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+  <h2 id="__comments">Comments</h2>
+  <!-- Insert generated snippet here -->
+  <script src="https://giscus.app/client.js"
+          data-repo="chenggroup/chenggroup.github.io"
+          data-repo-id="MDEwOlJlcG9zaXRvcnkyMTg3NzgwODc="
+          data-category="Announcements"
+          data-category-id="DIC_kwDODQpJ584CRx90"
+          data-mapping="pathname"
+          data-strict="0"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="bottom"
+          data-theme="preferred_color_scheme"
+          data-lang="zh-CN"
+          crossorigin="anonymous"
+          async>
+  </script>
+  <!-- Synchronize Giscus theme with palette -->
+  <script>
+    var giscus = document.querySelector("script[src*=giscus]")
+
+    /* Set palette on initial load */
+    var palette = __md_get("__palette")
+    if (palette && typeof palette.color === "object") {
+      var theme = palette.color.scheme === "slate" ? "dark" : "light"
+      giscus.setAttribute("data-theme", theme) 
+    }
+
+    /* Register event handlers after documented loaded */
+    document.addEventListener("DOMContentLoaded", function() {
+      var ref = document.querySelector("[data-md-component=palette]")
+      ref.addEventListener("change", function() {
+        var palette = __md_get("__palette")
+        if (palette && typeof palette.color === "object") {
+          var theme = palette.color.scheme === "slate" ? "dark" : "light"
+
+          /* Instruct Giscus to change theme */
+          var frame = document.querySelector(".giscus-frame")
+          frame.contentWindow.postMessage(
+            { giscus: { setConfig: { theme } } },
+            "https://giscus.app"
+          )
+        }
+      })
+    })
+  </script>
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://www.cheng-group.net" target="_blank" rel="noopener" title="Group Website" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.36 14c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2m-5.15 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95a8.03 8.03 0 0 1-4.33 3.56M14.34 14H9.66c-.1-.66-.16-1.32-.16-2 0-.68.06-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2M12 19.96c-.83-1.2-1.5-2.53-1.91-3.96h3.82c-.41 1.43-1.08 2.76-1.91 3.96M8 8H5.08A7.923 7.923 0 0 1 9.4 4.44C8.8 5.55 8.35 6.75 8 8m-2.92 8H8c.35 1.25.8 2.45 1.4 3.56A8.008 8.008 0 0 1 5.08 16m-.82-2C4.1 13.36 4 12.69 4 12s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2M12 4.03c.83 1.2 1.5 2.54 1.91 3.97h-3.82c.41-1.43 1.08-2.77 1.91-3.97M18.92 8h-2.95a15.65 15.65 0 0 0-1.38-3.56c1.84.63 3.37 1.9 4.33 3.56M12 2C6.47 2 2 6.5 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2Z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="https://github.com/chenggroup" target="_blank" rel="noopener" title="Group Github Organization" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+    <a href="mailto:chengjun@xmu.edu.cn" target="_blank" rel="noopener" title="Contact Prof. Jun Cheng" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480v-83.6c0-4 1.5-7.8 4.2-10.7l167.6-182.9c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8l-88.3-44.2C7.1 311.3.3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.instant", "navigation.sections", "navigation.indexes", "navigation.top", "content.tooltips", "search.suggest", "content.code.annotate"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.3220b9d7.min.js"></script>
+      
+        <script src="../../../../javascripts/analytic.js"></script>
+      
+        <script src="../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>

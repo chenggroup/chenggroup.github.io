@@ -1,0 +1,969 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+    <url>
+        <loc>https://wiki.cheng-group.net/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/news/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/news/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/news/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/book_recommendation/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/book_recommendation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/book_recommendation/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/miscellaneous/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/miscellaneous/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/miscellaneous/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/cluster_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/cluster_usage/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/cluster_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/conda/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/conda/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/conda/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/gpu_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/gpu_usage/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/gpu_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/jupyter/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/jupyter/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/jupyter/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/notification_for_hpc/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/notification_for_hpc/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/notification_for_hpc/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/pack_backup/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/pack_backup/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/pack_backup/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/ssh_note/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/ssh_note/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/ssh_note/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/tensorboard/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/tensorboard/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/tensorboard/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/cluster_usage/vscode_remote/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/vscode_remote/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/vscode_remote/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/deprecated/deepmd-kit_installation_104/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/deprecated/deepmd-kit_installation_104/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/deprecated/deepmd-kit_installation_104/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/deprecated/lsf_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/deprecated/lsf_usage/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/deprecated/lsf_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/deprecated/mig_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/deprecated/mig_usage/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/deprecated/mig_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/how_to_edit/howtodo/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/how_to_edit/howtodo/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/how_to_edit/howtodo/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/how_to_edit/howtousenews/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/how_to_edit/howtousenews/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/how_to_edit/howtousenews/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/basis_pps/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/basis_pps/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/basis_pps/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/dpgen/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/dpgen/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/dpgen/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/dpmd/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/dpmd/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/dpmd/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/linux/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/linux/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/linux/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/presentation/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/presentation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/presentation/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/python_numpy/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/python_numpy/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/python_numpy/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/qc_dft/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/qc_dft/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/qc_dft/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/read_papers/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/read_papers/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/read_papers/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/toc/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/toc/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/toc/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/workflow/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/workflow/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/workflow/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/question_under_carpet/chemical_computing/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/question_under_carpet/chemical_computing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/question_under_carpet/chemical_computing/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/skills/QS4writing/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/skills/QS4writing/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/skills/QS4writing/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/skills/research_skill/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/skills/research_skill/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/skills/research_skill/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_development/lammps/installation/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_development/lammps/installation/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_development/lammps/installation/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_development/lammps/plugin/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_development/lammps/plugin/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_development/lammps/plugin/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_development/lammps/quick_start/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_development/lammps/quick_start/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_development/lammps/quick_start/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/cp2k-7.1/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/cp2k-7.1/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/cp2k-7.1/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/gcc/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/gcc/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/gcc/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/install_from_src_in_conda/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/install_from_src_in_conda/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/install_from_src_in_conda/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/softwares/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/softwares/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/softwares/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_191/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_191/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_191/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_51/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_51/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_51/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_ikkem/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_ikkem/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_ikkem/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_new/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_new/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_new/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/DP-GEN/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/DP-GEN/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/DP-GEN/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/DeePMD-kit/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/DeePMD-kit/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/DeePMD-kit/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/MDAnalysis/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/MDAnalysis/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/MDAnalysis/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/Tips_for_LaTeX/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/Tips_for_LaTeX/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/Tips_for_LaTeX/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/default_version/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/default_version/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/default_version/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/experience_of_dpmd_and_dpgen/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/experience_of_dpmd_and_dpgen/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/experience_of_dpmd_and_dpgen/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/i-pi/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/i-pi/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/i-pi/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/n2p2/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/n2p2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/n2p2/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/vmd/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/vmd/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/vmd/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/ECINT%20Tutorial/user/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/ECINT%20Tutorial/user/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/ECINT%20Tutorial/user/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-constrainedmd/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-constrainedmd/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-constrainedmd/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-deepmd/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-deepmd/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-deepmd/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-dft%2Bu/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-dft%2Bu/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-dft%2Bu/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-e-f/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-e-f/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-e-f/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-geoopt/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-geoopt/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-geoopt/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-hf/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-hf/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-hf/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-neb/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-neb/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-neb/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-reftraj/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-reftraj/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-reftraj/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-scan/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-scan/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-scan/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-slab/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-slab/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-slab/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-tools/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-tools/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-tools/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-zpe/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-zpe/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-zpe/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/teamwork/archive_rules/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/teamwork/archive_rules/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/teamwork/archive_rules/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/teamwork/git_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/teamwork/git_usage/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/teamwork/git_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/wiki/teamwork/tutorial_rules/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/teamwork/tutorial_rules/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/teamwork/tutorial_rules/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/news/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/news/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/news/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/book_recommendation/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/book_recommendation/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/book_recommendation/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/miscellaneous/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/miscellaneous/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/miscellaneous/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/cluster_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/cluster_usage/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/cluster_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/conda/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/conda/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/conda/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/gpu_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/gpu_usage/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/gpu_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/jupyter/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/jupyter/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/jupyter/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/notification_for_hpc/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/notification_for_hpc/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/notification_for_hpc/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/pack_backup/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/pack_backup/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/pack_backup/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/ssh_note/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/ssh_note/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/ssh_note/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/tensorboard/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/tensorboard/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/tensorboard/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/cluster_usage/vscode_remote/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/cluster_usage/vscode_remote/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/cluster_usage/vscode_remote/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/deprecated/deepmd-kit_installation_104/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/deprecated/deepmd-kit_installation_104/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/deprecated/deepmd-kit_installation_104/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/deprecated/lsf_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/deprecated/lsf_usage/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/deprecated/lsf_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/deprecated/mig_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/deprecated/mig_usage/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/deprecated/mig_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/how_to_edit/howtodo/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/how_to_edit/howtodo/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/how_to_edit/howtodo/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/how_to_edit/howtousenews/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/how_to_edit/howtousenews/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/how_to_edit/howtousenews/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/basis_pps/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/basis_pps/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/basis_pps/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/dpgen/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/dpgen/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/dpgen/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/dpmd/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/dpmd/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/dpmd/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/linux/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/linux/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/linux/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/presentation/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/presentation/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/presentation/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/python_numpy/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/python_numpy/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/python_numpy/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/qc_dft/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/qc_dft/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/qc_dft/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/read_papers/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/read_papers/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/read_papers/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/toc/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/toc/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/toc/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/workflow/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/workflow/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/workflow/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/question_under_carpet/chemical_computing/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/question_under_carpet/chemical_computing/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/question_under_carpet/chemical_computing/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/skills/QS4writing/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/skills/QS4writing/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/skills/QS4writing/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/skills/research_skill/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/skills/research_skill/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/skills/research_skill/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_development/lammps/installation/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_development/lammps/installation/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_development/lammps/installation/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_development/lammps/plugin/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_development/lammps/plugin/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_development/lammps/plugin/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_development/lammps/quick_start/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_development/lammps/quick_start/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_development/lammps/quick_start/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/cp2k-7.1/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/cp2k-7.1/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/cp2k-7.1/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/gcc/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/gcc/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/gcc/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/install_from_src_in_conda/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/install_from_src_in_conda/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/install_from_src_in_conda/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/softwares/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/softwares/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/softwares/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_191/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_191/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_191/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_51/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_51/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_51/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_ikkem/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_ikkem/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_ikkem/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_new/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_new/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_new/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/DP-GEN/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/DP-GEN/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/DP-GEN/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/DeePMD-kit/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/DeePMD-kit/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/DeePMD-kit/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/MDAnalysis/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/MDAnalysis/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/MDAnalysis/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/Tips_for_LaTeX/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/Tips_for_LaTeX/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/Tips_for_LaTeX/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/default_version/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/default_version/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/default_version/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/experience_of_dpmd_and_dpgen/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/experience_of_dpmd_and_dpgen/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/experience_of_dpmd_and_dpgen/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/i-pi/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/i-pi/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/i-pi/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/n2p2/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/n2p2/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/n2p2/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/vmd/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/vmd/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/vmd/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/ECINT%20Tutorial/user/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/ECINT%20Tutorial/user/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/ECINT%20Tutorial/user/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-constrainedmd/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-constrainedmd/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-constrainedmd/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-deepmd/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-deepmd/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-deepmd/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-dft%2Bu/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-dft%2Bu/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-dft%2Bu/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-e-f/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-e-f/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-e-f/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-geoopt/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-geoopt/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-geoopt/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-hf/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-hf/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-hf/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-neb/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-neb/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-neb/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-reftraj/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-reftraj/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-reftraj/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-scan/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-scan/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-scan/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-slab/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-slab/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-slab/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-tools/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-tools/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-tools/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-zpe/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k-zpe/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k-zpe/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/software_usage/cp2k/cp2k/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/software_usage/cp2k/cp2k/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/teamwork/archive_rules/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/teamwork/archive_rules/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/teamwork/archive_rules/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/teamwork/git_usage/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/teamwork/git_usage/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/teamwork/git_usage/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/teamwork/tutorial_rules/</loc>
+        <lastmod>2024-04-24</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/teamwork/tutorial_rules/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/teamwork/tutorial_rules/"/>
+    </url>
+</urlset>
