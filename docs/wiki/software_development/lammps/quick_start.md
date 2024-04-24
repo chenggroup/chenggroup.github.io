@@ -13,13 +13,10 @@ comments: true
 
 ## 阅读资料
 
-1. [官方开发指南](https://docs.lammps.org/Developer.html)
-
-  非常全面的开发指南，包括了LAMMPS的代码结构、并行算法等，但是篇幅较长。建议优先阅读[代码架构](https://docs.lammps.org/Developer_org.html)和[单步中调用的功能](https://docs.lammps.org/Developer_flow.html)。
-
-2. [Extending and Modifying LAMMPS Writing Your Own Source Code: A pragmatic guide to extending LAMMPS as per custom simulation requirements](https://zhuanlan.zhihu.com/p/351359876)
-  
-    详细介绍了如何在LAMMPS中添加新的功能，可以根据需求找到对应的案例进行学习。
+1. [官方开发指南](https://docs.lammps.org/Developer.html)  
+非常全面的开发指南，包括了LAMMPS的代码结构、并行算法等，但是篇幅较长。建议优先阅读[代码架构](https://docs.lammps.org/Developer_org.html)和[单步中调用的功能](https://docs.lammps.org/Developer_flow.html)。
+2. [Extending and Modifying LAMMPS Writing Your Own Source Code: A pragmatic guide to extending LAMMPS as per custom simulation requirements](https://zhuanlan.zhihu.com/p/351359876)  
+详细介绍了如何在LAMMPS中添加新的功能，可以根据需求找到对应的案例进行学习。
 
 如果你没有任何代码经验，建议先根据基础完成以下的内容学习：
 
