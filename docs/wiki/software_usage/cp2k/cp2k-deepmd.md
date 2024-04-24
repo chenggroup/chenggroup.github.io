@@ -16,7 +16,6 @@ comments: true
 CP2K官方手册：
 
 - [Section DEEPMD](https://manual.cp2k.org/trunk/CP2K_INPUT/FORCE_EVAL/MM/FORCEFIELD/NONBONDED/DEEPMD.html) 
-- [Section CONSTRAINT](https://manual.cp2k.org/trunk/CP2K_INPUT/MOTION/CONSTRAINT.html) 
 
 ## 适用版本
 
