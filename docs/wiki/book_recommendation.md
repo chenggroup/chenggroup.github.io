@@ -46,3 +46,9 @@ comments: true
 4. [Fortran for Scientists & Engineers](https://book.douban.com/subject/2248942/)
 
       Fortran入门+基础，例子简单明了，全面，20天左右可做完全书，每个章节后面的总结和代码参考很完善。另外关于和C/C++的接口教程在附录Fortran/C Interoperablity
+
+## 写作系列
+
+1. [How to Write a Lot](https://book.douban.com/subject/35282148/)
+
+      打碎不写作的借口
