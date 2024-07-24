@@ -10,9 +10,12 @@ comments: true
 
 [阅读文献入门](https://web.stanford.edu/class/ee384m/Handouts/HowtoReadPaper.pdf)
 
+## 为什么要写作
+
+<iframe width="800" height="600" src="//player.bilibili.com/player.html?isOutside=true&aid=63160009&bvid=BV1M441197RS&cid=109693938&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"></iframe>
+
 ## 如何写作
 
-youtube 视频(如不能观看联系管理员给予建议)
 
 <iframe width="800" height="600" src="//player.bilibili.com/player.html?aid=73708985&bvid=BV1TE411h7B9&cid=126075594&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
 
