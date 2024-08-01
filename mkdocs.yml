@@ -177,6 +177,7 @@ nav:
           - wiki/new_comers/read_papers.md
           - wiki/new_comers/presentation.md
           - wiki/new_comers/python_numpy.md
+          - wiki/new_comers/ase.md
           - wiki/new_comers/qc_dft.md
           - wiki/new_comers/basis_pps.md
           - wiki/new_comers/dpmd.md
