@@ -6,16 +6,12 @@ comments: true
 
 # Quick Start for Writing
 
-
-
 !!! info "小提示"
-    中文版可以在英文版之后找到，但是还是鼓励大家先读读英文版~
-
-
+中文版可以在英文版之后找到，但是还是鼓励大家先读读英文版~
 
 ## English version
 
-I write this blog aiming to share some simple tips about academic writing, and hope it could help the "poor guys" struggling with the writing, more or less. 
+I write this blog aiming to share some simple tips about academic writing, and hope it could help the "poor guys" struggling with the writing, more or less.
 
 **Notice**: I am not a master in writing but only a TOTAL FRESHMAN. And all the texts following are based on what I learnt and my understanding, maybe incomplete (I hope no mistakes at least). Nevertheless, I believe that it is the reason why I can make the texts more friendly and achievable for the tyros. If you have any question, please feel free to come and talk with me ;-)
 
@@ -25,9 +21,9 @@ I guess some (or even most) of the you would say 'duh' when you heard about "Pra
 
 ### Step ONE: polish up your outline
 
-The first and most important step. Seems to irrelevant to writing skills, uhm? Yes, but checking the outline with your colleagues and supervisors can largely save your time. Just imagine the time to rewrite the whole section! Generally speaking, the big framework for the project (and then the paper) has been made. However, we need to go a further step, and check the structures between paragraphs and even sentences. Actually it is the nightmare for many students, I believe. 
+The first and most important step. Seems to irrelevant to writing skills, uhm? Yes, but checking the outline with your colleagues and supervisors can largely save your time. Just imagine the time to rewrite the whole section! Generally speaking, the big framework for the project (and then the paper) has been made. However, we need to go a further step, and check the structures between paragraphs and even sentences. Actually it is the nightmare for many students, I believe.
 
-For example, here we try to introduce the modelling methods in interface electrochemistry (mainly about EDL modelling), following solution electrochemistry introduced in the last section. Hence, we write down the outline below and discuss it with our partners. 
+For example, here we try to introduce the modelling methods in interface electrochemistry (mainly about EDL modelling), following solution electrochemistry introduced in the last section. Hence, we write down the outline below and discuss it with our partners.
 
 ```latex
 the electric double layer (EDL) xxx (importance of EDL/why we want to investigate it)
@@ -37,19 +33,19 @@ EDL is hard to be probed (reason)
 we can get some info with in situ techniques and ab initio simulations
 ==>
 One of the key characteristics of EDL is its capcacitance
-==> 
+==>
 EDL capacitance can be measured by experiment (CV/impedance) and be a bencemark for modelling
 ==>
 replace the solute by the electrode (from solution electrochemistry to interface electrochemistry)
-==> 
+==>
 use similar simulation methods and focus on their performace on EDL modelling
 ```
 
-In this step, you don't need to consider the elegance of your language. Simple but accurate texts can make your life easier. 
+In this step, you don't need to consider the elegance of your language. Simple but accurate texts can make your life easier.
 
 ### Step TWO: ABT structure
 
-*“How long would you need to tell a story?”* Randy Olson asked this question in his [TEDMED talk](https://www.youtube.com/watch?v=ERB7ITvabA4). (YouTube link here. Sorry I cannot find another source for the guys in China...) In this talk and his book [*Houston, We Have a Narrative: Why Science Needs Story*](https://www.amazon.com/Houston-We-Have-Narrative-Science/dp/022627084X), Olson introduced a quite simple method to construct a narrative, the ABT structure:
+_“How long would you need to tell a story?”_ Randy Olson asked this question in his [TEDMED talk](https://www.youtube.com/watch?v=ERB7ITvabA4). (YouTube link here. Sorry I cannot find another source for the guys in China...) In this talk and his book [_Houston, We Have a Narrative: Why Science Needs Story_](https://www.amazon.com/Houston-We-Have-Narrative-Science/dp/022627084X), Olson introduced a quite simple method to construct a narrative, the ABT structure:
 
 > (...) AND (...), BUT (...), THEREFORE (...)
 
@@ -84,16 +80,16 @@ However, microscopic understanding of the EDL is still lacking due to its comple
 Thanks to the development of computational methods, modelling has shown great potential in studying the interface of the electrode and the electrolyte in the past few years, and provided valuable insight into EDL structures and dielectric properties.
 ```
 
-Maybe the repetition between the second and the third sentences is slightly implicit, but the idea is there. Nevertheless, I would not recommend a tyro to do so, since you might confuse the readers with rephrasing.  If you are not sure, just repeat the words and make your texts clear! 
+Maybe the repetition between the second and the third sentences is slightly implicit, but the idea is there. Nevertheless, I would not recommend a tyro to do so, since you might confuse the readers with rephrasing. If you are not sure, just repeat the words and make your texts clear!
 
-> Albert Einstein: When you are out to describe the truth, leave elegance to the tailor. 
+> Albert Einstein: When you are out to describe the truth, leave elegance to the tailor.
 
 Here we come to another example (cited from DOI: 10.1126/SCIADV.ABB1219). I like this compact structure very much.
 
-``` latex
+```latex
 An electric double layer (EDL) formed at an electrified interface can afford a potential change of a few volts within a very thin layer of 3 to 5 Å, amounting to an extremely large electric field of similar strength to that in a particle accelerator.
 % an extremely large electric field <==> a strong electric field
-Naturally, one would wonder how solvent molecules such as water or any other reactive species inside the EDL would behave in response to such a strong electric field. 
+Naturally, one would wonder how solvent molecules such as water or any other reactive species inside the EDL would behave in response to such a strong electric field.
 % how ... behave <==> this question
 Answering this question is not only of fundamental interest but also of technological importance in a broad range of research areas in science and technology, to name a few, energy storage in supercapacitors, electrocatalysis of relevance to energy and environmental applications, self-assembly of colloidal particles, ion transport across biological membranes, and mineralization processes in earth science.
 % fundamental interest, technological importance <==> its significance
@@ -102,19 +98,11 @@ Despite its significance, molecular-level understanding of EDL is largely missin
 Because of the advent of advanced experimental (e.g., synchrotron-based techniques and Raman spectroscopy) and computational methods [e.g., ab intio molecular dynamics (AIMD)], it is not until recently that the microscopic structures of EDL have started to be unveiled.
 ```
 
-
-
 Yeah! Finally! I don't want to talk too much to distract you (but I still strongly recommend you to read the book mentioned above for fun!). I think the three tips above are sufficient to work out a readable draft for your big bosses. **Don't be afraid of writing! Just have a try!**
-
-
 
 > I am not a natural in writing. On the contrary, I had really struggled with English writing and thought I was a dunderhead at all, even if I had a pretty nice and patient supervisor who helped me a lotttttttttt in my first paper. Things turned up in a day (shortly after I finished the quasi-final version of my first paper) when I was asked to give a hand to my colleague for a review. When I started to read the review, I knew how to put all I had been taught into practice magically. Just like a spark in my mind. Maybe you know what should be improved only when you need to deal with an "unreadable draft" ? (Just kidding! Don't kill me, Xiaohui!)
 
-
-
-***Sincere thanks to Dr. Katharina Doblhoff-Dier in Leiden University***
-
-
+**_Sincere thanks to Dr. Katharina Doblhoff-Dier in Leiden University_**
 
 ## 中文版
 
@@ -140,23 +128,23 @@ EDL is hard to be probed (reason)
 we can get some info with in situ techniques and ab initio simulations
 ==>
 One of the key characteristics of EDL is its capcacitance
-==> 
+==>
 EDL capacitance can be measured by experiment (CV/impedance) and be a bencemark for modelling
 ==>
 replace the solute by the electrode (from solution electrochemistry to interface electrochemistry)
-==> 
+==>
 use similar simulation methods and focus on their performace on EDL modelling
 ```
 
 在这一步中，你不需要考虑语言的优美。简单而精准的文字在接下来的修改中更方便。
 
-### 第二步：ABT结构
+### 第二步：ABT 结构
 
-*“你需要花多长时间去讲述一个故事？”* Randy Olson在他的[TEDMED演讲](https://www.youtube.com/watch?v=ERB7ITvabA4)中问了这个问题。（这是个油管链接，B站没找着...）在这个演讲以及他的书[*Houston, We Have a Narrative: Why Science Needs Story*](https://www.amazon.com/Houston-We-Have-Narrative-Science/dp/022627084X)中，Olson介绍了一种非常简单的叙事方法，ABT结构：
+_“你需要花多长时间去讲述一个故事？”_ Randy Olson 在他的[TEDMED 演讲](https://www.youtube.com/watch?v=ERB7ITvabA4)中问了这个问题。（这是个油管链接，B 站没找着...）在这个演讲以及他的书[_Houston, We Have a Narrative: Why Science Needs Story_](https://www.amazon.com/Houston-We-Have-Narrative-Science/dp/022627084X)中，Olson 介绍了一种非常简单的叙事方法，ABT 结构：
 
 > (...) AND (...), BUT (...), THEREFORE (...)
 
-让我们试着把上一节里的框架用ABT结构改造一下！
+让我们试着把上一节里的框架用 ABT 结构改造一下！
 
 ```latex
 %% start the ABT structure
@@ -169,10 +157,9 @@ To address this difficulty, both in situ experimental techniques and modelling a
 %% END the ABT structure
 ```
 
-如果你不知道怎么下笔，那就先把所有想到的点写下来并把它们往ABT结构里套。
+如果你不知道怎么下笔，那就先把所有想到的点写下来并把它们往 ABT 结构里套。
 
-如果你认为某处的过渡不够自然，也可以考虑用ABT结构重写一下 。
-
+如果你认为某处的过渡不够自然，也可以考虑用 ABT 结构重写一下 。
 
 ### 第三步：重复你的词汇
 
@@ -188,14 +175,14 @@ Thanks to the development of computational methods, modelling has shown great po
 
 好吧，看上去第二个句子和第三个句子之间的重复有点隐晦？但是那个意思了。尽管如此，同义替换对于新手来说需要特别谨慎，以防出现表述偏差。如果你不是特别确定，那就简单地重复！让你的文章先变得清晰！
 
-> Albert Einstein: When you are out to describe the truth, leave elegance to the tailor. 
+> Albert Einstein: When you are out to describe the truth, leave elegance to the tailor.
 
 这里是另一个例子 (引自 DOI: 10.1126/SCIADV.ABB1219)。笔者个人很喜欢这个简洁紧凑的例子！
 
-``` latex
+```latex
 An electric double layer (EDL) formed at an electrified interface can afford a potential change of a few volts within a very thin layer of 3 to 5 Å, amounting to an extremely large electric field of similar strength to that in a particle accelerator.
 % an extremely large electric field <==> a strong electric field
-Naturally, one would wonder how solvent molecules such as water or any other reactive species inside the EDL would behave in response to such a strong electric field. 
+Naturally, one would wonder how solvent molecules such as water or any other reactive species inside the EDL would behave in response to such a strong electric field.
 % how ... behave <==> this question
 Answering this question is not only of fundamental interest but also of technological importance in a broad range of research areas in science and technology, to name a few, energy storage in supercapacitors, electrocatalysis of relevance to energy and environmental applications, self-assembly of colloidal particles, ion transport across biological membranes, and mineralization processes in earth science.
 % fundamental interest, technological importance <==> its significance
@@ -204,11 +191,9 @@ Despite its significance, molecular-level understanding of EDL is largely missin
 Because of the advent of advanced experimental (e.g., synchrotron-based techniques and Raman spectroscopy) and computational methods [e.g., ab intio molecular dynamics (AIMD)], it is not until recently that the microscopic structures of EDL have started to be unveiled.
 ```
 
-
 文章到这里就结束了！笔者不想写太多点以至于让你们有点抓狂（但是笔者还是非常推荐你们去读读上面提到的书！很有趣！）总的来说，笔者认为上面提及的三点已经足以写出一个清晰的初稿给你们的老板了。
 
-***最后，向我第一个项目的日常导师，荷兰莱顿大学的 Dr. Katharina Doblhoff-Dier 表示诚挚的感谢。***
-
+**_最后，向我第一个项目的日常导师，荷兰莱顿大学的 Dr. Katharina Doblhoff-Dier 表示诚挚的感谢。_**
 
 ## Useful websites for writing
 
@@ -244,11 +229,28 @@ http://www.onedict.com/index.php
 
 https://www.deepl.com/translator
 
-
 ## 年度汇报标准
 
-研究生（博士和硕士）前两年每年应写一次汇报。汇报使用 **LaTeX**撰写。模板选用revtex的AIP模板。以 **英文**撰写
+研究生（博士和硕士）前两年每年应写一次汇报。汇报使用 **LaTeX**撰写。模板选用 revtex 的 AIP 模板。以 **英文**撰写
 
-硕士生第一年报告的词数应在4500左右，第二年报告应在6000左右。
+硕士生第一年报告的词数应在 4500 左右，第二年报告应在 6000 左右。
 
-博士生第一年报告的词数应在6000左右，第二年报告应在7500左右。
+博士生第一年报告的词数应在 6000 左右，第二年报告应在 7500 左右。
+
+## 使用 Overleaf 写作
+
+[Overleaf](http://overleaf.com)是一个在线的 LaTeX 编辑器，可以直接在浏览器中编辑 LaTeX 文档。使用 Overleaf 可以方便地进行合作写作，同时也可以方便地进行版本控制。现阶段，课题组的科研论文基本都是使用 Overleaf 进行写作。基本操作流程为：在需要写文章的时候联系管理员，请管理员将文章相关人员的邮箱添加到一个空白项目中，然后用个人 Overleaf 账号进行后续编辑。项目相关文件课题组会统一进行归档管理。
+
+在需要写文章的时候请将以下信息发给管理员：
+
+- 所需模版（常用的如 ACS 和 AIP，如果有另外需求也可以告知管理员）
+- 项目名称（按照：作者名-序号-文章名 进行命名，比如：`jxzhu-1-pt_oh_100`）
+- 需要添加的成员邮箱（除管理员外上限 5 人每项目）
+  管理员添加相关人员邮箱后，请所有成员查看邮箱/登录 Overleaf 账号确认邀请。
+
+### 版本管理
+
+Overleaf 可以在修改的时候实现版本记录，也可以添加评论，具体的使用方法可以参考[此教程](https://zhuanlan.zhihu.com/p/67182742)。
+
+1. 右上角`History`，可以查看历史版本，并自行标记版本。
+2. 右上角`Menu`-`Sync`，可以进行手动备份。但是现阶段 GitHub 账号绑定仅限于会员（早期已绑定用户同步功能不受影响），故推荐使用 git+本地进行备份（也可在本地自行选择其他的托管平台）。git 相关教程参见[此教程](../teamwork/git_usage.md)。
