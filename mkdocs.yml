@@ -166,7 +166,7 @@ nav:
           - wiki/cluster_usage/ssh_note.md
           - wiki/cluster_usage/gpu_usage.md
           - wiki/cluster_usage/conda.md
-          - wiki/cluster_usage/jupyter.md
+          - wiki/cluster_usage/open_ondemand.md
           - wiki/cluster_usage/vscode_remote.md
           - wiki/cluster_usage/notification_for_hpc.md
           - wiki/cluster_usage/pack_backup.md
