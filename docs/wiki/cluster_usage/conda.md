@@ -74,6 +74,6 @@ conda config --set env_prompt '({name})'
 
 [参考文献](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
+## 使用 Jupyter Notebook
 
-
-没有了，愉快的用conda进行数据处理吧!
+请参考 [Open Ondemand使用说明](./open_ondemand.md)。

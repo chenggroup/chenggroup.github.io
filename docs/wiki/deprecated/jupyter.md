@@ -6,6 +6,8 @@ comments: true
 
 # Jupyter 系列使用指南
 
+> 注意本教程已不推荐参考
+
 ## Jupyter Notebook
 
 ### 转化 Jupyter Notebook 为 Python 脚本
