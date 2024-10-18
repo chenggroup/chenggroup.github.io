@@ -1,23 +1,37 @@
 ---
-Title: Open Ondemand 使用说明
+Title: OpenSCOW/Open Ondemand 使用说明
 Authors: Weihong Xu
 comments: true
 ---
 
-# Open Ondemand 使用说明
+# OpenSCOW/Open Ondemand 使用说明
 
 ## 介绍
-为方便在HPC集群上执行一些交互类应用，我们在 ChengLab HPC 集群的 `mgt02` 节点部署了一个 Open Ondemand (OOD) 实例，该实例包含一个Jupyter应用入口，未来可根据需要部署更多应用。使用该服务可参考以下步骤。
+为方便在HPC集群上执行一些交互类应用，我们在 ChengLab HPC 集群的 `mgt02` 节点部署了
+OpenSCOW 超算门户和 Open Ondemand (OOD) 实例。使用该服务可参考以下步骤。
 
 ## 前置准备
 
 ### 设置用户密码
 
-由于 OOD 使用 PAM 认证，因此需要为登录用户设置相应的密码。目前新增用户的密码已经采用随机密码，老用户请联系管理员获取或重置密码。
+由于 SCOW 和 OOD 均使用 PAM 认证，因此需要为登录用户设置相应的密码。目前新增用户的密码已经采用随机密码，老用户请联系管理员获取或重置密码。
 验证步骤：
 
-- 登录到 mgt02 节点
+- 登录到 `mgt02` 节点
+- 执行 `passwd` 设置用户密码，如密码未知可找管理员获取或重置
 - 执行 `pamtester sshd $(whoami) authenticate` 测试密码是否生效，如遇问题请等待1分钟后重试，遇问题可找管理员处理
+
+## OpenSCOW
+
+该实例包含一套交互式作业提交入口和Jupyter、VSCode应用入口，未来可根据需要部署更多应用。
+
+请在内网访问 [http://172.27.127.191:8081](http://172.27.127.191:8081) 即可使用，注意用户名和密码参照上方的指引配置。
+
+详细的使用说明请参考[官方文档](https://pkuhpc.github.io/OpenSCOW/docs/info)。
+
+## Open Ondemand
+
+该实例包含一个Jupyter应用入口，未来可根据需要部署更多应用。
 
 ### 设置ssh转发配置
 
@@ -34,14 +48,13 @@ Host cheng-hpc
     Hostname 172.27.127.191
     User YOUR_NAME
     Port 6666
-    ProxyJump YOUR_NAME@10.24.3.151
 ```
 
-## 使用
+### 使用
 
 在确保ssh转发正常工作后，在浏览器访问 http://localhost:8086 即可使用该服务。
 
-### Jupyter
+#### Jupyter
 
 为正常使用Jupyter, 需要在集群中通过conda进行安装，如果已有可忽略。具体步骤如下：
 
@@ -56,8 +69,10 @@ Host cheng-hpc
 
 提交作业后会进入Session界面，在该界面可以看到提交作业的状态。当启动完毕后会出现connect to jupyter，点击即可使用。
 
+## 常用技巧
+
 ### 转化 Jupyter Notebook 为 Python 脚本
 
 ```bash
-ipython nbconvert --to python *.ipynb
+ipython nbconvert --to script *.ipynb
 ```
