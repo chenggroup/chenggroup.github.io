@@ -140,6 +140,13 @@ ssh myserver
 
 此命令即相当于上文提到的`ssh -i ~/.ssh/id_rsa -p 7696 kmr@123.45.67.89`。
 
+同样的，`scp`命令也可以使用上面的`Host`名来代替，例如：
+
+```bash
+scp myserver:/data/home/kmr/file /some/local/place
+```
+即可实现上面的一长串带端口的信息的`scp`效果！如果需要传递目录，同样需要加入`-r`参数。
+
 ### 加深理解
 
 !!! warning

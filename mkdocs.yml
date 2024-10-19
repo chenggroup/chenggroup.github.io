@@ -168,6 +168,7 @@ nav:
           - wiki/cluster_usage/conda.md
           - wiki/cluster_usage/open_ondemand.md
           - wiki/cluster_usage/vscode_remote.md
+          - wiki/cluster_usage/wsl_usage.md
           - wiki/cluster_usage/notification_for_hpc.md
           - wiki/cluster_usage/pack_backup.md
           - wiki/cluster_usage/tensorboard.md
