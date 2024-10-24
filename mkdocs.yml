@@ -155,8 +155,7 @@ markdown_extensions:
 extra_javascript:
   - javascripts/analytic.js
   - javascripts/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
   - Home: index.md
@@ -169,6 +168,7 @@ nav:
           - wiki/cluster_usage/conda.md
           - wiki/cluster_usage/open_ondemand.md
           - wiki/cluster_usage/vscode_remote.md
+          - wiki/cluster_usage/wsl_usage.md
           - wiki/cluster_usage/notification_for_hpc.md
           - wiki/cluster_usage/pack_backup.md
           - wiki/cluster_usage/tensorboard.md
