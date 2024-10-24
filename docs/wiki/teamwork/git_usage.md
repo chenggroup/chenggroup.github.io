@@ -27,11 +27,11 @@ Git作为开源社区常用的版本控制系统，有着强大的功能，可�
 
 完成注册到达首页，便可以看到如图的按钮，点击"New"即可创建一个仓库（Repository）。
 
-<img src="https://s2.loli.net/2021/12/22/NDJGesikwYdyT2R.png" alt="image-20211222110147676" style="zoom: 50%;" />
+<img src="../../images/NDJGesikwYdyT2R.png" alt="image-20211222110147676" style="zoom: 50%;" />
 
 随后便出现如下图的界面，可以选择设置该仓库的归属（Owner）、名称（Repository name）、说明（Description）、权限等。需要说明的是，公共仓库（Public）的内容任何人都能看到，但提交（Push）需要设置权限；而私有仓库（Private）的访问权限取决于归属者，若为个人仓库默认仅自己可见，若为组织（Organization）则仅该组织成员可见。
 
-<img src="https://s2.loli.net/2021/12/22/dO2yS9RQlutDCao.png" alt="截屏2021-12-22 上午11.15.52" style="zoom: 50%;" />
+<img src="../../images/dO2yS9RQlutDCao.png" alt="截屏2021-12-22 上午11.15.52" style="zoom: 50%;" />
 
 尽管直接点击“Create repository”我们便可以快速创建一个仓库，这里推荐根据情况选择是否要创建说明文档（README file）、忽略信息（.gitignore）以及开源协议（License）。关于开源协议的说明，请点击"Learn more"，这里限于篇幅原因不过多描述。
 
@@ -39,13 +39,13 @@ Git作为开源社区常用的版本控制系统，有着强大的功能，可�
 
 为了合作的快捷、防止在提交时把过多无用文件提交到Git仓库中，强烈推荐在项目创建之初就建立.gitignore文件。后文将更加详细地介绍这一文件的用法。
 
-<img src="https://s2.loli.net/2021/12/22/c8CK6NjrMLpFahS.png" alt="截屏2021-12-22 上午11.24.54" style="zoom: 50%;" />
+<img src="../../images/c8CK6NjrMLpFahS.png" alt="截屏2021-12-22 上午11.24.54" style="zoom: 50%;" />
 
 ### 远程↔︎本地
 
 在Github上创建项目后，下一个关心的议题自然是，如何把本地的代码上传到远程。
 
-![截屏2021-12-22 上午11.32.43](https://s2.loli.net/2021/12/22/bwXyhg6xLFC1IMT.png)
+![](../../images/837c99767ba10f66649cbd1bafa3bf46_MD5.png)
 
 相信不少人已经对上图中的按钮 "Add file" 跃跃欲试了，点击即可看到两个选项，即创建文件和上传文件。前者可以提供一个文本框输入你想要建立的文字，后者则提供了一个区域可以通过浏览器拖动文件手动上传或者打开资源管理器选择要上传的文件。但当文件较多、较大时，这两种方法便显得不够便捷。因此这里我们从 Git 命令行出发，介绍更常用的提交方式。
 
@@ -60,7 +60,7 @@ git config --global user.email "email@example.com"
 
 在远程创建仓库后，我们便可以把远程的仓库拉取（Pull）到本地。点击绿色的Code按钮，即可看到如图的对话框，点击文本框右侧的按钮复制链接。
 
-<img src="https://s2.loli.net/2021/12/22/D86pHWsYk7ejd3v.png" alt="截屏2021-12-22 上午11.46.27" style="zoom: 50%;" />
+<img src="../../images/D86pHWsYk7ejd3v.png" alt="截屏2021-12-22 上午11.46.27" style="zoom: 50%;" />
 
 若在本地某个目录下，输入如下命令：
 
@@ -74,7 +74,7 @@ git clone https://github.com/chenggroup/Test.git
 
 配置完成后，即可用SSH面板里的链接来克隆（Clone）远程仓库到本地：
 
-<img src="https://s2.loli.net/2021/12/22/ApBy8vxYXZCgcFT.png" alt="截屏2021-12-22 上午11.52.29" style="zoom:50%;" />
+<img src="../../images/ApBy8vxYXZCgcFT.png" alt="截屏2021-12-22 上午11.52.29" style="zoom:50%;" />
 
 ```bash
 git clone git@github.com:chenggroup/Test.git
@@ -148,11 +148,11 @@ To github.com:chenggroup/Test.git
 
 回到远程页面就会发现，我们已经提交成功。
 
-![截屏2021-12-22 下午1.12.12](https://s2.loli.net/2021/12/22/9eduqU1rcX7yYKL.png)
+![](../../images/dba108feea35e995161c3c6fc95e6b71_MD5.png)
 
 点击进入，内容和本地一致：
 
-<img src="https://s2.loli.net/2021/12/22/qHFNi6nTRbZMOAQ.png" alt="截屏2021-12-22 下午1.14.44" style="zoom:50%;" />
+<img src="../../images/qHFNi6nTRbZMOAQ.png" alt="截屏2021-12-22 下午1.14.44" style="zoom:50%;" />
 
 从而我们可以把本地仓库的修改同步到远程。在`git commit`之前，实际上任何修改都可以添加到暂存区中，但这里需要注意可以被Track的文件是否是自己想要的，而不要无脑`git add .`甚至`git add *`，以免追踪到一些“不速之客”。
 
@@ -185,17 +185,17 @@ git merge devel
 
 类似于分支的实现，对公开在Github上的远程项目，可以由当前项目出发，建立项目的复刻（Fork）。复刻出的项目可以看作是主项目的分支，并保留了初始项目的相应分支。
 
-![截屏2021-12-22 下午2.31.01](https://s2.loli.net/2021/12/22/UFQWLykvfp8TA6b.png)
+![](../../images/546ba55f9ea772b50640b248c5771cda_MD5.png)
 
 Fork的项目仍是远程项目，因而可以Clone到本地作进一步修改，并可以与本地同步从而更新远程的Fork项目，而原始项目保持不变<del>（并且很可能也没权限改变）</del>。
 
 此时，要想向原始项目提交自己的修改，则需要创建拉取请求（Pull request，简写为PR）。点击页面上的"Contribute"，点击"Open pull request"即可创建PR。
 
-<img src="https://s2.loli.net/2021/12/22/YXa64NJ7QnmMelw.png" alt="截屏2021-12-22 下午2.35.58" style="zoom:50%;" />
+<img src="../../images/YXa64NJ7QnmMelw.png" alt="截屏2021-12-22 下午2.35.58" style="zoom:50%;" />
 
 随后，便可以指定从Fork项目的某个分支提交PR到原始项目的某个分支。例如图中是从自己的`devel`到原始的`master`分支。在下方的文本框中可以输入自己的修改及对应的描述，便于原始项目的维护者审核、处理、合并PR。
 
-<img src="https://s2.loli.net/2021/12/22/nkA3IcHsMd1YhCF.png" alt="提交PR" style="zoom:50%;" />
+<img src="../../images/nkA3IcHsMd1YhCF.png" alt="提交PR" style="zoom:50%;" />
 
 页面向下翻，可以看到自己的历史提交，以及修改的文件等。注意在创建PR前，请务必查看本次PR相比原始文件修改了哪些，以免一些不希望上传的内容混进来，给审核人员带来困扰，不利于抓住真正核心的修改。、
 
@@ -205,7 +205,7 @@ Fork的项目仍是远程项目，因而可以Clone到本地作进一步修改�
 
 当发现代码可能存在BUG或者自己有一些疑问需要维护者回答时，抑或是有一些想要开发者实现的新功能，用户也可以在原始项目中创建议题（Issue），用尽可能简洁的语言描述自己遇到的问题，或自己的需求。一些流行的项目可能会提供Issue模板，请按照模板提示填写，提高解决问题的效率，方便开发者对应修复BUG或者开发特性。
 
-![DeePMD-kit 项目中的Issue](https://s2.loli.net/2021/12/22/mGTrgXnoL2duzxN.png)
+![](../../images/277e83d0a8068bd3de6ba3c32ef57553_MD5.png)
 
 如果你看到相关的Issue，而恰好你的修改可以为之提供帮助，也可以提交PR，并在PR的描述中用`#<ID>`连接到对应的Issue，便于提问者同步你的修改。
 

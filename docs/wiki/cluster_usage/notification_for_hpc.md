@@ -10,7 +10,7 @@ comments: true
 
 计算节点可访问互联网的服务器，可以设置任务完成后推送到钉钉。效果如下
 
-![image-20200715201517823](https://i.loli.net/2020/07/15/Wphq61LDiOtB5kx.png)
+![](../../images/e832aea4b450ad26e53f21e9e5ed2ac4_MD5.png)
 
 ### 申请钉钉机器人
 
@@ -22,11 +22,11 @@ comments: true
 
 2. 添加 `自定义` 机器人
 
-![image-20200715184517490](https://i.loli.net/2020/07/15/l1ghQP5vJq86FXB.png)
+![](../../images/80a8b1321451b69f9c2366d6b9e09a8e_MD5.png)
 
-3. 群组选择工作通知，安全设置中添加关键词 Job, info
+1. 群组选择工作通知，安全设置中添加关键词 Job, info
 
-![image-20200715183755580](https://i.loli.net/2020/07/15/OvCEsWlgdyDSnBP.png)
+![](../../images/5265b5d702cc657464d99452cc4855fd_MD5.png)
 
 4. 复制机器人的 `webhook`
 
@@ -79,4 +79,3 @@ Job $LSB_JOBID is finished in **<YOUR_HPC_NAME>**! \\n
         }'
 }
 ```
-

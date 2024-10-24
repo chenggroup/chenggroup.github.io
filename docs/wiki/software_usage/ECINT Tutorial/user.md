@@ -295,11 +295,11 @@ ecrun <<YOUR_INPUT_FILE>>
 
 计算完成的截图如下: 
 
-<img src="https://i.loli.net/2020/08/04/9WA7ebPaCGoSy62.png" alt="image-20200804224518088"  />
+<img src="../../images/9WA7ebPaCGoSy62.png" alt="image-20200804224518088"  />
 
 计算出错的截图如下:
 
-<img src="https://i.loli.net/2020/08/05/bd1FeLXTjq6vMhx.png" alt="image-20200805150759298" style="zoom: 64%;" />
+<img src="../../images/bd1FeLXTjq6vMhx.png" alt="image-20200805150759298" style="zoom: 64%;" />
 
 ## 常见错误
 

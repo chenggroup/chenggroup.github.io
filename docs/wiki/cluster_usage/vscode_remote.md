@@ -15,7 +15,13 @@ VSCode Server原生基于Node和Electron技术，有着较高的内存等需求�
 并知晓[集群的基础概况和调度系统使用方法](cluster_usage.md)。
 如未阅读，请先参阅上述两篇文字。
 
-## MacOS 和 Linux 用户
+## 使用 SCOW 提供的交互终端
+
+## 原生 VS Code
+
+诚然 code-server 可以提供良好体验，奈何在没有联网的集群上安装插件较为困难，故这里给出另一种方式，即利用原生的 Remote 功能来实现远程。
+
+### MacOS 和 Linux 用户
 
 由于笔者目前使用的设备是 MacOS 操作系统（Linux情况类似），这里给出较完整的图文说明。
 
@@ -61,18 +67,18 @@ Walltime及队列情况仍需要参照设置。
 
 然后，请打开一个VSCode窗口，并点击左下角的按钮，选择“Connect to Host”：
 
-![](https://s2.loli.net/2023/03/15/sV64NZDSPI5G9Xi.png)
+![](../../images/7a8a0325bcd20016c2bdae05e83e34b0_MD5.png)
 
 输入虚拟终端所在的节点，例如上文中的输出 `c51-s001`:
 
-![](https://s2.loli.net/2023/03/15/vrb8UCfLlQ5qPFE.png)
+![](../../images/800516b938f641c077b81daa36d52e52_MD5.png)
 
 如果提示输入密码等信息，请按回车以继续
 
-![](https://s2.loli.net/2023/03/15/F96ATCsJpxMInG7.png)
+![](../../images/09d0dac866dad2550bd20f5149813514_MD5.png)
 
 等待安装 VSCode Server 即可。若以前曾配置过远程，会自动调用之前的服务。
 
-## Windows 用户
+### Windows 用户
 
 对于Windows用户，由于笔者暂时没有Windows设备，请参照[此教程](https://hpc.nih.gov/apps/vscode.html)尝试，思路比较接近。本文即参考了该文章的实现。

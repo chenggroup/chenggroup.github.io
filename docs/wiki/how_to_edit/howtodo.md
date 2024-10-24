@@ -6,7 +6,7 @@ comments: true
 
 # 如何使用 Wiki
 
-Wiki 书写使用 markdown 格式。本 wiki 使用 python-markdown 作为 markdown 的解释器，支持一些 markdown 的扩展语法。在本地编辑 markdown 文件时，推荐使用 [VSCode](https://code.visualstudio.com)。
+Wiki 书写使用 markdown 格式。本 wiki 使用 python-markdown 作为 markdown 的解释器，支持一些 markdown 的扩展语法。在本地编辑 markdown 文件时，推荐使用 [VSCode](https://code.visualstudio.com) 或者 [Obsidian](https://obsidian.md/)。
 
 !!! warning
     Typora正式版已经收费，且测试版在某些系统环境已不可用。
@@ -22,28 +22,25 @@ Wiki 书写使用 markdown 格式。本 wiki 使用 python-markdown 作为 markd
 
 ## 如何上传 wiki
 
-如果还不会 markdown 语法，可以先看 [markdown 语法部分](#markdown-语法)，能被识别为 wiki 的 markdown 文件应在文件的开头插入 [YAML Front Matter](#yaml-front-matter)。把自己的 markdown 文档上传到 wiki 上可以有两种方案，本质都是在使用 Github: 1. 上传文件至 Github 仓库 (推荐)；2. 由 [wiki 网站](../../index.md) 导向编辑页面。
+如果还不会 markdown 语法，可以先看 [markdown 语法部分](#markdown-grammar)，能被识别为 wiki 的 markdown 文件应在文件的开头插入 [YAML Front Matter](#yaml-front-matter)。把自己的 markdown 文档上传到 wiki 上可以有两种方案，本质都是在使用 Github: 1. 上传文件至 Github 仓库 (推荐)；2. 由 [wiki 网站](../../index.md) 导向编辑页面。
 
 ### 上传文件至 github 仓库 (推荐)
 
 推荐通过 pull requests 的方法来增加或修改 [wiki 网站](../../index.md) 上的 wiki。
 
-#### 1. Fork wiki 文档所在仓库
+#### 1. Fork wiki 文档所在仓库 { #1-fork-wiki-repo }
 
 先 fork <{{ config.repo_url }}> ，然后进入 fork 成功后的仓库。
 
-<!--![Screen Shot 2019-11-09 at 02.07.35](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6kit9pej311t0kxad7.jpg)-->
+![Screen Shot 2019-11-09 at 02.07.35](../../images/006y8mN6gy1g8r6kit9pej311t0kxad7.jpg)
 
 #### 2. 创建新文件或上传本地文件
 
-<!--![Screen Shot 2019-11-09 at 02.16.32](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r6wiwgauj311t0kwjue.jpg)-->
+![Screen Shot 2019-11-09 at 02.16.32](../../images/006y8mN6gy1g8r6wiwgauj311t0kwjue.jpg)
 
 推荐在本地用 typora 等编辑器写好 markdown 后直接上传文件，文件请上传至 [_wiki]({{ config.repo_url }}/tree/master/docs/wiki) 目录 (master 分支)。也可以修改 fork 的仓库的 `docs/wiki` 下的文件，然后再提交 PR。
 
 #### 3. 设置导航
-
-!!! note
-    新增步骤
 
 在上传新的文档后，需要手动在仓库首级的 `mkdocs.yml` 中设置导航。
 
@@ -67,33 +64,16 @@ nav:
 
 #### 4. 提交 PR
 
-<!--![Screen Shot 2019-11-09 at 02.31.25](https://tva1.sinaimg.cn/large/006y8mN6gy1g8r757esxtj311t0kwad2.jpg)-->
+![Screen Shot 2019-11-09 at 02.31.25](../../images/006y8mN6gy1g8r757esxtj311t0kwad2.jpg)
 
 ## 如何预览 wiki
 
-预览 wiki 也有两种方案：1. 使用 typora 等实时渲染；2. 在本地启动 Mkdocs 服务。
+预览 wiki 也有多种方案:
+1. 利用 VSCode 或 Obsidian 进行预览（推荐）
+2. 在本地启动 Mkdocs 服务
+3. 使用 typora 等实时渲染
 
-### 通过 typora (注意已经收费)
-
-使用 [typora](https://www.typora.io/ "轻量化md编辑工具") 编辑器可以很方便地实时渲染 markdown 文件。如果不使用本 wiki 中标注有 `*` 的 [wiki 扩展语法](#按钮) ，则可以大体上认为 typora 所渲染出的文档与直接查看 [wiki 网站](../../index.md) 的文档相差无几，基本仅存在显示风格上的差异。但要注意需更改 typora 的一些设置（见后文），避免和 wiki 所使用的 markdown 扩展功能发生冲突。
-
-#### 修改 markdown 拓展语法设置
-
-需要关闭上下标、高亮以及图表的功能。
-
-![Screen Shot 2019-11-08 at 21.21.10](https://tva1.sinaimg.cn/large/006y8mN6ly1g8qy66mfwgj30im0dcjt0.jpg)
-
-#### 修改数学公式设置
-
-需要关闭数学公式自动添加序号的功能。
-
-![Screen Shot 2019-11-08 at 21.23.00](https://tva1.sinaimg.cn/large/006y8mN6ly1g8qy7qdjgmj30im0dcgn2.jpg)
-
-#### 修改图像设置
-
-需要把默认的无特殊操作改为通过 iPic 上传图片，不过在这之前需要 [下载 iPic](https://apps.apple.com/cn/app/ipic-markdown-图床-文件上传工具/id1101244278?mt=12) 。推荐在 iPic 偏好设置中开启压缩上传图片的选项，这样可以使 wiki 网页加载的速度更快。
-
-![image-20210602152924699](https://cdn.jsdelivr.net/gh/xjf729/FigureBed@master/Imgs/image-20210602152924699.png)
+这里我们对后两种方式进行介绍
 
 ### 通过 Mkdocs 服务*
 
@@ -126,25 +106,55 @@ mkdocs serve
 
 #### 6. 预览 wiki
 
-等待片刻，打开浏览器访问 <http://127.0.0.1:8000> 。
+等待片刻，打开浏览器访问 <http://127.0.0.1:8000> ，即可进行实时预览。
 
-## Markdown 语法
+### 通过 typora (注意已经收费)
+
+使用 [typora](https://www.typora.io/ "轻量化md编辑工具") 编辑器可以很方便地实时渲染 markdown 文件。如果不使用本 wiki 中标注有 `*` 的 [wiki 扩展语法](#按钮) ，则可以大体上认为 typora 所渲染出的文档与直接查看 [wiki 网站](../../index.md) 的文档相差无几，基本仅存在显示风格上的差异。但要注意需更改 typora 的一些设置（见后文），避免和 wiki 所使用的 markdown 扩展功能发生冲突。
+
+#### 修改 markdown 拓展语法设置
+
+需要关闭上下标、高亮以及图表的功能。
+
+![Screen Shot 2019-11-08 at 21.21.10](../../images/006y8mN6ly1g8qy66mfwgj30im0dcjt0.jpg)
+
+#### 修改数学公式设置
+
+需要关闭数学公式自动添加序号的功能。
+
+![Screen Shot 2019-11-08 at 21.23.00](../../images/006y8mN6ly1g8qy7qdjgmj30im0dcgn2.jpg)
+
+#### 插入图片
+
+请把图片统一放在 `docs/images/` 下，以确保无论何时这些图片都可用。
+
+## Markdown 语法 { #markdown-grammar }
 
 Markdown 是一种标记语言，和代码一样，可以用纯文本的形式来书写。其使用的常用标记符号不超过十个，可以让人专注于文字而不是排版，并且也可以方便地导出为 HTML、PDF 等格式。
 
 ### 基本语法
 
-![markdown-basic-gramma](https://tva1.sinaimg.cn/large/006y8mN6ly1g8qom3uma2j30ow0lrtbm.jpg)
+![markdown-basic-gramma](../../images/006y8mN6ly1g8qom3uma2j30ow0lrtbm.jpg)
 
-> :warning: 插入图片时切勿使用本地路径，否则在 wiki 上无法查看，具体请参考 [Typro 插入图片设置](#修改图像设置)。
+!!! warning "注意"
+    插入图片时切勿使用本地路径，否则在 wiki 上无法查看，具体请参考 [Typora 插入图片设置](#修改图像设置)。
 
 可参考 [markdown 教程](https://www.markdownguide.org/basic-syntax/) 与 [练习](https://www.markdowntutorial.com/) 来学习基本语法。
 
-> :warning: 要引用同一篇 wiki 中的小标题（二至六级标题）可以通过 `[sub title](#sub-title)` 来引用。不过需要注意，要把小标题中的空格用 `-` 代替，所有大写字母改成小写，且忽略 `.` , `&` 等特殊符号。比如，用 `[1. Fork wiki 文档所在仓库](#1-fork-wiki-文档所在仓库)` 来表示 [1. Fork wiki 文档所在仓库](#1-fork-wiki-文档所在仓库) 。若有多个同名标题，以 `title`, `tile-1`, `title-2` 来区分。
+!!! warning "注意"
+    要引用同一篇 wiki 中的小标题（二至六级标题）可以通过 `[sub title](#sub-title)` 来引用。不过需要注意，要把小标题中的空格用 `-` 代替，所有大写字母改成小写，且忽略 `.` , `&` 等特殊符号。
+    
+    请注意，如被引用的链接中包含中文，Mkdocs 不能提供良好支持。请通过添加别名的方式来实现，比如要链接到[1. Fork wiki 文档所在仓库](#1-fork-wiki-repo)，请在 `#### 1. Fork wiki 文档所在仓库` 后添加 `{ #1-fork-wiki-repo }`:
+
+    ```
+      #### 1. Fork wiki 文档所在仓库 { #1-fork-wiki-repo }
+    ```
+
+    在引用时，请使用别名进行链接 `[1. Fork wiki 文档所在仓库](#1-fork-wiki-repo)`。
 
 ### GFM 扩展语法
 
-GFM(GitHub Flavored Markdown) 是 github 所使用的 markdown 扩展语法。
+GFM(GitHub Flavored Markdown) 是 GitHub 所使用的 Markdown 扩展语法。
 
 #### 清单
 
@@ -262,33 +272,13 @@ $$
 
 #### 上下标
 
-一般情况下可以用 `<sup></sup>` 表示上标，用 `<sub></sub>` 表示下标，如 支付宝<sup>TM</sup> 可用 `支付宝<sup>TM</sup>` 表示。
+一般情况下可以用 `<sup></sup>` 表示上标，用 `<sub></sub>` 表示下标，如 ai<sup>2</sup>-kit 可用 `ai<sup>2</sup>-kit` 表示。
 
-#### 按钮*
-
-```markdown
-[Subscribe to our newsletter](#){ .md-button }
-```
-<!--
-改变对应的 `btn-success` class，就能改变按钮相应的颜色
-
-[success](#){ .md-button .md-button--success }
-[info](#){ .md-button .md-button--info }
-[success](#){ .md-button .md-button--success }
-[secondary](#){ .md-button .md-button--secondary }
-[primary](#){ .md-button .md-button--primary }
-[danger](#){ .md-button .md-button--danger }
-[warning](#){ .md-button .md-button--warning }
--->
-
-[default](#){ .md-button }
-[primary](#){ .md-button .md-button--primary }
-
-#### 提示*
+#### 提示
 
 ```markdown
 !!! tldr "title"
-    TLDR means too long, didn't read
+    TLDR means too long, didn't read.
 ```
 
 改变 `tldr` 即可使用不同的提示类型，比如
@@ -308,7 +298,23 @@ $$
 !!! success "Use `success` for this."
     This alerts success
 
-#### 流程图
+#### 按钮*
+
+```markdown
+[Subscribe to our newsletter](#){ .md-button }
+```
+
+目前支持按钮两种颜色方案的配置。
+
+```
+[default](#){ .md-button }
+[primary](#){ .md-button .md-button--primary }
+```
+
+[default](#){ .md-button }
+[primary](#){ .md-button .md-button--primary }
+
+#### 流程图*
 
 流程图可以用来表示工作流或者步骤等：
 
@@ -344,7 +350,7 @@ graph LR
 
 比如，要想引用 `如何使用 wiki` 这篇 wiki，则只需把 `relavent/path/to/file.md` 换成 `../how_to_edit/howtodo.md`。
 
-![Screen Shot 2019-12-02 at 11.30.03](https://tva1.sinaimg.cn/large/006tNbRwgy1g9i81zy06ij313z071wft.jpg)
+![Screen Shot 2019-12-02 at 11.30.03](../../images/006tNbRwgy1g9i81zy06ij313z071wft.jpg)
 
 !!! warning
     注意这里推荐使用的是相对路径，可不改变同级目录结构。如需修改上级目录结构需要对应更改。

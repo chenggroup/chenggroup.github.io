@@ -218,3 +218,6 @@ tags
 
 # pycharm config folder
 .idea/
+
+# obsidian
+.obsidian/
