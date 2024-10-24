@@ -78,6 +78,7 @@ plugins:
                 toggle:
                   icon: material/lightbulb-outline
                   name: Switch to automatic mode
+  - git-revision-date-localized
 
 theme:
   name: material

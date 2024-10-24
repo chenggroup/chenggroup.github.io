@@ -3,19 +3,19 @@ title: Anaconda
 authors: Yongbin Zhuang
 comments: true
 ---
-
 # Anaconda 使用指南
 
 ## 初始化设定
+
 登录 HPC
 
 ```bash
 module load miniconda/3
 conda init bash
 ```
-这会自动修饰你的`~/.bashrc`文件
-登出HPC，再次登陆
+这会自动修饰你的 `~/.bashrc` 文件。
 
+登出HPC，再次登陆
 
 打开你的~/.condarc文件
 
@@ -40,6 +40,7 @@ pkgs_dirs:
 退出文件
 
 通过以下命令确认你的环境
+
 ```bash
 conda env list
 ```
@@ -74,6 +75,6 @@ conda config --set env_prompt '({name})'
 
 [参考文献](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html)
 
-## 使用 Jupyter Notebook
+## 在集群上使用 Jupyter Notebook
 
-请参考 [Open Ondemand使用说明](./open_ondemand.md)。
+请参见 [OpenSCOW/Open Ondemand使用说明](./open_ondemand.md)。

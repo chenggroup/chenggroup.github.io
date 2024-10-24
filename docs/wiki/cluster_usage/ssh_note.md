@@ -4,7 +4,6 @@ authors: 庄永斌
 priority: 1.02
 comments: true
 ---
-
 # SSH 使用入门
 
 *此入门仅介绍一些作者认为必要且实用的功能，完善的帮助手册可以通过命令，`man ssh_config`, `man ssh`查看* 
