@@ -22,7 +22,7 @@ comments: true
 从笔者的使用经验来看，Windows Terminal是一个比较不错的终端（Win11系统默认，Win10需要自己安装），在新版中使用wsl2可以直接支持x11的转发，不行的可以参考[网页](https://blog.dengqi.org/posts/%E4%BD%BF%E7%94%A8-windows-%E8%87%AA%E5%B8%A6ssh%E7%9A%84x11%E8%BD%AC%E5%8F%91%E5%8A%9F%E8%83%BD%E5%B9%B6%E9%85%8D%E7%BD%AEssh%E5%92%8Cvscode/)进行设置。
 
 !!! info "版本推荐"        
-    目前wsl默认版本为wsl2，可以完整支持linux内核的功能，后面的内容默认以此版本为准。同时linux版本也可以选择默认的Ubuntu，作为在个人端应用较广的linux发行版，在遇到问题时通过互联网查找信息能够解决的概率相对较大。
+    目前wsl默认版本为wsl2，可以完整支持linux内核的功能（最大的进化是支持了docker），后面的内容默认以此版本为准。同时linux版本也可以选择默认的Ubuntu，作为在个人端应用较广的linux发行版，在遇到问题时通过互联网查找信息能够解决的概率相对较大。
 
 终止/重启wsl特定版本的方法，在Powershell/CMD中：
 ```CMD
@@ -30,6 +30,9 @@ wsl --shutdown distro_name
 distro_name    # 启动指定发行版
 ```
 其中`distro_name`为安装的发行版名称，可以通过`wsl -l -v`查看已经安装的发行版。
+
+当然，WSL有着极强的自我管理意识，在WSL中也可以直接实现自闭和重启，这得益于WSL可以直接调用windows下面的程序，只要`wsl.exe`在windows的环境变量当中，就可以实现在wsl中的直接调用：
+`wsl.exe --shutdown distro_name`，然后直接在终端下按回车就可以直接实现重启。
 
 
 ### 将wsl移动到其他分区
@@ -53,17 +56,17 @@ wsl默认安装在C盘下，如果C盘初始分配的相对较小或者有C盘�
 首先需要获取wsl-vpnkit程序本体
 ```bash
 # 安装依赖
-sudo apt-get install iproute2 iptables iputils-ping dnsutils wget
+$ sudo apt-get install iproute2 iptables iputils-ping dnsutils wget
 
 # 下载wsl-vpnkit并解压其中关键组件
-VERSION=v0.4.x    # 目前最新版本为v0.4.1
-wget https://github.com/sakai135/wsl-vpnkit/releases/download/$VERSION/wsl-vpnkit.tar.gz    # 可能需要科学上网下载再传到wsl中
-tar --strip-components=1 -xf wsl-vpnkit.tar.gz \
+$ VERSION=v0.4.x    # 目前最新版本为v0.4.1
+$ wget https://github.com/sakai135/wsl-vpnkit/releases/download/$VERSION/wsl-vpnkit.tar.gz    # 可能需要科学上网下载再传到wsl中
+$ tar --strip-components=1 -xf wsl-vpnkit.tar.gz \
     app/wsl-vpnkit \
     app/wsl-gvproxy.exe \
     app/wsl-vm \
     app/wsl-vpnkit.service
-rm wsl-vpnkit.tar.gz
+$ rm wsl-vpnkit.tar.gz
 ```
 此后在路径下就可以看到`wsl-vpnkit, wsl-gvproxy.exe, wsl-vm, wsl-vpnkit.service`四个文件，编辑其中的`wsl-vpnkit.service`文件，以下为该种配置方式的参考：
 ```bash
@@ -89,15 +92,15 @@ WantedBy=multi-user.target
 ```
 此后需要将运行文件和服务配置文件放到该放的位置：
 ```bash
-sudo mkdir /usr/local/bin/wsl-vpnkit
-sudo mv wsl-vpnkit wsl-gvproxy.exe wsl-vm /usr/local/bin/wsl-vpnkit/
-sudo mv wsl-vpnkit.service /etc/systemd/system/
+$ sudo mkdir /usr/local/bin/wsl-vpnkit
+$ sudo mv wsl-vpnkit wsl-gvproxy.exe wsl-vm /usr/local/bin/wsl-vpnkit/
+$ sudo mv wsl-vpnkit.service /etc/systemd/system/
 ```
 其中`/usr/local/bin/wsl-vpnkit`可以是任意位置，确保wsl开机后不会消失就可以。此后就可以启动服务并设置开机启动：
 ```bash
-sudo systemctl enable wsl-vpnkit    # 设置开机启动
-sudo systemctl start wsl-vpnkit     # 开启服务
-systemctl status wsl-vpnkit         # 查看运行状态
+$ sudo systemctl enable wsl-vpnkit    # 设置开机启动
+$ sudo systemctl start wsl-vpnkit     # 开启服务
+$ systemctl status wsl-vpnkit         # 查看运行状态
 ```
 如果没有查看状态没有报错，就说明已经可以正常运行了。
 
@@ -120,9 +123,8 @@ networkingMode=mirrored
 
 其中`/mnt/c/Users/username/.wslconfig`是Windows下的用户根目录下的一个wsl配置文件，一般是新创建的。同时，该文件也可以设置wsl占用的系统资源等一些参数。完成编辑保存并退出后，重启wsl发行版就可以实现网卡的映射。可以通过以下的命令进行观察:
 ```bash
-sudo apt install net-tools
-
-ifconfig
+$ sudo apt install net-tools
+$ ifconfig
 ```
 
 可以将输出的信息和任务管理器中的网卡信息进行对比，可以发现任务管理器中的网卡ip已经映射到wsl当中，我们也可以访问校园网服务器。
@@ -148,13 +150,13 @@ E:\             528G   52G  476G  10% /mnt/e
 ```
 在此处，硬盘被分了三个盘符，均可以直接在wsl中看到，其默认的挂载点是`/mnt/x`，并可以直接通过wsl下的linux命令进行操作，如我想将桌面上的所有python脚本传递到集群上：
 ```bash
-scp /mnt/disk/Users/username/Desktop/*py server:~/scripts
+$ scp /mnt/disk/Users/username/Desktop/*py server:~/scripts
 ```
 其中`disk`为电脑桌面的所在的盘符（如果没有移动过默认在C盘，则其值为c），`username`为你的电脑用户名（这也是不建议将用户名设置为中文的原因之一，可能会引起错误或者输入不便），`server`可以通过`.ssh/config`进行设置。
 
 每次都需要输入这么一长串路径会很麻烦，因为挂载点在启动时并不会改变，因此可以将常用的文件夹映射到`$HOME`下：
 ```bash
-ln -sf /mnt/disk/Users/username/Desktop $HOME/windows_desktop
+$ ln -sf /mnt/disk/Users/username/Desktop $HOME/windows_desktop
 ```
 因为建立的是软链接，因此在Windows中做的改动都会反映在文件当中，不需要反复进行同步。此后就可以直接将`$HOME/windows_desktop`中的文件通过`scp`传递到服务器上了。
 
@@ -164,3 +166,11 @@ WSL发行版：Ubuntu-24.04
 
 ### CP2K
 不要使用`sudo apt install mpich`的方法安装mpi运行库，这会导致即使使用`psmp`版本也无法使用mpi并行计算的bug，`mpirun`会导致同时运行n个相同的子程序。如果不想自己编译mpi库的话，因为不是集群多软件环境一般没有依赖冲突，使用`--with-openmpi=install`，此后使用时`source /dir/to/cp2k/tools/toolchain/setup`设置环境变量即可。
+
+### VMD
+在使用WSL2安装linux版本的vmd的时候，如果使用默认的OpenGL渲染器，会出现渲染速度过慢，导致轨迹预览不流畅的问题出现。而WSL2的文件系统性能相对于WSL1的模式较差，网络上提供的使用WSL访问windows下的vmd程序的方法会遇到加载不出轨迹文件的问题。
+
+目前笔者找到的一种解决方法是将默认的OpenGL渲染器换为OpenGL-GLSL渲染器。如果想改变默认的渲染，可以将`display rendermode GLSL`加入到`~/.vmdrc`文件当中，这样vmd预览轨迹就会变得流畅，不再受到渲染器性能的影响。
+
+### PING
+直接使用WSL2（桥接模式）下面的ping，在内网ip下，会发现远程主机无论如何都能ping通，但是使用windows的Powershell则不会出现如此的情况。目前暂时没有找到具体的原因，在排查网络问题时可能会带来一定的困扰。可以使用windows的PING.EXE代替WSL下的ping：`alias ping="/mnt/c/Windows/system32/PING.EXE"`，这样默认调用的ping就是windows下的，反应的网络信息可能会更准确。
