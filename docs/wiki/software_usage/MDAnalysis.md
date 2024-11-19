@@ -255,6 +255,15 @@ class A_center_analysis(AnalysisBase):
         self.angle_2 = np.array([])
         self.bias_2 = np.array([])
 ```
+
+与之类似的，我们可以使用`_conclude()`方法对计算结果进行后处理，就不需要在最后一帧结束后进行判断再进行后处理了。比如前面定义的几个变量为列表，在最后想换成`np.array()`的格式，就可以在`_conclude()`方法中进行变换。
+```python
+    def _conclude(self):
+        self.cn_2 = np.array([])        
+        self.angle_2 = np.array([])
+        self.bias_2 = np.array([])
+```
+
 此后，我们可以定义我们对应的分析方法，并将关心的结果放到合适的类属性当中（这一步就是将原始信息进行处理，获得对象的一系列属性的过程）
 ```python
     def _append(self, cn, data):
