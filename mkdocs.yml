@@ -175,16 +175,33 @@ nav:
           - wiki/cluster_usage/tensorboard.md
       - 新生培训:
           - wiki/new_comers/toc.md
-          - wiki/new_comers/linux.md
-          - wiki/new_comers/read_papers.md
-          - wiki/new_comers/presentation.md
-          - wiki/new_comers/python_numpy.md
-          - wiki/new_comers/ase.md
-          - wiki/new_comers/qc_dft.md
-          - wiki/new_comers/basis_pps.md
-          - wiki/new_comers/dpmd.md
-          - wiki/new_comers/dpgen.md
-          - wiki/new_comers/workflow.md
+          - wiki/new_comers/linux/2024.md
+          - wiki/new_comers/read_papers/2024.md
+          # 2024 presentation 待更新
+          - wiki/new_comers/presentation/2020.md
+          - wiki/new_comers/python/2024.md
+          - wiki/new_comers/tools/2024-ase.md
+          - wiki/new_comers/qc_dft/2024.md
+          - wiki/new_comers/solid_electronic_structure/2024.md
+          - wiki/new_comers/solid_electronic_structure/2024-qe_vasp.md
+          - wiki/new_comers/statistical_mechanics/2024.md
+          - wiki/new_comers/statistical_mechanics/2024-free_energy.md
+          - wiki/new_comers/md/2024-md.md
+          - wiki/new_comers/md/2024-cp2k.md
+          - wiki/new_comers/ai/2024-ai.md
+          - wiki/new_comers/ai/2024-train.md
+          - wiki/new_comers/tools/2024-ai2-kit.md
+          - 2020年培训:
+            - wiki/new_comers/linux/2020.md
+            - wiki/new_comers/read_papers/2020.md
+            - wiki/new_comers/presentation/2020.md
+            - wiki/new_comers/python/2020.md
+            - wiki/new_comers/tools/2020-ase.md
+            - wiki/new_comers/qc_dft/2020.md
+            - wiki/new_comers/qc_dft/2020-basis_pps.md
+            - wiki/new_comers/tools/2020-dpmd.md
+            - wiki/new_comers/tools/2020-dpgen.md
+            - wiki/new_comers/tools/2020-workflow.md
       - wiki/book_recommendation.md
       - 合作协同:
           - wiki/teamwork/archive_rules.md

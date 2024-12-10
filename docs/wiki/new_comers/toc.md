@@ -37,67 +37,76 @@ Python是一种非常方便的编程语言，可以帮助我们处理计算数�
 
 ## 必学项目
 
-[量子化学(Levine)(前14章)](../book_recommendation.md)
+- :fontawesome-solid-book: [量子化学(Levine)(前14章)](../book_recommendation.md)
+- :fontawesome-brands-bilibili: [量子化学与密度泛函理论](./qc_dft/2024.md)
+- :fontawesome-brands-bilibili: [Linux 入门 (包括 Windows 下环境设置 + Git 介绍)](./linux/2024.md) 
+- :fontawesome-brands-bilibili: [文献阅读](./read_papers/2024.md)
+- :fontawesome-brands-bilibili: [演讲技巧](./presentation/2020.md) (尚未更新)
+- :fontawesome-brands-bilibili: [Python 教程](./python/2024.md)
+- :fontawesome-brands-bilibili: [ASE & Packmol 建模基础](./tools/2024-ase.md)
 
-[(视频)量子化学与密度泛函理论](./qc_dft.md)
+!!! tip "也可参考录制于2020年的旧版"
+    - :fontawesome-brands-bilibili: [量子化学与密度泛函理论](./qc_dft/2020.md)
+    - :fontawesome-brands-bilibili: [密度泛函近似，基组与赝势](./qc_dft/2020-basis_pps.md)
+    - :fontawesome-brands-bilibili: [Linux入门](./linux/2020.md)
+    - :fontawesome-brands-bilibili: [如何阅读文献](./read_papers/2020.md)
+    - :fontawesome-brands-bilibili: [Python和Numpy](./python/2020.md)
+    - :fontawesome-brands-bilibili: [ASE 建模基础](./tools/2020-ase.md)
 
-[(视频)密度泛函近似，基组与赝势](./basis_pps.md)
+## 选学 (具体项目相关)
 
-[(视频)Linux入门](./linux.md)
+### 固体电子结构
 
-[(视频)如何阅读文献](./read_papers.md)
-
-[(视频)如何进行展示](./presentation.md)
-
-[(视频)Python和Numpy](./python_numpy.md)
-
-## 选学[具体项目相关]
-
-### 机器学习
-
-[(视频)Deep Learning Lecture by Frank Noe](https://www.youtube.com/playlist?list=PLqPI2gxxYgMKN5AVcTajQ79BTV4BiFN_0) *需要科学上网
-
-[(书籍)Pattern Recognition and Machine Learning](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf) 
-
-[(书籍)Deep Learning（花书）](http://alvarestech.com/temp/deep/Deep%20Learning%20by%20Ian%20Goodfellow,%20Yoshua%20Bengio,%20Aaron%20Courville%20(z-lib.org).pdf) 
-
-[(视频)Machine Learning for Physics and the Physics of Learning 2019](https://www.youtube.com/playlist?list=PLHyI3Fbmv0SfQfS1rknFsr_UaaWpJ1EKA) *需要科学上网
-
-[(视频)机器学习: 理论与DeePMD-kit](./dpmd.md)
-
-[(视频)深度势能生成器: DP-GEN](./dpgen.md)
-
-[DeePMD-kit 使用入门](../software_usage/DeePMD-kit.md)
-
-[DP-GEN使用入门](../software_usage/DP-GEN.md)
-
-### 工作流
-
-[(视频)自动化计算与工作流: AiiDA](./workflow.md)
-
-### 生成模型
-[(视频)Diffusion and Score-Based Generative Models](https://www.youtube.com/watch?v=wMmqCMwuM2Q) 
-
-[(视频)Dr. Yang Song — Advancements in Diffusion Models for Generative AI](https://www.youtube.com/watch?v=y8q3gh61OY0) 
-
-[(博客)Generative Modeling by Estimating Gradients of the Data Distribution](http://yang-song.net/blog/2021/score/) 
-
-[(博客)A Pedagogical Introduction to Score Models](https://ericmjl.github.io/score-models/) 
-
-[(视频)通用分子结构模型Graphormer简介 - 郑书新博士](https://www.bilibili.com/video/BV1eF411A76S/?spm_id_from=333.337.search-card.all.click&vd_source=4b5c9edbc7203322daab34ea479c2688) 
-
-[(视频)Beyond AlphaFold2: 从结构预测到分布预测 | 郑书新博士 | 微软研究院 | Distributional Graphormer (DiG)](https://www.bilibili.com/video/BV1kV41137ud/?spm_id_from=333.337.search-card.all.click&vd_source=4b5c9edbc7203322daab34ea479c2688) 
-
-[(视频)Materials Project Seminars – Tian Xie "MatterGen: a generative model for inorganic materials design"](https://www.youtube.com/watch?v=Smz1go6_Spo) 
+- :fontawesome-brands-bilibili: [固体电子结构](./solid_electronic_structure/2024.md)
+- :fontawesome-brands-bilibili: [Quantum Espresso/VASP 实战](./solid_electronic_structure/2024-qe_vasp.md)
+- :fontawesome-brands-bilibili: [CP2K 实践](./md/2024-cp2k.md)
 
 ### 统计力学
 
-[(博客)Introduction to Statistical Mechanics](https://web.stanford.edu/~peastman/statmech/#contents) 
+- :material-file-multiple: [Introduction to Statistical Mechanics](https://web.stanford.edu/~peastman/statmech/#contents) 
+- :material-file-multiple: [David Tong at DAMTP, Cambridge: Lectures on Theoretical Physics](http://www.damtp.cam.ac.uk/user/tong/teaching.html) 
+- :material-file-multiple: [Lectures on Statistical Physics](https://www.damtp.cam.ac.uk/user/tong/statphys.html) 
+- :material-file-multiple: [Lectures on Quantum Mechanics](http://www.damtp.cam.ac.uk/user/tong/quantum.html) 
+- :material-file-multiple: [Lectures on Solid State Physics](http://www.damtp.cam.ac.uk/user/tong/solidstate.html)
+- :fontawesome-brands-bilibili: [统计热力学](./statistical_mechanics/2024.md)
+- :fontawesome-brands-bilibili: [自由能计算方法](./statistical_mechanics/2024-free_energy.md)
 
-[(博客)David Tong at DAMTP, Cambridge: Lectures on Theoretical Physics](http://www.damtp.cam.ac.uk/user/tong/teaching.html) 
+### 分子动力学
 
-[(博客)Lectures on Statistical Physics](https://www.damtp.cam.ac.uk/user/tong/statphys.html) 
+- :fontawesome-brands-bilibili: [分子动力学/机器学习分子动力学实践](./md/2024-md.md)
+- :fontawesome-brands-bilibili: [CP2K 实践](./md/2024-cp2k.md)
 
-[(博客)Lectures on Quantum Mechanics](http://www.damtp.cam.ac.uk/user/tong/quantum.html) 
+### 机器学习
 
-[(博客)Lectures on Solid State Physics](http://www.damtp.cam.ac.uk/user/tong/solidstate.html) 
+- :fontawesome-brands-youtube: [Deep Learning Lecture by Frank Noe](https://www.youtube.com/playlist?list=PLqPI2gxxYgMKN5AVcTajQ79BTV4BiFN_0) *需要科学上网
+- :fontawesome-solid-book: [Pattern Recognition and Machine Learning](https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf) 
+- :fontawesome-solid-book: [Deep Learning（花书）](http://alvarestech.com/temp/deep/Deep%20Learning%20by%20Ian%20Goodfellow,%20Yoshua%20Bengio,%20Aaron%20Courville%20(z-lib.org).pdf) 
+- :fontawesome-brands-youtube: [Machine Learning for Physics and the Physics of Learning 2019](https://www.youtube.com/playlist?list=PLHyI3Fbmv0SfQfS1rknFsr_UaaWpJ1EKA) *需要科学上网
+- :fontawesome-brands-bilibili: [人工智能技术入门](./ai/2024-ai.md)
+- :fontawesome-brands-bilibili: [AI 模型训练](./ai/2024-train.md)
+- :fontawesome-brands-bilibili: [分子动力学/机器学习分子动力学实践](./md/2024-md.md)
+- :material-file-multiple: [DeePMD-kit 使用入门](../software_usage/DeePMD-kit.md)
+- :material-file-multiple: [DP-GEN使用入门](../software_usage/DP-GEN.md)
+- :fontawesome-brands-bilibili: [从 MLP 到 ai2-kit: 关于机器学习势函数你想了解的一切](./tools/2024-ai2-kit.md)
+- :material-file-multiple: [ai2-kit 官方文档](https://wiki.cheng-group.net/ai2-kit-doc/)
+
+!!! tip "也可参考录制于2020年的教程"
+    - :fontawesome-brands-bilibili: [(视频)机器学习: 理论与DeePMD-kit](./tools/2020-dpmd.md)
+    - :fontawesome-brands-bilibili: [(视频)深度势能生成器: DP-GEN](./tools/2020-dpgen.md)
+    - :fontawesome-brands-bilibili: [自动化计算与工作流: AiiDA](./tools/2020-workflow.md)
+
+### 生成模型
+
+- :fontawesome-brands-youtube: [Diffusion and Score-Based Generative Models](https://www.youtube.com/watch?v=wMmqCMwuM2Q) *需要科学上网
+- :fontawesome-brands-youtube: [(视频)Dr. Yang Song — Advancements in Diffusion Models for Generative AI](https://www.youtube.com/watch?v=y8q3gh61OY0) 
+- :material-file-multiple: [Generative Modeling by Estimating Gradients of the Data Distribution](http://yang-song.net/blog/2021/score/) 
+- :material-file-multiple: [A Pedagogical Introduction to Score Models](https://ericmjl.github.io/score-models/) 
+- :fontawesome-brands-bilibili: [通用分子结构模型Graphormer简介 - 郑书新博士](https://www.bilibili.com/video/BV1eF411A76S) 
+- :fontawesome-brands-bilibili: [Beyond AlphaFold2: 从结构预测到分布预测 | 郑书新博士 | 微软研究院 | Distributional Graphormer (DiG)](https://www.bilibili.com/video/BV1kV41137ud) 
+- :fontawesome-brands-youtube: [Materials Project Seminars – Tian Xie "MatterGen: a generative model for inorganic materials design"](https://www.youtube.com/watch?v=Smz1go6_Spo) 
+
+
+!!! info "说明"
+    - :fontawesome-solid-book: 书籍或文献资料等
+    - :fontawesome-brands-youtube: :fontawesome-brands-bilibili: 视频教程
+    - :material-file-multiple: 博客或文档等

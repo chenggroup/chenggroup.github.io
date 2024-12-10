@@ -6,4 +6,7 @@ comments: true
 
 # 密度泛函近似，基组与赝势
 
+!!! tip "版本信息"
+    录制于 2020-08
+
 <iframe src="//player.bilibili.com/player.html?aid=842143702&bvid=BV1J54y1y7gB&cid=238141510&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" height="600" width="800"> </iframe>
