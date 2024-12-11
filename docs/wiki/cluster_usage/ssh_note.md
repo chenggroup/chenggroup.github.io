@@ -21,7 +21,7 @@ comments: true
 - 使用ssh config文件进行SSH登录管理
 - 学会用跳板机进行SSH登录
 
-## 创建密钥对
+## 创建密钥对 { #create-key-pair }
 
 !!! warning
     新人必学
@@ -103,7 +103,7 @@ scp -r -P 7696 kmr@123.45.67.89:/data/home/kmr/directory /some/local/place
 
 zsh下 （比如macOS >=10.15版本的默认终端），不能直接使用通配符`*`批量传输文件，需要将包含`*`的字符串用单引号括起。
 
-## 可选：通过配置 config 优雅地的使用 SSH
+## 可选：通过配置 config 优雅地的使用 SSH { #ssh-config }
 
 为了避免每次都输入一大串命令。 请使用vim编辑如下文件：
 

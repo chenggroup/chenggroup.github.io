@@ -22,17 +22,14 @@ DP 官方教程给出了在本地运行程序时的可视化，如果在服务�
 
 > 以在 gpu3 队列运行 DeepMD-kit 训练程序为例，其他程序可对应替换。
 
-1. 通过 lsf 脚本提交程序到计算节点
+1. 通过 sbatch 脚本提交程序到计算节点
    ```shell
    #!/bin/bash
-   #BSUB -q gpu3
-   #BSUB -W 24:00
-   #BSUB -J type_map_0
-   #BSUB -o %J.stdout
-   #BSUB -e %J.stderr
-   #BSUB -n 4
-   #BSUB -gpu "num=1:mode=shared:mps=no:j_exclusive=yes"
-   #BSUB -R "span[ptile=32]"
+   #SBATCH -p gpu3
+   #SBATCH -t 24:00:00
+   #SBATCH -J type_map_0
+   #SBATCH --ntasks-per-node 4
+   #SBATCH --gres=gpu:1
 
    # add modulefiles
    module add deepmd/2.0-cuda11.3
@@ -44,8 +41,8 @@ DP 官方教程给出了在本地运行程序时的可视化，如果在服务�
    > `--logdir`指定 tensorboard 的 event 文件所在路径（在 json 文件中指定）。
    >
    > `--port`指定 tensorboard 在服务器上运行的端口号（缺省默认为 6006）。
-2. 查看计算节点 ip 地址
-   做法类似[jupyter notebook 教程](./jupyter.md)，在登录节点命令行输入下面指令（将 `c51-m002`替换为实际运行的节点）。
+2. 查看计算节点 IP 地址
+   做法类似[jupyter notebook 教程](../deprecated/jupyter.md)，在登录节点命令行输入下面指令（将 `c51-m002`替换为实际运行的节点）。
    ```shell
    cat /etc/hosts | grep c51-m002
    ```

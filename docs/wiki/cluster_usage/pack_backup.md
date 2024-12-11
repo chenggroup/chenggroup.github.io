@@ -29,7 +29,7 @@ du -sch ./*
 
 
 
-## 文件打包与压缩
+## 文件打包与压缩 { #file-package-and-compress }
 
 ### tar命令
 
@@ -184,5 +184,5 @@ done
 -rw-rw-r-- 1 jyhu jyhu 324M Jan 16 11:07 pKa-jqli.tar.gz
 ```
 
-打包方法可以采用`tar`压缩，参照[以上部分](#文件打包与压缩)
+打包方法可以采用`tar`压缩，参照 [以上部分](#file-package-and-compress)。
 

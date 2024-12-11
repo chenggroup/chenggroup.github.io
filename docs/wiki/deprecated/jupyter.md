@@ -37,7 +37,7 @@ jupyter notebook --no-browser --port=<port number>
 ssh -N -f -L localhost:8888:localhost:<port number> username@your_remote_host_name
 ```
 
-ssh 登陆的命令可以查看[这里](./ssh_note.md)进行简化.
+ssh 登陆的命令可以查看[这里](../cluster_usage/ssh_note.md)进行简化.
 
 - 打开本地电脑的浏览器，输入`localhost:8888` 。然后会弹出输入 `password` 或 `token`的页面, 你可以在集群上输入如下命令来查看：
 
@@ -78,7 +78,7 @@ jupyter-lab --ip=0.0.0.0 --port=<port>
 ssh -L <local_port>:123.45.67.89:<port> <username>@<ip_of_cluster>
 ```
 
-其中`<local_port>`为本地任意端口，`<port>`与作业脚本保持一致，其余部分与平时登陆命令保持一致，注意不要漏掉`-p xxxx`。此部分的说明请参考[SSH 使用说明](./ssh_note.md)。
+其中`<local_port>`为本地任意端口，`<port>`与作业脚本保持一致，其余部分与平时登陆命令保持一致，注意不要漏掉`-p xxxx`。此部分的说明请参考[SSH 使用说明](../cluster_usage/ssh_note.md)。
 
 在本地浏览器输入：`localhost:<local_port>`即可访问这一远程 Jupyter 服务。
 

@@ -19,7 +19,7 @@ comments: true
 
 CP2K同时使用了平面波基组和高斯基组，因此可以在傅立叶空间里描述长程作用力和实空间里描述局域的波函数。使用CP2K进行分子动力学(MD)运算效率很高。CP2K使用了单k点的计算方式，又称为gamma approximation，因此在早期CP2K版本中没有K点的设置。近年仅在单点能中加入了k点的计算。
 
-## 设置CP2K环境变量
+## 设置CP2K环境变量 { #set-env }
 
 ### 哪里获取Basis和PseudoPotential文件
 

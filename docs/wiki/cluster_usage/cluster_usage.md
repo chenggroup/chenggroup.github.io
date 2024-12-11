@@ -67,7 +67,7 @@ $ ssh -p <port> username@ip_address
 
 请将 `username` 和 `ip_address` 替换为管理员提供的账号和IP地址，`<port>` 替换为端口号。
 
-集群均采用 Linux 系统，因此不熟悉 Linux 基本操作的用户（例如查看文件、编辑文本、复制数据等）可以参考[Linux快速基础入门](../new_comers/linux.md)，并熟悉这些操作。本文档假设用户有一定的 Linux 基础。
+集群均采用 Linux 系统，因此不熟悉 Linux 基本操作的用户（例如查看文件、编辑文本、复制数据等）可以参考[:fontawesome-brands-bilibili:  Linux 入门](../new_comers/linux/2024.md)，并熟悉这些操作。本文档假设用户有一定的 Linux 基础。
 
 ### Windows 用户
 

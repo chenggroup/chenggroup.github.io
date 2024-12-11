@@ -54,7 +54,7 @@ flowchart TB
    3. 编译 DeePMD C++ Interface，在此基础上编译 DeePMD-kit Lammps Plugin供Lammps调用，提供 DeePMD 模拟功能；
    4. 编译 DeePMD CP2K API 和对应的CP2K版本（No free lunch.）
 
-## 安装DeePMD-kit Python Interface
+## 安装DeePMD-kit Python Interface { #deepmd-kit-python-interface }
 
 ### 创建新的环境
 
@@ -149,7 +149,7 @@ cd deepmd-kit
 pip install .
 ```
 
-## 安装Lammps
+## 安装Lammps { #lammps-installation }
 
 注意这一部分可以从DeePMD安装中解耦出来，因而兼顾对Lammps的不同需求，而不必为DeePMD专门编译一个Lammps可执行文件。
 
@@ -238,7 +238,7 @@ make install
 
 以下安装，假设软件包下载路径均为 `/some/workspace`， 以 TensorFlow 2.7.0版本、DeePMD-kit 2.1.5 版本为例进行说明，其他版本的步骤请参照修改。注意为保证模型兼容性，版本号最好与 Python Interface对应。
 
-本步骤需要使用 Conda，因此在[前文基础上](#安装deepmd-kit-python-interface)进行。
+本步骤需要使用 Conda，因此在[前文基础上](#deepmd-kit-python-interface)进行。
 
 搜索仓库，查找可用的 TensorFlow 的 C++ 接口版本。
 
@@ -331,7 +331,7 @@ cmake -DLAMMPS_SOURCE_ROOT=<lammps_source_code> \
 -DUSE_CUDA_TOOLKIT=TRUE ..
 ```
 
-注意这里的 `<lammps_source_code>` 对应[前文中](#安装lammps)Lammps的源码路径。
+注意这里的 `<lammps_source_code>` 对应[前文中](#lammps-installation)Lammps的源码路径。
 
 最后编译并安装：
 

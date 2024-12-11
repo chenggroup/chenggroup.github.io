@@ -103,7 +103,7 @@ make
 
 #### Add GAP Packages
 
-- Download GAP file from [here](#http://www.libatoms.org/gap/gap_download.html), then you obtain a tar file named `GAP.tar`, unzip it
+- Download GAP file from [here](http://www.libatoms.org/gap/gap_download.html), then you obtain a tar file named `GAP.tar`, unzip it
 
 ```bash
 tar -xvf GAP.tar
@@ -400,7 +400,7 @@ n2p2 is a machine learning code to training a machine learning potential. It ori
 
 ### Install Guide
 
-- Before Installation, make sure you have installed the [Eigen Library](#Eigen Library Installation Guide) and the [GSL Library](#GSL Library Installation Guide).
+- Before Installation, make sure you have installed the [Eigen Library](#eigen-library-installation-guide) and the [GSL Library](#gsl-library-installation-guide).
 - Make sure you have `gcc` compiler (including `gfortran`), I haven't successfully compiled by `intel` compiler. Make sure you have open MPI(i. e. for `mpic++` command).
 - Download the n2p2 code from github: https://github.com/CompPhysVienna/n2p2. For example, using the following command.
 

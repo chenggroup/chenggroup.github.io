@@ -14,7 +14,7 @@ authors:
 
 ### 文件的格式
 
-请上传 markdown 格式的文件，当然也支持一些 [markdown 的拓展功能](./howtodo.md#markdown-语法) 。
+请上传 markdown 格式的文件，当然也支持一些 [markdown 的拓展功能](./howtodo.md#markdown-grammar) 。
 
 ### 文件的命名
 

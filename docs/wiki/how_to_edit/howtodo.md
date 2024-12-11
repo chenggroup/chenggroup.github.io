@@ -110,7 +110,7 @@ mkdocs serve
 
 ### 通过 typora (注意已经收费)
 
-使用 [typora](https://www.typora.io/ "轻量化md编辑工具") 编辑器可以很方便地实时渲染 markdown 文件。如果不使用本 wiki 中标注有 `*` 的 [wiki 扩展语法](#按钮) ，则可以大体上认为 typora 所渲染出的文档与直接查看 [wiki 网站](../../index.md) 的文档相差无几，基本仅存在显示风格上的差异。但要注意需更改 typora 的一些设置（见后文），避免和 wiki 所使用的 markdown 扩展功能发生冲突。
+使用 [typora](https://www.typora.io/ "轻量化md编辑工具") 编辑器可以很方便地实时渲染 markdown 文件。如果不使用本 wiki 中标注有 `*` 的 [wiki 扩展语法](#button) ，则可以大体上认为 typora 所渲染出的文档与直接查看 [wiki 网站](../../index.md) 的文档相差无几，基本仅存在显示风格上的差异。但要注意需更改 typora 的一些设置（见后文），避免和 wiki 所使用的 markdown 扩展功能发生冲突。
 
 #### 修改 markdown 拓展语法设置
 
@@ -137,7 +137,7 @@ Markdown 是一种标记语言，和代码一样，可以用纯文本的形式�
 ![markdown-basic-gramma](../../images/006y8mN6ly1g8qom3uma2j30ow0lrtbm.jpg)
 
 !!! warning "注意"
-    插入图片时切勿使用本地路径，否则在 wiki 上无法查看，具体请参考 [Typora 插入图片设置](#修改图像设置)。
+    插入图片时切勿使用本地路径，否则在 wiki 上无法查看。
 
 可参考 [markdown 教程](https://www.markdownguide.org/basic-syntax/) 与 [练习](https://www.markdowntutorial.com/) 来学习基本语法。
 
@@ -298,7 +298,7 @@ $$
 !!! success "Use `success` for this."
     This alerts success
 
-#### 按钮*
+#### 按钮* { #button }
 
 ```markdown
 [Subscribe to our newsletter](#){ .md-button }

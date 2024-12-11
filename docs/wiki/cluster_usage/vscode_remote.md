@@ -26,7 +26,7 @@ VSCode Server原生基于Node和Electron技术，有着较高的内存等需求�
 由于笔者目前使用的设备是 MacOS 操作系统（Linux情况类似），这里给出较完整的图文说明。
 
 首先用自己最顺手的方式打开并编辑 `~/.ssh/config` 文件，
-参照[这里的说明](./ssh_note.md#可选通过配置-config-优雅地的使用-ssh)，
+请参照 [这里的说明](./ssh_note.md#ssh-config)，
 增加登陆节点的配置信息:
 
 ``` title=".ssh/config"

@@ -80,7 +80,7 @@ X Error of failed request:  BadValue (integer parameter out of range for operati
   Current serial number in output stream:  30
 ```
 
-那么请在**本地Mac/iMac的终端上**退出**XQuartz**然后在本地终端里输入:
+那么请在 **本地Mac/iMac的终端上** 退出 **XQuartz** 然后在本地终端里输入:
 
 ```
 defaults write org.macosforge.xquartz.X11 enable_iglx -bool true 
@@ -89,4 +89,8 @@ defaults write org.macosforge.xquartz.X11 enable_iglx -bool true
 即可解决问题
 
 Ref: https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/28494.html
+
+#### WSL 远程使用 VMD 的注意事项
+
+请参阅 [Windows下 WSL 使用简介](../cluster_usage/wsl_usage.md#vmd) 中的介绍。
 

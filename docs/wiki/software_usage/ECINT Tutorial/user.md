@@ -65,7 +65,7 @@ metadata:
 
 ### 各关键词解释
 
-- **workflow** (必填): workflow 的名字，具体可选的请见[可选用的 workflow](#可选用的-workflow) 部分
+- **workflow** (必填): workflow 的名字，具体可选的请见[可选用的 workflow](#optional-workflow) 部分
 
 - **webhook** (选填): 钉钉机器人 [webhook](https://chenggroup.github.io/wiki/notification_for_hpc#申请钉钉机器人)，当工作流完成时想要即时收到钉钉提醒时可设置，否则可不用
 
@@ -77,9 +77,9 @@ metadata:
 
 - **metadata** (选填): 
 
-  > 以下参数可不填，对于不同的 workflow 均有不同的[默认值](#可选用的-workflow)
+  > 以下参数可不填，对于不同的 workflow 均有不同的[默认值](#optional-workflow)
 
-  - config: 可以为 dict, .json, .yaml，表示 cp2k 输入参数的基本设置，以 dict 的形式来表示 cp2k 输入，一些细致的设置，如计算精度，可在此处修改，也可[通过 cp2k 输入文件进行转化](#CP2K-input-转-config)。无特殊需求可不更改。config 的示例如下: 
+  - config: 可以为 dict, .json, .yaml，表示 cp2k 输入参数的基本设置，以 dict 的形式来表示 cp2k 输入，一些细致的设置，如计算精度，可在此处修改，也可[通过 cp2k 输入文件进行转化](#cp2k-input-to-config)。无特殊需求可不更改。config 的示例如下: 
 
   - kind_section: 配置 BASIS_SET 和 POTENTIAL 的基本信息，可以有四种输入形式
   
@@ -204,7 +204,7 @@ metadata:
     - machine
   - ...
 
-## 可选用的 workflow
+## 可选用的 workflow { #optional-workflow }
 
 输出的基本信息在 `results.dat` 中，以下 workflow 中仅说明除了 `results.dat` 外的输出文件
 
@@ -265,7 +265,7 @@ metadata:
 - 其他输出:
   - all outputs of GeooptSingleWorkChain, NebSingleWorkChain and FrequencySingleWorkChain
 
-## CP2K input 转 config
+## CP2K input 转 config { #cp2k-input-to-config }
 
 使用工具 `inp2config` 可将 cp2k 输入文件转成 `config` 所需的形式, `<<CP2K_INP>>` 为 cp2k 输入文件路径 `<<CONFIG>>` 为输出的 `config` 文件路径，后缀为 `.json`/`.yaml`:
 

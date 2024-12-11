@@ -35,7 +35,7 @@ GPU节点调度采用Slurm调度系统进行管理。用户使用时，请在**1
 > 目前GPU的调度已经全部切换至Slurm。
 > 关于Slurm介绍的部分将在全面迁移后，独立成一篇文档。
 
-### `gpu1`和`gpu3`队列
+### `gpu1`和`gpu3`队列 { #gpu1-and-gpu3 }
 
 常规使用`gpu1`队列和`gpu3`队列的示例脚本放在`/data/share/base/scripts`下，举例如下：
 
@@ -70,7 +70,7 @@ dp freeze  1>> train.log 2>> train.log
 
 `gpu2`队列提供了2张完整A100 80G卡供大任务使用，以及2张分卡共14个实例供相对比较零散的任务使用。
 
-完整卡使用时，可参照[`gpu1`和`gpu3`队列](#gpu1和gpu3队列)，将`--gres`的参数改为`gpu:a100:1`即可，其中1仍表示分配1张卡。
+完整卡使用时，可参照 [`gpu1`和`gpu3`队列](#gpu1-and-gpu3)，将`--gres`的参数改为`gpu:a100:1`即可，其中1仍表示分配1张卡。
 
 MIG 实例（即俗称的A100分卡、小卡）的使用脚本放在`/data/share/base/scripts`下，举例如下：
 
