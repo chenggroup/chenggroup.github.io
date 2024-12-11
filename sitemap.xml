@@ -8,6 +8,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/"/>
     </url>
     <url>
+        <loc>https://wiki.cheng-group.net/contributors/</loc>
+        <lastmod>2024-12-11</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/contributors/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/contributors/"/>
+    </url>
+    <url>
         <loc>https://wiki.cheng-group.net/news/</loc>
         <lastmod>2024-12-11</lastmod>
         <changefreq>daily</changefreq>
@@ -615,6 +622,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/"/>
         <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/contributors/</loc>
+        <lastmod>2024-12-11</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/contributors/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/contributors/"/>
     </url>
     <url>
         <loc>https://wiki.cheng-group.net/en/news/</loc>
