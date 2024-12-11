@@ -3003,7 +3003,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#workflow" class="md-nav__link">
+  <a href="#optional-workflow" class="md-nav__link">
     <span class="md-ellipsis">
       可选用的 workflow
     </span>
@@ -3063,7 +3063,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#cp2k-input-config" class="md-nav__link">
+  <a href="#cp2k-input-to-config" class="md-nav__link">
     <span class="md-ellipsis">
       CP2K input 转 config
     </span>
@@ -3194,7 +3194,7 @@
 <h3 id="_3">各关键词解释<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
-<p><strong>workflow</strong> (必填): workflow 的名字，具体可选的请见<a href="#可选用的-workflow">可选用的 workflow</a> 部分</p>
+<p><strong>workflow</strong> (必填): workflow 的名字，具体可选的请见<a href="#optional-workflow">可选用的 workflow</a> 部分</p>
 </li>
 <li>
 <p><strong>webhook</strong> (选填): 钉钉机器人 <a href="https://chenggroup.github.io/wiki/notification_for_hpc#申请钉钉机器人">webhook</a>，当工作流完成时想要即时收到钉钉提醒时可设置，否则可不用</p>
@@ -3213,11 +3213,11 @@
 </li>
 </ul>
 <blockquote>
-<p>以下参数可不填，对于不同的 workflow 均有不同的<a href="#可选用的-workflow">默认值</a></p>
+<p>以下参数可不填，对于不同的 workflow 均有不同的<a href="#optional-workflow">默认值</a></p>
 </blockquote>
 <ul>
 <li>
-<p>config: 可以为 dict, .json, .yaml，表示 cp2k 输入参数的基本设置，以 dict 的形式来表示 cp2k 输入，一些细致的设置，如计算精度，可在此处修改，也可<a href="#CP2K-input-转-config">通过 cp2k 输入文件进行转化</a>。无特殊需求可不更改。config 的示例如下: </p>
+<p>config: 可以为 dict, .json, .yaml，表示 cp2k 输入参数的基本设置，以 dict 的形式来表示 cp2k 输入，一些细致的设置，如计算精度，可在此处修改，也可<a href="#cp2k-input-to-config">通过 cp2k 输入文件进行转化</a>。无特殊需求可不更改。config 的示例如下: </p>
 </li>
 <li>
 <p>kind_section: 配置 BASIS_SET 和 POTENTIAL 的基本信息，可以有四种输入形式</p>
@@ -3348,7 +3348,7 @@
 </li>
 <li>...</li>
 </ul>
-<h2 id="workflow">可选用的 workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h2>
+<h2 id="optional-workflow">可选用的 workflow<a class="headerlink" href="#optional-workflow" title="Permanent link">&para;</a></h2>
 <p>输出的基本信息在 <code>results.dat</code> 中，以下 workflow 中仅说明除了 <code>results.dat</code> 外的输出文件</p>
 <h3 id="energysingleworkchain">EnergySingleWorkChain<a class="headerlink" href="#energysingleworkchain" title="Permanent link">&para;</a></h3>
 <blockquote>
@@ -3412,7 +3412,7 @@
 <li>其他输出:</li>
 <li>all outputs of GeooptSingleWorkChain, NebSingleWorkChain and FrequencySingleWorkChain</li>
 </ul>
-<h2 id="cp2k-input-config">CP2K input 转 config<a class="headerlink" href="#cp2k-input-config" title="Permanent link">&para;</a></h2>
+<h2 id="cp2k-input-to-config">CP2K input 转 config<a class="headerlink" href="#cp2k-input-to-config" title="Permanent link">&para;</a></h2>
 <p>使用工具 <code>inp2config</code> 可将 cp2k 输入文件转成 <code>config</code> 所需的形式, <code>&lt;&lt;CP2K_INP&gt;&gt;</code> 为 cp2k 输入文件路径 <code>&lt;&lt;CONFIG&gt;&gt;</code> 为输出的 <code>config</code> 文件路径，后缀为 <code>.json</code>/<code>.yaml</code>:</p>
 <div class="highlight"><pre><span></span><code>inp2config<span class="w"> </span><span class="s">&lt;&lt;CP2K_INP&gt;&gt; &lt;&lt;C</span>ONFIG&gt;&gt;
 <span class="c1"># e.g.</span>
@@ -3465,7 +3465,7 @@ KeyError:<span class="w"> </span><span class="s1">&#39;coord&#39;</span>
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年10月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年12月11日</span>
   </span>
 
     

@@ -3060,7 +3060,7 @@ jupyter<span class="w"> </span>notebook<span class="w"> </span>--no-browser<span
 <div class="highlight"><pre><span></span><code><span class="c1"># &lt;port number&gt;由你自己决定，比如 9898，是跟远程打开的端口对应。</span>
 ssh<span class="w"> </span>-N<span class="w"> </span>-f<span class="w"> </span>-L<span class="w"> </span>localhost:8888:localhost:&lt;port<span class="w"> </span>number&gt;<span class="w"> </span>username@your_remote_host_name
 </code></pre></div>
-<p>ssh 登陆的命令可以查看<a href="./ssh_note.md">这里</a>进行简化.</p>
+<p>ssh 登陆的命令可以查看<a href="../../cluster_usage/ssh_note/">这里</a>进行简化.</p>
 <ul>
 <li>打开本地电脑的浏览器，输入<code>localhost:8888</code> 。然后会弹出输入 <code>password</code> 或 <code>token</code>的页面, 你可以在集群上输入如下命令来查看：</li>
 </ul>
@@ -3088,7 +3088,7 @@ jupyter-lab<span class="w"> </span>--ip<span class="o">=</span><span class="m">0
 <p>假设输出为 123.45.67.89，则可在本地运行命令：</p>
 <div class="highlight"><pre><span></span><code>ssh -L &lt;local_port&gt;:123.45.67.89:&lt;port&gt; &lt;username&gt;@&lt;ip_of_cluster&gt;
 </code></pre></div>
-<p>其中<code>&lt;local_port&gt;</code>为本地任意端口，<code>&lt;port&gt;</code>与作业脚本保持一致，其余部分与平时登陆命令保持一致，注意不要漏掉<code>-p xxxx</code>。此部分的说明请参考<a href="./ssh_note.md">SSH 使用说明</a>。</p>
+<p>其中<code>&lt;local_port&gt;</code>为本地任意端口，<code>&lt;port&gt;</code>与作业脚本保持一致，其余部分与平时登陆命令保持一致，注意不要漏掉<code>-p xxxx</code>。此部分的说明请参考<a href="../../cluster_usage/ssh_note/">SSH 使用说明</a>。</p>
 <p>在本地浏览器输入：<code>localhost:&lt;local_port&gt;</code>即可访问这一远程 Jupyter 服务。</p>
 <p>此途径最大的好处是可以在 GPU 集群上运行，从而可以直接调用 GPU 卡。但请注意，需要在脚本中指定所需的 GPU 卡数。</p>
 <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
@@ -3141,7 +3141,7 @@ python<span class="w"> </span>-m<span class="w"> </span>ipykernel<span class="w"
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年5月15日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年12月11日</span>
   </span>
 
     

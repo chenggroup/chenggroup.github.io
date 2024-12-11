@@ -3120,16 +3120,13 @@
 <p>以在 gpu3 队列运行 DeepMD-kit 训练程序为例，其他程序可对应替换。</p>
 </blockquote>
 <ol>
-<li>通过 lsf 脚本提交程序到计算节点
+<li>通过 sbatch 脚本提交程序到计算节点
    <div class="highlight"><pre><span></span><code><span class="ch">#!/bin/bash</span>
-<span class="c1">#BSUB -q gpu3</span>
-<span class="c1">#BSUB -W 24:00</span>
-<span class="c1">#BSUB -J type_map_0</span>
-<span class="c1">#BSUB -o %J.stdout</span>
-<span class="c1">#BSUB -e %J.stderr</span>
-<span class="c1">#BSUB -n 4</span>
-<span class="c1">#BSUB -gpu &quot;num=1:mode=shared:mps=no:j_exclusive=yes&quot;</span>
-<span class="c1">#BSUB -R &quot;span[ptile=32]&quot;</span>
+<span class="c1">#SBATCH -p gpu3</span>
+<span class="c1">#SBATCH -t 24:00:00</span>
+<span class="c1">#SBATCH -J type_map_0</span>
+<span class="c1">#SBATCH --ntasks-per-node 4</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
 
 <span class="c1"># add modulefiles</span>
 module<span class="w"> </span>add<span class="w"> </span>deepmd/2.0-cuda11.3
@@ -3142,8 +3139,8 @@ tensorboard<span class="w"> </span>--logdir<span class="o">=</span>log<span clas
 <p><code>--port</code>指定 tensorboard 在服务器上运行的端口号（缺省默认为 6006）。</p>
 </blockquote>
 </li>
-<li>查看计算节点 ip 地址
-   做法类似<a href="./jupyter.md">jupyter notebook 教程</a>，在登录节点命令行输入下面指令（将 <code>c51-m002</code>替换为实际运行的节点）。
+<li>查看计算节点 IP 地址
+   做法类似<a href="../../deprecated/jupyter/">jupyter notebook 教程</a>，在登录节点命令行输入下面指令（将 <code>c51-m002</code>替换为实际运行的节点）。
    <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/etc/hosts<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>c51-m002
 </code></pre></div></li>
 <li>将端口转发到本地
@@ -3178,7 +3175,7 @@ tensorboard<span class="w"> </span>--logdir<span class="o">=</span>log<span clas
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2022年10月4日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年12月11日</span>
   </span>
 
     

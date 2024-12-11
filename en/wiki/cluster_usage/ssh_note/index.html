@@ -552,7 +552,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#create-key-pair" class="md-nav__link">
     <span class="md-ellipsis">
       创建密钥对
     </span>
@@ -579,7 +579,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#config-ssh" class="md-nav__link">
+  <a href="#ssh-config" class="md-nav__link">
     <span class="md-ellipsis">
       可选：通过配置 config 优雅地的使用 SSH
     </span>
@@ -589,7 +589,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       加深理解
     </span>
@@ -627,7 +627,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       使用跳板机/代理进行远程登录
     </span>
@@ -678,7 +678,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       超纲的部分​​*
     </span>
@@ -687,7 +687,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       常见问题
     </span>
@@ -3232,7 +3232,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
+  <a href="#create-key-pair" class="md-nav__link">
     <span class="md-ellipsis">
       创建密钥对
     </span>
@@ -3259,7 +3259,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#config-ssh" class="md-nav__link">
+  <a href="#ssh-config" class="md-nav__link">
     <span class="md-ellipsis">
       可选：通过配置 config 优雅地的使用 SSH
     </span>
@@ -3269,7 +3269,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       加深理解
     </span>
@@ -3307,7 +3307,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       使用跳板机/代理进行远程登录
     </span>
@@ -3358,7 +3358,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       超纲的部分​​*
     </span>
@@ -3367,7 +3367,7 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       常见问题
     </span>
@@ -3439,7 +3439,7 @@
 <li>使用ssh config文件进行SSH登录管理</li>
 <li>学会用跳板机进行SSH登录</li>
 </ul>
-<h2 id="_3">创建密钥对<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="create-key-pair">创建密钥对<a class="headerlink" href="#create-key-pair" title="Permanent link">&para;</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>新人必学</p>
@@ -3499,7 +3499,7 @@ scp<span class="w"> </span>local_directory_path<span class="w"> </span>myserver:
 <p>注意 <code>scp</code> 本身可以看作一个特殊的 <code>ssh</code> 命令，因此无论从远程还是本地传输文件都应在本地运行，只是参数的顺序决定了传输的方向。如果两个参数均写本地路径，则与 <code>cp</code> 命令的行为相近，但不可均写远程路径。</p>
 </div>
 <p>zsh下 （比如macOS &gt;=10.15版本的默认终端），不能直接使用通配符<code>*</code>批量传输文件，需要将包含<code>*</code>的字符串用单引号括起。</p>
-<h2 id="config-ssh">可选：通过配置 config 优雅地的使用 SSH<a class="headerlink" href="#config-ssh" title="Permanent link">&para;</a></h2>
+<h2 id="ssh-config">可选：通过配置 config 优雅地的使用 SSH<a class="headerlink" href="#ssh-config" title="Permanent link">&para;</a></h2>
 <p>为了避免每次都输入一大串命令。 请使用vim编辑如下文件：</p>
 <div class="highlight"><pre><span></span><code>vim<span class="w"> </span>~/.ssh/config
 </code></pre></div>
@@ -3530,7 +3530,7 @@ scp<span class="w"> </span>local_directory_path<span class="w"> </span>myserver:
 <p><div class="highlight"><pre><span></span><code>scp<span class="w"> </span>myserver:/data/home/kmr/file<span class="w"> </span>/some/local/place
 </code></pre></div>
 即可实现上面的一长串带端口的信息的<code>scp</code>效果！如果需要传递目录，同样需要加入<code>-r</code>参数。</p>
-<h3 id="_4">加深理解<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h3 id="_3">加深理解<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>该视频仅帮助理解SSH原理以及基本操作，视频中含有本笔记未要求的内容，但是大部分普通用户没有权限执行。</p>
@@ -3550,7 +3550,7 @@ scp<span class="w"> </span>local_directory_path<span class="w"> </span>myserver:
 <li>equivalent to <code>-X</code></li>
 <li>equivalent to <code>-Y</code> (This option valid only if your ForwardX11 is set to yes!)</li>
 </ol>
-<h2 id="_5">使用跳板机/代理进行远程登录<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_4">使用跳板机/代理进行远程登录<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>本组的服务器限制了登录的ip，即你只能在学校ip范围内进行登录。同时由于登录需要密钥，而密钥保存在办公室电脑上，因此登录就必须使用办公室电脑。因此，人不在办公室时就很难登录服务器。</p>
 <p>解决方法就是，先在校园网环境下通过SSH登录到办公室电脑（仅自己的用户名密码即可），再通过办公室电脑登录到服务器。此时办公室电脑是作为*跳板*来使用的：</p>
 <div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>username@proxy
@@ -3647,7 +3647,7 @@ Host<span class="w"> </span>nickname_1<span class="w"> </span>nickname_2
 <span class="w">    </span><span class="c1"># use your own nickname</span>
 <span class="w">    </span>ProxyJump<span class="w"> </span>nickname_proxy
 </code></pre></div>
-<h2 id="_6">超纲的部分​​*<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<h2 id="_5">超纲的部分​​*<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>在配置文件中实现类似选择语句的功能，以下例子描述的是当网络环境随时变更时，连接同一台机器可能会需要访问不同IP时所采取的策略。</p>
 <blockquote>
 <p>此例子不建议初学者直接复制粘贴，其中需要替换的部分请根据具体应用场景来自行斟酌</p>
@@ -3662,7 +3662,7 @@ Host<span class="w"> </span>nickname_1<span class="w"> </span>nickname_2
 <span class="w">        </span>Hostname<span class="w"> </span>xxx.xxx.xxx.xxx
 <span class="w">        </span>Port<span class="w"> </span><span class="m">6000</span>
 </code></pre></div>
-<h2 id="_7">常见问题<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<h2 id="_6">常见问题<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <h3 id="ssh-private-key-are-too-open">ssh private key are too open<a class="headerlink" href="#ssh-private-key-are-too-open" title="Permanent link">&para;</a></h3>
 <p>The error message is </p>
 <div class="highlight"><pre><span></span><code>@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
@@ -3723,7 +3723,7 @@ Host<span class="w"> </span>key<span class="w"> </span>verification<span class="
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年10月24日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年12月11日</span>
   </span>
 
     

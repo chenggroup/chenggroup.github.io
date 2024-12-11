@@ -577,7 +577,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#gpu1gpu3" class="md-nav__link">
+  <a href="#gpu1-and-gpu3" class="md-nav__link">
     <span class="md-ellipsis">
       gpu1和gpu3队列
     </span>
@@ -3104,7 +3104,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#gpu1gpu3" class="md-nav__link">
+  <a href="#gpu1-and-gpu3" class="md-nav__link">
     <span class="md-ellipsis">
       gpu1和gpu3队列
     </span>
@@ -3184,7 +3184,7 @@
 目前GPU的调度已经全部切换至Slurm。
 关于Slurm介绍的部分将在全面迁移后，独立成一篇文档。</p>
 </blockquote>
-<h3 id="gpu1gpu3"><code>gpu1</code>和<code>gpu3</code>队列<a class="headerlink" href="#gpu1gpu3" title="Permanent link">&para;</a></h3>
+<h3 id="gpu1-and-gpu3"><code>gpu1</code>和<code>gpu3</code>队列<a class="headerlink" href="#gpu1-and-gpu3" title="Permanent link">&para;</a></h3>
 <p>常规使用<code>gpu1</code>队列和<code>gpu3</code>队列的示例脚本放在<code>/data/share/base/scripts</code>下，举例如下：</p>
 <div class="highlight"><span class="filename">deepmd.sub</span><pre><span></span><code><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -N 1</span>
@@ -3212,7 +3212,7 @@ dp<span class="w"> </span>freeze<span class="w">  </span><span class="m">1</span
 </div>
 <h3 id="gpu2"><code>gpu2</code>队列<a class="headerlink" href="#gpu2" title="Permanent link">&para;</a></h3>
 <p><code>gpu2</code>队列提供了2张完整A100 80G卡供大任务使用，以及2张分卡共14个实例供相对比较零散的任务使用。</p>
-<p>完整卡使用时，可参照<a href="#gpu1和gpu3队列"><code>gpu1</code>和<code>gpu3</code>队列</a>，将<code>--gres</code>的参数改为<code>gpu:a100:1</code>即可，其中1仍表示分配1张卡。</p>
+<p>完整卡使用时，可参照 <a href="#gpu1-and-gpu3"><code>gpu1</code>和<code>gpu3</code>队列</a>，将<code>--gres</code>的参数改为<code>gpu:a100:1</code>即可，其中1仍表示分配1张卡。</p>
 <p>MIG 实例（即俗称的A100分卡、小卡）的使用脚本放在<code>/data/share/base/scripts</code>下，举例如下：</p>
 <div class="highlight"><span class="filename">cp2k_mig.sub</span><pre><span></span><code><span class="ch">#!/bin/bash -l</span>
 <span class="c1">#SBATCH --parsable</span>
@@ -3403,7 +3403,7 @@ cp2k.ssmp<span class="w"> </span>-i<span class="w"> </span>input.inp<span class=
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2023年7月12日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年12月11日</span>
   </span>
 
     
