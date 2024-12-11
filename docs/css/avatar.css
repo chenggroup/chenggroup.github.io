@@ -1,0 +1,21 @@
+/* 容器样式 */
+.avatar-container {
+    display: inline-block;
+    width: 50px; /* 头像容器的宽度 */
+    height: 50px; /* 头像容器的高度 */
+    border-radius: 50%; /* 圆形蒙版 */
+    overflow: hidden; /* 隐藏超出部分 */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 可选：添加阴影 */
+}
+  
+/* 头像图片样式 */
+.avatar-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* 圆形蒙版 */
+    overflow: hidden; /* 隐藏超出部分 */
+    object-fit: cover; /* 确保图片填充整个容器 */
+    vertical-align: middle; /* 垂直居中 */
+    margin-right: 14px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 可选：添加阴影 */
+}

@@ -221,3 +221,6 @@ tags
 
 # obsidian
 .obsidian/
+
+# caches
+.cache/
