@@ -1,15 +1,15 @@
 ---
-Title: Windows下wsl使用简介
+Title: Windows下WSL使用简介
 Authors: 王程玄
 comments: true
 ---
-# Windows下wsl使用简介
+# Windows下WSL使用简介
 
 ## 前言：为什么需要WSL
 
 由于种种原因，组内提供的工作电脑的操作系统已经逐渐从Mac转向Windows（更严谨的应该说是x86_64架构的组装机），同时近年来Windows笔记本端可选择性更为丰富，综合诸多因素来看在一些体验上已经可以做到不弱于Mac。而由于Windows操作系统并不是基于Unix的系统，因此系统自带的终端操作逻辑以及文件系统和liunx本身有较大的区别，在使用时可能会带来一些困惑以及不兼容的情况。而额外学CMD命令有些得不偿失而且可能会和linux终端命令搞混来。
 
-而对于Windows下较为成熟的各种终端软件如MobaXTerm，Putty，他们在使用体验上远远不及Mac系统本身带的终端，且整体逻辑较为**割裂**，无法将系统和终端直接联系起来。如在MobaXTerm下使用其直接传递文件的速度并不快，大多时候限制因素并不是网速，远不如使用`scp`命令进行的文件传；Putty本身不支持x11，如果需要配置远程可视化窗口流程复杂，而且需要在使用时挂一个x11转发软件，同时不支持`scp`本地文件传递，想要传个文件还需要再开一个windows终端或者scp软件，这太不优雅了。
+而对于Windows下较为成熟的各种终端软件如MobaXTerm，Putty，他们在使用体验上远远不及Mac系统本身带的终端，且整体逻辑较为 **割裂** ，无法将系统和终端直接联系起来。如在MobaXTerm下使用其直接传递文件的速度并不快，大多时候限制因素并不是网速，远不如使用`scp`命令进行的文件传；Putty本身不支持x11，如果需要配置远程可视化窗口流程复杂，而且需要在使用时挂一个x11转发软件，同时不支持`scp`本地文件传递，想要传个文件还需要再开一个windows终端或者scp软件，这太不优雅了。
 
 而wsl（Windows Subsystem for Linux）的出现大大缓解了这种令人两难的情况，单纯从使用者的角度来看，其和直接使用linux命令对Windows进行管理没有太大的区别，我们可以同时享受到Windows可视化界面在信息处理方面带来的便利以及linux命令行带来的批处理方面的便利性。特别是在ssh的使用方面，我们可以将服务器的集群操作以及文件传输同时在一个终端内进行体验较为良好的完成，这在之前的任何软件中都是没有很好地实现的。
 
@@ -35,7 +35,7 @@ distro_name    # 启动指定发行版
 `wsl.exe --shutdown distro_name`，然后直接在终端下按回车就可以直接实现重启。
 
 
-### 将wsl移动到其他分区
+### 将WSL移动到其他分区
 
 wsl默认安装在C盘下，如果C盘初始分配的相对较小或者有C盘空间焦虑，可以考虑将指定的wsl移动到其他的盘符下。请参考：[轻松搬迁！](https://zhuanlan.zhihu.com/p/621873601)
 
@@ -43,7 +43,7 @@ wsl默认安装在C盘下，如果C盘初始分配的相对较小或者有C盘�
 
 在基础设置上和[ssh使用](./ssh_note.md)章节没有区别。下面将介绍一些便利使用的方法。
 
-### 改善使用体验的关键：wsl的vpn环境
+### 改善使用体验的关键：WSL的vpn环境
 
 对于在非校园网环境下办公的情况，wsl和EasyConnect的兼容性并不是很好，经常出现开启EasyConnect之后wsl无法访问网络的情况。如果想要正常使用两者，就需要在开机后迅速打开EasyConnect客户端，再打开wsl，但是这种连接也非常脆弱，中间但凡EasyConnect断开，就再也别想连回去了，唯一解决方法就是重启，这无疑会为工作带来相当的困扰。为此，有以下的几种通过环境配置的解决方法，其中最为推荐的是第一种方法：
 
@@ -106,10 +106,10 @@ $ systemctl status wsl-vpnkit         # 查看运行状态
 
 *其他的运行模式可以参考[github界面](https://github.com/sakai135/wsl-vpnkit?tab=readme-ov-file#setup-as-a-distro)进行设置。*
 
-#### 2. 设置wsl的网络模式为mirrored
+#### 2. 设置WSL的网络模式为mirrored
 
 !!! warning "注意"  
-    网络映射在wsl新版本中仍为实验性功能，可能存在不稳定的情况。同时旧版本wsl无法使用。
+    网络映射在wsl新版本中仍为实验性功能，可能存在不稳定的情况。同时旧版本wsl无法使用。实测在EasyConnect环境下延迟很高，经常出现断连的情况。
 
 wsl默认的网络模式为NAT，而EasyConnect的工作原理可以简单的理解为建立了一个虚拟网卡和校园网进行沟通，这两种方式并不能进行完美的配合，具有很强的先后运行顺序的关联。而在新版的wsl版本中，提供了一种镜像Windows中所有的网络环境到wsl中的手段，包括系统代理也可以镜像到wsl当中。
 
@@ -135,9 +135,9 @@ $ ifconfig
 
 该方式的实现非常优雅，并且因为容器化的原因能够让EasyConnect非常老实，且可以登录一个vpn让多个设备使用，让校园网外的手机和平板平台也能访问校园网（移动端的EasyConnect并不支持扫码登录）。比较麻烦的点在于如果你的Clash配置文件会自动更新，会覆盖自己加入的那一行转发规则，~~不更新可能导致和某scholar检索say byebye~~。同时`.ssh/config`文件的编写会稍微有一些问题，如果在校园网下工作没有打开vpn的情况是不需要走代理端口的，此时若不修改文件内容就会报错（
 
-### wsl的文件系统: scp使用相关
+### WSL的文件系统: scp使用相关
 
-此处是wsl相对于其他解决方案最有优势的地方。wsl可以将Windows的硬盘挂载在文件系统上，我们可以直接通过`df -h`命令进行查看：
+此处是WSL相对于其他解决方案最有优势的地方。WSL可以将Windows的硬盘挂载在文件系统上，我们可以直接通过`df -h`命令进行查看：
 ```bash
 $ df -h
 Filesystem      Size  Used Avail Use% Mounted on
@@ -148,7 +148,7 @@ C:\             203G   88G  115G  44% /mnt/c
 D:\             196G   80G  116G  41% /mnt/d
 E:\             528G   52G  476G  10% /mnt/e
 ```
-在此处，硬盘被分了三个盘符，均可以直接在wsl中看到，其默认的挂载点是`/mnt/x`，并可以直接通过wsl下的linux命令进行操作，如我想将桌面上的所有python脚本传递到集群上：
+在此处，硬盘被分了三个盘符，均可以直接在WSL中看到，其默认的挂载点是`/mnt/x`，并可以直接通过WSL下的linux命令进行操作，如我想将桌面上的所有python脚本传递到集群上：
 ```bash
 $ scp /mnt/disk/Users/username/Desktop/*py server:~/scripts
 ```
@@ -156,9 +156,12 @@ $ scp /mnt/disk/Users/username/Desktop/*py server:~/scripts
 
 每次都需要输入这么一长串路径会很麻烦，因为挂载点在启动时并不会改变，因此可以将常用的文件夹映射到`$HOME`下：
 ```bash
-$ ln -sf /mnt/disk/Users/username/Desktop $HOME/windows_desktop
+$ ln -sf /mnt/disk/Users/<username>/Desktop $HOME/windows_desktop
 ```
 因为建立的是软链接，因此在Windows中做的改动都会反映在文件当中，不需要反复进行同步。此后就可以直接将`$HOME/windows_desktop`中的文件通过`scp`传递到服务器上了。
+
+#### 挂载额外磁盘
+
 
 ## WSL软件安装踩坑（未完待续）
 
@@ -170,7 +173,16 @@ WSL发行版：Ubuntu-24.04
 ### VMD
 在使用WSL2安装linux版本的vmd的时候，如果使用默认的OpenGL渲染器，会出现渲染速度过慢，导致轨迹预览不流畅的问题出现。而WSL2的文件系统性能相对于WSL1的模式较差，网络上提供的使用WSL访问windows下的vmd程序的方法会遇到加载不出轨迹文件的问题。
 
-目前笔者找到的一种解决方法是将默认的OpenGL渲染器换为OpenGL-GLSL渲染器。如果想改变默认的渲染，可以将`display rendermode GLSL`加入到`~/.vmdrc`文件当中，这样vmd预览轨迹就会变得流畅，不再受到渲染器性能的影响。
+解决方法：
+- 一种解决方法是将默认的OpenGL渲染器换为OpenGL-GLSL渲染器。如果想改变默认的渲染，可以将`display rendermode GLSL`加入到`~/.vmdrc`文件当中，这样vmd预览轨迹就会变得流畅，不再受到渲染器性能的影响。一般来说这种方法对性能的影响相对较小。
+
+- 比较通用的解决方法是更换默认的渲染器，比如较为通用的llvm渲染器，直接使用CPU对画面进行渲染，调用方法为在`.bashrc`中加入以下语句或者每次运行前输入下
+```bash
+export LIBGL_ALWAYS_INDIRECT=0 
+export GALLIUM_DRIVER=llvmpipe
+```
+这样的方法可以统一将所有的渲染器改为llvm，包括ovito等可视化软件的渲染问题同样可以解决。问题在于比较吃CPU性能，显卡的渲染优势无法完全利用上。
 
 ### PING
-直接使用WSL2（桥接模式）下面的ping，在内网ip下，会发现远程主机无论如何都能ping通，但是使用windows的Powershell则不会出现如此的情况。目前暂时没有找到具体的原因，在排查网络问题时可能会带来一定的困扰。可以使用windows的PING.EXE代替WSL下的ping：`alias ping="/mnt/c/Windows/system32/PING.EXE"`，这样默认调用的ping就是windows下的，反应的网络信息可能会更准确。
+因为使用[wsl-vpnkit](https://github.com/sakai135/wsl-vpnkit/issues/254)，当使用WSL原生的ping命令测试远程主机的连通性时，会发现对于内网主机无论如何都能ping通，但是使用windows的Powershell则不会出现如此的情况。
+目前暂时没有找到具体的原因，在排查网络问题时可能会带来一定的困扰。可以使用windows的PING.EXE代替WSL下的ping：`alias ping="/mnt/c/Windows/system32/PING.EXE -t"`，这样默认调用的ping就是windows下的，反应的网络信息会更准确。
