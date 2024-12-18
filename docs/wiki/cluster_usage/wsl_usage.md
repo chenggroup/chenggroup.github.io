@@ -11,7 +11,7 @@ comments: true
 
 而对于Windows下较为成熟的各种终端软件如MobaXTerm，Putty，他们在使用体验上远远不及Mac系统本身带的终端，且整体逻辑较为 **割裂** ，无法将系统和终端直接联系起来。如在MobaXTerm下使用其直接传递文件的速度并不快，大多时候限制因素并不是网速，远不如使用`scp`命令进行的文件传；Putty本身不支持x11，如果需要配置远程可视化窗口流程复杂，而且需要在使用时挂一个x11转发软件，同时不支持`scp`本地文件传递，想要传个文件还需要再开一个windows终端或者scp软件，这太不优雅了。
 
-而wsl（Windows Subsystem for Linux）的出现大大缓解了这种令人两难的情况，单纯从使用者的角度来看，其和直接使用linux命令对Windows进行管理没有太大的区别，我们可以同时享受到Windows可视化界面在信息处理方面带来的便利以及linux命令行带来的批处理方面的便利性。特别是在ssh的使用方面，我们可以将服务器的集群操作以及文件传输同时在一个终端内进行体验较为良好的完成，这在之前的任何软件中都是没有很好地实现的。
+而WSL（Windows Subsystem for Linux）的出现大大缓解了这种令人两难的情况，单纯从使用者的角度来看，其和直接使用linux命令对Windows进行管理没有太大的区别，我们可以同时享受到Windows可视化界面在信息处理方面带来的便利以及linux命令行带来的批处理方面的便利性。特别是在ssh的使用方面，我们可以将服务器的集群操作以及文件传输同时在一个终端内进行体验较为良好的完成，这在之前的任何软件中都是没有很好地实现的。
 
 如果电脑本地有一些性能，我们还可以尝试在wsl中安装一些计算软件或者调试环境，这样可以在本地做一些短期的参数验证以及代码调试，不需要反复提交到集群上进行排队，提高一定效率的同时可以节省一些机时费用。如cp2k中的`REL_CUTOFF`以及`CUTOFF`参数的调优可以在本地快速进行，再在集群上进行长时间的计算。
 
@@ -22,10 +22,10 @@ comments: true
 从笔者的使用经验来看，Windows Terminal是一个比较不错的终端（Win11系统默认，Win10需要自己安装），在新版中使用wsl2可以直接支持x11的转发，不行的可以参考[网页](https://blog.dengqi.org/posts/%E4%BD%BF%E7%94%A8-windows-%E8%87%AA%E5%B8%A6ssh%E7%9A%84x11%E8%BD%AC%E5%8F%91%E5%8A%9F%E8%83%BD%E5%B9%B6%E9%85%8D%E7%BD%AEssh%E5%92%8Cvscode/)进行设置。
 
 !!! info "版本推荐"        
-    目前wsl默认版本为wsl2，可以完整支持linux内核的功能（最大的进化是支持了docker），后面的内容默认以此版本为准。同时linux版本也可以选择默认的Ubuntu，作为在个人端应用较广的linux发行版，在遇到问题时通过互联网查找信息能够解决的概率相对较大。
+    目前wsl默认版本为wsl2，可以完整支持linux内核的功能（最大的进化是支持了docker和systemd），后面的内容默认以此版本为准。同时linux版本也可以选择默认的Ubuntu，作为在个人端应用较广的linux发行版，在遇到问题时通过互联网查找信息能够解决的概率相对较大。
 
 终止/重启wsl特定版本的方法，在Powershell/CMD中：
-```CMD
+```PowerShell
 wsl --shutdown distro_name
 distro_name    # 启动指定发行版
 ```
@@ -39,7 +39,7 @@ distro_name    # 启动指定发行版
 
 wsl默认安装在C盘下，如果C盘初始分配的相对较小或者有C盘空间焦虑，可以考虑将指定的wsl移动到其他的盘符下。请参考：[轻松搬迁！](https://zhuanlan.zhihu.com/p/621873601)
 
-## wsl配置ssh环境
+## WSL配置ssh环境
 
 在基础设置上和[ssh使用](./ssh_note.md)章节没有区别。下面将介绍一些便利使用的方法。
 
@@ -162,6 +162,49 @@ $ ln -sf /mnt/disk/Users/<username>/Desktop $HOME/windows_desktop
 
 #### 挂载额外磁盘
 
+如何创建虚拟磁盘请参考如何创建hyper-v虚拟机磁盘。
+
+目前WSL并不支持自定义自动挂载额外虚拟硬盘，但是可以手动挂载磁盘，对于在windows路径`<route_to_disk>`下的虚拟磁盘，其最简单的方式为
+
+```PowerShell
+wsl --mount --vhd <route_to_disk> --bare
+```
+
+然而无论如何挂载，在WSL重启后都需要进行重新挂载，我们可以用一个简单的bat脚本来使得每次重启WSL后都能自动挂载
+
+```
+C:\wsl_automount.bat(or somewhere u like)
+
+wsl --mount --vhd <route_to_disk> --bare && wsl -d <distro_name>
+
+C:\Users\<username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\wsl_startup.vbs
+
+set ws=wscript.CreateObject("wscript.shell")
+ws.run "cmd.exe /c C:\wsl_automount.bat", 0
+```
+
+这样可以将`wsl_startup.vbs`脚本放在启动文件夹下，就可以在Windows启动的时候自动启动WSL，同时在终端退出后也不会自动关闭WSL，避免一些后台任务被中止。
+
+此后就可以在WSL中的`/etc/fstab`中规定虚拟磁盘的挂载位置（最好使用uuid的方式指定磁盘），或者在`/etc/wsl.conf`中的`[automount]`选项中更改默认的挂载位置，但是这项的更改同样会更改Windows物理磁盘的挂载选项。
+
+### `.ssh/config`文件同步：VSCode使用一致性
+
+如果想要在Windows系统中使用VSCode连接远程服务器，就要调整Windows路径下的`.ssh/config`文件进行调整，然而我们平常的终端工作往往在WSL系统中进行，导致两套`.ssh/config`文件不同，这也是造成使用感割裂的原因之一。为了解决这个问题，我们可以考虑将Windows下的`.ssh/config`软链接至`~/.ssh/config`，这样修改时就是同步的。
+
+然而在WSL的默认模式中，`/mnt/c`的权限为777，而这和`config`文件要求的权限差的很多（`config`文件要求600），而在默认的挂载方式下，并不能修改文件的权限，因此需要调整默认的挂载选项，在`/etc/wsl.conf`中加入：
+```bash
+[automount]
+options = "metadata,uid=1000,gid=1000,umask=002,fmask=002,dmask=002"
+```
+
+其中`uid`,`gid`可以通过`id`命令获取，`*mask`使用方法可以自行查阅。修改完成后重启发行版，发现可以修改挂载的文件的权限了：
+```bash
+chmod 600 /mnt/c/Users/<windows_user>/.ssh/config
+mv ~/.ssh/config ~/.ssh/config.bak
+ln -sf /mnt/c/Users/<windows_user>/.ssh/config ~/.ssh/config
+```
+
+当然，我们也可以将常用需要使用VSCode的服务器单独列一个`config`文件并在VSCode的设置中进行修改。
 
 ## WSL软件安装踩坑（未完待续）
 
@@ -176,13 +219,16 @@ WSL发行版：Ubuntu-24.04
 解决方法：
 - 一种解决方法是将默认的OpenGL渲染器换为OpenGL-GLSL渲染器。如果想改变默认的渲染，可以将`display rendermode GLSL`加入到`~/.vmdrc`文件当中，这样vmd预览轨迹就会变得流畅，不再受到渲染器性能的影响。一般来说这种方法对性能的影响相对较小。
 
-- 比较通用的解决方法是更换默认的渲染器，比如较为通用的llvm渲染器，直接使用CPU对画面进行渲染，调用方法为在`.bashrc`中加入以下语句或者每次运行前输入下
+- 比较通用的解决方法是更换默认的渲染器，比如较为通用的`llvm`渲染器，直接使用CPU对画面进行渲染，调用方法为在`.bashrc`中加入以下语句或者每次运行前输入下
 ```bash
 export LIBGL_ALWAYS_INDIRECT=0 
 export GALLIUM_DRIVER=llvmpipe
 ```
-这样的方法可以统一将所有的渲染器改为llvm，包括ovito等可视化软件的渲染问题同样可以解决。问题在于比较吃CPU性能，显卡的渲染优势无法完全利用上。
+这样的方法可以统一将所有的渲染器改为`llvm`，包括`ovito`等可视化软件的渲染问题同样可以解决。问题在于比较吃CPU性能，显卡的渲染优势无法完全利用上。
 
 ### PING
 因为使用[wsl-vpnkit](https://github.com/sakai135/wsl-vpnkit/issues/254)，当使用WSL原生的ping命令测试远程主机的连通性时，会发现对于内网主机无论如何都能ping通，但是使用windows的Powershell则不会出现如此的情况。
 目前暂时没有找到具体的原因，在排查网络问题时可能会带来一定的困扰。可以使用windows的PING.EXE代替WSL下的ping：`alias ping="/mnt/c/Windows/system32/PING.EXE -t"`，这样默认调用的ping就是windows下的，反应的网络信息会更准确。
+
+### IPV6
+WSL默认的网络模式`NAT`并不支持ipv6的相关功能，使用`mirrored`模式可以解决，但是对于SSLVPN实在是太卡了！！！~~（没关系306也不支持ipv6说是）~~
