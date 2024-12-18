@@ -18,11 +18,11 @@
       
       
       <link rel="icon" href="../../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
-        <title>Windows下wsl使用简介 - XMU Chenggroup Wiki</title>
+        <title>Windows下WSL使用简介 - XMU Chenggroup Wiki</title>
       
     
     
@@ -112,7 +112,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Windows下wsl使用简介
+              Windows下WSL使用简介
             
           </span>
         </div>
@@ -604,7 +604,7 @@
           
   
   <span class="md-ellipsis">
-    Windows下wsl使用简介
+    Windows下WSL使用简介
   </span>
   
 
@@ -615,7 +615,7 @@
         
   
   <span class="md-ellipsis">
-    Windows下wsl使用简介
+    Windows下WSL使用简介
   </span>
   
 
@@ -658,7 +658,7 @@
           <li class="md-nav__item">
   <a href="#wsl_2" class="md-nav__link">
     <span class="md-ellipsis">
-      将wsl移动到其他分区
+      将WSL移动到其他分区
     </span>
   </a>
   
@@ -672,21 +672,21 @@
         <li class="md-nav__item">
   <a href="#wslssh" class="md-nav__link">
     <span class="md-ellipsis">
-      wsl配置ssh环境
+      WSL配置ssh环境
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="wsl配置ssh环境">
+    <nav class="md-nav" aria-label="WSL配置ssh环境">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#wslvpn" class="md-nav__link">
     <span class="md-ellipsis">
-      改善使用体验的关键：wsl的vpn环境
+      改善使用体验的关键：WSL的vpn环境
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="改善使用体验的关键：wsl的vpn环境">
+    <nav class="md-nav" aria-label="改善使用体验的关键：WSL的vpn环境">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -701,7 +701,7 @@
           <li class="md-nav__item">
   <a href="#2-wslmirrored" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 设置wsl的网络模式为mirrored
+      2. 设置WSL的网络模式为mirrored
     </span>
   </a>
   
@@ -724,7 +724,31 @@
           <li class="md-nav__item">
   <a href="#wsl-scp" class="md-nav__link">
     <span class="md-ellipsis">
-      wsl的文件系统: scp使用相关
+      WSL的文件系统: scp使用相关
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WSL的文件系统: scp使用相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      挂载额外磁盘
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sshconfigvscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      .ssh/config文件同步：VSCode使用一致性
     </span>
   </a>
   
@@ -767,6 +791,15 @@
   <a href="#ping" class="md-nav__link">
     <span class="md-ellipsis">
       PING
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPV6
     </span>
   </a>
   
@@ -3194,7 +3227,7 @@
           <li class="md-nav__item">
   <a href="#wsl_2" class="md-nav__link">
     <span class="md-ellipsis">
-      将wsl移动到其他分区
+      将WSL移动到其他分区
     </span>
   </a>
   
@@ -3208,21 +3241,21 @@
         <li class="md-nav__item">
   <a href="#wslssh" class="md-nav__link">
     <span class="md-ellipsis">
-      wsl配置ssh环境
+      WSL配置ssh环境
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="wsl配置ssh环境">
+    <nav class="md-nav" aria-label="WSL配置ssh环境">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#wslvpn" class="md-nav__link">
     <span class="md-ellipsis">
-      改善使用体验的关键：wsl的vpn环境
+      改善使用体验的关键：WSL的vpn环境
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="改善使用体验的关键：wsl的vpn环境">
+    <nav class="md-nav" aria-label="改善使用体验的关键：WSL的vpn环境">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3237,7 +3270,7 @@
           <li class="md-nav__item">
   <a href="#2-wslmirrored" class="md-nav__link">
     <span class="md-ellipsis">
-      2. 设置wsl的网络模式为mirrored
+      2. 设置WSL的网络模式为mirrored
     </span>
   </a>
   
@@ -3260,7 +3293,31 @@
           <li class="md-nav__item">
   <a href="#wsl-scp" class="md-nav__link">
     <span class="md-ellipsis">
-      wsl的文件系统: scp使用相关
+      WSL的文件系统: scp使用相关
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="WSL的文件系统: scp使用相关">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      挂载额外磁盘
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sshconfigvscode" class="md-nav__link">
+    <span class="md-ellipsis">
+      .ssh/config文件同步：VSCode使用一致性
     </span>
   </a>
   
@@ -3308,6 +3365,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#ipv6" class="md-nav__link">
+    <span class="md-ellipsis">
+      IPV6
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3331,31 +3397,31 @@
   
 
 
-<h1 id="windowswsl">Windows下wsl使用简介<a class="headerlink" href="#windowswsl" title="Permanent link">&para;</a></h1>
+<h1 id="windowswsl">Windows下WSL使用简介<a class="headerlink" href="#windowswsl" title="Permanent link">&para;</a></h1>
 <h2 id="wsl">前言：为什么需要WSL<a class="headerlink" href="#wsl" title="Permanent link">&para;</a></h2>
 <p>由于种种原因，组内提供的工作电脑的操作系统已经逐渐从Mac转向Windows（更严谨的应该说是x86_64架构的组装机），同时近年来Windows笔记本端可选择性更为丰富，综合诸多因素来看在一些体验上已经可以做到不弱于Mac。而由于Windows操作系统并不是基于Unix的系统，因此系统自带的终端操作逻辑以及文件系统和liunx本身有较大的区别，在使用时可能会带来一些困惑以及不兼容的情况。而额外学CMD命令有些得不偿失而且可能会和linux终端命令搞混来。</p>
-<p>而对于Windows下较为成熟的各种终端软件如MobaXTerm，Putty，他们在使用体验上远远不及Mac系统本身带的终端，且整体逻辑较为**割裂**，无法将系统和终端直接联系起来。如在MobaXTerm下使用其直接传递文件的速度并不快，大多时候限制因素并不是网速，远不如使用<code>scp</code>命令进行的文件传；Putty本身不支持x11，如果需要配置远程可视化窗口流程复杂，而且需要在使用时挂一个x11转发软件，同时不支持<code>scp</code>本地文件传递，想要传个文件还需要再开一个windows终端或者scp软件，这太不优雅了。</p>
-<p>而wsl（Windows Subsystem for Linux）的出现大大缓解了这种令人两难的情况，单纯从使用者的角度来看，其和直接使用linux命令对Windows进行管理没有太大的区别，我们可以同时享受到Windows可视化界面在信息处理方面带来的便利以及linux命令行带来的批处理方面的便利性。特别是在ssh的使用方面，我们可以将服务器的集群操作以及文件传输同时在一个终端内进行体验较为良好的完成，这在之前的任何软件中都是没有很好地实现的。</p>
+<p>而对于Windows下较为成熟的各种终端软件如MobaXTerm，Putty，他们在使用体验上远远不及Mac系统本身带的终端，且整体逻辑较为 <strong>割裂</strong> ，无法将系统和终端直接联系起来。如在MobaXTerm下使用其直接传递文件的速度并不快，大多时候限制因素并不是网速，远不如使用<code>scp</code>命令进行的文件传；Putty本身不支持x11，如果需要配置远程可视化窗口流程复杂，而且需要在使用时挂一个x11转发软件，同时不支持<code>scp</code>本地文件传递，想要传个文件还需要再开一个windows终端或者scp软件，这太不优雅了。</p>
+<p>而WSL（Windows Subsystem for Linux）的出现大大缓解了这种令人两难的情况，单纯从使用者的角度来看，其和直接使用linux命令对Windows进行管理没有太大的区别，我们可以同时享受到Windows可视化界面在信息处理方面带来的便利以及linux命令行带来的批处理方面的便利性。特别是在ssh的使用方面，我们可以将服务器的集群操作以及文件传输同时在一个终端内进行体验较为良好的完成，这在之前的任何软件中都是没有很好地实现的。</p>
 <p>如果电脑本地有一些性能，我们还可以尝试在wsl中安装一些计算软件或者调试环境，这样可以在本地做一些短期的参数验证以及代码调试，不需要反复提交到集群上进行排队，提高一定效率的同时可以节省一些机时费用。如cp2k中的<code>REL_CUTOFF</code>以及<code>CUTOFF</code>参数的调优可以在本地快速进行，再在集群上进行长时间的计算。</p>
 <h2 id="wsl_1">WSL安装<a class="headerlink" href="#wsl_1" title="Permanent link">&para;</a></h2>
 <p>此过程较为容易，且<a href="https://learn.microsoft.com/zh-cn/windows/wsl/install">官方教程</a>、中文教程在互联网上较为详尽，不再过多地占篇幅。</p>
 <p>从笔者的使用经验来看，Windows Terminal是一个比较不错的终端（Win11系统默认，Win10需要自己安装），在新版中使用wsl2可以直接支持x11的转发，不行的可以参考<a href="https://blog.dengqi.org/posts/%E4%BD%BF%E7%94%A8-windows-%E8%87%AA%E5%B8%A6ssh%E7%9A%84x11%E8%BD%AC%E5%8F%91%E5%8A%9F%E8%83%BD%E5%B9%B6%E9%85%8D%E7%BD%AEssh%E5%92%8Cvscode/">网页</a>进行设置。</p>
 <div class="admonition info">
 <p class="admonition-title">版本推荐</p>
-<p>目前wsl默认版本为wsl2，可以完整支持linux内核的功能（最大的进化是支持了docker），后面的内容默认以此版本为准。同时linux版本也可以选择默认的Ubuntu，作为在个人端应用较广的linux发行版，在遇到问题时通过互联网查找信息能够解决的概率相对较大。</p>
+<p>目前wsl默认版本为wsl2，可以完整支持linux内核的功能（最大的进化是支持了docker和systemd），后面的内容默认以此版本为准。同时linux版本也可以选择默认的Ubuntu，作为在个人端应用较广的linux发行版，在遇到问题时通过互联网查找信息能够解决的概率相对较大。</p>
 </div>
 <p>终止/重启wsl特定版本的方法，在Powershell/CMD中：
-<div class="highlight"><pre><span></span><code>wsl --shutdown distro_name
-distro_name    # 启动指定发行版
+<div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-shutdown</span> <span class="n">distro_name</span>
+<span class="n">distro_name</span>    <span class="c"># 启动指定发行版</span>
 </code></pre></div>
 其中<code>distro_name</code>为安装的发行版名称，可以通过<code>wsl -l -v</code>查看已经安装的发行版。</p>
 <p>当然，WSL有着极强的自我管理意识，在WSL中也可以直接实现自闭和重启，这得益于WSL可以直接调用windows下面的程序，只要<code>wsl.exe</code>在windows的环境变量当中，就可以实现在wsl中的直接调用：
 <code>wsl.exe --shutdown distro_name</code>，然后直接在终端下按回车就可以直接实现重启。</p>
-<h3 id="wsl_2">将wsl移动到其他分区<a class="headerlink" href="#wsl_2" title="Permanent link">&para;</a></h3>
+<h3 id="wsl_2">将WSL移动到其他分区<a class="headerlink" href="#wsl_2" title="Permanent link">&para;</a></h3>
 <p>wsl默认安装在C盘下，如果C盘初始分配的相对较小或者有C盘空间焦虑，可以考虑将指定的wsl移动到其他的盘符下。请参考：<a href="https://zhuanlan.zhihu.com/p/621873601">轻松搬迁！</a></p>
-<h2 id="wslssh">wsl配置ssh环境<a class="headerlink" href="#wslssh" title="Permanent link">&para;</a></h2>
+<h2 id="wslssh">WSL配置ssh环境<a class="headerlink" href="#wslssh" title="Permanent link">&para;</a></h2>
 <p>在基础设置上和<a href="../ssh_note/">ssh使用</a>章节没有区别。下面将介绍一些便利使用的方法。</p>
-<h3 id="wslvpn">改善使用体验的关键：wsl的vpn环境<a class="headerlink" href="#wslvpn" title="Permanent link">&para;</a></h3>
+<h3 id="wslvpn">改善使用体验的关键：WSL的vpn环境<a class="headerlink" href="#wslvpn" title="Permanent link">&para;</a></h3>
 <p>对于在非校园网环境下办公的情况，wsl和EasyConnect的兼容性并不是很好，经常出现开启EasyConnect之后wsl无法访问网络的情况。如果想要正常使用两者，就需要在开机后迅速打开EasyConnect客户端，再打开wsl，但是这种连接也非常脆弱，中间但凡EasyConnect断开，就再也别想连回去了，唯一解决方法就是重启，这无疑会为工作带来相当的困扰。为此，有以下的几种通过环境配置的解决方法，其中最为推荐的是第一种方法：</p>
 <h4 id="1-wsl-vpnkitwindows">1. 使用wsl-vpnkit同步Windows的网络环境<a class="headerlink" href="#1-wsl-vpnkitwindows" title="Permanent link">&para;</a></h4>
 <p>工具地址：<a href="https://github.com/sakai135/wsl-vpnkit">wsl-vpnkit</a></p>
@@ -3407,10 +3473,10 @@ $<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w">
 </code></pre></div>
 如果没有查看状态没有报错，就说明已经可以正常运行了。</p>
 <p><em>其他的运行模式可以参考<a href="https://github.com/sakai135/wsl-vpnkit?tab=readme-ov-file#setup-as-a-distro">github界面</a>进行设置。</em></p>
-<h4 id="2-wslmirrored">2. 设置wsl的网络模式为mirrored<a class="headerlink" href="#2-wslmirrored" title="Permanent link">&para;</a></h4>
+<h4 id="2-wslmirrored">2. 设置WSL的网络模式为mirrored<a class="headerlink" href="#2-wslmirrored" title="Permanent link">&para;</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
-<p>网络映射在wsl新版本中仍为实验性功能，可能存在不稳定的情况。同时旧版本wsl无法使用。</p>
+<p>网络映射在wsl新版本中仍为实验性功能，可能存在不稳定的情况。同时旧版本wsl无法使用。实测在EasyConnect环境下延迟很高，经常出现断连的情况。</p>
 </div>
 <p>wsl默认的网络模式为NAT，而EasyConnect的工作原理可以简单的理解为建立了一个虚拟网卡和校园网进行沟通，这两种方式并不能进行完美的配合，具有很强的先后运行顺序的关联。而在新版的wsl版本中，提供了一种镜像Windows中所有的网络环境到wsl中的手段，包括系统代理也可以镜像到wsl当中。</p>
 <p>首先设置<code>.wslconfig</code>文件：
@@ -3427,8 +3493,8 @@ $<span class="w"> </span>ifconfig
 <h4 id="3-wsl2-docker-easyconnect-clash">3. WSL2 + Docker + EasyConnect + Clash<a class="headerlink" href="#3-wsl2-docker-easyconnect-clash" title="Permanent link">&para;</a></h4>
 <p>参考：<a href="https://cloudac7.github.io/p/%E6%96%B0%E6%97%B6%E4%BB%A3%E7%9A%84%E5%BF%AB%E4%B9%90%E7%A7%91%E7%A0%94wsl2-docker-easyconnect-clash/">新时代的快乐科研：WSL2+Docker+EasyConnect+Clash</a></p>
 <p>该方式的实现非常优雅，并且因为容器化的原因能够让EasyConnect非常老实，且可以登录一个vpn让多个设备使用，让校园网外的手机和平板平台也能访问校园网（移动端的EasyConnect并不支持扫码登录）。比较麻烦的点在于如果你的Clash配置文件会自动更新，会覆盖自己加入的那一行转发规则，<del>不更新可能导致和某scholar检索say byebye</del>。同时<code>.ssh/config</code>文件的编写会稍微有一些问题，如果在校园网下工作没有打开vpn的情况是不需要走代理端口的，此时若不修改文件内容就会报错（</p>
-<h3 id="wsl-scp">wsl的文件系统: scp使用相关<a class="headerlink" href="#wsl-scp" title="Permanent link">&para;</a></h3>
-<p>此处是wsl相对于其他解决方案最有优势的地方。wsl可以将Windows的硬盘挂载在文件系统上，我们可以直接通过<code>df -h</code>命令进行查看：
+<h3 id="wsl-scp">WSL的文件系统: scp使用相关<a class="headerlink" href="#wsl-scp" title="Permanent link">&para;</a></h3>
+<p>此处是WSL相对于其他解决方案最有优势的地方。WSL可以将Windows的硬盘挂载在文件系统上，我们可以直接通过<code>df -h</code>命令进行查看：
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>df<span class="w"> </span>-h
 Filesystem<span class="w">      </span>Size<span class="w">  </span>Used<span class="w"> </span>Avail<span class="w"> </span>Use%<span class="w"> </span>Mounted<span class="w"> </span>on
 ...
@@ -3438,23 +3504,63 @@ C:<span class="se">\ </span><span class="w">            </span>203G<span class="
 D:<span class="se">\ </span><span class="w">            </span>196G<span class="w">   </span>80G<span class="w">  </span>116G<span class="w">  </span><span class="m">41</span>%<span class="w"> </span>/mnt/d
 E:<span class="se">\ </span><span class="w">            </span>528G<span class="w">   </span>52G<span class="w">  </span>476G<span class="w">  </span><span class="m">10</span>%<span class="w"> </span>/mnt/e
 </code></pre></div>
-在此处，硬盘被分了三个盘符，均可以直接在wsl中看到，其默认的挂载点是<code>/mnt/x</code>，并可以直接通过wsl下的linux命令进行操作，如我想将桌面上的所有python脚本传递到集群上：
+在此处，硬盘被分了三个盘符，均可以直接在WSL中看到，其默认的挂载点是<code>/mnt/x</code>，并可以直接通过WSL下的linux命令进行操作，如我想将桌面上的所有python脚本传递到集群上：
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>/mnt/disk/Users/username/Desktop/*py<span class="w"> </span>server:~/scripts
 </code></pre></div>
 其中<code>disk</code>为电脑桌面的所在的盘符（如果没有移动过默认在C盘，则其值为c），<code>username</code>为你的电脑用户名（这也是不建议将用户名设置为中文的原因之一，可能会引起错误或者输入不便），<code>server</code>可以通过<code>.ssh/config</code>进行设置。</p>
 <p>每次都需要输入这么一长串路径会很麻烦，因为挂载点在启动时并不会改变，因此可以将常用的文件夹映射到<code>$HOME</code>下：
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/mnt/disk/Users/username/Desktop<span class="w"> </span><span class="nv">$HOME</span>/windows_desktop
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/mnt/disk/Users/&lt;username&gt;/Desktop<span class="w"> </span><span class="nv">$HOME</span>/windows_desktop
 </code></pre></div>
 因为建立的是软链接，因此在Windows中做的改动都会反映在文件当中，不需要反复进行同步。此后就可以直接将<code>$HOME/windows_desktop</code>中的文件通过<code>scp</code>传递到服务器上了。</p>
+<h4 id="_1">挂载额外磁盘<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
+<p>如何创建虚拟磁盘请参考如何创建hyper-v虚拟机磁盘。</p>
+<p>目前WSL并不支持自定义自动挂载额外虚拟硬盘，但是可以手动挂载磁盘，对于在windows路径<code>&lt;route_to_disk&gt;</code>下的虚拟磁盘，其最简单的方式为</p>
+<div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-mount</span> <span class="p">-</span><span class="n">-vhd</span> <span class="p">&lt;</span><span class="n">route_to_disk</span><span class="p">&gt;</span> <span class="p">-</span><span class="n">-bare</span>
+</code></pre></div>
+<p>然而无论如何挂载，在WSL重启后都需要进行重新挂载，我们可以用一个简单的bat脚本来使得每次重启WSL后都能自动挂载</p>
+<div class="highlight"><pre><span></span><code>C:\wsl_automount.bat(or somewhere u like)
+
+wsl --mount --vhd &lt;route_to_disk&gt; --bare &amp;&amp; wsl -d &lt;distro_name&gt;
+
+C:\Users\&lt;username&gt;\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\wsl_startup.vbs
+
+set ws=wscript.CreateObject(&quot;wscript.shell&quot;)
+ws.run &quot;cmd.exe /c C:\wsl_automount.bat&quot;, 0
+</code></pre></div>
+<p>这样可以将<code>wsl_startup.vbs</code>脚本放在启动文件夹下，就可以在Windows启动的时候自动启动WSL，同时在终端退出后也不会自动关闭WSL，避免一些后台任务被中止。</p>
+<p>此后就可以在WSL中的<code>/etc/fstab</code>中规定虚拟磁盘的挂载位置（最好使用uuid的方式指定磁盘），或者在<code>/etc/wsl.conf</code>中的<code>[automount]</code>选项中更改默认的挂载位置，但是这项的更改同样会更改Windows物理磁盘的挂载选项。</p>
+<h3 id="sshconfigvscode"><code>.ssh/config</code>文件同步：VSCode使用一致性<a class="headerlink" href="#sshconfigvscode" title="Permanent link">&para;</a></h3>
+<p>如果想要在Windows系统中使用VSCode连接远程服务器，就要调整Windows路径下的<code>.ssh/config</code>文件进行调整，然而我们平常的终端工作往往在WSL系统中进行，导致两套<code>.ssh/config</code>文件不同，这也是造成使用感割裂的原因之一。为了解决这个问题，我们可以考虑将Windows下的<code>.ssh/config</code>软链接至<code>~/.ssh/config</code>，这样修改时就是同步的。</p>
+<p>然而在WSL的默认模式中，<code>/mnt/c</code>的权限为777，而这和<code>config</code>文件要求的权限差的很多（<code>config</code>文件要求600），而在默认的挂载方式下，并不能修改文件的权限，因此需要调整默认的挂载选项，在<code>/etc/wsl.conf</code>中加入：
+<div class="highlight"><pre><span></span><code><span class="o">[</span>automount<span class="o">]</span>
+<span class="nv">options</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;metadata,uid=1000,gid=1000,umask=002,fmask=002,dmask=002&quot;</span>
+</code></pre></div></p>
+<p>其中<code>uid</code>,<code>gid</code>可以通过<code>id</code>命令获取，<code>*mask</code>使用方法可以自行查阅。修改完成后重启发行版，发现可以修改挂载的文件的权限了：
+<div class="highlight"><pre><span></span><code>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/mnt/c/Users/&lt;windows_user&gt;/.ssh/config
+mv<span class="w"> </span>~/.ssh/config<span class="w"> </span>~/.ssh/config.bak
+ln<span class="w"> </span>-sf<span class="w"> </span>/mnt/c/Users/&lt;windows_user&gt;/.ssh/config<span class="w"> </span>~/.ssh/config
+</code></pre></div></p>
+<p>当然，我们也可以将常用需要使用VSCode的服务器单独列一个<code>config</code>文件并在VSCode的设置中进行修改。</p>
 <h2 id="wsl_3">WSL软件安装踩坑（未完待续）<a class="headerlink" href="#wsl_3" title="Permanent link">&para;</a></h2>
 <p>WSL发行版：Ubuntu-24.04</p>
 <h3 id="cp2k">CP2K<a class="headerlink" href="#cp2k" title="Permanent link">&para;</a></h3>
 <p>不要使用<code>sudo apt install mpich</code>的方法安装mpi运行库，这会导致即使使用<code>psmp</code>版本也无法使用mpi并行计算的bug，<code>mpirun</code>会导致同时运行n个相同的子程序。如果不想自己编译mpi库的话，因为不是集群多软件环境一般没有依赖冲突，使用<code>--with-openmpi=install</code>，此后使用时<code>source /dir/to/cp2k/tools/toolchain/setup</code>设置环境变量即可。</p>
 <h3 id="vmd">VMD<a class="headerlink" href="#vmd" title="Permanent link">&para;</a></h3>
 <p>在使用WSL2安装linux版本的vmd的时候，如果使用默认的OpenGL渲染器，会出现渲染速度过慢，导致轨迹预览不流畅的问题出现。而WSL2的文件系统性能相对于WSL1的模式较差，网络上提供的使用WSL访问windows下的vmd程序的方法会遇到加载不出轨迹文件的问题。</p>
-<p>目前笔者找到的一种解决方法是将默认的OpenGL渲染器换为OpenGL-GLSL渲染器。如果想改变默认的渲染，可以将<code>display rendermode GLSL</code>加入到<code>~/.vmdrc</code>文件当中，这样vmd预览轨迹就会变得流畅，不再受到渲染器性能的影响。</p>
+<p>解决方法：
+- 一种解决方法是将默认的OpenGL渲染器换为OpenGL-GLSL渲染器。如果想改变默认的渲染，可以将<code>display rendermode GLSL</code>加入到<code>~/.vmdrc</code>文件当中，这样vmd预览轨迹就会变得流畅，不再受到渲染器性能的影响。一般来说这种方法对性能的影响相对较小。</p>
+<ul>
+<li>比较通用的解决方法是更换默认的渲染器，比如较为通用的<code>llvm</code>渲染器，直接使用CPU对画面进行渲染，调用方法为在<code>.bashrc</code>中加入以下语句或者每次运行前输入下
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">LIBGL_ALWAYS_INDIRECT</span><span class="o">=</span><span class="m">0</span><span class="w"> </span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">GALLIUM_DRIVER</span><span class="o">=</span>llvmpipe
+</code></pre></div>
+这样的方法可以统一将所有的渲染器改为<code>llvm</code>，包括<code>ovito</code>等可视化软件的渲染问题同样可以解决。问题在于比较吃CPU性能，显卡的渲染优势无法完全利用上。</li>
+</ul>
 <h3 id="ping">PING<a class="headerlink" href="#ping" title="Permanent link">&para;</a></h3>
-<p>直接使用WSL2（桥接模式）下面的ping，在内网ip下，会发现远程主机无论如何都能ping通，但是使用windows的Powershell则不会出现如此的情况。目前暂时没有找到具体的原因，在排查网络问题时可能会带来一定的困扰。可以使用windows的PING.EXE代替WSL下的ping：<code>alias ping="/mnt/c/Windows/system32/PING.EXE"</code>，这样默认调用的ping就是windows下的，反应的网络信息可能会更准确。</p>
+<p>因为使用<a href="https://github.com/sakai135/wsl-vpnkit/issues/254">wsl-vpnkit</a>，当使用WSL原生的ping命令测试远程主机的连通性时，会发现对于内网主机无论如何都能ping通，但是使用windows的Powershell则不会出现如此的情况。
+目前暂时没有找到具体的原因，在排查网络问题时可能会带来一定的困扰。可以使用windows的PING.EXE代替WSL下的ping：<code>alias ping="/mnt/c/Windows/system32/PING.EXE -t"</code>，这样默认调用的ping就是windows下的，反应的网络信息会更准确。</p>
+<h3 id="ipv6">IPV6<a class="headerlink" href="#ipv6" title="Permanent link">&para;</a></h3>
+<p>WSL默认的网络模式<code>NAT</code>并不支持ipv6的相关功能，使用<code>mirrored</code>模式可以解决，但是对于SSLVPN实在是太卡了！！！<del>（没关系306也不支持ipv6说是）</del></p>
 
 
 
@@ -3475,7 +3581,7 @@ E:<span class="se">\ </span><span class="w">            </span>528G<span class="
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年11月18日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">2024年12月18日</span>
   </span>
 
     
@@ -3606,7 +3712,7 @@ E:<span class="se">\ </span><span class="w">            </span>528G<span class="
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.sections", "navigation.indexes", "navigation.top", "content.tooltips", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="../../../javascripts/analytic.js"></script>
       
