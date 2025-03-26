@@ -41,6 +41,7 @@ Python是一种非常方便的编程语言，可以帮助我们处理计算数�
 
 <div class="annotate" markdown>
 
+- [:fontawesome-solid-book: **必读文章 Simulations: the dark side**](https://arxiv.org/pdf/1211.4440v1)
 - [:fontawesome-solid-book: 量子化学 (Levine) (前14章)](../book_recommendation.md)
 - [:fontawesome-brands-bilibili: 量子化学与密度泛函理论](./qc_dft/2024.md)
 - [:fontawesome-brands-bilibili: Linux 入门 (包括 Windows 下环境设置 + Git 介绍)](./linux/2024.md) 
