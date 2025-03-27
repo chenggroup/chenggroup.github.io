@@ -31,6 +31,8 @@ This is group wiki for chenggroup of XMU which is personal academic group. Visit
 
 ### 针对计算化学问题
 
+⚠️**计算化学新生必读**：[Simulations: the dark side](https://arxiv.org/pdf/1211.4440v1)
+
 请首先阅读[在网上求助计算化学问题时的注意事项](http://sobereva.com/79)
 
 如果确实有需要作者帮助答疑的问题，请归纳清楚要点并通过邮件联系作者。

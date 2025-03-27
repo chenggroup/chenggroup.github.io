@@ -68,6 +68,11 @@
     
     ---
     2019级本科，2023级硕士
+
+- <img src="https://avatars.githubusercontent.com/u/191482500" alt="Avatar" class="avatar-image"> **[龚玉雷](https://github.com/SyncLionPaw)**
+    
+    ---
+    2024级硕士
 </div>
 
 ## 热心贡献者

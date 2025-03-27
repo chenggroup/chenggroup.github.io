@@ -93,6 +93,12 @@ pip install mkdocs-material \
     mkdocs-macros-plugin \
     mkdocs-static-i18n[material]
 ```
+为了获得完美的渲染效果，可能需要额外安装某些插件。
+
+```bash
+pip install mkdocs-git-revision-date-localized-plugin \
+    mkdocs-material-extensions
+```
 
 #### 4. 启动 Mkdocs 服务
 
