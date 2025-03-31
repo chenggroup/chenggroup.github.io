@@ -90,6 +90,19 @@ defaults write org.macosforge.xquartz.X11 enable_iglx -bool true
 
 Ref: https://www.ks.uiuc.edu/Research/vmd/mailing_list/vmd-l/28494.html
 
+在 XQuartz 2.8.0 版本之后，其配置文件的位置从`org.macosforge.xquartz.X11`变成了`org.xquartz.X11`，因此上述的命令应当改为
+```
+defaults write org.xquartz.X11 enable_iglx -bool true
+```
+
+笔者在Apple Silicon的MAC上使用XQuartz连接服务器涉及`OpenGL`渲染器的程序时（如`vmd`）会遇到以下报错：
+```
+libGL error: No matching fbConfigs or visuals found
+libGL error: failed to load driver: swrast
+```
+经过较为[粗浅的调研](https://github.com/XQuartz/XQuartz/issues/144)和linux端，目前将问题定位在`mesa`的驱动支持部分，或许是Apple Silicon的平台现在不支持`mesa`的渲染方式。现在还没有影响到正常的使用，但是每次都会有报错。
+在上面的参考中有人给出了在mac下编译对应驱动的[参考](https://github.com/XQuartz/XQuartz/issues/144#issuecomment-1783952222)，后续可以考虑进行测试。~~XQuartz最后一次更新停留在2023年，该跑路了~~
+
 #### WSL 远程使用 VMD 的注意事项
 
 请参阅 [Windows下 WSL 使用简介](../cluster_usage/wsl_usage.md#vmd) 中的介绍。
