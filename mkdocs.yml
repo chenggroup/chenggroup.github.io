@@ -15,12 +15,12 @@ extra:
       name: 联系程俊老师
   alternate:
     - name: 中文
-      link: /
+      link: /  
       lang: zh
     - name: English
       link: /en/
       lang: en
-  author_name: '{{ page.meta.authors }}'
+  author_name: '{{ page.meta.authors }}'  
 
 plugins:
   - search:
@@ -36,7 +36,7 @@ plugins:
         - locale: en
           name: English
           build: true
-          nav_translations:
+          nav_translations:  
             集群使用: Cluster Usage
             开始编辑: How to Edit
             新生培训: For New Comers
@@ -144,7 +144,7 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.superfences:
       custom_fences:
-        - name: mermaid
+        - name: mermaid  
           class: mermaid
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
@@ -189,7 +189,7 @@ nav:
           - wiki/new_comers/statistical_mechanics/2024.md
           - wiki/new_comers/statistical_mechanics/2024-free_energy.md
           - wiki/new_comers/md/2024-md.md  
-          - wiki/new_comers/md/2025-md.md   
+          - wiki/new_comers/md/2025-cmd.md         
           - wiki/new_comers/md/2024-cp2k.md  
           - wiki/new_comers/ai/2024-ai.md
           - wiki/new_comers/ai/2024-train.md
@@ -220,7 +220,7 @@ nav:
               - wiki/software_usage/cp2k/cp2k-geoopt.md
               - wiki/software_usage/cp2k/cp2k-zpe.md 
               - wiki/software_usage/cp2k/cp2k-neb.md
-              - wiki/software_usage/cp2k/cp2k-reftraj.md
+              - wiki/software_usage/cp2k/cp2k-reftraj.md  
               - wiki/software_usage/cp2k/cp2k-dft+u.md
               - wiki/software_usage/cp2k/cp2k-hf.md
               - wiki/software_usage/cp2k/cp2k-scan.md  
