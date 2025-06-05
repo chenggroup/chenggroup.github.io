@@ -188,8 +188,9 @@ nav:
           - wiki/new_comers/solid_electronic_structure/2024-qe_vasp.md
           - wiki/new_comers/statistical_mechanics/2024.md
           - wiki/new_comers/statistical_mechanics/2024-free_energy.md
-          - wiki/new_comers/md/2024-md.md
-          - wiki/new_comers/md/2024-cp2k.md
+          - wiki/new_comers/md/2024-md.md  
+          - wiki/new_comers/md/2025-md.md   
+          - wiki/new_comers/md/2024-cp2k.md  
           - wiki/new_comers/ai/2024-ai.md
           - wiki/new_comers/ai/2024-train.md
           - wiki/new_comers/tools/2024-ai2-kit.md
@@ -214,19 +215,19 @@ nav:
           - wiki/software_usage/MDAnalysis.md
           - wiki/software_usage/Tips_for_LaTeX.md
           - CP2K:
-              - wiki/software_usage/cp2k/cp2k.md
-              - wiki/software_usage/cp2k/cp2k-e-f.md
+              - wiki/software_usage/cp2k/cp2k.md  
+              - wiki/software_usage/cp2k/cp2k-e-f.md  
               - wiki/software_usage/cp2k/cp2k-geoopt.md
               - wiki/software_usage/cp2k/cp2k-zpe.md 
               - wiki/software_usage/cp2k/cp2k-neb.md
               - wiki/software_usage/cp2k/cp2k-reftraj.md
               - wiki/software_usage/cp2k/cp2k-dft+u.md
               - wiki/software_usage/cp2k/cp2k-hf.md
-              - wiki/software_usage/cp2k/cp2k-scan.md
-              - wiki/software_usage/cp2k/cp2k-slab.md
+              - wiki/software_usage/cp2k/cp2k-scan.md  
+              - wiki/software_usage/cp2k/cp2k-slab.md  
               - wiki/software_usage/cp2k/cp2k-tools.md
               - wiki/software_usage/cp2k/cp2k-deepmd.md
-              - wiki/software_usage/cp2k/cp2k-constrainedmd.md
+              - wiki/software_usage/cp2k/cp2k-constrainedmd.md  
           - wiki/software_usage/DP-GEN.md
           - wiki/software_usage/DeePMD-kit.md
           - wiki/software_usage/experience_of_dpmd_and_dpgen.md
@@ -242,7 +243,7 @@ nav:
               - wiki/software_installation/deepmd-kit/deepmd-kit_installation_ikkem.md
               - wiki/software_installation/deepmd-kit/deepmd-kit_installation_191.md
               - wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc.md
-              - wiki/software_installation/deepmd-kit/deepmd-kit_installation_51.md
+              - wiki/software_installation/deepmd-kit/deepmd-kit_installation_51.md  
           - wiki/software_installation/cp2k-7.1.md
       - 软件开发:
           - wiki/teamwork/git_usage.md
@@ -259,7 +260,7 @@ nav:
           - wiki/question_under_carpet/chemical_computing.md
           - 未完待续: https://github.com/chenggroup/chenggroup.github.io/issues/131
       - 杂项(Miscellaneous): wiki/miscellaneous.md
-      - 贡献者列表: contributors.md
-  - ai2-kit: https://wiki.cheng-group.net/ai2-kit-doc/
+      - 贡献者列表: contributors.md          
+  - ai2-kit: https://wiki.cheng-group.net/ai2-kit-doc/    
   - cp2kdata: https://robinzyb.github.io/cp2kdata/
   - ECToolkits: https://robinzyb.github.io/ECToolkits/
