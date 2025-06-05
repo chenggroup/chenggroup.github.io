@@ -197,6 +197,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/md/2024-md/"/>
     </url>
     <url>
+        <loc>https://wiki.cheng-group.net/wiki/new_comers/md/2025-cmd/</loc>
+        <lastmod>2025-06-05</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/md/2025-cmd/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/md/2025-cmd/"/>
+    </url>
+    <url>
         <loc>https://wiki.cheng-group.net/wiki/new_comers/presentation/2020/</loc>
         <lastmod>2025-06-05</lastmod>
         <changefreq>daily</changefreq>
@@ -811,6 +818,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/md/2024-md/"/>
         <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/md/2024-md/"/>
+    </url>
+    <url>
+        <loc>https://wiki.cheng-group.net/en/wiki/new_comers/md/2025-cmd/</loc>
+        <lastmod>2025-06-05</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://wiki.cheng-group.net/en/wiki/new_comers/md/2025-cmd/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://wiki.cheng-group.net/wiki/new_comers/md/2025-cmd/"/>
     </url>
     <url>
         <loc>https://wiki.cheng-group.net/en/wiki/new_comers/presentation/2020/</loc>
