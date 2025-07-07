@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -687,7 +687,7 @@
           <li class="md-nav__item">
   <a href="#wsl_2" class="md-nav__link">
     <span class="md-ellipsis">
-      将WSL移动到其他分区
+      将WSL移动到其他盘符
     </span>
   </a>
   
@@ -777,7 +777,7 @@
           <li class="md-nav__item">
   <a href="#sshconfigvscode" class="md-nav__link">
     <span class="md-ellipsis">
-      .ssh/config文件同步：VSCode使用一致性
+      .ssh/config文件同步：VSCode使用一致性*
     </span>
   </a>
   
@@ -785,6 +785,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Desktop：简单配置计算软件的利器
+    </span>
+  </a>
   
 </li>
       
@@ -3473,7 +3482,7 @@
           <li class="md-nav__item">
   <a href="#wsl_2" class="md-nav__link">
     <span class="md-ellipsis">
-      将WSL移动到其他分区
+      将WSL移动到其他盘符
     </span>
   </a>
   
@@ -3563,7 +3572,7 @@
           <li class="md-nav__item">
   <a href="#sshconfigvscode" class="md-nav__link">
     <span class="md-ellipsis">
-      .ssh/config文件同步：VSCode使用一致性
+      .ssh/config文件同步：VSCode使用一致性*
     </span>
   </a>
   
@@ -3571,6 +3580,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Docker Desktop：简单配置计算软件的利器
+    </span>
+  </a>
   
 </li>
       
@@ -3658,13 +3676,13 @@
 <p>目前wsl默认版本为wsl2，可以完整支持linux内核的功能（最大的进化是支持了docker和systemd），后面的内容默认以此版本为准。同时linux版本也可以选择默认的Ubuntu，作为在个人端应用较广的linux发行版，在遇到问题时通过互联网查找信息能够解决的概率相对较大。</p>
 </div>
 <p>终止/重启wsl特定版本的方法，在Powershell/CMD中：
-<div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-shutdown</span> <span class="n">distro_name</span>
+<div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-shutdown</span> <span class="p">&lt;</span><span class="n">distro_name</span><span class="p">&gt;</span>
 <span class="n">distro_name</span>    <span class="c"># 启动指定发行版</span>
 </code></pre></div>
 其中<code>distro_name</code>为安装的发行版名称，可以通过<code>wsl -l -v</code>查看已经安装的发行版。</p>
 <p>当然，WSL有着极强的自我管理意识，在WSL中也可以直接实现自闭和重启，这得益于WSL可以直接调用windows下面的程序，只要<code>wsl.exe</code>在windows的环境变量当中，就可以实现在wsl中的直接调用：
-<code>wsl.exe --shutdown distro_name</code>，然后直接在终端下按回车就可以直接实现重启。</p>
-<h3 id="wsl_2">将WSL移动到其他分区<a class="headerlink" href="#wsl_2" title="Permanent link">&para;</a></h3>
+<code>wsl.exe --shutdown &lt;distro_name&gt;</code>，然后直接在终端下按回车就可以直接实现重启。</p>
+<h3 id="wsl_2">将WSL移动到其他盘符<a class="headerlink" href="#wsl_2" title="Permanent link">&para;</a></h3>
 <p>wsl默认安装在C盘下，如果C盘初始分配的相对较小或者有C盘空间焦虑，可以考虑将指定的wsl移动到其他的盘符下。请参考：<a href="https://zhuanlan.zhihu.com/p/621873601">轻松搬迁！</a></p>
 <h2 id="wslssh">WSL配置ssh环境<a class="headerlink" href="#wslssh" title="Permanent link">&para;</a></h2>
 <p>在基础设置上和<a href="../ssh_note/">ssh使用</a>章节没有区别。下面将介绍一些便利使用的方法。</p>
@@ -3723,16 +3741,17 @@ $<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w">
 <h4 id="2-wslmirrored">2. 设置WSL的网络模式为mirrored<a class="headerlink" href="#2-wslmirrored" title="Permanent link">&para;</a></h4>
 <div class="admonition warning">
 <p class="admonition-title">注意</p>
-<p>网络映射在wsl新版本中仍为实验性功能，可能存在不稳定的情况。同时旧版本wsl无法使用。实测在EasyConnect环境下延迟很高，经常出现断连的情况。</p>
+<p>网络映射在wsl新版本中已经转为正式功能，但是实测使用EasyConnect仍然会出现莫名其妙的卡顿，使用体验较为糟糕。同时旧版本wsl无法使用。
+另：如果想要在WSL中使用ipv6，使用mirrored是一个非常好的选择。</p>
 </div>
 <p>wsl默认的网络模式为NAT，而EasyConnect的工作原理可以简单的理解为建立了一个虚拟网卡和校园网进行沟通，这两种方式并不能进行完美的配合，具有很强的先后运行顺序的关联。而在新版的wsl版本中，提供了一种镜像Windows中所有的网络环境到wsl中的手段，包括系统代理也可以镜像到wsl当中。</p>
 <p>首先设置<code>.wslconfig</code>文件：
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vi<span class="w"> </span>/mnt/c/Users/username/.wslconfig
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>vi<span class="w"> </span>/mnt/c/Users/&lt;windows_user&gt;/.wslconfig
 
-<span class="o">[</span>experimental<span class="o">]</span>
+<span class="o">[</span>wsl<span class="o">]</span>
 <span class="nv">networkingMode</span><span class="o">=</span>mirrored
 </code></pre></div></p>
-<p>其中<code>/mnt/c/Users/username/.wslconfig</code>是Windows下的用户根目录下的一个wsl配置文件，一般是新创建的。同时，该文件也可以设置wsl占用的系统资源等一些参数。完成编辑保存并退出后，重启wsl发行版就可以实现网卡的映射。可以通过以下的命令进行观察:
+<p>其中<code>/mnt/c/Users/&lt;windows_user&gt;/.wslconfig</code>是Windows下的用户根目录下的一个wsl配置文件，一般是新创建的。同时，该文件也可以设置wsl占用的系统资源等一些参数。完成编辑保存并退出后，重启wsl发行版就可以实现网卡的映射。可以通过以下的命令进行观察:
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>net-tools
 $<span class="w"> </span>ifconfig
 </code></pre></div></p>
@@ -3752,11 +3771,11 @@ D:<span class="se">\ </span><span class="w">            </span>196G<span class="
 E:<span class="se">\ </span><span class="w">            </span>528G<span class="w">   </span>52G<span class="w">  </span>476G<span class="w">  </span><span class="m">10</span>%<span class="w"> </span>/mnt/e
 </code></pre></div>
 在此处，硬盘被分了三个盘符，均可以直接在WSL中看到，其默认的挂载点是<code>/mnt/x</code>，并可以直接通过WSL下的linux命令进行操作，如我想将桌面上的所有python脚本传递到集群上：
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>/mnt/disk/Users/username/Desktop/*py<span class="w"> </span>server:~/scripts
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>scp<span class="w"> </span>/mnt/disk/Users/&lt;windows_user&gt;/Desktop/*py<span class="w"> </span>server:~/scripts
 </code></pre></div>
-其中<code>disk</code>为电脑桌面的所在的盘符（如果没有移动过默认在C盘，则其值为c），<code>username</code>为你的电脑用户名（这也是不建议将用户名设置为中文的原因之一，可能会引起错误或者输入不便），<code>server</code>可以通过<code>.ssh/config</code>进行设置。</p>
+其中<code>disk</code>为电脑桌面的所在的盘符（如果没有移动过默认在C盘，则其值为c），<code>&lt;windows_user&gt;</code>为你的电脑用户名（这也是不建议将用户名设置为中文的原因之一，可能会引起错误或者输入不便），<code>server</code>可以通过<code>.ssh/config</code>进行设置。</p>
 <p>每次都需要输入这么一长串路径会很麻烦，因为挂载点在启动时并不会改变，因此可以将常用的文件夹映射到<code>$HOME</code>下：
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/mnt/disk/Users/&lt;username&gt;/Desktop<span class="w"> </span><span class="nv">$HOME</span>/windows_desktop
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>ln<span class="w"> </span>-sf<span class="w"> </span>/mnt/disk/Users/&lt;windows_user&gt;/Desktop<span class="w"> </span><span class="nv">$HOME</span>/windows_desktop
 </code></pre></div>
 因为建立的是软链接，因此在Windows中做的改动都会反映在文件当中，不需要反复进行同步。此后就可以直接将<code>$HOME/windows_desktop</code>中的文件通过<code>scp</code>传递到服务器上了。</p>
 <h4 id="_1">挂载额外磁盘<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h4>
@@ -3769,14 +3788,14 @@ E:<span class="se">\ </span><span class="w">            </span>528G<span class="
 
 wsl --mount --vhd &lt;route_to_disk&gt; --bare &amp;&amp; wsl -d &lt;distro_name&gt;
 
-C:\Users\&lt;username&gt;\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\wsl_startup.vbs
+C:\Users\&lt;windows_user&gt;\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\wsl_startup.vbs
 
 set ws=wscript.CreateObject(&quot;wscript.shell&quot;)
 ws.run &quot;cmd.exe /c C:\wsl_automount.bat&quot;, 0
 </code></pre></div>
 <p>这样可以将<code>wsl_startup.vbs</code>脚本放在启动文件夹下，就可以在Windows启动的时候自动启动WSL，同时在终端退出后也不会自动关闭WSL，避免一些后台任务被中止。</p>
 <p>此后就可以在WSL中的<code>/etc/fstab</code>中规定虚拟磁盘的挂载位置（最好使用uuid的方式指定磁盘），或者在<code>/etc/wsl.conf</code>中的<code>[automount]</code>选项中更改默认的挂载位置，但是这项的更改同样会更改Windows物理磁盘的挂载选项。</p>
-<h3 id="sshconfigvscode"><code>.ssh/config</code>文件同步：VSCode使用一致性<a class="headerlink" href="#sshconfigvscode" title="Permanent link">&para;</a></h3>
+<h3 id="sshconfigvscode"><code>.ssh/config</code>文件同步：VSCode使用一致性*<a class="headerlink" href="#sshconfigvscode" title="Permanent link">&para;</a></h3>
 <p>如果想要在Windows系统中使用VSCode连接远程服务器，就要调整Windows路径下的<code>.ssh/config</code>文件进行调整，然而我们平常的终端工作往往在WSL系统中进行，导致两套<code>.ssh/config</code>文件不同，这也是造成使用感割裂的原因之一。为了解决这个问题，我们可以考虑将Windows下的<code>.ssh/config</code>软链接至<code>~/.ssh/config</code>，这样修改时就是同步的。</p>
 <p>然而在WSL的默认模式中，<code>/mnt/c</code>的权限为777，而这和<code>config</code>文件要求的权限差的很多（<code>config</code>文件要求600），而在默认的挂载方式下，并不能修改文件的权限，因此需要调整默认的挂载选项，在<code>/etc/wsl.conf</code>中加入：
 <div class="highlight"><pre><span></span><code><span class="o">[</span>automount<span class="o">]</span>
@@ -3788,6 +3807,22 @@ mv<span class="w"> </span>~/.ssh/config<span class="w"> </span>~/.ssh/config.bak
 ln<span class="w"> </span>-sf<span class="w"> </span>/mnt/c/Users/&lt;windows_user&gt;/.ssh/config<span class="w"> </span>~/.ssh/config
 </code></pre></div></p>
 <p>当然，我们也可以将常用需要使用VSCode的服务器单独列一个<code>config</code>文件并在VSCode的设置中进行修改。</p>
+<h2 id="docker-desktop">Docker Desktop：简单配置计算软件的利器<a class="headerlink" href="#docker-desktop" title="Permanent link">&para;</a></h2>
+<p>如果觉得自己手动配置具体的计算软件太麻烦，或者配置的时候遇到了奇奇怪怪的bug，且在本地运行只是一些短运行的简单的参数检查的需求，不需要极致运行效率，就可以尝试使用容器化的方法对想要实现的功能进行快速的部署。而在WSL中运行docker也很方便，只需要下载一个Docker Desktop，在安装的时候把涉及WSL及其发行版的选项勾选上，启动之后就能够在WSL中调用docker的相关功能（这也是WSL2的优势之处）。</p>
+<p>具体的安装过程就不再赘述，这里备注几个可以优化docker使用体验的关键词：dockerhub换源、移动docker虚拟磁盘位置、<code>docker login -u &lt;username&gt;</code>而不是在Docker Desktop当中点击登录（developer）。</p>
+<p>如果是个人电脑的话，不涉及多用户的权限及安全问题，为了比较方便调用docker，可以将本用户加入到docker组当中(<code>usermod -aG docker &lt;wsl_username&gt;</code>)，在执行的时候就不需要sudo开头运行docker了。 <strong>需要注意</strong> 这个行为本质上有提权操作，在具体管理时一定要小心权限问题。</p>
+<p>这里使用一个简单的<a href="https://github.com/cp2k/cp2k-containers">cp2k</a>例子（也是编译相对复杂、依赖多的计算软件）对docker的基础使用进行说明：
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>--shm-size<span class="o">=</span>12g<span class="w"> </span>-v<span class="w"> </span><span class="nv">$PWD</span>:/mnt<span class="w"> </span>-u<span class="w"> </span><span class="k">$(</span>id<span class="w"> </span>-u<span class="w"> </span><span class="nv">$USER</span><span class="k">)</span>:<span class="k">$(</span>id<span class="w"> </span>-g<span class="w"> </span><span class="nv">$USER</span><span class="k">)</span><span class="w"> </span>cp2k/cp2k:2025.1_openmpi_generic_psmp<span class="w"> </span>mpirun<span class="w"> </span>-bind-to<span class="w"> </span>none<span class="w"> </span>-np<span class="w"> </span><span class="m">9</span><span class="w"> </span>-x<span class="w"> </span><span class="nv">OMP_NUM_THREADS</span><span class="o">=</span><span class="m">2</span><span class="w"> </span>cp2k<span class="w"> </span>-i<span class="w"> </span>input-128.inp
+</code></pre></div>
+在运行这条命令之后，会从镜像源下载镜像（这个例子中大概4G）。简要说明下这行命令当中的一些参数：
+- <code>--shm-size=12g</code>: 这个是linux中将内存当作硬盘的区域，可以显著提高计算过程中的文件读写速度。在默认设置中通常为整个内存的一半，而在容器当中的默认设置很小，这里需要根据内存大小手动设置一下，一般设为4g以上对于计算速度的影响就比较小了。
+- <code>-v $PWD:/mnt</code>: 将当前的目录挂载到容器<code>/mnt</code>目录下，cp2k的镜像默认在这个路径下进行计算。所以需要将输入文件中的所有内容都放到当前目录下，主要包括基组文件和色散文件（当然也可以利用<code>-v</code>手动挂载到一个地方，对容器比较熟悉的同学可以尝试）。并在input文件中使用相对路径（建议）或者自己转为<code>/mnt</code>的绝对路径进行指定。
+- <code>cp2k/cp2k:2025.1_openmpi_generic_psmp</code>: 这里制定使用镜像的名称和版本，可以根据自己的需求进行调整，具体的版本可以在docker hub上查询。
+- <code>mpirun -bind-to none -np 9 -x OMP_NUM_THREADS=2</code>: 这些是mpi运行的相关参数，其中<code>-x OMP_NUM_THREADS=2</code>一定要这样设置OpenMP的使用的线程数，直接设置为环境变量不会起作用。如果用的是<code>mpich</code>版本的会略有不同，详见上面的github页面。
+- <code>cp2k -i input-128.inp</code>: 前面将本地路径挂载到了容器当中，这里就直接使用本地路径下的input文件名称即可。</p>
+<p>相较直接下载<code>cp2k.ssmp</code>的二进制文件，docker的运行模式可以更好地利用多线程性能，无论是小任务还是简单调试效率都相对更高。</p>
+<p>其他的计算软件如<code>deepmd-kit</code>也有镜像版本，可以很方便地运行势函数的训练和推理，在不想折腾显卡libtorch环境的时候（特别是dp3.0版本）也不妨为一种好的选择。</p>
+<p>容器化的另外一个优势在于能够在架构相同的不同的平台上使用相同的容器运行，目前嘉庚集群和chenggroup集群均安装了<code>singularity</code>作为容器化的平台，在使用上和docker大同小异，相对docker来说其不需要root权限，是对于普通用户更友好的容器化工具。同时，<code>sigularity</code>可以将docker的镜像直接转为对应的可执行文件(?)，如有复杂的软件部署需求，可以考虑在本地构建镜像传到集群上运行。</p>
 <h2 id="wsl_3">WSL软件安装踩坑（未完待续）<a class="headerlink" href="#wsl_3" title="Permanent link">&para;</a></h2>
 <p>WSL发行版：Ubuntu-24.04</p>
 <h3 id="cp2k">CP2K<a class="headerlink" href="#cp2k" title="Permanent link">&para;</a></h3>
@@ -3828,7 +3863,7 @@ ln<span class="w"> </span>-sf<span class="w"> </span>/mnt/c/Users/&lt;windows_us
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2024年12月18日 13:22:01 UTC">2024年12月18日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2025年6月24日 13:04:26 UTC">2025年6月24日</span>
   </span>
 
     
@@ -3961,7 +3996,7 @@ ln<span class="w"> </span>-sf<span class="w"> </span>/mnt/c/Users/&lt;windows_us
       <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.instant", "navigation.sections", "navigation.indexes", "navigation.top", "content.tooltips", "search.suggest", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../../../javascripts/analytic.js"></script>
       
