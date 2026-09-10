@@ -41,6 +41,7 @@ plugins:
             开始编辑: How to Edit
             新生培训: For New Comers
             合作协同: Teamwork
+            Token 计划: Token Plan
             软件安装: Software Installation
             软件使用: Software Usage
             软件开发: Software Development
@@ -163,8 +164,9 @@ extra_css:
 nav:
   - Home: index.md
   - Wikis:
-      - 开始编辑: wiki/how_to_edit/howtodo.md
-      - wiki/how_to_edit/troubleshooting.md
+      - 开始编辑:
+          - wiki/how_to_edit/howtodo.md
+          - wiki/how_to_edit/troubleshooting.md
       - 集群使用:
           - wiki/cluster_usage/cluster_usage.md
           - wiki/cluster_usage/ssh_note.md
@@ -212,6 +214,12 @@ nav:
           - wiki/teamwork/archive_rules.md
           - wiki/teamwork/git_usage.md
           - wiki/teamwork/tutorial_rules.md
+      - Token 计划:
+          - wiki/token_plan/token_plan.md
+          - wiki/token_plan/claude_code.md
+          - wiki/token_plan/cc_switch.md
+          - wiki/token_plan/vscode.md
+          - wiki/token_plan/faq.md
       - 软件使用:
           - wiki/software_usage/default_version.md
           - wiki/software_usage/MDAnalysis.md
