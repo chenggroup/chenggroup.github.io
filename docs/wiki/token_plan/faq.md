@@ -89,11 +89,15 @@ Continue、Cline 等插件的配置文件默认位于用户目录（如 `~/.cont
 
 ### 如何查看剩余额度
 
-TODO
+登录 LiteLLM 控制台后，在左侧菜单选择 **Teams**，进入自己所属的团队并切换到 **My User** 标签页。`Current Cycle Spend (USD)` 显示当前计费周期已经使用的额度，卡片下方的金额为该周期总额度；两者相减即为剩余额度。
+
+![LiteLLM 控制台中查看当前周期额度](../../images/litellm/litellm-check-budget.png)
 
 ### 如何查看可用模型
 
-TODO
+登录 LiteLLM 控制台后，在左侧菜单选择 **AI Hub**，即可查看当前可用的模型。使用配置时请复制列表中的 **Model Name**；同时可在列表中查看模型的供应商、最大输入/输出长度、功能和健康状态等信息。
+
+![LiteLLM 控制台中的可用模型列表](../../images/litellm/litellm-available-models.png)
 
 ### 额度不够用了怎么办
 
