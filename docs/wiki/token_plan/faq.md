@@ -65,6 +65,24 @@ Claude Code 可能读取了此前的登录状态。在 `claude` 会话中执行 
 
 ---
 
+## Codex
+
+### Responses 会话状态丢失
+
+Codex 目前使用 Responses 接口；对话状态由服务端保存，并通过 `previous_response_id` 关联后续请求。网关供应商可能因路由、账号可用性等原因，无法持续将同一会话的请求转发到固定的后端账号，此时该账号无法读取先前的会话状态，可能出现以下错误：
+
+```
+400 litellm.BadRequestError: OpenAIException - {"error":{"message":"previous_response_id is not available for this user","type":"invalid_request_error"}}. Received Model Group=gpt-6-luna
+```
+
+如果在 Codex 中持续遇到此错误，可按以下方式规避并恢复未完成的工作：
+
+1. 执行 `/export history.md`，将当前对话历史导出到 `history.md`。
+2. 执行 `/clear`，开启新会话。
+3. 在新会话中告诉 Codex：`基于 history.md 的记录，继续完成……`，并补充当前未完成的具体任务。
+
+---
+
 ## VS Code 插件
 
 ### 插件里应该选哪种 Provider
