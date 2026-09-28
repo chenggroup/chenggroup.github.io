@@ -2352,6 +2352,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#codex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Codex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responses 会话状态丢失
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vs-code" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4465,6 +4493,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#codex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Codex
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Codex">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#responses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responses 会话状态丢失
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#vs-code" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4629,6 +4685,18 @@
 <h3 id="model-not-found">提示模型不存在（model not found）<a class="headerlink" href="#model-not-found" title="Permanent link">&para;</a></h3>
 <p>模型名称需与平台实际支持的列表一致，请以<a href="https://scnd9noiu6a3.feishu.cn/docx/RKxvdzec1o349yx326Ucbgw7nUh">接入说明文档（飞书）</a>中列出的名称为准，不要直接照搬官方文档中的型号。</p>
 <hr />
+<h2 id="codex">Codex<a class="headerlink" href="#codex" title="Permanent link">&para;</a></h2>
+<h3 id="responses">Responses 会话状态丢失<a class="headerlink" href="#responses" title="Permanent link">&para;</a></h3>
+<p>Codex 目前使用 Responses 接口；对话状态由服务端保存，并通过 <code>previous_response_id</code> 关联后续请求。网关供应商可能因路由、账号可用性等原因，无法持续将同一会话的请求转发到固定的后端账号，此时该账号无法读取先前的会话状态，可能出现以下错误：</p>
+<div class="highlight"><pre><span></span><code>400 litellm.BadRequestError: OpenAIException - {"error":{"message":"previous_response_id is not available for this user","type":"invalid_request_error"}}. Received Model Group=gpt-6-luna
+</code></pre></div>
+<p>如果在 Codex 中持续遇到此错误，可按以下方式规避并恢复未完成的工作：</p>
+<ol>
+<li>执行 <code>/export history.md</code>，将当前对话历史导出到 <code>history.md</code>。</li>
+<li>执行 <code>/clear</code>，开启新会话。</li>
+<li>在新会话中告诉 Codex：<code>基于 history.md 的记录，继续完成……</code>，并补充当前未完成的具体任务。</li>
+</ol>
+<hr />
 <h2 id="vs-code">VS Code 插件<a class="headerlink" href="#vs-code" title="Permanent link">&para;</a></h2>
 <h3 id="provider">插件里应该选哪种 Provider<a class="headerlink" href="#provider" title="Permanent link">&para;</a></h3>
 <p>网关同时提供 Anthropic 与 OpenAI 兼容接口，具体选择取决于插件与平台文档说明：</p>
@@ -4676,7 +4744,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月22日 08:07:55 UTC">2026年9月22日</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="2026年9月28日 06:39:10 UTC">2026年9月28日</span>
   </span>
 
     
