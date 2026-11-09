@@ -255,6 +255,7 @@ nav:
               - wiki/software_installation/deepmd-kit/deepmd-kit_installation_pc.md
               - wiki/software_installation/deepmd-kit/deepmd-kit_installation_51.md
           - wiki/software_installation/cp2k-7.1.md
+          - wiki/software_installation/tailscale.md
       - 软件开发:
           - wiki/teamwork/git_usage.md
           - Lammps:
