@@ -178,6 +178,7 @@ nav:
           - wiki/cluster_usage/notification_for_hpc.md
           - wiki/cluster_usage/pack_backup.md
           - wiki/cluster_usage/tensorboard.md
+          - wiki/cluster_usage/minikkem_cluster_usage.md
       - 新生培训:
           - wiki/new_comers/toc.md
           - wiki/new_comers/linux/2024.md
